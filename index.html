@@ -32,6 +32,7 @@
           <div>An ecommerce mockup.</div>
         </div>
         <div class="products-list">
+          <h2>Catalog</h2>
           <div class="product-card">
             <div class="product-card-img-container">
               <div class="product-card-img-buttons">
@@ -43,8 +44,16 @@
                 src="https://picsum.photos/800/"
               />
             </div>
+            <div class="product-card-ratings">
+              <span>*</span>
+              <span>*</span>
+              <span>*</span>
+              <span>*</span>
+              <span>*</span>
+            </div>
             <div class="product-card-title">Product</div>
             <div class="product-card-color-select">
+              <label for="product-color">Color</label>
               <select
                 name="product-color"
                 id="prodct-color"
@@ -57,10 +66,27 @@
               </select>
             </div>
             <div class="product-card-description">Description</div>
+            <div class="product-card-promotion">Promotion</div>
             <div class="product-card-price">
               <span class="product-card-price-currency">$</span
               ><span class="product-card-price-value">9.99</span>
             </div>
+            <button>Add to Cart</button>
+            <div class="product-card-quantity">
+              <button class="product-quantity-btn-subtract">-</button>
+              <input
+                type="number"
+                id="product-quantity"
+                name="product-quantity"
+                min="0"
+                max="10"
+                value="0"
+              />
+              <button class="product-quantity-btn-add">+</button>
+            </div>
+
+            <button>Remove from Cart</button>
+            <button>Add to Wishlist</button>
           </div>
         </div>
       </main>
