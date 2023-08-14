@@ -52,6 +52,10 @@ a:hover {
   margin-block: auto;
 }
 
+.products-list {
+  margin-top: 1rem;
+}
+
 .footer-container {
   margin-top: auto;
   padding-block: 1rem;

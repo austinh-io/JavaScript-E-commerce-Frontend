@@ -40,15 +40,40 @@
           <h1>Ecommerce Site</h1>
           <div>An ecommerce mockup.</div>
         </div>
+        <h2>Catalog</h2>
         <div class="products-list">
-          <h2>Catalog</h2>
           <div class="product-card">
             <div class="product-card-img-container">
-              <div class="product-card-image-label-new">New</div>
-              <div class="product-card-img-buttons">
-                <button class="product-card-img-button">Next</button>
-                <button class="product-card-img-button">Previous</button>
+              <div class="product-card-image-label-new">
+                <span
+                  class="material-symbols-rounded product-card-image-label-new-icon"
+                >
+                  new_releases
+                </span>
+                <span>New</span>
               </div>
+              <div class="product-card-img-nav-buttons">
+                <button
+                  class="product-card-img-nav-button product-card-img-nav-button-previous"
+                >
+                  <span class="material-symbols-rounded"> chevron_left </span>
+                </button>
+                <button
+                  class="product-card-img-nav-button product-card-img--nav-button-next"
+                >
+                  <span class="material-symbols-rounded"> chevron_right </span>
+                </button>
+              </div>
+              <button class="product-card-wishlist-add-btn product-card-button">
+                <span
+                  class="material-symbols-rounded product-card-wishlist-add-icon product-card-wishlist-add-icon-inactive"
+                >
+                  favorite
+                </span>
+                <span class="product-card-wishlist-add-label"
+                  >Add to Wishlist</span
+                >
+              </button>
               <img
                 class="product-card-img"
                 src="https://picsum.photos/800/"
@@ -81,23 +106,26 @@
                 star
               </span>
             </div>
-            <div class="product-card-title">Product</div>
-            <!-- <div class="product-card-color-select">
-              <label for="product-color">Color</label>
-              <select
-                name="product-color"
-                id="prodct-color"
-              >
-                <option value="black">Black</option>
-                <option value="white">White</option>
-                <option value="red">Red</option>
-                <option value="blue">Blue</option>
-                <option value="green">Green</option>
-              </select>
-            </div> -->
+            <div class="product-card-title"><a>Product Name</a></div>
+
+            <div class="product-card-description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+              tincidunt nisi faucibus arcu lacinia tincidunt. Quisque lacinia
+              hendrerit massa. Class aptent taciti sociosqu ad litora torquent
+              per conubia nostra, per inceptos himenaeos. Sed nec nisl lectus.
+              Maecenas lacus metus, finibus in purus eu, egestas placerat nunc.
+              Etiam finibus sem id orci imperdiet finibus. Sed odio enim,
+              interdum ac massa at, fermentum rutrum turpis. Nullam faucibus
+              odio at nisl sodales porta. Pellentesque metus nibh, euismod a
+              magna quis, dapibus iaculis nunc. Mauris porta tellus ut mi
+              pulvinar, in feugiat neque hendrerit. Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit.
+            </div>
+
+            <div class="hidden product-card-promotion">Promotion</div>
             <div class="product-color">
               <fieldset class="product-color-fieldset">
-                <legend>Color</legend>
+                <legend class="product-color-fieldset-title">Color</legend>
                 <div>
                   <input
                     class="product-color-radio-btn radio-btn-color-black"
@@ -171,46 +199,40 @@
                 </div>
               </fieldset>
             </div>
-            <div class="product-card-description">Description</div>
-            <div class="product-card-promotion">Promotion</div>
-            <div class="product-card-price">
-              <span class="product-card-price-currency">$</span
-              ><span class="product-card-price-value">9.99</span>
-            </div>
-            <button>Add to Cart</button>
-            <div class="product-card-quantity">
+            <div class="product-card-price-cart-group">
+              <div class="product-card-price">
+                <span class="product-card-price-currency">$</span
+                ><span class="product-card-price-value">9.99</span>
+              </div>
               <button
-                class="product-quantity-btn product-quantity-btn-subtract"
+                class="hidden product-card-button product-card-cart-add-btn"
               >
-                <span class="material-symbols-outlined"> remove </span>
+                Add to Cart
               </button>
-              <input
-                type="number"
-                class="product-quantity"
-                id="product-quantity"
-                name="product-quantity"
-                min="0"
-                max="10"
-                placeholder="0"
-              />
-              <button class="product-quantity-btn product-quantity-btn-add">
-                <span class="material-symbols-rounded"> add </span>
+              <div class="product-card-quantity">
+                <button
+                  class="product-quantity-btn product-quantity-btn-subtract"
+                >
+                  <span class="material-symbols-outlined"> remove </span>
+                </button>
+                <input
+                  type="number"
+                  class="product-quantity"
+                  id="product-quantity"
+                  name="product-quantity"
+                  min="0"
+                  max="10"
+                  placeholder="0"
+                />
+                <button class="product-quantity-btn product-quantity-btn-add">
+                  <span class="material-symbols-rounded"> add </span>
+                </button>
+              </div>
+
+              <button class="product-card-cart-remove-btn product-card-button">
+                Remove from Cart
               </button>
             </div>
-
-            <button class="product-card-cart-remove-btn">
-              Remove from Cart
-            </button>
-            <button class="product-card-wishlist-add-btn">
-              <span
-                class="material-symbols-rounded product-card-wishlist-add-icon product-card-wishlist-add-icon-inactive"
-              >
-                favorite
-              </span>
-              <span class="product-card-wishlist-add-label"
-                >Add to Wishlist</span
-              >
-            </button>
           </div>
         </div>
       </main>
