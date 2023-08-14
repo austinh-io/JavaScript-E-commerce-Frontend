@@ -1,0 +1,30 @@
+.product-card {
+  max-width: 28rem;
+
+  border: 3px solid white;
+  border-radius: 10px;
+
+  padding: 1rem;
+}
+
+.product-card-img-container {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 3/2;
+}
+
+img.product-card-img {
+  max-width: 100%;
+}
+
+.product-card-img-buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 2%;
+}
+
+.product-card-img-button {
+  margin: 0;
+}
