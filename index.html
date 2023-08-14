@@ -18,6 +18,15 @@
       href="./css/productCard.css"
     />
 
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+
     <script src="script.js"></script>
   </head>
   <body>
@@ -35,6 +44,7 @@
           <h2>Catalog</h2>
           <div class="product-card">
             <div class="product-card-img-container">
+              <div class="product-card-image-label-new">New</div>
               <div class="product-card-img-buttons">
                 <button class="product-card-img-button">Next</button>
                 <button class="product-card-img-button">Previous</button>
@@ -45,11 +55,31 @@
               />
             </div>
             <div class="product-card-ratings">
-              <span>*</span>
-              <span>*</span>
-              <span>*</span>
-              <span>*</span>
-              <span>*</span>
+              <span
+                class="material-symbols-rounded rating-star rating-star-active"
+              >
+                star
+              </span>
+              <span
+                class="material-symbols-rounded rating-star rating-star-active"
+              >
+                star
+              </span>
+              <span
+                class="material-symbols-rounded rating-star rating-star-active"
+              >
+                star
+              </span>
+              <span
+                class="material-symbols-rounded rating-star rating-star-inactive"
+              >
+                star
+              </span>
+              <span
+                class="material-symbols-rounded rating-star rating-star-inactive"
+              >
+                star
+              </span>
             </div>
             <div class="product-card-title">Product</div>
             <div class="product-card-color-select">
@@ -73,16 +103,23 @@
             </div>
             <button>Add to Cart</button>
             <div class="product-card-quantity">
-              <button class="product-quantity-btn-subtract">-</button>
+              <button
+                class="product-quantity-btn product-quantity-btn-subtract"
+              >
+                <span class="material-symbols-outlined"> remove </span>
+              </button>
               <input
                 type="number"
+                class="product-quantity"
                 id="product-quantity"
                 name="product-quantity"
                 min="0"
                 max="10"
-                value="0"
+                placeholder="0"
               />
-              <button class="product-quantity-btn-add">+</button>
+              <button class="product-quantity-btn product-quantity-btn-add">
+                <span class="material-symbols-rounded"> add </span>
+              </button>
             </div>
 
             <button>Remove from Cart</button>
