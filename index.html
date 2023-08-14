@@ -82,7 +82,7 @@
               </span>
             </div>
             <div class="product-card-title">Product</div>
-            <div class="product-card-color-select">
+            <!-- <div class="product-card-color-select">
               <label for="product-color">Color</label>
               <select
                 name="product-color"
@@ -94,6 +94,82 @@
                 <option value="blue">Blue</option>
                 <option value="green">Green</option>
               </select>
+            </div> -->
+            <div class="product-color">
+              <fieldset class="product-color-fieldset">
+                <legend>Color</legend>
+                <div>
+                  <input
+                    class="product-color-radio-btn radio-btn-color-black"
+                    type="radio"
+                    id="product0-black"
+                    name="color"
+                    value="black"
+                    checked
+                  />
+                  <label
+                    class="product-color-label product-color-label-black"
+                    for="black"
+                    ><span class="product-color-label-text">Black</span></label
+                  >
+                </div>
+                <div>
+                  <input
+                    class="product-color-radio-btn radio-btn-color-white"
+                    type="radio"
+                    id="product0-white"
+                    name="color"
+                    value="white"
+                  />
+                  <label
+                    class="product-color-label product-color-label-white"
+                    for="white"
+                    ><span class="product-color-label-text">White</span></label
+                  >
+                </div>
+                <div>
+                  <input
+                    class="product-color-radio-btn radio-btn-color-red"
+                    type="radio"
+                    id="product0-red"
+                    name="color"
+                    value="red"
+                  />
+                  <label
+                    class="product-color-label product-color-label-red"
+                    for="red"
+                    ><span class="product-color-label-text">Red</span></label
+                  >
+                </div>
+                <div>
+                  <input
+                    class="product-color-radio-btn radio-btn-color-blue"
+                    type="radio"
+                    id="product0-blue"
+                    name="color"
+                    value="blue"
+                  />
+                  <label
+                    class="product-color-label product-color-label-blue"
+                    for="blue"
+                    ><span class="product-color-label-text">Blue</span></label
+                  >
+                </div>
+                <div>
+                  <input
+                    class="product-color-radio-btn radio-btn-color-green"
+                    type="radio"
+                    id="product0-green"
+                    name="color"
+                    value="green"
+                  />
+                  <label
+                    class="product-color-label product-color-label-green"
+                    for="green"
+                    ><span class="product-color-label-text">Green</span></label
+                  >
+                </div>
+              </fieldset>
             </div>
             <div class="product-card-description">Description</div>
             <div class="product-card-promotion">Promotion</div>
@@ -122,8 +198,19 @@
               </button>
             </div>
 
-            <button>Remove from Cart</button>
-            <button>Add to Wishlist</button>
+            <button class="product-card-cart-remove-btn">
+              Remove from Cart
+            </button>
+            <button class="product-card-wishlist-add-btn">
+              <span
+                class="material-symbols-rounded product-card-wishlist-add-icon product-card-wishlist-add-icon-inactive"
+              >
+                favorite
+              </span>
+              <span class="product-card-wishlist-add-label"
+                >Add to Wishlist</span
+              >
+            </button>
           </div>
         </div>
       </main>
