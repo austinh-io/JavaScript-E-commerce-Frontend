@@ -35,7 +35,7 @@ main,
 footer {
   padding-inline: 2%;
   margin-inline: auto;
-  max-width: 800px;
+  max-width: 1600px;
 }
 
 header {
@@ -46,6 +46,10 @@ header {
 
 a:hover {
   cursor: pointer;
+}
+
+.container {
+  border: 1px solid white;
 }
 
 .main-container {
