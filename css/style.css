@@ -49,11 +49,21 @@ a:hover {
 }
 
 .container {
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 
 .main-container {
   margin-block: auto;
+}
+
+.products-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.title {
+  margin-bottom: 5rem;
 }
 
 .products-list {
