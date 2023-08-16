@@ -32,7 +32,10 @@
       src="script.js"
     ></script>
 
-    <script defer src="carousel.js"></script>
+    <script
+      defer
+      src="carousel.js"
+    ></script>
   </head>
   <body>
     <section class="container header-container">
@@ -49,8 +52,6 @@
         <div class="products-list">
           <div class="product-card">
             <div class="product-card-img-container">
-
-
               <div class="product-card-img-top-container">
                 <div class="product-card-image-label-new">
                   <span
@@ -61,7 +62,9 @@
                   <span>New</span>
                 </div>
 
-                <button class="product-card-wishlist-add-btn product-card-button">
+                <button
+                  class="product-card-wishlist-add-btn product-card-button"
+                >
                   <span
                     class="material-symbols-rounded product-card-wishlist-add-icon product-card-wishlist-add-icon-inactive"
                   >
@@ -118,7 +121,9 @@
                       <label
                         class="product-color-label product-color-label-red"
                         for="red"
-                        ><span class="product-color-label-text">Red</span></label
+                        ><span class="product-color-label-text"
+                          >Red</span
+                        ></label
                       >
                     </div>
                     <div>
@@ -132,7 +137,9 @@
                       <label
                         class="product-color-label product-color-label-blue"
                         for="blue"
-                        ><span class="product-color-label-text">Blue</span></label
+                        ><span class="product-color-label-text"
+                          >Blue</span
+                        ></label
                       >
                     </div>
                     <div>
@@ -181,47 +188,56 @@
                     star
                   </span>
                 </div>
-
               </div>
 
               <div class="product-card-img-nav-buttons">
                 <div class="img-button-container">
                   <button
-                  class="product-card-img-nav-button product-card-img-nav-button-previous"
-                >
-                  <span class="material-symbols-rounded product-card-img-nav-button-icon"> chevron_left </span>
-                </button>
+                    class="product-card-img-nav-button product-card-img-nav-button-previous"
+                    data-carousel-button="prev"
+                  >
+                    <span
+                      class="material-symbols-rounded product-card-img-nav-button-icon"
+                    >
+                      chevron_left
+                    </span>
+                  </button>
                 </div>
                 <div class="img-button-container">
                   <button
-                  class="product-card-img-nav-button product-card-img-nav-button-next"
-                >
-                  <span class="material-symbols-rounded product-card-img-nav-button-icon"> chevron_right </span>
-                </button>
+                    class="product-card-img-nav-button product-card-img-nav-button-next"
+                    data-carousel-button="next"
+                  >
+                    <span
+                      class="material-symbols-rounded product-card-img-nav-button-icon"
+                    >
+                      chevron_right
+                    </span>
+                  </button>
                 </div>
               </div>
 
-              <div class="product-card-images">      
-                  <div class="product-card-img img1">
-                    <img
-                    src="https://picsum.photos/800/"
-                    />
+              <div
+                class="product-card-images"
+                data-carousel
+              >
+                <div data-slides>
+                  <div
+                    class="product-card-img img1"
+                    data-active
+                  >
+                    <img src="https://picsum.photos/id/12/800/" />
                   </div>
 
                   <div class="product-card-img img2">
-                    <img
-                    src="https://picsum.photos/800/"
-                    />
+                    <img src="https://picsum.photos/id/24/800/" />
                   </div>
 
                   <div class="product-card-img img3">
-                    <img
-                    src="https://picsum.photos/800/"
-                    />
+                    <img src="https://picsum.photos/id/35/800/" />
                   </div>
+                </div>
               </div>
-
-
             </div>
             <div class="product-card-container">
               <div class="product-card-ratings-wishlist-group"></div>
@@ -252,56 +268,60 @@
             </div>
 
             <div class="product-card-promotion">
-              <span class="material-symbols-rounded product-card-promotion-icon">
+              <span
+                class="material-symbols-rounded product-card-promotion-icon"
+              >
                 money_off
-                </span>
-                <span>Promotion</span>              
+              </span>
+              <span>Promotion</span>
             </div>
-              
+
             <div class="product-card-container">
               <div class="product-card-price-cart-group">
+                <button
+                  class="hidden product-card-button product-card-cart-add-btn"
+                >
+                  Add to Cart
+                </button>
+                <div class="product-card-quantity">
                   <button
-                    class="hidden product-card-button product-card-cart-add-btn"
+                    class="product-quantity-btn product-quantity-btn-subtract"
                   >
-                    Add to Cart
-                  </button>
-                  <div class="product-card-quantity">
-                    <button
-                      class="product-quantity-btn product-quantity-btn-subtract"
+                    <span
+                      class="material-symbols-outlined product-quantity-btn-icon"
                     >
-                      <span
-                        class="material-symbols-outlined product-quantity-btn-icon"
-                      >
-                        remove
-                      </span>
-                    </button>
-                    <input
-                      type="number"
-                      class="product-quantity"
-                      id="product-quantity"
-                      name="product-quantity"
-                      min="0"
-                      max="10"
-                      placeholder="0"
-                    />
-                    <button class="product-quantity-btn product-quantity-btn-add">
-                      <span
-                        class="material-symbols-rounded product-quantity-btn-icon"
-                      >
-                        add
-                      </span>
-                    </button>
-                  </div>
-
-                  <button
-                    class="product-card-cart-remove-btn product-card-button"
-                  >
-                    <span class="material-symbols-rounded product-card-cart-remove-btn-icon"> delete </span>
-                    <span>Remove</span>
+                      remove
+                    </span>
+                  </button>
+                  <input
+                    type="number"
+                    class="product-quantity"
+                    id="product-quantity"
+                    name="product-quantity"
+                    min="0"
+                    max="10"
+                    placeholder="0"
+                  />
+                  <button class="product-quantity-btn product-quantity-btn-add">
+                    <span
+                      class="material-symbols-rounded product-quantity-btn-icon"
+                    >
+                      add
+                    </span>
                   </button>
                 </div>
+
+                <button
+                  class="product-card-cart-remove-btn product-card-button"
+                >
+                  <span
+                    class="material-symbols-rounded product-card-cart-remove-btn-icon"
+                  >
+                    delete
+                  </span>
+                  <span>Remove</span>
+                </button>
               </div>
-              
             </div>
           </div>
         </div>
