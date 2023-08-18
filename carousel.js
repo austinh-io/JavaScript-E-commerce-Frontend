@@ -4,17 +4,22 @@ cards.forEach((card) => {
   const buttons = card.querySelectorAll('[data-carousel-button]');
   const slides = card.querySelector('[data-slides]');
   initCardSlides(slides);
-  let carouselIndex = 0;
+
+  const cardCarousel = {
+    carouselIndex: 0,
+  };
 
   buttons.forEach((button) => {
-    button.addEventListener('click', handleCarouselButton.bind(carouselIndex));
+    button.addEventListener('click', function () {
+      handleCarouselButton(cardCarousel, button);
+    });
   });
 });
 
-function handleCarouselButton(currentIndex) {
-  // const offset = this.dataset.carouselButton === 'prev' ? -1 : 1;
-  // currentIndex += offset;
-  console.log(currentIndex);
+function handleCarouselButton(currentIndex, currentButton) {
+  const offset = currentButton.dataset.carouselButton === 'prev' ? -1 : 1;
+  currentIndex.carouselIndex += offset;
+  console.log(currentIndex.carouselIndex);
 }
 
 function initCardSlides(cardSlides) {
