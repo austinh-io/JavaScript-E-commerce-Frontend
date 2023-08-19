@@ -58,6 +58,11 @@ a:hover {
 
 .products-list {
   display: flex;
+  flex-direction: column;
+}
+
+.products-list {
+  display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 }
