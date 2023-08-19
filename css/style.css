@@ -59,8 +59,12 @@ a:hover {
 .products-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   gap: 1rem;
+  row-gap: 8rem;
   align-items: center;
+
+  /* border: 1px solid white; */
 }
 
 .title {
