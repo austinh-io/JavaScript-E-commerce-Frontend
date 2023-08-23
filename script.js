@@ -1,6 +1,13 @@
 let products = [];
 
-const productCardTemplate = function (name, brand, desc, price, promo) {
+const productCardTemplate = function (
+  name,
+  brand,
+  desc,
+  price,
+  promo,
+  imageId
+) {
   return `
 <div class="product-card">
   <div class="product-card-img-container">
@@ -91,15 +98,15 @@ const productCardTemplate = function (name, brand, desc, price, promo) {
           class="product-card-img img1"
           data-active
         >
-          <img src="https://picsum.photos/id/12/800/" />
+          <img src="https://picsum.photos/id/${imageId}/800/" />
         </div>
 
         <div class="product-card-img img2">
-          <img src="https://picsum.photos/id/24/800/" />
+          <img src="https://picsum.photos/id/${imageId}/800/" />
         </div>
 
         <div class="product-card-img img3">
-          <img src="https://picsum.photos/id/35/800/" />
+          <img src="https://picsum.photos/id/${imageId}/800/" />
         </div>
       </div>
     </div>
@@ -288,7 +295,14 @@ async function populateCatalog() {
   for (let i = 0; i < 10; i++) {
     cardsGroup.insertAdjacentHTML(
       'afterbegin',
-      productCardTemplate('name', 'brand', 'desc', '19.99', 'promo')
+      productCardTemplate(
+        'name ' + i,
+        'brand ' + i,
+        'desc ' + i,
+        1.99 * i,
+        'promo ' + i,
+        i * 10
+      )
     );
   }
 
