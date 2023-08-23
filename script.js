@@ -1,3 +1,5 @@
+let products = [];
+
 const productCardTemplate = `
 <div class="product-card">
   <div class="product-card-img-container">
@@ -287,5 +289,15 @@ function displayCards() {
     cardsGroup.insertAdjacentHTML('afterbegin', productCardTemplate);
   }
 }
+
+async function catchProductList() {
+  const response = await fetch('../data/products.json');
+  const productsObj = await response.json();
+
+  products = [...productsObj];
+  console.table(products);
+}
+
+catchProductList();
 
 displayCards();
