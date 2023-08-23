@@ -1,6 +1,7 @@
 let products = [];
 
-const productCardTemplate = `
+const productCardTemplate = function (name, brand, desc, price, promo) {
+  return `
 <div class="product-card">
   <div class="product-card-img-container">
     <div class="product-card-img-top-container">
@@ -107,23 +108,13 @@ const productCardTemplate = `
     <div class="product-card-ratings-wishlist-group"></div>
     <div class="product-card-title-group-container">
       <div class="product-card-title-brand-group">
-        <div class="product-card-brand"><a>Brand Name</a></div>
-        <div class="product-card-title"><a>Product Name</a></div>
+        <div class="product-card-brand"><a>${brand}</a></div>
+        <div class="product-card-title"><a>${name}</a></div>
       </div>
     </div>
 
     <div class="product-card-description">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-      tincidunt nisi faucibus arcu lacinia tincidunt. Quisque lacinia
-      hendrerit massa. Class aptent taciti sociosqu ad litora torquent
-      per conubia nostra, per inceptos himenaeos. Sed nec nisl lectus.
-      Maecenas lacus metus, finibus in purus eu, egestas placerat
-      nunc. Etiam finibus sem id orci imperdiet finibus. Sed odio
-      enim, interdum ac massa at, fermentum rutrum turpis. Nullam
-      faucibus odio at nisl sodales porta. Pellentesque metus nibh,
-      euismod a magna quis, dapibus iaculis nunc. Mauris porta tellus
-      ut mi pulvinar, in feugiat neque hendrerit. Lorem ipsum dolor
-      sit amet, consectetur adipiscing elit.
+      ${desc}
     </div>
   </div>
 
@@ -133,7 +124,7 @@ const productCardTemplate = `
     >
       money_off
     </span>
-    <span>Promotion</span>
+    <span>${promo}</span>
   </div>
 
   <div class="product-card-container">
@@ -227,7 +218,7 @@ const productCardTemplate = `
 
       <div class="product-card-price">
         <span class="product-card-price-currency">$</span
-        ><span class="product-card-price-value">9.99</span>
+        ><span class="product-card-price-value">${price}</span>
       </div>
     </div>
     <div class="product-card-price-cart-group">
@@ -278,26 +269,30 @@ const productCardTemplate = `
   </div>
 </div>
 `;
+};
 
 const cardsGroup = document.querySelector('.products-list');
 
 // console.log(cardsGroup);
-
-function displayCards() {
-  for (let i = 0; i < 10; i++) {
-    // console.log(i);
-    cardsGroup.insertAdjacentHTML('afterbegin', productCardTemplate);
-  }
-}
 
 async function catchProductList() {
   const response = await fetch('../data/products.json');
   const productsObj = await response.json();
 
   products = [...productsObj];
+}
+
+async function populateCatalog() {
+  catchProductList();
+
+  for (let i = 0; i < 10; i++) {
+    cardsGroup.insertAdjacentHTML(
+      'afterbegin',
+      productCardTemplate('name', 'brand', 'desc', '19.99', 'promo')
+    );
+  }
+
   console.table(products);
 }
 
-catchProductList();
-
-displayCards();
+populateCatalog();
