@@ -1,4 +1,4 @@
-let products = [];
+let products = {};
 
 const productCardTemplate = function (
   name,
@@ -286,27 +286,31 @@ async function catchProductList() {
   const response = await fetch('../data/products.json');
   const productsObj = await response.json();
 
-  products = [...productsObj];
+  // console.log(productsObj);
+
+  products = [{ ...productsObj }];
 }
 
 async function populateCatalog() {
   catchProductList();
+  // console.log(products);
 
-  for (let i = 0; i < 10; i++) {
-    cardsGroup.insertAdjacentHTML(
-      'afterbegin',
-      productCardTemplate(
-        'name ' + i,
-        'brand ' + i,
-        'desc ' + i,
-        1.99 * i,
-        'promo ' + i,
-        i * 10
-      )
-    );
-  }
+  // for (let i = 0; i < products.length; i++) {
+  //   cardsGroup.insertAdjacentHTML(
+  //     'afterbegin',
+  //     productCardTemplate(
+  //       'name ' + i,
+  //       'brand ' + i,
+  //       'desc ' + i,
+  //       1.99 * i,
+  //       'promo ' + i,
+  //       i * 10
+  //     )
+  //   );
+  // }
 
-  console.table(products);
+  console.table('hi');
+  console.log(products);
 }
 
 populateCatalog();
