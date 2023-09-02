@@ -73,5 +73,38 @@
         ]
       }
     ]
+  },
+  {
+    "productId": 3,
+    "productName": "Item 3",
+    "productBrand": "Brand 2",
+    "productDescription": "The item description.",
+    "dateCreated": "2013-03-21",
+    "price": 195.99,
+    "promotion": false,
+    "variants": [
+      {
+        "var1": [
+          {
+            "value": "green",
+            "default": true,
+            "type": "color",
+            "color": "#0ff000"
+          }
+        ],
+        "var3": [
+          {
+            "value": "plaid",
+            "type": "texture",
+            "priceOverride": 99.99,
+            "images": [
+              {
+                "image1": "image source"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]

@@ -1,5 +1,3 @@
-let products = {};
-
 const productCardTemplate = function (
   name,
   brand,
@@ -282,35 +280,37 @@ const cardsGroup = document.querySelector('.products-list');
 
 // console.log(cardsGroup);
 
+let products = new Array();
+
 async function catchProductList() {
   const response = await fetch('../data/products.json');
   const productsObj = await response.json();
 
   // console.log(productsObj);
 
-  products = [{ ...productsObj }];
+  // Object.assign(products, productsObj);
+  products = [...productsObj];
 }
 
 async function populateCatalog() {
-  catchProductList();
-  // console.log(products);
+  await catchProductList();
 
-  // for (let i = 0; i < products.length; i++) {
-  //   cardsGroup.insertAdjacentHTML(
-  //     'afterbegin',
-  //     productCardTemplate(
-  //       'name ' + i,
-  //       'brand ' + i,
-  //       'desc ' + i,
-  //       1.99 * i,
-  //       'promo ' + i,
-  //       i * 10
-  //     )
-  //   );
-  // }
+  console.log('Length: ' + products.length);
+  console.table(products);
 
-  console.table('hi');
-  console.log(products);
+  for (let i = 0; i < products.length; i++) {
+    cardsGroup.insertAdjacentHTML(
+      'afterbegin',
+      productCardTemplate(
+        'name ' + i,
+        'brand ' + i,
+        'desc ' + i,
+        1.99 * i,
+        'promo ' + i,
+        i * 10
+      )
+    );
+  }
 }
 
 populateCatalog();
