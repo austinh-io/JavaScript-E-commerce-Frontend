@@ -3,6 +3,7 @@ const productCardTemplate = function (
   brand,
   desc,
   price,
+  promoEnable,
   promo,
   imageId
 ) {
@@ -129,7 +130,8 @@ const productCardTemplate = function (
     >
       money_off
     </span>
-    <span>${promo}</span>
+    ${promoEnable ? `<span>${promo}</span>` : undefined}
+    
   </div>
 
   <div class="product-card-container">
@@ -302,11 +304,12 @@ async function populateCatalog() {
     cardsGroup.insertAdjacentHTML(
       'afterbegin',
       productCardTemplate(
-        'name ' + i,
-        'brand ' + i,
-        'desc ' + i,
-        1.99 * i,
-        'promo ' + i,
+        products[i].productName,
+        products[i].productBrand,
+        products[i].productDescription,
+        products[i].price,
+        products[i].promotion,
+        products[i].promotionLabel,
         i * 10
       )
     );
