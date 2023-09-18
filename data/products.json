@@ -8,6 +8,7 @@
     "price": 15.99,
     "promotion": true,
     "promotionLabel": "This is a promotion!",
+    "images": [11, 50, 100],
     "variants": [
       {
         "var1": [

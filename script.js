@@ -1,12 +1,4 @@
-const productCardTemplate = function (
-  name,
-  brand,
-  desc,
-  price,
-  promoEnable,
-  promo,
-  imageId
-) {
+const productCardTemplate = function (product) {
   return `
 <div class="product-card">
   <div class="product-card-img-container">
@@ -97,15 +89,15 @@ const productCardTemplate = function (
           class="product-card-img img1"
           data-active
         >
-          <img src="https://picsum.photos/id/${imageId}/800/" />
+          <img src="https://picsum.photos/id/${5}/800/" />
         </div>
 
         <div class="product-card-img img2">
-          <img src="https://picsum.photos/id/${imageId}/800/" />
+          <img src="https://picsum.photos/id/${15}/800/" />
         </div>
 
         <div class="product-card-img img3">
-          <img src="https://picsum.photos/id/${imageId}/800/" />
+          <img src="https://picsum.photos/id/${25}/800/" />
         </div>
       </div>
     </div>
@@ -114,13 +106,13 @@ const productCardTemplate = function (
     <div class="product-card-ratings-wishlist-group"></div>
     <div class="product-card-title-group-container">
       <div class="product-card-title-brand-group">
-        <div class="product-card-brand"><a>${brand}</a></div>
-        <div class="product-card-title"><a>${name}</a></div>
+        <div class="product-card-brand"><a>${product.brand}</a></div>
+        <div class="product-card-title"><a>${product.name}</a></div>
       </div>
     </div>
 
     <div class="product-card-description">
-      ${desc}
+      ${product.desc}
     </div>
   </div>
 
@@ -130,7 +122,7 @@ const productCardTemplate = function (
     >
       money_off
     </span>
-    ${promoEnable ? `<span>${promo}</span>` : undefined}
+    ${product.promoEnable ? `<span>${product.promo}</span>` : undefined}
     
   </div>
 
@@ -225,7 +217,7 @@ const productCardTemplate = function (
 
       <div class="product-card-price">
         <span class="product-card-price-currency">$</span
-        ><span class="product-card-price-value">${price}</span>
+        ><span class="product-card-price-value">${product.price}</span>
       </div>
     </div>
     <div class="product-card-price-cart-group">
@@ -303,15 +295,7 @@ async function populateCatalog() {
   for (let i = 0; i < products.length; i++) {
     cardsGroup.insertAdjacentHTML(
       'afterbegin',
-      productCardTemplate(
-        products[i].productName,
-        products[i].productBrand,
-        products[i].productDescription,
-        products[i].price,
-        products[i].promotion,
-        products[i].promotionLabel,
-        i * 10
-      )
+      productCardTemplate(products[i])
     );
   }
 }
