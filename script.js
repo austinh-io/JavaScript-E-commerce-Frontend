@@ -16,19 +16,28 @@ const productCardTemplate = function (product) {
         <span class="product-currency">$</span
         ><span class="product-price-value">${product.price}</span>
         </div>
-    </div>
-    <div>
-        <button class="button-product button-add">Add to Cart</button>
-        <button class="button-product button-remove">
-        Remove from Cart
+
+        <div class="product-button-group">
+          <button class="button-product button-add">Add to Cart</button>
+          <button class="button-product button-remove">
+          Remove from Cart
         </button>
+    </div>
+    </div>
   </div>
-</div>
 `;
 };
 
 const cardsGroup = document.querySelector('.products-list');
+
 let cartItems = [];
+
+function cartItem(count, product) {
+  this.count = count;
+  this.product = product;
+}
+
+let addToCartButtons = [];
 
 let products = new Array();
 
@@ -41,9 +50,6 @@ async function catchProductList() {
 async function populateCatalog() {
   await catchProductList();
 
-  //   console.log('Length: ' + products.length);
-  //   console.table(products);
-
   for (let i = 0; i < products.length; i++) {
     cardsGroup.insertAdjacentHTML(
       'afterbegin',
@@ -52,13 +58,25 @@ async function populateCatalog() {
   }
 }
 
-let addToCartButtons = [];
-
 function handleAddToCart() {
-  const productId = this.parentElement.parentElement.dataset.id;
+  const productId = this.parentElement.parentElement.parentElement.dataset.id;
+
+  console.log(productId);
 
   let productToPush = products.find((product) => product.id == productId);
-  cartItems.push(productToPush);
+
+  console.log(productToPush);
+
+  if (cartItems.find((item) => item.product.id === productToPush.id)) {
+    thisCartItem = cartItems.find((item) => item.product === productToPush);
+    thisCartItem.count += 1;
+    console.log('Item found');
+  } else {
+    const newItem = new cartItem(1, productToPush);
+    cartItems.push(newItem);
+
+    console.log('Item not found');
+  }
 
   console.table(cartItems);
 }

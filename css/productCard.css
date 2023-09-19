@@ -1,8 +1,6 @@
 .product {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   height: 24rem;
   width: 24rem;
   background-color: rgb(51, 51, 58);
@@ -20,16 +18,27 @@
 }
 
 .product-info-container {
+  display: flex;
+  flex-direction: column;
   margin-block: 1rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+.product-button-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .button-product {
   padding: 0.6rem;
   width: 10rem;
   border: none;
-  margin-block: 1rem;
   border-radius: 50px;
   cursor: pointer;
+
+  margin-top: 1rem;
 }
 
 .button-add {
