@@ -30,25 +30,19 @@ const productCardTemplate = function (product) {
 const cardsGroup = document.querySelector('.products-list');
 let cartItems = [];
 
-// console.log(cardsGroup);
-
 let products = new Array();
 
 async function catchProductList() {
   const response = await fetch('../data/products.json');
   const productsObj = await response.json();
-
-  // console.log(productsObj);
-
-  // Object.assign(products, productsObj);
   products = [...productsObj];
 }
 
 async function populateCatalog() {
   await catchProductList();
 
-  console.log('Length: ' + products.length);
-  console.table(products);
+  //   console.log('Length: ' + products.length);
+  //   console.table(products);
 
   for (let i = 0; i < products.length; i++) {
     cardsGroup.insertAdjacentHTML(
@@ -62,10 +56,8 @@ let addToCartButtons = [];
 
 function handleAddToCart() {
   const productId = this.parentElement.parentElement.dataset.id;
-  console.log(productId);
 
   let productToPush = products.find((product) => product.id == productId);
-  //   console.log(productToPush.title);
   cartItems.push(productToPush);
 
   console.table(cartItems);
@@ -84,7 +76,3 @@ async function init() {
 }
 
 init();
-
-// addToCartButtons.forEach((btn) =>
-//   btn.addEventListener('click', handleAddToCart)
-// );
