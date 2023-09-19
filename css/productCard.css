@@ -29,6 +29,7 @@
   border: none;
   margin-block: 1rem;
   border-radius: 50px;
+  cursor: pointer;
 }
 
 .button-add {

@@ -1,54 +1,54 @@
 [
   {
-    "productId": 0,
-    "productName": "Item 1",
-    "productBrand": "Brand 1",
-    "productDescription": "The item description.",
-    "price": 15.99,
-    "image": "asdf",
+    "id": 0,
+    "title": "Item 0",
+    "brand": "Brand 0",
+    "description": "Lorem ipsum zero",
+    "price": 5.99,
+    "imageSource": "https://picsum.photos/id/12/800/",
     "options": [0, 1, 2]
   },
   {
-    "productId": 1,
-    "productName": "Item 1",
-    "productBrand": "Brand 1",
-    "productDescription": "The item description.",
-    "price": 15.99,
-    "image": "asdf"
+    "id": 1,
+    "title": "Item 1",
+    "brand": "Brand 0",
+    "description": "Lorem bipsum one.",
+    "price": 9.99,
+    "imageSource": "https://picsum.photos/id/120/800/"
   },
   {
-    "productId": 2,
-    "productName": "Item 1",
-    "productBrand": "Brand 1",
-    "productDescription": "The item description.",
-    "price": 15.99,
-    "image": "asdf",
+    "id": 2,
+    "title": "Item 2",
+    "brand": "Brand 1",
+    "description": "Borem lipsum two.",
+    "price": 1115.99,
+    "imageSource": "https://picsum.photos/id/22/800/",
     "options": [0, 1]
   },
   {
-    "productId": 3,
-    "productName": "Item 1",
-    "productBrand": "Brand 1",
-    "productDescription": "The item description.",
-    "price": 15.99,
-    "image": "asdf"
+    "id": 3,
+    "title": "Item 3",
+    "brand": "Brand 1",
+    "description": "Snorem pipsum three.",
+    "price": 24.99,
+    "imageSource": "https://picsum.photos/id/220/800/"
   },
   {
-    "productId": 4,
-    "productName": "Item 1",
-    "productBrand": "Brand 1",
-    "productDescription": "The item description.",
-    "price": 15.99,
-    "image": "asdf",
+    "id": 4,
+    "title": "Item 4",
+    "brand": "Brand 2",
+    "description": "Popsum thorum four.",
+    "price": 10.0,
+    "imageSource": "https://picsum.photos/id/115/800/",
     "options": [0, 1, 2]
   },
   {
-    "productId": 5,
-    "productName": "Item 1",
-    "productBrand": "Brand 1",
-    "productDescription": "The item description.",
-    "price": 15.99,
-    "image": "asdf",
+    "id": 5,
+    "title": "Item 5",
+    "brand": "Brand 3",
+    "description": "Grusum nicerum five.",
+    "price": 0.99,
+    "imageSource": "https://picsum.photos/id/313/800/",
     "options": [0]
   }
 ]
