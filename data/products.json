@@ -50,5 +50,14 @@
     "price": 0.99,
     "imageSource": "https://picsum.photos/id/313/800/",
     "options": [0]
+  },
+  {
+    "id": 6,
+    "title": "Item 6",
+    "brand": "Brand 3",
+    "description": "Zeusum bucerum six.",
+    "price": 0.99,
+    "imageSource": "https://picsum.photos/id/516/800/",
+    "options": [0]
   }
 ]

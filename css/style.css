@@ -61,9 +61,29 @@ a:hover {
   margin-block: auto;
 }
 
+.cart-and-catalog-container {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.catalog-container {
+  background-color: rgba(49, 63, 87, 0.174);
+  padding: 1rem;
+  border-radius: 8pt;
+  width: 80%;
+}
+
+.cart-container {
+  background-color: rgba(60, 66, 90, 0.488);
+  padding: 1rem;
+  border-radius: 8pt;
+}
+
 .products-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(20rem, auto));
+  max-width: 100%;
 
   /* flex-wrap: wrap; */
   /* justify-content: space-between; */

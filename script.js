@@ -8,6 +8,7 @@ const productCardTemplate = function (product) {
         />
     </div>
     <div class="product-info-container">
+        <div class="product-brand">${product.brand}</div>
         <div class="product-title">${product.title}</div>
         <div class="product-description">
         ${product.description}
@@ -30,16 +31,40 @@ const productCardTemplate = function (product) {
 
 const cardsGroup = document.querySelector('.products-list');
 
-let cartItems = [];
-
-function cartItem(count, product) {
+function cartItem(count, product, totalPrice) {
   this.count = count;
   this.product = product;
+  this.totalPrice = totalPrice;
 }
 
+let cartItems = [];
 let addToCartButtons = [];
-
 let products = new Array();
+
+function handleAddToCart() {
+  const productId = this.parentElement.parentElement.parentElement.dataset.id;
+
+  console.log(productId);
+
+  let productToPush = products.find((product) => product.id == productId);
+
+  console.log(productToPush);
+
+  if (cartItems.find((item) => item.product.id === productToPush.id)) {
+    thisCartItem = cartItems.find((item) => item.product === productToPush);
+    thisCartItem.count += 1;
+    thisCartItem.totalPrice = thisCartItem.count * thisCartItem.product.price;
+  } else {
+    const newItem = new cartItem(1, productToPush, productToPush.price);
+    cartItems.push(newItem);
+  }
+
+  console.table(cartItems);
+}
+
+function handleRemoveFromCart() {
+  console.log('remove');
+}
 
 async function catchProductList() {
   const response = await fetch('../data/products.json');
@@ -58,29 +83,6 @@ async function populateCatalog() {
   }
 }
 
-function handleAddToCart() {
-  const productId = this.parentElement.parentElement.parentElement.dataset.id;
-
-  console.log(productId);
-
-  let productToPush = products.find((product) => product.id == productId);
-
-  console.log(productToPush);
-
-  if (cartItems.find((item) => item.product.id === productToPush.id)) {
-    thisCartItem = cartItems.find((item) => item.product === productToPush);
-    thisCartItem.count += 1;
-    console.log('Item found');
-  } else {
-    const newItem = new cartItem(1, productToPush);
-    cartItems.push(newItem);
-
-    console.log('Item not found');
-  }
-
-  console.table(cartItems);
-}
-
 async function init() {
   await populateCatalog();
 
@@ -88,8 +90,16 @@ async function init() {
     'button-product button-add'
   );
 
+  removeFromCartButtons = document.getElementsByClassName(
+    'button-product button-remove'
+  );
+
   for (let i = 0; i < addToCartButtons.length; i++) {
     addToCartButtons[i].addEventListener('click', handleAddToCart);
+  }
+
+  for (let i = 0; i < removeFromCartButtons.length; i++) {
+    removeFromCartButtons[i].addEventListener('click', handleRemoveFromCart);
   }
 }
 
