@@ -1,0 +1,111 @@
+[
+  {
+    "productId": 0,
+    "productName": "Item 1",
+    "productBrand": "Brand 1",
+    "productDescription": "The item description.",
+    "dateCreated": "2023-08-23",
+    "price": 15.99,
+    "promotion": true,
+    "promotionLabel": "This is a promotion!",
+    "images": [11, 50, 100],
+    "variants": [
+      {
+        "var1": [
+          {
+            "value": "blue",
+            "default": true,
+            "type": "color",
+            "color": "#0000ff"
+          }
+        ],
+        "var2": [
+          {
+            "value": "red",
+            "type": "color",
+            "priceOverride": 29.99,
+            "color": "#ff0000"
+          }
+        ],
+        "var3": [
+          {
+            "value": "plaid",
+            "type": "texture",
+            "priceOverride": 1.99,
+            "images": [
+              {
+                "image1": "image source"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productId": 1,
+    "productName": "Item 2",
+    "productBrand": "Brand 2",
+    "productDescription": "The item description.",
+    "dateCreated": "2021-03-21",
+    "price": 25.99,
+    "promotion": false,
+    "variants": [
+      {
+        "var1": [
+          {
+            "value": "green",
+            "default": true,
+            "type": "color",
+            "color": "#0ff000"
+          }
+        ],
+        "var3": [
+          {
+            "value": "plaid",
+            "type": "texture",
+            "priceOverride": 99.99,
+            "images": [
+              {
+                "image1": "image source"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productId": 3,
+    "productName": "Item 3",
+    "productBrand": "Brand 2",
+    "productDescription": "The item description.",
+    "dateCreated": "2013-03-21",
+    "price": 195.99,
+    "promotion": false,
+    "variants": [
+      {
+        "var1": [
+          {
+            "value": "green",
+            "default": true,
+            "type": "color",
+            "color": "#0ff000"
+          }
+        ],
+        "var3": [
+          {
+            "value": "plaid",
+            "type": "texture",
+            "priceOverride": 99.99,
+            "images": [
+              {
+                "image1": "image source"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
