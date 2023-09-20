@@ -51,9 +51,9 @@ function handleAddToCart() {
   console.log(productToPush);
 
   if (cartItems.find((item) => item.product.id === productToPush.id)) {
-    thisCartItem = cartItems.find((item) => item.product === productToPush);
-    thisCartItem.count += 1;
-    thisCartItem.totalPrice = thisCartItem.count * thisCartItem.product.price;
+    const foundItem = cartItems.find((item) => item.product === productToPush);
+    foundItem.count += 1;
+    foundItem.totalPrice = foundItem.count * foundItem.product.price;
   } else {
     const newItem = new cartItem(1, productToPush, productToPush.price);
     cartItems.push(newItem);
