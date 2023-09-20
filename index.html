@@ -37,6 +37,11 @@
       src="script.js"
     ></script>
 
+    <script
+      defer
+      src="menu.js"
+    ></script>
+
     <!-- <script
       defer
       src="carousel.js"
@@ -55,12 +60,149 @@
         <nav class="header-nav-container">
           <ul>
             <li>
-              <a>Home</a>
-            </li>
-            <li>
-              <a>About</a>
+              <button
+                class="cart-menu-toggle cart-menu-toggle-open"
+                aria-controls="cart-menu"
+                aria-expanded="false"
+              >
+                <span>Cart</span>
+                <div class="cart-icon-container">
+                  <span class="material-symbols-outlined cart-icon">
+                    shopping_cart
+                  </span>
+                  <span class="cart-icon-counter">0</span>
+                </div>
+              </button>
             </li>
           </ul>
+          <div
+            class="cart-menu"
+            id="cart-menu"
+            data-visible="false"
+          >
+            <div class="cart-menu-header">
+              <h2>Cart</h2>
+              <button class="cart-menu-toggle-close">
+                <span class="material-symbols-outlined"> close </span>
+              </button>
+            </div>
+
+            <div class="cart-display">
+              <div class="cart-items-container">
+                <div
+                  class="cart-item-container"
+                  data-id="1"
+                >
+                  <div class="cart-item-image-container">
+                    <img
+                      src="https://picsum.photos/id/12/800/"
+                      alt=""
+                      class="cart-item-image"
+                    />
+                  </div>
+                  <div class="cart-item-info">
+                    <div class="cart-item-title">Product Item</div>
+                    <div class="cart-item-count">1</div>
+                    <div class="cart-item-price">
+                      <span>$</span><span>9.99</span>
+                    </div>
+                    <button class="button-product button-add">Add More</button>
+                    <button class="button-product button-remove">Remove</button>
+                  </div>
+                </div>
+
+                <div
+                  class="cart-item-container"
+                  data-id="1"
+                >
+                  <div class="cart-item-image-container">
+                    <img
+                      src="https://picsum.photos/id/12/800/"
+                      alt=""
+                      class="cart-item-image"
+                    />
+                  </div>
+                  <div class="cart-item-info">
+                    <div class="cart-item-title">Product Item</div>
+                    <div class="cart-item-count">1</div>
+                    <div class="cart-item-price">
+                      <span>$</span><span>9.99</span>
+                    </div>
+                    <button class="button-product button-add">Add More</button>
+                    <button class="button-product button-remove">Remove</button>
+                  </div>
+                </div>
+
+                <div
+                  class="cart-item-container"
+                  data-id="1"
+                >
+                  <div class="cart-item-image-container">
+                    <img
+                      src="https://picsum.photos/id/12/800/"
+                      alt=""
+                      class="cart-item-image"
+                    />
+                  </div>
+                  <div class="cart-item-info">
+                    <div class="cart-item-title">Product Item</div>
+                    <div class="cart-item-count">1</div>
+                    <div class="cart-item-price">
+                      <span>$</span><span>9.99</span>
+                    </div>
+                    <button class="button-product button-add">Add More</button>
+                    <button class="button-product button-remove">Remove</button>
+                  </div>
+                </div>
+
+                <div
+                  class="cart-item-container"
+                  data-id="1"
+                >
+                  <div class="cart-item-image-container">
+                    <img
+                      src="https://picsum.photos/id/12/800/"
+                      alt=""
+                      class="cart-item-image"
+                    />
+                  </div>
+                  <div class="cart-item-info">
+                    <div class="cart-item-title">Product Item</div>
+                    <div class="cart-item-count">1</div>
+                    <div class="cart-item-price">
+                      <span>$</span><span>9.99</span>
+                    </div>
+                    <button class="button-product button-add">Add More</button>
+                    <button class="button-product button-remove">Remove</button>
+                  </div>
+                </div>
+
+                <div
+                  class="cart-item-container"
+                  data-id="1"
+                >
+                  <div class="cart-item-image-container">
+                    <img
+                      src="https://picsum.photos/id/12/800/"
+                      alt=""
+                      class="cart-item-image"
+                    />
+                  </div>
+                  <div class="cart-item-info">
+                    <div class="cart-item-title">Product Item</div>
+                    <div class="cart-item-count">1</div>
+                    <div class="cart-item-price">
+                      <span>$</span><span>9.99</span>
+                    </div>
+                    <button class="button-product button-add">Add More</button>
+                    <button class="button-product button-remove">Remove</button>
+                  </div>
+                </div>
+              </div>
+              <div>Total cost: $0.00</div>
+              <button>Checkout</button>
+            </div>
+          </div>
         </nav>
       </header>
     </div>
@@ -100,32 +242,6 @@
               </button>
             </div>
           </div> -->
-            </div>
-          </div>
-          <div class="cart-container">
-            <h2>Cart</h2>
-            <div class="cart-display">
-              <div
-                class="cart-item-container"
-                data-id="1"
-              >
-                <div class="cart-item-image-container">
-                  <img
-                    src="https://picsum.photos/id/12/800/"
-                    alt=""
-                    class="cart-item-image"
-                  />
-                </div>
-                <div class="cart-item-info">
-                  <div class="cart-item-title">Product Item</div>
-                  <div class="cart-item-count">1</div>
-                  <div class="cart-item-price">
-                    <span>$</span><span>9.99</span>
-                  </div>
-                  <button class="button-product button-add">Add More</button>
-                  <button class="button-product button-remove">Remove</button>
-                </div>
-              </div>
             </div>
           </div>
         </div>
