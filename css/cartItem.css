@@ -1,0 +1,17 @@
+.cart-item-container {
+  /* border: 1px solid white; */
+  background-color: rgb(27, 32, 41);
+  max-width: 10rem;
+  border-radius: 2pt;
+  overflow: hidden;
+}
+
+.cart-item-image {
+  max-width: 100%;
+  aspect-ratio: 2/1;
+  object-fit: cover;
+}
+
+.cart-item-info {
+  padding: 1rem;
+}
