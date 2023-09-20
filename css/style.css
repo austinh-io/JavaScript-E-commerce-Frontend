@@ -65,6 +65,7 @@ a:hover {
   display: flex;
   align-items: start;
   justify-content: space-between;
+  gap: 1rem;
 }
 
 .catalog-container {
