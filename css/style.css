@@ -45,6 +45,7 @@ footer {
 
 header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding-block: 0.6rem;
 }
@@ -55,6 +56,44 @@ a:hover {
 
 .container {
   /* border: 1px solid white; */
+}
+
+.searchbar-container {
+  display: flex;
+}
+
+.searchbar-icon {
+  color: rgb(229, 234, 241);
+  background-color: rgb(40, 117, 204);
+  border: 2px solid rgb(47, 50, 53);
+  border-radius: 100pt;
+
+  padding: 0.4rem;
+
+  cursor: pointer;
+}
+
+.searchbar-icon.material-symbols-outlined {
+  font-size: 1.4rem;
+}
+
+.searchbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-left: 1rem;
+
+  background-color: rgb(47, 50, 53);
+  color: rgb(144, 151, 156);
+  border-radius: 100pt;
+
+  width: 22rem;
+}
+
+.header-nav-container ul {
+  display: flex;
+  gap: 1rem;
 }
 
 .main-container {
