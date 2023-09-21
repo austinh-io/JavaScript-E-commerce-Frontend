@@ -120,6 +120,7 @@
 
 .cart-menu[data-visible='true'] {
   transform: translateX(0%);
+  box-shadow: -5px 0px 20px 5px rgba(0, 0, 0, 0.8);
 }
 
 .cart-menu-toggle-close {

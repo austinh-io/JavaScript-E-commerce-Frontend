@@ -43,9 +43,18 @@ ul {
 header,
 main,
 footer {
-  padding-inline: 2%;
+  /* padding-inline: 2%;
   margin-inline: auto;
-  max-width: 1920px;
+  max-width: 1920px; */
+}
+
+footer.container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: end;
+
+  width: 100%;
 }
 
 header {
@@ -57,6 +66,12 @@ header {
 
 a:hover {
   cursor: pointer;
+}
+
+.container {
+  padding-inline: 2%;
+  margin-inline: auto;
+  max-width: 1920px;
 }
 
 .searchbar-container {
@@ -103,8 +118,33 @@ a:hover {
   margin-block: auto;
 }
 
-.catalog-container {
+.body-head-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
+  height: 28rem;
+  padding-top: 6rem;
+
+  margin-block: 1rem;
+
+  background-color: var(--color-fg-dark);
+}
+
+.catalog-container {
+  display: flex;
+
+  margin-top: 2rem;
+
+  width: 100%;
+}
+
+.catalog-aside {
+  width: 20rem;
+  background-color: var(--color-fg-dark);
+  margin-right: 1rem;
+  padding: 1rem;
 }
 
 .products-list {
@@ -130,6 +170,9 @@ a:hover {
 }
 
 .footer-container {
+  display: flex;
+
   margin-top: auto;
   padding-block: 1rem;
+  height: 20rem;
 }
