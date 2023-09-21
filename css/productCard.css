@@ -1,9 +1,15 @@
+:root {
+  --color-bg-dark: #181a1b;
+  --color-fg-dark: #1f2122;
+  --color-font-dark: #c9c5be;
+}
+
 .product {
   display: flex;
   flex-direction: column;
   max-height: 38rem;
   max-width: 24rem;
-  background-color: rgb(51, 51, 58);
+  background-color: var(--color-fg-dark);
 
   overflow: hidden;
   border-radius: 1rem;

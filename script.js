@@ -52,7 +52,7 @@ const cartItemTemplate = function (item) {
         <button class="button-product button-add" onclick="handleAddToCart(event)">
           Add More
         </button>
-        <button class="button-product button-remove">
+        <button class="button-product button-remove" onclick="handleRemoveFromCart(event)">
           Remove
         </button>
       </div>
@@ -91,8 +91,21 @@ function handleAddToCart(event) {
   fillCartList();
 }
 
-function handleRemoveFromCart() {
-  console.log('remove');
+function handleRemoveFromCart(event) {
+  clearCartList();
+  const productId = event.target.parentElement.dataset.id;
+
+  let productToPush = products.find((product) => product.id == productId);
+
+  if (cartItems.find((item) => item.product.id === productToPush.id)) {
+    const foundItem = cartItems.find((item) => item.product === productToPush);
+    foundItem.count += 1;
+    foundItem.totalPrice = foundItem.count * foundItem.product.price;
+  } else {
+    const newItem = new cartItem(1, productToPush, productToPush.price);
+    cartItems.push(newItem);
+  }
+  fillCartList();
 }
 
 function clearCartList() {
