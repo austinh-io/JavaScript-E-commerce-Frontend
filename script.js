@@ -18,7 +18,7 @@ const productCardTemplate = function (product) {
           <span class="product-price-value">${product.price}</span>
         </div>
 
-        <div class="product-button-group">
+        <div class="product-button-group" data-id=${product.id}>
           <button class="button-product button-add">Add to Cart</button>
           <button class="button-product button-remove">
           Remove from Cart
@@ -48,8 +48,8 @@ const cartItemTemplate = function (item) {
       <div class="cart-item-price">
         <span>$</span><span>${item.totalPrice}</span>
       </div>
-      <div class="cart-item-buttons-container">
-        <button class="button-product button-add">
+      <div class="cart-item-buttons-container" data-id=${item.product.id}>
+        <button class="button-product button-add" onclick="handleAddToCart(event)">
           Add More
         </button>
         <button class="button-product button-remove">
@@ -74,9 +74,9 @@ let cartItems = [];
 let addToCartButtons = [];
 let products = new Array();
 
-function handleAddToCart() {
+function handleAddToCart(event) {
   clearCartList();
-  const productId = this.parentElement.parentElement.parentElement.dataset.id;
+  const productId = event.target.parentElement.dataset.id;
 
   let productToPush = products.find((product) => product.id == productId);
 
@@ -89,6 +89,10 @@ function handleAddToCart() {
     cartItems.push(newItem);
   }
   fillCartList();
+}
+
+function handleRemoveFromCart() {
+  console.log('remove');
 }
 
 function clearCartList() {
@@ -108,17 +112,13 @@ function fillCartList() {
   });
 }
 
-function handleRemoveFromCart() {
-  console.log('remove');
-}
-
 async function catchProductList() {
   const response = await fetch('../data/products.json');
   const productsObj = await response.json();
   products = [...productsObj];
 }
 
-async function populateCatalog() {
+async function initializeProducts() {
   await catchProductList();
 
   for (let i = 0; i < products.length; i++) {
@@ -129,8 +129,8 @@ async function populateCatalog() {
   }
 }
 
-async function init() {
-  await populateCatalog();
+async function initializePage() {
+  await initializeProducts();
 
   addToCartButtons = document.getElementsByClassName(
     'button-product button-add'
@@ -149,4 +149,4 @@ async function init() {
   }
 }
 
-init();
+initializePage();
