@@ -75,45 +75,37 @@ let addToCartButtons = [];
 let products = new Array();
 
 function handleAddToCart() {
+  clearCartList();
   const productId = this.parentElement.parentElement.parentElement.dataset.id;
 
-  console.log(productId);
-
   let productToPush = products.find((product) => product.id == productId);
-
-  console.log(productToPush);
 
   if (cartItems.find((item) => item.product.id === productToPush.id)) {
     const foundItem = cartItems.find((item) => item.product === productToPush);
     foundItem.count += 1;
     foundItem.totalPrice = foundItem.count * foundItem.product.price;
-    //TODO
-    //Find matching cart item, then update the HTML to match the new quantity and price
-    let cartItemsElements = document.querySelectorAll('.cart-items-container');
-    // let cartItemsArray = [...cartItemsElements];
-    // const foundItemElement = cartItemsArray.find(
-    //   (item) => item.dataset.id == foundItem.id
-    // );
-
-    for (let i = 0; i < cartItemsElements.length; i++) {
-      if (cartItemsElements[i].dataset.id == foundItem.id) {
-        console.log('Heyyy ' + cartItemsElements[i].innerHTML);
-      }
-    }
-
-    // console.log(foundItemElement);
   } else {
     const newItem = new cartItem(1, productToPush, productToPush.price);
     cartItems.push(newItem);
+  }
+  fillCartList();
+}
+
+function clearCartList() {
+  while (cartItemsList.firstChild) {
+    cartItemsList.removeChild(cartItemsList.lastChild);
+  }
+}
+
+function fillCartList() {
+  cartItems.forEach((cartListItem) => {
     cartItemsList.insertAdjacentHTML(
       'afterbegin',
       cartItemTemplate(
-        cartItems.find((item) => item.product.id === productToPush.id)
+        cartItems.find((item) => item.product.id === cartListItem.product.id)
       )
     );
-  }
-
-  console.table(cartItems);
+  });
 }
 
 function handleRemoveFromCart() {
