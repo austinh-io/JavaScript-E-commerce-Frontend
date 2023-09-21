@@ -11,11 +11,11 @@ const productCardTemplate = function (product) {
         <div class="product-brand">${product.brand}</div>
         <div class="product-title">${product.title}</div>
         <div class="product-description">
-        ${product.description}
+          ${product.description}
         </div>
         <div class="product-price">
-        <span class="product-currency">$</span
-        ><span class="product-price-value">${product.price}</span>
+          <span class="product-currency">$</span>
+          <span class="product-price-value">${product.price}</span>
         </div>
 
         <div class="product-button-group">
@@ -23,13 +23,46 @@ const productCardTemplate = function (product) {
           <button class="button-product button-remove">
           Remove from Cart
         </button>
-    </div>
+      </div>
     </div>
   </div>
 `;
 };
 
-const cardsGroup = document.querySelector('.products-list');
+const cartItemTemplate = function (item) {
+  return `
+    <div
+    class="cart-item-container"
+    data-id="${item.product.id}"
+  >
+    <div class="cart-item-image-container">
+      <img
+        src="${item.product.imageSource}"
+        alt=""
+        class="cart-item-image"
+      />
+    </div>
+    <div class="cart-item-info">
+      <div class="cart-item-title">${item.product.title}</div>
+      <div class="cart-item-count">${item.count}</div>
+      <div class="cart-item-price">
+        <span>$</span><span>${item.totalPrice}</span>
+      </div>
+      <div class="cart-item-buttons-container">
+        <button class="button-product button-add">
+          Add More
+        </button>
+        <button class="button-product button-remove">
+          Remove
+        </button>
+      </div>
+    </div>
+  </div>
+  `;
+};
+
+const productsList = document.querySelector('.products-list');
+const cartItemsList = document.querySelector('.cart-items-container');
 
 function cartItem(count, product, totalPrice) {
   this.count = count;
@@ -54,9 +87,30 @@ function handleAddToCart() {
     const foundItem = cartItems.find((item) => item.product === productToPush);
     foundItem.count += 1;
     foundItem.totalPrice = foundItem.count * foundItem.product.price;
+    //TODO
+    //Find matching cart item, then update the HTML to match the new quantity and price
+    let cartItemsElements = document.querySelectorAll('.cart-items-container');
+    // let cartItemsArray = [...cartItemsElements];
+    // const foundItemElement = cartItemsArray.find(
+    //   (item) => item.dataset.id == foundItem.id
+    // );
+
+    for (let i = 0; i < cartItemsElements.length; i++) {
+      if (cartItemsElements[i].dataset.id == foundItem.id) {
+        console.log('Heyyy ' + cartItemsElements[i].innerHTML);
+      }
+    }
+
+    // console.log(foundItemElement);
   } else {
     const newItem = new cartItem(1, productToPush, productToPush.price);
     cartItems.push(newItem);
+    cartItemsList.insertAdjacentHTML(
+      'afterbegin',
+      cartItemTemplate(
+        cartItems.find((item) => item.product.id === productToPush.id)
+      )
+    );
   }
 
   console.table(cartItems);
@@ -76,7 +130,7 @@ async function populateCatalog() {
   await catchProductList();
 
   for (let i = 0; i < products.length; i++) {
-    cardsGroup.insertAdjacentHTML(
+    productsList.insertAdjacentHTML(
       'afterbegin',
       productCardTemplate(products[i])
     );

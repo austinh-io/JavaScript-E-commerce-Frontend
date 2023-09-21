@@ -155,12 +155,12 @@ a:hover {
   margin-block: auto;
 }
 
-.cart-and-catalog-container {
+/* .cart-and-catalog-container {
   display: flex;
   align-items: start;
   justify-content: space-between;
   gap: 1rem;
-}
+} */
 
 .catalog-container {
   background-color: rgba(49, 63, 87, 0.174);
