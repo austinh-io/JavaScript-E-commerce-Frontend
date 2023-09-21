@@ -50,52 +50,57 @@
   <body>
     <div class="header-container">
       <header class="container">
-        <div>Logo/Business Name</div>
-        <div class="searchbar-container">
-          <div class="searchbar">
-            <span>search</span>
-            <span class="material-symbols-outlined searchbar-icon">search</span>
-          </div>
-        </div>
-        <nav class="header-nav-container">
-          <ul>
-            <li>
-              <button
-                class="cart-menu-toggle cart-menu-toggle-open"
-                aria-controls="cart-menu"
-                aria-expanded="false"
+        <div class="header-content">
+          <div>Logo/Business Name</div>
+          <div class="searchbar-container">
+            <div class="searchbar">
+              <span>search</span>
+              <span class="material-symbols-outlined searchbar-icon"
+                >search</span
               >
-                <div class="cart-icon-container">
-                  <span class="material-symbols-outlined cart-icon">
-                    shopping_cart
-                  </span>
-                  <span class="cart-icon-counter">0</span>
-                </div>
-              </button>
-            </li>
-          </ul>
-          <div
-            class="cart-menu"
-            id="cart-menu"
-            data-visible="false"
-          >
-            <div class="cart-menu-header">
-              <h2 class="cart-menu-header-title">Cart</h2>
-              <button class="cart-menu-toggle-close">
-                <span class="material-symbols-outlined"> close </span>
-              </button>
-            </div>
-
-            <div class="cart-items-container">
-              <!-- Cart Items -->
-            </div>
-            <div class="cart-display-footer">
-              <div>Total cost: $0.00</div>
-              <button>Checkout</button>
             </div>
           </div>
-        </nav>
+          <nav class="header-nav-container">
+            <ul>
+              <li>
+                <button
+                  class="cart-menu-toggle cart-menu-toggle-open"
+                  aria-controls="cart-menu"
+                  aria-expanded="false"
+                >
+                  <div class="cart-icon-container">
+                    <span class="material-symbols-outlined cart-icon">
+                      shopping_cart
+                    </span>
+                    <span class="cart-icon-counter">0</span>
+                  </div>
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </header>
+    </div>
+
+    <div
+      class="cart-menu"
+      id="cart-menu"
+      data-visible="false"
+    >
+      <div class="cart-menu-header">
+        <h2 class="cart-menu-header-title">Cart</h2>
+        <button class="cart-menu-toggle-close">
+          <span class="material-symbols-outlined"> close </span>
+        </button>
+      </div>
+
+      <div class="cart-items-container">
+        <!-- Cart Items -->
+      </div>
+      <div class="cart-display-footer">
+        <div>Total cost: $0.00</div>
+        <button>Checkout</button>
+      </div>
     </div>
 
     <div class="main-container">

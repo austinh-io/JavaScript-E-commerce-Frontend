@@ -92,16 +92,18 @@
   flex-direction: column;
   justify-content: flex-start;
 
-  background-color: var(--color-bg-dark-trans);
-  backdrop-filter: blur(50px);
-
   position: fixed;
+
+  height: 100svh;
 
   inset: 0 0 0 60%;
 
   transform: translateX(100%);
 
-  transition: transform 250ms ease-out;
+  background-color: var(--color-bg-dark-trans);
+  backdrop-filter: blur(50px);
+
+  transition: transform 150ms ease-out;
 }
 
 .cart-menu-header {
