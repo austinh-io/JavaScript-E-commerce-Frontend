@@ -63,6 +63,7 @@ const cartItemTemplate = function (item) {
 
 const productsList = document.querySelector('.products-list');
 const cartItemsList = document.querySelector('.cart-items-container');
+const cartIconCounter = document.querySelector('.cart-icon-counter');
 
 function cartItem(count, product, totalPrice) {
   this.count = count;
@@ -87,6 +88,7 @@ function handleAddToCart(event) {
     cartItems.push(newItem);
   }
   updateCart();
+  updateCartIconCounter();
 }
 
 function handleRemoveFromCart(event) {
@@ -108,6 +110,18 @@ function handleRemoveFromCart(event) {
   }
 
   updateCart();
+  updateCartIconCounter();
+}
+
+function updateCartIconCounter() {
+  let totalItems = cartItems.reduce((sum, cur) => sum + cur.count, 0);
+  cartIconCounter.innerText = totalItems;
+
+  if (cartItems.length > 0) {
+    cartIconCounter.classList.remove('hidden');
+  } else {
+    cartIconCounter.classList.add('hidden');
+  }
 }
 
 function updateCart() {

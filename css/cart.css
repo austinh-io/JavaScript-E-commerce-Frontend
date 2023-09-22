@@ -18,6 +18,8 @@
   overflow: hidden;
 
   height: 10rem;
+
+  transition: all 0.2s ease;
 }
 
 .cart-item-image-container {
@@ -67,22 +69,28 @@
 
 .cart-icon-counter {
   position: absolute;
-  bottom: -0.2rem;
-  right: -0.6rem;
+  bottom: 0;
+  right: -1rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   background-color: var(--color-accent);
+  border: 6px solid var(--color-accent);
   color: var(--color-font-dark);
   font-weight: 700;
-  padding: 0.2rem;
+  font-size: 1rem;
+  padding: 0.6rem;
 
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.4rem;
+  height: 1.4rem;
 
   border-radius: 100pt;
+}
+
+.material-symbols-outlined.cart-icon {
+  font-size: 2.2rem;
 }
 
 /* Cart Menu */
