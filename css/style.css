@@ -42,14 +42,6 @@ ul {
   list-style: none;
 }
 
-header,
-main,
-footer {
-  /* padding-inline: 2%;
-  margin-inline: auto;
-  max-width: 1920px; */
-}
-
 footer.container {
   display: flex;
   flex-direction: column;
@@ -168,12 +160,11 @@ a:hover {
 .products-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(16rem, auto));
-  max-width: 100%;
+  width: 100%;
 
   /* flex-wrap: wrap; */
   /* justify-content: space-between; */
-  column-gap: 4rem;
-  row-gap: 8rem;
+  gap: 2rem;
   align-items: center;
 
   /* border: 1px solid white; */
