@@ -75,25 +75,22 @@ let addToCartButtons = [];
 let products = new Array();
 
 function handleAddToCart(event) {
-  clearCartList();
   const productId = event.target.parentElement.dataset.id;
+  let productToAdd = products.find((product) => product.id == productId);
 
-  let productToPush = products.find((product) => product.id == productId);
-
-  if (cartItems.find((item) => item.product.id === productToPush.id)) {
-    const foundItem = cartItems.find((item) => item.product === productToPush);
+  if (cartItems.find((item) => item.product.id === productToAdd.id)) {
+    const foundItem = cartItems.find((item) => item.product === productToAdd);
     foundItem.count += 1;
     foundItem.totalPrice = foundItem.count * foundItem.product.price;
   } else {
-    const newItem = new cartItem(1, productToPush, productToPush.price);
+    const newItem = new cartItem(1, productToAdd, productToAdd.price);
     cartItems.push(newItem);
   }
-  fillCartList();
+  updateCart();
 }
 
 function handleRemoveFromCart(event) {
   const productId = event.target.parentElement.dataset.id;
-
   let productToRemove = products.find((product) => product.id == productId);
 
   const foundItem = cartItems.find((item) => item.product === productToRemove);
@@ -109,8 +106,12 @@ function handleRemoveFromCart(event) {
       cartItems.splice(foundItemIndex, 1);
     }
   }
-  clearCartList();
 
+  updateCart();
+}
+
+function updateCart() {
+  clearCartList();
   fillCartList();
 }
 
