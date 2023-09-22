@@ -94,43 +94,23 @@ function handleAddToCart(event) {
 }
 
 function handleRemoveFromCart(event) {
-  console.log('Removing...');
   const productId = event.target.parentElement.dataset.id;
 
   let productToRemove = products.find((product) => product.id == productId);
 
   const foundItem = cartItems.find((item) => item.product === productToRemove);
-  console.log('Found item:');
-  console.log(foundItem);
 
   if (foundItem) {
-    console.log('Item found!');
     if (
       cartItems.find((item) => item.product.id === productToRemove.id).count > 1
     ) {
-      console.log('Decrementing...');
-
       foundItem.count -= 1;
       foundItem.totalPrice = foundItem.count * foundItem.product.price;
     } else {
-      console.log('Removing...');
-      // const newItem = new cartItem(1, productToRemove, productToRemove.price);
       const foundItemIndex = cartItems.indexOf(foundItem);
-
-      console.log('Removing at ' + foundItemIndex);
-      // console.log(cartItems[foundItemIndex]);
-
-      console.table(cartItems);
-      const filteredCartItems = new Array(
-        cartItems.filter((i) => i != foundItemIndex)
-      );
-      cartItems = filteredCartItems;
-      console.table(cartItems);
+      cartItems.splice(foundItemIndex, 1);
     }
-  } else {
-    console.log('Item not found!');
   }
-
   clearCartList();
 
   fillCartList();
