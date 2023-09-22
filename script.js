@@ -89,8 +89,6 @@ function handleAddToCart(event) {
     cartItems.push(newItem);
   }
   fillCartList();
-
-  console.table(cartItems);
 }
 
 function handleRemoveFromCart(event) {
