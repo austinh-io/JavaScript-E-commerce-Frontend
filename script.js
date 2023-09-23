@@ -19,9 +19,9 @@ const productCardTemplate = function (product) {
         </div>
 
         <div class="product-button-group" data-id=${product.id}>
-          <button class="button-product button-add">Add to Cart</button>
-          <button class="button-product button-remove">
-          Remove from Cart
+          <button class="button-product button-add">Add</button>
+          <button class="button-product button-subtract">
+          Subtract
         </button>
       </div>
     </div>
@@ -31,33 +31,59 @@ const productCardTemplate = function (product) {
 
 const cartItemTemplate = function (item) {
   return `
-    <div
-    class="cart-item-container"
-    data-id="${item.product.id}"
-  >
-    <div class="cart-item-image-container">
-      <img
-        src="${item.product.imageSource}"
-        alt=""
-        class="cart-item-image"
-      />
-    </div>
-    <div class="cart-item-info">
-      <div class="cart-item-title">${item.product.title}</div>
-      <div class="cart-item-count">${item.count}</div>
-      <div class="cart-item-price">
-        <span>$</span><span>${item.totalPrice}</span>
-      </div>
-      <div class="cart-item-buttons-container" data-id=${item.product.id}>
-        <button class="button-product button-add" onclick="handleAddToCart(event)">
-          Add More
-        </button>
-        <button class="button-product button-remove" onclick="handleRemoveFromCart(event)">
-          Remove
-        </button>
-      </div>
-    </div>
-  </div>
+        <div
+          class="cart-item-container"
+          data-id="${item.product.id}"
+        >
+          <div class="cart-item-col1">
+            <img
+              src="${item.product.imageSource}"
+              class="cart-item-image"
+            />
+          </div>
+          <div class="cart-item-col2">
+            <div class="cart-item-title">${item.product.title}</div>
+
+            <div
+              class="cart-item-buttons-container"
+            >
+              <button
+                class="button-cart button-add"
+                onclick="handleAddToCart(event)"
+                data-id="${item.product.id}"
+              >
+                <span class="material-symbols-outlined button-cart-icon">
+                  stat_1
+                </span>
+              </button>
+
+              <div class="cart-item-count">${item.count}</div>
+
+              <button
+                class="button-cart button-subtract"
+                onclick="handleSubtractFromCart(event)"
+                data-id="${item.product.id}"
+              >
+                <span class="material-symbols-outlined button-cart-icon">
+                  stat_minus_1
+                </span>
+              </button>
+            </div>
+          </div>
+          <div class="cart-item-col3">
+            <button
+              class="button-cart button-remove"
+              data-id="${item.product.id}"
+              onclick="handleSubtractFromCart(event)"
+            >
+              <span class="material-symbols-outlined"> delete </span>
+            </button>
+
+            <div class="cart-item-price">
+              <span>$</span><span>${item.totalPrice}</span>
+            </div>
+          </div>
+        </div>
   `;
 };
 
@@ -76,6 +102,7 @@ let addToCartButtons = [];
 let products = new Array();
 
 function handleAddToCart(event) {
+  console.log(event.target.parentElement);
   const productId = event.target.parentElement.dataset.id;
   let productToAdd = products.find((product) => product.id == productId);
 
@@ -91,7 +118,7 @@ function handleAddToCart(event) {
   updateCartIconCounter();
 }
 
-function handleRemoveFromCart(event) {
+function handleSubtractFromCart(event) {
   const productId = event.target.parentElement.dataset.id;
   let productToRemove = products.find((product) => product.id == productId);
 
@@ -170,16 +197,19 @@ async function initializePage() {
     'button-product button-add'
   );
 
-  removeFromCartButtons = document.getElementsByClassName(
-    'button-product button-remove'
+  subtractFromCartButtons = document.getElementsByClassName(
+    'button-product button-subtract'
   );
 
   for (let i = 0; i < addToCartButtons.length; i++) {
     addToCartButtons[i].addEventListener('click', handleAddToCart);
   }
 
-  for (let i = 0; i < removeFromCartButtons.length; i++) {
-    removeFromCartButtons[i].addEventListener('click', handleRemoveFromCart);
+  for (let i = 0; i < subtractFromCartButtons.length; i++) {
+    subtractFromCartButtons[i].addEventListener(
+      'click',
+      handleSubtractFromCart
+    );
   }
 }
 

@@ -12,42 +12,99 @@
 .cart-item-container {
   display: flex;
   flex-shrink: 0;
+  gap: 1rem;
 
   background-color: var(--color-fg-dark);
-  border-radius: 2pt;
-  overflow: hidden;
+  border-radius: 3pt;
 
-  height: 10rem;
+  width: 100%;
+
+  padding: 0.6rem;
 
   transition: all 0.2s ease;
 }
 
-.cart-item-image-container {
-  width: 40%;
+.cart-item-col1 {
+  /* width: 100%; */
+  /* height: 100%; */
+  aspect-ratio: 1/1;
   overflow: hidden;
+  border-radius: 3pt;
+  max-width: 33%;
 }
 
-.cart-item-image {
+.cart-item-col1 img {
+  width: 100%;
   height: 100%;
   object-fit: contain;
   object-position: center;
 }
 
-.cart-item-info {
+.cart-item-col2 {
   display: flex;
   flex-direction: column;
   align-items: start;
-  justify-content: center;
-  flex-wrap: wrap;
-
-  width: 100%;
-  padding: 1rem;
+  justify-content: space-between;
 }
 
 .cart-item-buttons-container {
   display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
   gap: 1rem;
+  border: 2px solid var(--color-font-dark);
+  overflow: hidden;
+  border-radius: 3pt;
+}
+
+.cart-item-col3 {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: space-between;
+
+  margin-left: auto;
+
+  max-width: 20%;
+}
+
+.button-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+
+  width: 100%;
+  max-width: 12rem;
+
+  border: none;
+  cursor: pointer;
+
+  background: none;
+}
+
+.button-cart :hover {
+  color: var(--color-fg-dark);
+  background-color: var(--color-font-dark);
+}
+
+.button-cart.button-remove {
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background: none;
+  color: var(--color-font-dark);
+}
+
+.button-cart.button-remove :hover {
+  background: none;
+  color: var(--color-accent);
+}
+
+.material-symbols-outlined.button-cart-icon {
+  font-size: 2rem;
 }
 
 /* Cart Menu Button */
@@ -101,10 +158,10 @@
   justify-content: flex-start;
 
   position: fixed;
+  right: 0;
 
   height: 100svh;
-
-  inset: 0 0 0 60%;
+  width: 35rem;
 
   transform: translateX(100%);
 

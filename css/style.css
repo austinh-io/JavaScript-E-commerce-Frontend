@@ -187,3 +187,15 @@ a:hover {
 
   background-color: var(--color-fg-dark);
 }
+
+.button-add {
+  background-color: rgb(58, 109, 204);
+  color: white;
+  font-weight: 700;
+}
+
+.button-subtract {
+  background-color: rgb(202, 62, 57);
+  color: white;
+  font-weight: 700;
+}

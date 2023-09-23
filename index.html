@@ -25,6 +25,11 @@
 
     <link
       rel="stylesheet"
+      href="./css/modal.css"
+    />
+
+    <link
+      rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
     <link
@@ -40,6 +45,11 @@
     <script
       defer
       src="menu.js"
+    ></script>
+
+    <script
+      defer
+      src="modal.js"
     ></script>
 
     <!-- <script
@@ -82,6 +92,7 @@
       </header>
     </div>
 
+    <!--DON'T FORGET TO SET data-visible TO "false"-->
     <div
       class="cart-menu"
       id="cart-menu"
@@ -96,6 +107,57 @@
 
       <div class="cart-items-container">
         <!-- Cart Items -->
+
+        <!-- <div
+          class="cart-item-container"
+          data-id="${item.product.id}"
+        >
+          <div class="cart-item-col1">
+            <img
+              src="https://picsum.photos/id/685/800/"
+              class="cart-item-image"
+            />
+          </div>
+          <div class="cart-item-col2">
+            <div class="cart-item-title">Item Title</div>
+
+            <div
+              class="cart-item-buttons-container"
+              data-id="${item.product.id}"
+            >
+              <button
+                class="button-cart button-add"
+                onclick="handleAddToCart(event)"
+              >
+                <span class="material-symbols-outlined button-cart-icon">
+                  stat_1
+                </span>
+              </button>
+
+              <div class="cart-item-count">10</div>
+
+              <button
+                class="button-cart button-subtract"
+                onclick="handleSubtractFromCart(event)"
+              >
+                <span class="material-symbols-outlined button-cart-icon">
+                  stat_minus_1
+                </span>
+              </button>
+            </div>
+          </div>
+          <div
+            class="cart-item-col3"
+            data-id="${item.product.id}"
+          >
+            <button class="button-cart button-remove">
+              <span class="material-symbols-outlined"> delete </span>
+            </button>
+
+            <div class="cart-item-price"><span>$</span><span>59.99</span></div>
+          </div>
+        </div> -->
+        <!---->
       </div>
       <div class="cart-display-footer">
         <div>Total cost: $0.00</div>
