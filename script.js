@@ -23,7 +23,7 @@ const productCardTemplate = function (product) {
         </div>
 
         <div class="product-button-group" data-id=${product.id}>
-          <button class="button-product button-add">Add to Cart</button>
+          <button class="button-product button-add" onclick="handleAddToCart(event)">Add to Cart</button>
       </div>
     </div>
   </div>
@@ -75,7 +75,7 @@ const cartItemTemplate = function (item) {
             <button
               class="button-cart button-remove"
               data-id="${item.product.id}"
-              onclick="handleSubtractFromCart(event)"
+              onclick="removeItemFromCart(event)"
             >
               <span class="material-symbols-outlined"> delete </span>
             </button>
@@ -138,11 +138,22 @@ function handleSubtractFromCart(event) {
       foundItem.count -= 1;
       foundItem.totalPrice = foundItem.count * foundItem.product.price;
     } else {
-      const foundItemIndex = cartItems.indexOf(foundItem);
-      cartItems.splice(foundItemIndex, 1);
+      removeItemFromCart(foundItem);
     }
   }
 
+  updateUi();
+}
+
+function removeItemFromCart(item) {
+  if (item.target) {
+    const productId = item.target.parentElement.dataset.id;
+    let itemToRemove = products.find((product) => product.id == productId);
+    let foundItem = cartItems.find((myItem) => myItem.product === itemToRemove);
+    cartItems.splice(cartItems.indexOf(foundItem), 1);
+  } else {
+    cartItems.splice(cartItems.indexOf(item), 1);
+  }
   updateUi();
 }
 
@@ -209,25 +220,6 @@ async function initializeProducts() {
 
 async function initializePage() {
   await initializeProducts();
-
-  addToCartButtons = document.getElementsByClassName(
-    'button-product button-add'
-  );
-
-  subtractFromCartButtons = document.getElementsByClassName(
-    'button-product button-subtract'
-  );
-
-  for (let i = 0; i < addToCartButtons.length; i++) {
-    addToCartButtons[i].addEventListener('click', handleAddToCart);
-  }
-
-  for (let i = 0; i < subtractFromCartButtons.length; i++) {
-    subtractFromCartButtons[i].addEventListener(
-      'click',
-      handleSubtractFromCart
-    );
-  }
 }
 
 initializePage();
