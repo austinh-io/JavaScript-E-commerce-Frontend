@@ -11,7 +11,10 @@ const productCardTemplate = function (product) {
         <div class="product-brand">${product.brand}</div>
         <div class="product-title">${product.title}</div>
         <div class="product-description">
-          ${product.description}
+          <p>
+            ${product.description}
+          </p>
+          
         </div>
         <div class="product-price">
           <span class="product-price-value">${formatCurrency(
