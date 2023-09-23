@@ -14,8 +14,9 @@ const productCardTemplate = function (product) {
           ${product.description}
         </div>
         <div class="product-price">
-          <span class="product-currency">$</span>
-          <span class="product-price-value">${product.price}</span>
+          <span class="product-price-value">${formatCurrency(
+            product.price
+          )}</span>
         </div>
 
         <div class="product-button-group" data-id=${product.id}>
@@ -80,7 +81,7 @@ const cartItemTemplate = function (item) {
             </button>
 
             <div class="cart-item-price">
-              <span>$</span><span>${item.totalPrice}</span>
+              <span>${formatCurrency(item.totalPrice)}</span>
             </div>
           </div>
         </div>
@@ -100,6 +101,13 @@ function cartItem(count, product, totalPrice) {
 let cartItems = [];
 let addToCartButtons = [];
 let products = new Array();
+
+function formatCurrency(currency) {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).format(currency);
+}
 
 function handleAddToCart(event) {
   console.log(event.target.parentElement);
