@@ -91,6 +91,7 @@ const cartItemTemplate = function (item) {
 const productsList = document.querySelector('.products-list');
 const cartItemsList = document.querySelector('.cart-items-container');
 const cartIconCounter = document.querySelector('.cart-icon-counter');
+const totalCostValueElement = document.querySelector('.total-cost-value');
 
 function cartItem(count, product, totalPrice) {
   this.count = count;
@@ -121,8 +122,7 @@ function handleAddToCart(event) {
     const newItem = new cartItem(1, productToAdd, productToAdd.price);
     cartItems.push(newItem);
   }
-  updateCart();
-  updateCartIconCounter();
+  updateUi();
 }
 
 function handleSubtractFromCart(event) {
@@ -143,8 +143,13 @@ function handleSubtractFromCart(event) {
     }
   }
 
+  updateUi();
+}
+
+function updateUi() {
   updateCart();
   updateCartIconCounter();
+  updateTotalCost();
 }
 
 function updateCartIconCounter() {
@@ -156,6 +161,11 @@ function updateCartIconCounter() {
   } else {
     cartIconCounter.classList.add('hidden');
   }
+}
+
+function updateTotalCost() {
+  let totalCost = cartItems.reduce((sum, cur) => sum + cur.totalPrice, 0);
+  totalCostValueElement.innerText = formatCurrency(totalCost);
 }
 
 function updateCart() {
