@@ -129,17 +129,54 @@ a:hover {
 }
 
 .body-head-container {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 
   width: 100%;
-  height: 28rem;
-  padding-top: 6rem;
+  height: 42rem;
 
   margin-block: 1rem;
 
   background-color: var(--color-fg-dark);
+
+  overflow: hidden;
+
+  z-index: -2;
+}
+
+.title {
+  padding-top: 8rem;
+  font-size: 2rem;
+}
+
+.title-bg-container {
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+}
+
+.title-bg-overlay {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+img.title-bg-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  /* display: none !important; */
 }
 
 .catalog-container {

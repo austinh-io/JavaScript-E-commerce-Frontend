@@ -22,6 +22,8 @@
   padding: 0.6rem;
 
   transition: all 0.2s ease;
+
+  z-index: 9100;
 }
 
 .cart-item-col1 {
