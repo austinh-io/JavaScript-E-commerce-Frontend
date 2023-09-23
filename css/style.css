@@ -211,10 +211,6 @@ img.title-bg-image {
   margin-bottom: 5rem;
 }
 
-.products-list {
-  margin-top: 1rem;
-}
-
 .footer-container {
   display: flex;
 
@@ -225,7 +221,7 @@ img.title-bg-image {
   background-color: var(--color-fg-dark);
 }
 
-.button-add {
+/* .button-add {
   background-color: rgb(58, 109, 204);
   color: white;
   font-weight: 700;
@@ -235,4 +231,15 @@ img.title-bg-image {
   background-color: rgb(202, 62, 57);
   color: white;
   font-weight: 700;
+} */
+
+/* .button-add {
+  background-color: var(--color-font-dark);
+  color: var(--color-fg-dark);
+  font-weight: 700;
 }
+
+.button-add:hover {
+  background-color: var(--color-accent);
+  color: var(--color-font-dark);
+} */

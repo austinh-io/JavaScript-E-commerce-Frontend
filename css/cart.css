@@ -85,6 +85,8 @@
   cursor: pointer;
 
   background: none;
+
+  color: var(--color-font-dark);
 }
 
 .button-cart :hover {

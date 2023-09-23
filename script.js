@@ -23,10 +23,7 @@ const productCardTemplate = function (product) {
         </div>
 
         <div class="product-button-group" data-id=${product.id}>
-          <button class="button-product button-add">Add</button>
-          <button class="button-product button-subtract">
-          Subtract
-        </button>
+          <button class="button-product button-add">Add to Cart</button>
       </div>
     </div>
   </div>

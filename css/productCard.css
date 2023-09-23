@@ -12,7 +12,7 @@
   background-color: var(--color-fg-dark);
 
   overflow: hidden;
-  border-radius: 1rem;
+  border-radius: 3pt;
 }
 
 .product-image-container {
@@ -40,18 +40,24 @@
 
 .button-product {
   padding: 0.6rem;
-  /* max-width: 10rem;
-  min-width: 6rem; */
 
   width: 100%;
   max-width: 12rem;
 
   font-size: 0.8rem;
   border: none;
-  border-radius: 100pt;
+  border-radius: 3pt;
   cursor: pointer;
 
-  margin-top: 1rem;
+  background-color: var(--color-font-dark);
+  color: var(--color-fg-dark);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.button-product:hover {
+  background-color: var(--color-accent);
+  color: var(--color-font-dark);
 }
 
 .product-brand {
@@ -72,4 +78,5 @@
 .product-price {
   font-size: 1.2rem;
   margin-block: 0.6rem;
+  font-weight: 200;
 }
