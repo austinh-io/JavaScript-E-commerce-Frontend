@@ -110,7 +110,6 @@ function formatCurrency(currency) {
 }
 
 function handleAddToCart(event) {
-  console.log(event.target.parentElement);
   const productId = event.target.parentElement.dataset.id;
   let productToAdd = products.find((product) => product.id == productId);
 

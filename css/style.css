@@ -175,8 +175,6 @@ img.title-bg-image {
 
   object-fit: cover;
   object-position: center;
-
-  /* display: none !important; */
 }
 
 .catalog-container {
@@ -198,13 +196,8 @@ img.title-bg-image {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(16rem, auto));
   width: 100%;
-
-  /* flex-wrap: wrap; */
-  /* justify-content: space-between; */
   gap: 2rem;
   align-items: center;
-
-  /* border: 1px solid white; */
 }
 
 .title {
@@ -220,26 +213,3 @@ img.title-bg-image {
 
   background-color: var(--color-fg-dark);
 }
-
-/* .button-add {
-  background-color: rgb(58, 109, 204);
-  color: white;
-  font-weight: 700;
-}
-
-.button-subtract {
-  background-color: rgb(202, 62, 57);
-  color: white;
-  font-weight: 700;
-} */
-
-/* .button-add {
-  background-color: var(--color-font-dark);
-  color: var(--color-fg-dark);
-  font-weight: 700;
-}
-
-.button-add:hover {
-  background-color: var(--color-accent);
-  color: var(--color-font-dark);
-} */
