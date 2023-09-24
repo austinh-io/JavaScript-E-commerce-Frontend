@@ -1,8 +1,9 @@
 :root {
-  --color-bg-dark: #181a1b;
-  --color-bg-dark-trans: #181a1bc5;
-  --color-fg-dark: #1f2122;
-  --color-font-dark: #c9c5be;
+  --color-bg: #181a1b;
+  --color-bg-trans: #181a1bc5;
+  --color-fg: #26292b;
+  --color-font: #c9c5be;
+  --color-font-secondary: rgb(144, 151, 156);
 
   --color-accent: #377df6;
 }
@@ -14,7 +15,7 @@
   flex-shrink: 0;
   gap: 1rem;
 
-  background-color: var(--color-fg-dark);
+  background-color: var(--color-fg);
   border-radius: 3pt;
 
   width: 100%;
@@ -56,7 +57,7 @@
 
   width: 100%;
   gap: 1rem;
-  border: 2px solid var(--color-font-dark);
+  border: 2px solid var(--color-font);
   overflow: hidden;
   border-radius: 3pt;
 }
@@ -86,12 +87,12 @@
 
   background: none;
 
-  color: var(--color-font-dark);
+  color: var(--color-font);
 }
 
 .button-cart :hover {
-  color: var(--color-fg-dark);
-  background-color: var(--color-font-dark);
+  color: var(--color-fg);
+  background-color: var(--color-font);
 }
 
 .button-cart.button-remove {
@@ -99,7 +100,7 @@
   height: 2rem;
   border: none;
   background: none;
-  color: var(--color-font-dark);
+  color: var(--color-font);
 }
 
 .button-cart.button-remove :hover {
@@ -117,7 +118,7 @@
   z-index: 900;
 
   background-color: rgba(0, 0, 0, 0);
-  color: var(--color-font-dark);
+  color: var(--color-font);
 
   border: none;
 
@@ -139,7 +140,7 @@
 
   background-color: var(--color-accent);
   border: 6px solid var(--color-accent);
-  color: var(--color-font-dark);
+  color: var(--color-font);
   font-weight: 700;
   font-size: 1rem;
   padding: 0.6rem;
@@ -169,7 +170,7 @@
 
   transform: translateX(100%);
 
-  background-color: var(--color-bg-dark-trans);
+  background-color: var(--color-bg-trans);
   backdrop-filter: blur(50px);
 
   transition: transform 150ms ease-out;
@@ -180,7 +181,7 @@
   align-items: center;
   justify-content: space-between;
 
-  background-color: var(--color-fg-dark);
+  background-color: var(--color-fg);
 
   width: 100%;
 }
@@ -201,6 +202,9 @@
   padding: 1rem;
   border: none;
   cursor: pointer;
+
+  background-color: var(--color-font);
+  color: var(--color-fg);
 }
 
 .cart-items-container {
@@ -223,4 +227,11 @@
 .cart-display-footer {
   margin-top: auto;
   padding: 1rem;
+}
+
+:root:has(#light:checked) {
+  --color-bg: #ccd5d7;
+  --color-bg-trans: #b6c3cac5;
+  --color-fg: #f3f6f8;
+  --color-font: #1f2122;
 }

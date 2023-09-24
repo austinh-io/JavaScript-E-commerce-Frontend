@@ -1,7 +1,11 @@
 :root {
-  --color-bg-dark: #181a1b;
-  --color-fg-dark: #1f2122;
-  --color-font-dark: #c9c5be;
+  --color-bg: #181a1b;
+  --color-bg-trans: #181a1bc5;
+  --color-fg: #26292b;
+  --color-font: #c9c5be;
+  --color-font-secondary: rgb(144, 151, 156);
+
+  --color-accent: #377df6;
 }
 
 .product {
@@ -9,7 +13,7 @@
   flex-direction: column;
   max-height: 38rem;
   max-width: 24rem;
-  background-color: var(--color-fg-dark);
+  background-color: var(--color-fg);
 
   overflow: hidden;
   border-radius: 3pt;
@@ -49,15 +53,15 @@
   border-radius: 3pt;
   cursor: pointer;
 
-  background-color: var(--color-font-dark);
-  color: var(--color-fg-dark);
+  background-color: var(--color-font);
+  color: var(--color-fg);
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .button-product:hover {
   background-color: var(--color-accent);
-  color: var(--color-font-dark);
+  color: var(--color-font);
 }
 
 .product-brand {
@@ -79,4 +83,11 @@
   font-size: 1.2rem;
   margin-block: 0.6rem;
   font-weight: 200;
+}
+
+:root:has(#light:checked) {
+  --color-bg: #ccd5d7;
+  --color-bg-trans: #b6c3cac5;
+  --color-fg: #f3f6f8;
+  --color-font: #1f2122;
 }

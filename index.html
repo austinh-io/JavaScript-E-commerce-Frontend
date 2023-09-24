@@ -51,7 +51,38 @@
     <div class="header-container">
       <header class="container">
         <div class="header-content">
+          <form
+            action=""
+            class="theme-picker"
+          >
+            <fieldset>
+              <legend class="hidden">Choose your theme</legend>
+              <label
+                for="theme"
+                class="hidden"
+                >Dark</label
+              >
+              <input
+                type="radio"
+                name="theme"
+                id="dark"
+                checked
+              />
+
+              <label
+                for="theme"
+                class="hidden"
+                >Light</label
+              >
+              <input
+                type="radio"
+                name="theme"
+                id="light"
+              />
+            </fieldset>
+          </form>
           <div>Logo/Business Name</div>
+
           <div class="searchbar-container">
             <div class="searchbar">
               <span>search</span>
@@ -62,22 +93,24 @@
           </div>
           <nav class="header-nav-container">
             <ul>
-              <li>
-                <button
-                  class="cart-menu-toggle cart-menu-toggle-open"
-                  aria-controls="cart-menu"
-                  aria-expanded="false"
-                >
-                  <div class="cart-icon-container">
-                    <span class="material-symbols-outlined cart-icon">
-                      shopping_cart
-                    </span>
-                    <span class="cart-icon-counter hidden">10</span>
-                  </div>
-                </button>
-              </li>
+              <li>Page 1</li>
+              <li>Page 2</li>
+              <li>Page 3</li>
             </ul>
           </nav>
+
+          <button
+            class="cart-menu-toggle cart-menu-toggle-open"
+            aria-controls="cart-menu"
+            aria-expanded="false"
+          >
+            <div class="cart-icon-container">
+              <span class="material-symbols-outlined cart-icon">
+                shopping_cart
+              </span>
+              <span class="cart-icon-counter hidden">10</span>
+            </div>
+          </button>
         </div>
       </header>
     </div>

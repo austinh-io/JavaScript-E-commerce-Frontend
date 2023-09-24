@@ -2,11 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-  --color-bg-dark: #181a1b;
-  --color-bg-dark-trans: #181a1bc5;
+  --color-bg: #181a1b;
+  --color-bg-trans: #181a1bc5;
+  --color-fg: #26292b;
+  --color-font: #c9c5be;
+  --color-font-secondary: rgb(144, 151, 156);
 
-  --color-fg-dark: #1f2122;
-  --color-font-dark: #c9c5be;
+  --color-accent: #377df6;
 }
 
 .hidden {
@@ -22,8 +24,8 @@
 body {
   display: flex;
   flex-direction: column;
-  background-color: var(--color-bg-dark);
-  color: var(--color-font-dark);
+  background-color: var(--color-bg);
+  color: var(--color-font);
   font-family: 'Poppins', sans-serif;
 
   min-height: 100vh;
@@ -73,9 +75,9 @@ a:hover {
 }
 
 .searchbar-icon {
-  color: rgb(229, 234, 241);
-  background-color: rgb(40, 117, 204);
-  border: 2px solid rgb(47, 50, 53);
+  color: var(--color-fg);
+  background-color: var(--color-accent);
+  border: 2px solid var(--color-fg);
   border-radius: 100pt;
 
   padding: 0.4rem;
@@ -94,8 +96,8 @@ a:hover {
 
   padding-left: 1rem;
 
-  background-color: rgb(47, 50, 53);
-  color: rgb(144, 151, 156);
+  background-color: var(--color-fg);
+  color: var(--color-font-secondary);
   border-radius: 100pt;
 
   width: 22rem;
@@ -104,7 +106,7 @@ a:hover {
 .header-container {
   position: fixed;
   width: 100%;
-  background-color: var(--color-bg-dark-trans);
+  background-color: var(--color-bg-trans);
   backdrop-filter: blur(20px);
 }
 
@@ -139,7 +141,7 @@ a:hover {
 
   margin-block: 1rem;
 
-  background-color: var(--color-fg-dark);
+  background-color: var(--color-fg);
 
   overflow: hidden;
 
@@ -166,7 +168,7 @@ a:hover {
   width: 100%;
   height: 100%;
 
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--color-bg-trans);
 }
 
 img.title-bg-image {
@@ -187,7 +189,7 @@ img.title-bg-image {
 
 .catalog-aside {
   min-width: 20rem;
-  background-color: var(--color-fg-dark);
+  background-color: var(--color-fg);
   margin-right: 1rem;
   padding: 1rem;
 }
@@ -211,5 +213,44 @@ img.title-bg-image {
   padding-block: 1rem;
   height: 20rem;
 
-  background-color: var(--color-fg-dark);
+  background-color: var(--color-fg);
+}
+
+.theme-picker > fieldset {
+  border: 0;
+  display: flex;
+  gap: 2rem;
+  background: var(--color-fg);
+  width: fit-content;
+  padding: 0.4rem 0.8rem;
+  border-radius: 3pt;
+}
+
+.theme-picker input[type='radio'] {
+  appearance: none;
+  width: 1.4rem;
+  height: 1.4rem;
+  outline: 3px solid var(--radio-color, currentColor);
+  outline-offset: 3px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.theme-picker input[type='radio']:checked {
+  background-color: var(--radio-color);
+}
+
+input[type='radio']#light {
+  --radio-color: rgb(223, 232, 238);
+}
+
+input[type='radio']#dark {
+  --radio-color: rgb(23, 28, 32);
+}
+
+:root:has(#light:checked) {
+  --color-bg: #ccd5d7;
+  --color-bg-trans: #b6c3cac5;
+  --color-fg: #f3f6f8;
+  --color-font: #1f2122;
 }
