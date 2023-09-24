@@ -117,6 +117,7 @@
 
 .material-symbols-outlined.button-cart-icon {
   font-size: 2rem;
+  border-radius: 3pt;
 }
 
 /* Cart Menu Button */
