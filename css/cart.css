@@ -2,10 +2,17 @@
   --color-bg: #181a1b;
   --color-bg-trans: #181a1bc5;
   --color-fg: #26292b;
-  --color-font: #c9c5be;
+  --color-font: #ccd5d7;
   --color-font-secondary: rgb(144, 151, 156);
 
   --color-accent: #377df6;
+}
+
+:root:has(#light:checked) {
+  --color-bg: #ccd5d7;
+  --color-bg-trans: #b6c3cac5;
+  --color-fg: #f3f6f8;
+  --color-font: #26292b;
 }
 
 /* Cart Item */
@@ -227,11 +234,4 @@
 .cart-display-footer {
   margin-top: auto;
   padding: 1rem;
-}
-
-:root:has(#light:checked) {
-  --color-bg: #ccd5d7;
-  --color-bg-trans: #b6c3cac5;
-  --color-fg: #f3f6f8;
-  --color-font: #1f2122;
 }

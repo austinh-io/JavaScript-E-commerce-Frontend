@@ -2,10 +2,17 @@
   --color-bg: #181a1b;
   --color-bg-trans: #181a1bc5;
   --color-fg: #26292b;
-  --color-font: #c9c5be;
+  --color-font: #ccd5d7;
   --color-font-secondary: rgb(144, 151, 156);
 
   --color-accent: #377df6;
+}
+
+:root:has(#light:checked) {
+  --color-bg: #ccd5d7;
+  --color-bg-trans: #b6c3cac5;
+  --color-fg: #f3f6f8;
+  --color-font: #26292b;
 }
 
 .product {
@@ -83,11 +90,4 @@
   font-size: 1.2rem;
   margin-block: 0.6rem;
   font-weight: 200;
-}
-
-:root:has(#light:checked) {
-  --color-bg: #ccd5d7;
-  --color-bg-trans: #b6c3cac5;
-  --color-fg: #f3f6f8;
-  --color-font: #1f2122;
 }
