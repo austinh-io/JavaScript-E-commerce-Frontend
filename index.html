@@ -93,9 +93,9 @@
           </div>
           <nav class="header-nav-container">
             <ul>
-              <li>Page 1</li>
-              <li>Page 2</li>
-              <li>Page 3</li>
+              <li><a>Page 1</a></li>
+              <li><a>Page 2</a></li>
+              <li><a>Page 3</a></li>
             </ul>
           </nav>
 
@@ -141,26 +141,36 @@
 
     <div class="main-container">
       <main>
-        <div class="body-head-container">
-          <div class="title container">
+        <div class="title-container container">
+          <div class="title-content">
             <h1>Ecommerce Site</h1>
             <div>An ecommerce mockup.</div>
-          </div>
-          <div class="title-bg-container">
-            <div class="title-bg-overlay"></div>
-            <div class="title-bg-image-container">
-              <img
-                class="title-bg-image"
-                src="https://picsum.photos/id/737/1920/"
-                alt=""
-              />
+            <div class="title-anchor-container">
+              <a
+                class="title-anchor"
+                href="#catalog"
+                >Shop Now</a
+              >
             </div>
+          </div>
+        </div>
+        <div class="title-bg-container">
+          <div class="title-bg-overlay"></div>
+          <div class="title-bg-image-container">
+            <img
+              class="title-bg-image"
+              src="https://picsum.photos/id/737/1920/"
+              alt=""
+            />
           </div>
         </div>
 
         <div class="container">
           <h2>Catalog</h2>
-          <div class="catalog-container">
+          <section
+            class="catalog-container"
+            id="catalog"
+          >
             <div class="catalog-aside">
               <h3>Aside Menu</h3>
               <ul>
@@ -171,7 +181,7 @@
               </ul>
             </div>
             <div class="products-list"></div>
-          </div>
+          </section>
         </div>
       </main>
     </div>
