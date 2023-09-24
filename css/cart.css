@@ -9,10 +9,12 @@
 }
 
 :root:has(#light:checked) {
-  --color-bg: #ccd5d7;
-  --color-bg-trans: #b6c3cac5;
-  --color-fg: #f3f6f8;
-  --color-font: #26292b;
+  --color-bg: #d4d7d9;
+  --color-bg-trans: #e4e6e7be;
+  --color-fg: #e4e6e7;
+  --color-font: #283133;
+  --color-font-secondary: #626a6f;
+  --color-accent: #094fc8;
 }
 
 /* Cart Item */

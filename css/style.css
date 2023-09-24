@@ -2,20 +2,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
+  --header-height: 4rem;
+
   --color-bg: #181a1b;
   --color-bg-trans: #181a1bc5;
   --color-fg: #26292b;
   --color-font: #ccd5d7;
-  --color-font-secondary: rgb(144, 151, 156);
+  --color-font-secondary: #90979c;
 
   --color-accent: #377df6;
 }
 
 :root:has(#light:checked) {
-  --color-bg: #ccd5d7;
-  --color-bg-trans: #b6c3cac5;
-  --color-fg: #f3f6f8;
-  --color-font: #26292b;
+  --color-bg: #d4d7d9;
+  --color-bg-trans: #e4e6e7be;
+  --color-fg: #e4e6e7;
+  --color-font: #283133;
+  --color-font-secondary: #626a6f;
+  --color-accent: #094fc8;
 }
 
 .hidden {
@@ -28,7 +32,7 @@
   box-sizing: border-box;
 
   scroll-behavior: smooth;
-  scroll-padding-top: 12em;
+  scroll-padding: calc(var(--header-height) * 2);
 }
 
 body {
@@ -76,6 +80,20 @@ a:hover {
 
 .header-container {
   z-index: 900;
+
+  position: fixed;
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--header-height);
+
+  background-color: var(--color-bg-trans);
+  backdrop-filter: blur(20px);
+}
+
+.header-container .container {
+  width: 100%;
 }
 
 .cart-menu {
@@ -119,13 +137,6 @@ a:hover {
   border-radius: 100pt;
 
   width: 22rem;
-}
-
-.header-container {
-  position: fixed;
-  width: 100%;
-  background-color: var(--color-bg-trans);
-  backdrop-filter: blur(20px);
 }
 
 .header-nav-container ul {
