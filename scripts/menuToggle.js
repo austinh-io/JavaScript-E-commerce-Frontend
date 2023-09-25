@@ -8,12 +8,20 @@ const themeToggle = document.querySelector('.theme-menu-toggle');
 const filterMenu = document.querySelector('.filter-menu');
 const filterToggle = document.querySelector('.filter-menu-toggle');
 
+const navMenu = document.querySelector('.nav-menu');
+const navToggle = document.querySelector('.nav-menu-toggle');
+const navToggleClose = document.querySelector('.nav-menu-toggle-close');
+
 cartToggle.addEventListener('click', handleCartMenu);
 cartToggleClose.addEventListener('click', handleCartMenu);
 
 themeToggle.addEventListener('click', handleThemeMenu);
 
 filterToggle.addEventListener('click', handleFilterMenu);
+
+navMenu.addEventListener('click', handleNavMenu);
+navToggle.addEventListener('click', handleNavMenu);
+// navToggleClose.addEventListener('click', handleNavMenu);
 
 function handleCartMenu() {
   const visibility = cartMenu.getAttribute('data-visible');
@@ -48,5 +56,17 @@ function handleFilterMenu() {
   } else {
     filterMenu.setAttribute('data-visible', false);
     filterToggle.setAttribute('aria-expanded', 'false');
+  }
+}
+
+function handleNavMenu() {
+  const visibility = navMenu.getAttribute('data-visible');
+
+  if (visibility === 'false') {
+    navMenu.setAttribute('data-visible', 'true');
+    navToggle.setAttribute('aria-expanded', 'true');
+  } else {
+    navMenu.setAttribute('data-visible', false);
+    navToggle.setAttribute('aria-expanded', 'false');
   }
 }

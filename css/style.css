@@ -130,6 +130,140 @@ a:hover {
   width: 100%;
 }
 
+.nav-toggle-close {
+  display: none;
+}
+
+.nav-menu-toggle {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  div.searchbar {
+    width: 10rem;
+  }
+
+  .nav-menu-toggle {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .nav-menu-toggle button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.4rem;
+    margin: 1rem;
+    font-weight: 700;
+    border: none;
+    color: var(--color-fg);
+    background-color: var(--color-font);
+    border-radius: 3pt;
+
+    aspect-ratio: 1;
+  }
+
+  body {
+    height: 100svh;
+  }
+
+  .nav-menu {
+    transform: translate(0);
+
+    background-color: var(--color-bg-trans);
+    backdrop-filter: blur(20px);
+  }
+
+  .nav-menu[data-visible='false'] {
+    transform: translate(100%);
+  }
+
+  .header-container {
+    position: fixed;
+    height: 100vh;
+    width: 85vw;
+    right: 0;
+    top: 0;
+
+    overflow: hidden;
+
+    scroll-behavior: auto;
+
+    background: none;
+    backdrop-filter: none;
+  }
+
+  .header-container .container {
+    /* width: 90%; */
+  }
+
+  header.container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .header-content {
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+
+    height: 100%;
+
+    padding: 1rem;
+  }
+
+  .header-nav-container ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-toggle-close {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+
+    padding: 0;
+    margin: 0;
+    aspect-ratio: 1;
+  }
+
+  .nav-toggle-close button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 1.2rem;
+    height: 1.2rem;
+
+    padding: 1rem;
+
+    font-weight: 700;
+    font-size: 1.2rem;
+
+    background-color: var(--color-font);
+    color: var(--color-fg);
+    border: none;
+    border-radius: 3pt;
+  }
+
+  div.title-content {
+    font-size: 1rem;
+  }
+
+  div a.title-anchor {
+    font-size: 1rem;
+  }
+}
+
 .main-container {
   margin-bottom: 4rem;
   margin-top: auto;
