@@ -106,39 +106,6 @@ a:hover {
   max-width: 1920px;
 }
 
-.searchbar-container {
-  display: flex;
-}
-
-.searchbar-icon {
-  color: var(--color-fg);
-  background-color: var(--color-accent);
-  border: 2px solid var(--color-fg);
-  border-radius: 100pt;
-
-  padding: 0.4rem;
-
-  cursor: pointer;
-}
-
-.searchbar-icon.material-symbols-outlined {
-  font-size: 1.4rem;
-}
-
-.searchbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding-left: 1rem;
-
-  background-color: var(--color-fg);
-  color: var(--color-font-secondary);
-  border-radius: 100pt;
-
-  width: 22rem;
-}
-
 .header-nav-container ul {
   position: relative;
   display: flex;
@@ -260,17 +227,8 @@ a.title-anchor:hover {
 }
 
 .catalog-title {
-  margin-top: 8rem;
+  margin-top: 4rem;
   font-size: 2.6rem;
-}
-
-.catalog-aside {
-  min-width: 20rem;
-  height: fit-content;
-
-  background-color: var(--color-fg);
-  margin-right: 1rem;
-  padding: 1rem;
 }
 
 .products-list {

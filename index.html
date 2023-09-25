@@ -32,6 +32,11 @@
       href="./css/cartMenu.css"
     />
 
+    <link
+      rel="stylesheet"
+      href="./css/productFilters.css"
+    />
+
     <script
       defer
       src="./scripts/script.js"
@@ -40,6 +45,11 @@
     <script
       defer
       src="./scripts/cartMenu.js"
+    ></script>
+
+    <script
+      defer
+      src="/scripts/filterMenu.js"
     ></script>
 
     <script
@@ -88,14 +98,6 @@
           </form>
           <div>Logo/Business Name</div>
 
-          <div class="searchbar-container">
-            <div class="searchbar">
-              <span>search</span>
-              <span class="material-symbols-outlined searchbar-icon"
-                >search</span
-              >
-            </div>
-          </div>
           <nav class="header-nav-container">
             <ul>
               <li><a>Page 1</a></li>
@@ -113,7 +115,7 @@
               <span class="material-symbols-outlined cart-icon">
                 shopping_cart
               </span>
-              <span class="cart-icon-counter hidden">10</span>
+              <span class="cart-icon-counter hidden"></span>
             </div>
           </button>
         </div>
@@ -185,16 +187,92 @@
           >
             Catalog
           </h2>
-          <section class="catalog-container">
-            <div class="catalog-aside">
-              <h3>Aside Menu</h3>
-              <ul>
-                <li>Menu Item</li>
-                <li>Menu Item</li>
-                <li>Menu Item</li>
-                <li>Menu Item</li>
-              </ul>
+          <div class="filters-parent-container">
+            <div class="filters-options-container">
+              <button
+                class="btn-filters-toggle filter-menu-toggle filter-menu-toggle-open"
+                aria-controls="filter-menu"
+                aria-expanded="false"
+              >
+                <span class="material-symbols-outlined btn-filters-icon">
+                  filter_list
+                </span>
+                Filters
+              </button>
+              <div class="searchbar-container">
+                <div class="searchbar">
+                  <span>search</span>
+                  <span class="material-symbols-outlined searchbar-icon"
+                    >search</span
+                  >
+                </div>
+              </div>
             </div>
+            <div class="filters-container">
+              <div
+                class="filter-menu"
+                id="filter-menu"
+                data-visible="false"
+              >
+                <fieldset class="fieldset-filter">
+                  <legend>Brands</legend>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="brand1"
+                      name="brand1"
+                    />
+                    <label for="brand1">Brand 1</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="brand2"
+                      name="brand2"
+                    />
+                    <label for="brand2">Brand 2</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="brand3"
+                      name="brand3"
+                    />
+                    <label for="brand3">Brand 3</label>
+                  </div>
+                </fieldset>
+                <fieldset class="fieldset-filter">
+                  <legend>Colors</legend>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="color1"
+                      name="color1"
+                    />
+                    <label for="color1">Color 1</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="color2"
+                      name="color2"
+                    />
+                    <label for="color2">Color 2</label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="color3"
+                      name="color3"
+                    />
+                    <label for="color3">Color 3</label>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+
+          <section class="catalog-container">
             <div class="products-list"></div>
           </section>
         </div>

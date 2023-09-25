@@ -1,0 +1,146 @@
+:root {
+  --color-bg: #181a1b;
+  --color-bg-trans: #181a1bc5;
+  --color-fg: #26292b;
+  --color-font: #ccd5d7;
+  --color-font-secondary: rgb(144, 151, 156);
+
+  --color-accent: #377df6;
+}
+
+:root:has(#light:checked) {
+  --color-bg: #d4d7d9;
+  --color-bg-trans: #e4e6e7be;
+  --color-fg: #e4e6e7;
+  --color-font: #283133;
+  --color-font-secondary: #626a6f;
+  --color-accent: #094fc8;
+}
+
+.filters-parent-container {
+  margin-top: 1rem;
+
+  overflow: hidden;
+
+  /* border: 1px solid yellow; */
+}
+
+.filters-options-container {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  height: fit-content;
+
+  border-radius: 3pt 3pt 0 0;
+
+  background-color: var(--color-fg);
+  padding: 1rem;
+}
+
+.filters-parent-container:has(.filter-menu[data-visible='false']) {
+  .filters-options-container {
+    border-radius: 3pt;
+  }
+}
+
+.searchbar-container {
+  display: flex;
+}
+
+.searchbar-icon {
+  color: var(--color-fg);
+  background-color: var(--color-accent);
+  border: 2px solid var(--color-fg);
+  border-radius: 3pt;
+
+  padding: 0.4rem;
+
+  cursor: pointer;
+}
+
+.searchbar-icon.material-symbols-outlined {
+  font-size: 1.4rem;
+}
+
+.searchbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-left: 1rem;
+
+  background-color: var(--color-bg);
+  color: var(--color-font-secondary);
+  border-radius: 3pt;
+
+  width: 22rem;
+}
+
+.btn-filters-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-inline: 0.8rem;
+  padding-block: 0.4rem;
+
+  border: none;
+  border-radius: 3pt;
+
+  text-transform: uppercase;
+
+  font-weight: 700;
+  font-size: 0.8rem;
+
+  background-color: var(--color-font);
+  color: var(--color-fg);
+
+  cursor: pointer;
+}
+
+hr.hr-filters {
+  border: 1px solid var(--color-bg);
+  margin-block: 1rem;
+}
+
+.material-symbols-outlined.btn-filters-icon {
+  margin-right: 0.4rem;
+  font-size: 1.2rem;
+}
+
+.filters-container {
+  overflow: hidden;
+}
+
+.filter-menu {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  border-radius: 0 0 3pt 3pt;
+
+  background-color: var(--color-fg);
+
+  transition: transform max-height 150ms ease-out, max-height 150ms ease-out;
+
+  transform: translateY(-100%);
+
+  max-height: 0;
+}
+
+.filter-menu[data-visible='true'] {
+  transform: translateY(0%);
+  padding: 1rem;
+  max-height: 100%;
+
+  transition: transform 150ms ease-in, max-height 150ms ease-in;
+}
+
+fieldset.fieldset-filter {
+  width: 100%;
+  border: none;
+}
