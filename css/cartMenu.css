@@ -1,21 +1,4 @@
-:root {
-  --color-bg: #181a1b;
-  --color-bg-trans: #181a1bc5;
-  --color-fg: #26292b;
-  --color-font: #ccd5d7;
-  --color-font-secondary: rgb(144, 151, 156);
-
-  --color-accent: #377df6;
-}
-
-:root:has(#light:checked) {
-  --color-bg: #d4d7d9;
-  --color-bg-trans: #e4e6e7be;
-  --color-fg: #e4e6e7;
-  --color-font: #283133;
-  --color-font-secondary: #626a6f;
-  --color-accent: #094fc8;
-}
+@import url(themes.css);
 
 /* Cart Item */
 

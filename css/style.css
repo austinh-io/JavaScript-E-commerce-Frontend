@@ -1,25 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+@import url(themes.css);
+
 :root {
   --header-height: 4rem;
-
-  --color-bg: #181a1b;
-  --color-bg-trans: #181a1bc5;
-  --color-fg: #26292b;
-  --color-font: #ccd5d7;
-  --color-font-secondary: #90979c;
-
-  --color-accent: #377df6;
-}
-
-:root:has(#light:checked) {
-  --color-bg: #d4d7d9;
-  --color-bg-trans: #e4e6e7be;
-  --color-fg: #e4e6e7;
-  --color-font: #283133;
-  --color-font-secondary: #626a6f;
-  --color-accent: #094fc8;
 }
 
 .hidden {
