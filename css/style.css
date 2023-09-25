@@ -130,11 +130,11 @@ a:hover {
   width: 100%;
 }
 
-.nav-toggle-close {
+div.nav-toggle-close {
   display: none;
 }
 
-.nav-menu-toggle {
+div.nav-menu-toggle {
   display: none;
 }
 
