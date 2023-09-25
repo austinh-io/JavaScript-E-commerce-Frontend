@@ -202,7 +202,7 @@ function fillCartList() {
 }
 
 async function catchProductList() {
-  const response = await fetch('../data/products.json');
+  const response = await fetch('./data/products.json');
   const productsObj = await response.json();
   products = [...productsObj];
 }
