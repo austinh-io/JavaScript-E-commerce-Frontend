@@ -178,12 +178,8 @@
   height: 100svh;
   width: 28rem;
 
-  transform: translateX(100%);
-
   background-color: var(--color-bg-trans);
   backdrop-filter: blur(50px);
-
-  transition: transform 150ms ease-out;
 }
 
 .cart-menu-header {
@@ -198,11 +194,6 @@
 
 .cart-menu-header-title {
   padding: 1rem;
-}
-
-.cart-menu[data-visible='true'] {
-  transform: translateX(0%);
-  box-shadow: -5px 0px 20px 5px rgba(0, 0, 0, 0.8);
 }
 
 .cart-menu-toggle-close {

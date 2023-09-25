@@ -1,0 +1,23 @@
+.menu-vertical[data-visible='true'] {
+  transform: translateY(0%);
+  transition: transform 150ms ease-in;
+}
+
+.menu-vertical[data-visible='false'] {
+  transform: translateY(-100%);
+  transition: transform 150ms ease-out;
+}
+
+.menu-horizontal[data-visible='true'] {
+  transform: translateX(0%);
+  transition: transform 150ms ease-in;
+}
+
+.menu-horizontal[data-visible='false'] {
+  transform: translateX(100%);
+  transition: transform 150ms ease-out;
+}
+
+.menu-shadow[data-visible='true'] {
+  box-shadow: -5px 0px 20px 5px rgba(0, 0, 0, 0.8);
+}
