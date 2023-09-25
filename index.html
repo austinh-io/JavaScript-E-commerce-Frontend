@@ -37,6 +37,11 @@
       href="./css/productFilters.css"
     />
 
+    <link
+      rel="stylesheet"
+      href="./css/themeMenu.css"
+    />
+
     <script
       defer
       src="./scripts/script.js"
@@ -59,6 +64,11 @@
 
     <script
       defer
+      src="./scripts/themeMenu.js"
+    ></script>
+
+    <script
+      defer
       src="./scripts/carousel.js"
     ></script>
   </head>
@@ -66,36 +76,53 @@
     <div class="header-container">
       <header class="container">
         <div class="header-content">
-          <form
-            action=""
-            class="theme-picker"
-          >
-            <fieldset>
-              <legend class="hidden">Choose your theme</legend>
-              <label
-                for="dark"
-                class="hidden"
-                >Dark</label
+          <div class="theme-menu-container">
+            <button
+              class="btn-themes theme-menu-toggle theme-menu-toggle-open"
+              aria-controls="theme-menu"
+              aria-expanded="false"
+            >
+              <span class="material-symbols-outlined btn-themes-icon">
+                brush
+              </span>
+              Themes
+            </button>
+            <div class="theme-form-container">
+              <form
+                action=""
+                class="theme-picker theme-menu"
+                id="theme-menu"
+                data-visible="false"
               >
-              <input
-                type="radio"
-                name="theme"
-                id="dark"
-                checked
-              />
+                <fieldset>
+                  <legend class="hidden">Choose your theme</legend>
+                  <label
+                    for="dark"
+                    class="hidden"
+                    >Dark</label
+                  >
+                  <input
+                    type="radio"
+                    name="theme"
+                    id="dark"
+                    checked
+                  />
 
-              <label
-                for="light"
-                class="hidden"
-                >Light</label
-              >
-              <input
-                type="radio"
-                name="theme"
-                id="light"
-              />
-            </fieldset>
-          </form>
+                  <label
+                    for="light"
+                    class="hidden"
+                    >Light</label
+                  >
+                  <input
+                    type="radio"
+                    name="theme"
+                    id="light"
+                  />
+                </fieldset>
+              </form>
+            </div>
+          </div>
+
           <div>Logo/Business Name</div>
 
           <nav class="header-nav-container">
