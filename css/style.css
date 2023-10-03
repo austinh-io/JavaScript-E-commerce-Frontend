@@ -125,8 +125,49 @@ a:hover {
   gap: 1rem;
 }
 
-.nav-logo {
+.nav-site-logo {
+  display: flex;
+  align-items: ba;
+  justify-content: center;
+
   margin-right: auto;
+
+  cursor: pointer;
+}
+
+.nav-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2rem;
+  margin-right: 0.8rem;
+}
+
+.nav-logo-icon {
+  mask-image: url(/assets/logo.svg);
+  -webkit-mask-image: url(/assets/logo.svg);
+
+  mask-size: 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--color-font);
+}
+
+.nav-logo-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.6rem;
+
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.2ch;
 }
 
 .nav-buttons-container {
