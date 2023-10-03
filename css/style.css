@@ -357,6 +357,7 @@ div.nav-menu-toggle {
 
 .title-content {
   font-size: 2rem;
+  max-width: 45ch;
 }
 
 .title-bg-container {
