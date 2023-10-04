@@ -24,21 +24,67 @@ const productCardTemplate = function (product) {
     <div class="product-image-container">
         <img
         class="product-image"
-        src="${product.imageSource}"
+        src="${product.options[0].imageSource}"
         />
     </div>
     <div class="product-info-container">
-        <div class="product-brand">${product.brand}</div>
-        <div class="product-title">${product.title}</div>
+        <div class="product-brand">${product.options[0].brand}</div>
+        <div class="product-title">${product.options[0].title}</div>
         <div class="product-description">
           <p>
-            ${product.description}
-          </p>
-          
+            ${product.options[0].description}
+          </p>          
         </div>
+
+        <fieldset class="product-fieldset">
+        <legend class="hidden">Variant</legend>
+        <div>
+          <input
+            type="radio"
+            id="red1"
+            name="colors"
+            value="red"
+            checked
+          />
+          <label
+            for="red1"
+            class="hidden"
+            >Red</label
+          >
+        </div>
+
+        <div>
+          <input
+            type="radio"
+            id="blue1"
+            name="colors"
+            value="blue"
+          />
+          <label
+            for="blue1"
+            class="hidden"
+            >Blue</label
+          >
+        </div>
+
+        <div>
+          <input
+            type="radio"
+            id="green1"
+            name="colors"
+            value="green"
+          />
+          <label
+            for="green1"
+            class="hidden"
+            >Green</label
+          >
+        </div>
+      </fieldset>
+
         <div class="product-price">
           <span class="product-price-value">${formatCurrency(
-            product.price
+            product.options[0].price
           )}</span>
         </div>
 
@@ -64,12 +110,12 @@ const cartItemTemplate = function (item) {
         >
           <div class="cart-item-col1">
             <img
-              src="${item.product.imageSource}"
+              src="${item.product.options[0].imageSource}"
               class="cart-item-image"
             />
           </div>
           <div class="cart-item-col2">
-            <div class="cart-item-title">${item.product.title}</div>
+            <div class="cart-item-title">${item.product.options[0].title}</div>
 
             <div
               class="cart-item-buttons-container"
@@ -84,7 +130,7 @@ const cartItemTemplate = function (item) {
                 </span>
               </button>
 
-              <div class="cart-item-count">${item.count}</div>
+              <div class="cart-item-count">${item.options[0].count}</div>
 
               <button
                 class="button-cart button-subtract"
@@ -243,10 +289,14 @@ async function catchProductList() {
   const response = await fetch('./data/products.json');
   const productsObj = await response.json();
   products = [...productsObj];
+
+  // console.log(products[0].options[1]);
 }
 
 async function initializeProducts() {
   await catchProductList();
+
+  console.log(products.length);
 
   for (let i = 0; i < products.length; i++) {
     productsList.insertAdjacentHTML(
