@@ -291,7 +291,7 @@ a.hero-anchor:hover {
 
 .products-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, auto));
+  grid-template-columns: repeat(auto-fill, minmax(24rem, auto));
   width: 100%;
   gap: 2rem;
   align-items: center;
