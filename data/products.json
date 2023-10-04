@@ -1,63 +1,123 @@
 [
   {
     "id": 0,
-    "title": "Item 0",
-    "brand": "Brand 0",
-    "description": "Lorem ipsum zero",
-    "price": 5.99,
-    "imageSource": "https://picsum.photos/id/12/800/",
-    "options": [0, 1, 2]
+    "options": [
+      {
+        "optionId": 0,
+        "brand": "Brand 0 - Placeholder Inc.",
+        "title": "Item 0",
+        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "price": 0.99,
+        "imageSource": "https://picsum.photos/id/1/800/"
+      },
+      {
+        "optionId": 1,
+        "brand": "Brand 0 - Placeholder Inc.",
+        "title": "Item 1",
+        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "price": 1.99,
+        "imageSource": "https://picsum.photos/id/2/800/"
+      },
+      {
+        "optionId": 2,
+        "brand": "Brand 0 - Placeholder Inc.",
+        "title": "Item 2",
+        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "price": 2.99,
+        "imageSource": "https://picsum.photos/id/3/800/"
+      }
+    ]
   },
   {
     "id": 1,
-    "title": "Item 1",
-    "brand": "Brand 0",
-    "description": "Lorem bipsum one.",
-    "price": 9.99,
-    "imageSource": "https://picsum.photos/id/120/800/"
+    "options": [
+      {
+        "optionId": 0,
+        "brand": "Brand 1 - Lorem Ipsum Group",
+        "title": "Item 3",
+        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "price": 3.99,
+        "imageSource": "https://picsum.photos/id/10/800/"
+      },
+      {
+        "optionId": 1,
+        "brand": "Brand 1 - Lorem Ipsum Group",
+        "title": "Item 4",
+        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "price": 4.99,
+        "imageSource": "https://picsum.photos/id/11/800/"
+      },
+      {
+        "optionId": 2,
+        "brand": "Brand 1 - Lorem Ipsum Group",
+        "title": "Item 5",
+        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "price": 5.99,
+        "imageSource": "https://picsum.photos/id/12/800/"
+      }
+    ]
   },
   {
     "id": 2,
-    "title": "Item 2",
-    "brand": "Brand 1",
-    "description": "Borem lipsum two.",
-    "price": 1115.99,
-    "imageSource": "https://picsum.photos/id/22/800/",
-    "options": [0, 1]
+    "options": [
+      {
+        "optionId": 0,
+        "brand": "Brand 2 - Business Name LTD",
+        "title": "Item 6",
+        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "price": 6.99,
+        "imageSource": "https://picsum.photos/id/20/800/"
+      },
+      {
+        "optionId": 1,
+        "brand": "Brand 2 - Business Name LTD",
+        "title": "Item 7",
+        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "price": 7.99,
+        "imageSource": "https://picsum.photos/id/21/800/"
+      },
+      {
+        "optionId": 2,
+        "brand": "Brand 2",
+        "title": "Item 8",
+        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "price": 8.99,
+        "imageSource": "https://picsum.photos/id/22/800/"
+      }
+    ]
   },
   {
     "id": 3,
-    "title": "Item 3",
-    "brand": "Brand 1",
-    "description": "Snorem pipsum three.",
-    "price": 24.99,
-    "imageSource": "https://picsum.photos/id/220/800/"
+    "options": [
+      {
+        "optionId": 0,
+        "brand": "Brand 3 - Brandy's",
+        "title": "Item 0",
+        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "price": 9.99,
+        "imageSource": "https://picsum.photos/id/30/800/"
+      },
+      {
+        "optionId": 1,
+        "brand": "Brand 3 - Brandy's",
+        "title": "Item 1",
+        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "price": 10.99,
+        "imageSource": "https://picsum.photos/id/31/800/"
+      }
+    ]
   },
   {
     "id": 4,
-    "title": "Item 4",
-    "brand": "Brand 2",
-    "description": "Popsum thorum four.",
-    "price": 10.0,
-    "imageSource": "https://picsum.photos/id/115/800/",
-    "options": [0, 1, 2]
-  },
-  {
-    "id": 5,
-    "title": "Item 5",
-    "brand": "Brand 3",
-    "description": "Grusum nicerum five.",
-    "price": 0.99,
-    "imageSource": "https://picsum.photos/id/313/800/",
-    "options": [0]
-  },
-  {
-    "id": 6,
-    "title": "Item 6",
-    "brand": "Brand 3",
-    "description": "Zeusum bucerum six.",
-    "price": 0.99,
-    "imageSource": "https://picsum.photos/id/516/800/",
-    "options": [0]
+    "options": [
+      {
+        "optionId": 0,
+        "brand": "Brand 4 - McBrand Business Name",
+        "title": "Item 0",
+        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "price": 12.99,
+        "imageSource": "https://picsum.photos/id/40/800/"
+      }
+    ]
   }
 ]
