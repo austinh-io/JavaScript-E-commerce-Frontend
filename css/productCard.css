@@ -55,6 +55,15 @@
   background-color: var(--color-accent);
 }
 
+.button-product:disabled {
+  background-color: var(--color-disabled);
+  cursor: default;
+}
+
+.button-product:disabled:hover {
+  background-color: var(--color-disabled);
+}
+
 .product-brand {
   font-size: 0.8rem;
   font-weight: 600;

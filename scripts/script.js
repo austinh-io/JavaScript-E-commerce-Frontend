@@ -40,7 +40,13 @@ const productCardTemplate = function (product) {
         </div>
 
         <div class="product-button-group" data-id=${product.id}>
-          <button class="button-product button-add" onclick="handleAddToCart(event)">Add to Cart</button>
+          <button
+            class="button-product button-add"
+            id="button-product-${product.id}"
+            onclick="handleAddToCart(event)"
+          >
+            Add to Cart
+          </button>
       </div>
     </div>
   </div>
@@ -124,7 +130,13 @@ function handleAddToCart(event) {
     const newItem = new cartItem(1, productToAdd, productToAdd.price);
     cartItems.push(newItem);
   }
+
   updateUi();
+
+  if (event.srcElement.classList.contains('button-product')) {
+    event.srcElement.disabled = true;
+    event.srcElement.innerText = 'Item in Cart';
+  }
 }
 
 function handleSubtractFromCart(event) {
@@ -148,14 +160,27 @@ function handleSubtractFromCart(event) {
 }
 
 function removeItemFromCart(item) {
+  let itemToUpdate = undefined;
+
   if (item.target) {
     const productId = item.target.parentElement.dataset.id;
+
     let itemToRemove = products.find((product) => product.id == productId);
     let foundItem = cartItems.find((myItem) => myItem.product === itemToRemove);
     cartItems.splice(cartItems.indexOf(foundItem), 1);
+
+    itemToUpdate = document.getElementById(`button-product-${productId}`);
   } else {
-    cartItems.splice(cartItems.indexOf(item), 1);
+    let cartItemIndex = cartItems.indexOf(item);
+
+    cartItems.splice(cartItemIndex, 1);
+
+    itemToUpdate = document.getElementById(`button-product-${item.product.id}`);
   }
+
+  itemToUpdate.innerText = 'Add to Cart';
+  itemToUpdate.disabled = false;
+
   updateUi();
 }
 

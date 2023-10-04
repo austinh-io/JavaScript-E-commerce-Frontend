@@ -3,8 +3,9 @@
   --color-bg-trans: #181a1bc5;
   --color-fg: #26292b;
   --color-font: #d6d7cc;
-  --color-font-secondary: rgb(144, 151, 156);
+  --color-font-secondary: #90979c;
   --color-accent: #377df6;
+  --color-disabled: #87909f;
 }
 
 :root:has(#light:checked) {
@@ -14,4 +15,5 @@
   --color-font: #283133;
   --color-font-secondary: #626a6f;
   --color-accent: #094fc8;
+  --color-disabled: #3c485d;
 }
