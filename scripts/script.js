@@ -9,6 +9,9 @@ let cartItems = new Array();
 let addToCartButtons = new Array();
 let products = new Array();
 
+const catalogItemButtonText_Enabled = 'Add to Cart';
+const catalogItemButtonText_Disabled = 'Item in Cart';
+
 function cartItem(count, product, totalPrice) {
   this.count = count;
   this.product = product;
@@ -43,9 +46,9 @@ const productCardTemplate = function (product) {
           <button
             class="button-product button-add"
             id="button-product-${product.id}"
-            onclick="handleAddToCart(event)"
+            onclick="addToCart(event)"
           >
-            Add to Cart
+            ${catalogItemButtonText_Enabled}
           </button>
       </div>
     </div>
@@ -85,7 +88,7 @@ const cartItemTemplate = function (item) {
 
               <button
                 class="button-cart button-subtract"
-                onclick="handleSubtractFromCart(event)"
+                onclick="subtractFromCart(event)"
                 data-id="${item.product.id}"
               >
                 <span class="material-symbols-outlined button-cart-icon">
@@ -98,7 +101,7 @@ const cartItemTemplate = function (item) {
             <button
               class="button-cart button-remove"
               data-id="${item.product.id}"
-              onclick="removeItemFromCart(event)"
+              onclick="removeFromCart(event)"
             >
               <span class="material-symbols-outlined"> delete </span>
             </button>
@@ -111,14 +114,14 @@ const cartItemTemplate = function (item) {
   `;
 };
 
-function formatCurrency(currency) {
+function formatCurrency(value) {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-  }).format(currency);
+  }).format(value);
 }
 
-function handleAddToCart(event) {
+function addToCart(event) {
   const productId = event.target.parentElement.dataset.id;
   let productToAdd = products.find((product) => product.id == productId);
 
@@ -135,11 +138,11 @@ function handleAddToCart(event) {
 
   if (event.srcElement.classList.contains('button-product')) {
     event.srcElement.disabled = true;
-    event.srcElement.innerText = 'Item in Cart';
+    event.srcElement.innerText = catalogItemButtonText_Disabled;
   }
 }
 
-function handleSubtractFromCart(event) {
+function subtractFromCart(event) {
   const productId = event.target.parentElement.dataset.id;
   let productToRemove = products.find((product) => product.id == productId);
 
@@ -152,45 +155,53 @@ function handleSubtractFromCart(event) {
       foundItem.count -= 1;
       foundItem.totalPrice = foundItem.count * foundItem.product.price;
     } else {
-      removeItemFromCart(foundItem);
+      removeFromCart(foundItem);
     }
   }
 
   updateUi();
 }
 
-function removeItemFromCart(item) {
-  let itemToUpdate = undefined;
+function removeFromCart(event) {
+  let catalogItemButton = undefined;
 
-  if (item.target) {
-    const productId = item.target.parentElement.dataset.id;
+  if (event.target) {
+    const targetProductId = event.target.parentElement.dataset.id;
 
-    let itemToRemove = products.find((product) => product.id == productId);
-    let foundItem = cartItems.find((myItem) => myItem.product === itemToRemove);
-    cartItems.splice(cartItems.indexOf(foundItem), 1);
+    let targetProduct = products.find(
+      (product) => product.id == targetProductId
+    );
 
-    itemToUpdate = document.getElementById(`button-product-${productId}`);
-  } else {
-    let cartItemIndex = cartItems.indexOf(item);
+    let targetCartItem = cartItems.find(
+      (item) => item.product === targetProduct
+    );
 
-    cartItems.splice(cartItemIndex, 1);
+    cartItems.splice(cartItems.indexOf(targetCartItem), 1);
 
-    itemToUpdate = document.getElementById(`button-product-${item.product.id}`);
+    catalogItemButton = document.getElementById(
+      `button-product-${targetProductId}`
+    );
+  } else if (event.product) {
+    cartItems.splice(cartItems.indexOf(event), 1);
+
+    catalogItemButton = document.getElementById(
+      `button-product-${event.product.id}`
+    );
   }
 
-  itemToUpdate.innerText = 'Add to Cart';
-  itemToUpdate.disabled = false;
+  catalogItemButton.innerText = catalogItemButtonText_Enabled;
+  catalogItemButton.disabled = false;
 
   updateUi();
 }
 
 function updateUi() {
-  updateCart();
-  updateCartIconCounter();
-  updateTotalCost();
+  updateCartList();
+  updateCartItemsCount();
+  updateCartSubtotal();
 }
 
-function updateCartIconCounter() {
+function updateCartItemsCount() {
   let totalItems = cartItems.reduce((sum, cur) => sum + cur.count, 0);
   cartIconCounter.innerText = totalItems;
 
@@ -201,12 +212,12 @@ function updateCartIconCounter() {
   }
 }
 
-function updateTotalCost() {
+function updateCartSubtotal() {
   let totalCost = cartItems.reduce((sum, cur) => sum + cur.totalPrice, 0);
   totalCostValueElement.innerText = formatCurrency(totalCost);
 }
 
-function updateCart() {
+function updateCartList() {
   clearCartList();
   fillCartList();
 }
@@ -239,7 +250,7 @@ async function initializeProducts() {
 
   for (let i = 0; i < products.length; i++) {
     productsList.insertAdjacentHTML(
-      'afterbegin',
+      'beforeend',
       productCardTemplate(products[i])
     );
   }
