@@ -261,7 +261,46 @@
           </div>
 
           <section class="catalog-container">
-            <div class="products-list"></div>
+            <div class="products-list">
+              <!-- Products List -->
+              <div
+                class="product"
+                data-id="${product.id}"
+              >
+                <div class="product-image-container">
+                  <img
+                    class="product-image"
+                    src="https://picsum.photos/id/622/800/"
+                  />
+                </div>
+                <div class="product-info-container">
+                  <div class="product-brand">Test Brand</div>
+                  <div class="product-title">Test Item Title</div>
+                  <div class="product-description">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Quod, blanditiis?
+                    </p>
+                  </div>
+                  <div class="product-price">
+                    <span class="product-price-value">$69.99</span>
+                  </div>
+
+                  <div
+                    class="product-button-group"
+                    data-id="999999"
+                  >
+                    <button
+                      class="button-product button-add"
+                      id="button-product-999999"
+                      onclick="addToCart(event)"
+                    >
+                      Button Text
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </section>
         </div>
       </main>
