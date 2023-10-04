@@ -5,7 +5,7 @@
   flex-direction: column;
   max-height: 38rem;
   max-width: 24rem;
-  background-color: var(--color-fg);
+  /* background-color: var(--color-fg); */
 
   overflow: hidden;
   border-radius: 3pt;
@@ -14,6 +14,7 @@
 .product-image-container {
   overflow: hidden;
   aspect-ratio: 1/1;
+  border-radius: 3pt;
 }
 
 .product-image {
@@ -23,14 +24,42 @@
 .product-info-container {
   display: flex;
   flex-direction: column;
-  padding: 0.8rem;
+  /* padding: 0.8rem; */
+  padding-top: 0.8rem;
   width: 100%;
 }
+
+.product-brand {
+  font-size: 0.8rem;
+  font-weight: 300;
+  margin-bottom: -0.2rem;
+}
+
+.product-title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+
+  text-transform: uppercase;
+}
+
+.product-description {
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.product-price {
+  font-size: 1.2rem;
+  margin-block: 0.6rem;
+  font-weight: 200;
+}
+
+/* ----- Button ----- */
 
 .product-button-group {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
 }
 
@@ -49,38 +78,26 @@
   color: var(--color-fg);
   font-weight: 700;
   text-transform: uppercase;
+
+  border: 3px solid var(--color-font);
+
+  transition: all 0.1s ease-in;
 }
 
 .button-product:hover {
-  background-color: var(--color-accent);
+  color: var(--color-font);
+  background-color: var(--color-bg);
+  border: 3px solid var(--color-accent);
 }
 
 .button-product:disabled {
   background-color: var(--color-disabled);
+  border: 3px solid var(--color-disabled);
+  color: var(--color-fg);
+
   cursor: default;
 }
 
 .button-product:disabled:hover {
   background-color: var(--color-disabled);
-}
-
-.product-brand {
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.product-title {
-  font-size: 1.4rem;
-  font-weight: 700;
-}
-
-.product-description {
-  font-size: 0.9rem;
-  font-weight: 300;
-}
-
-.product-price {
-  font-size: 1.2rem;
-  margin-block: 0.6rem;
-  font-weight: 200;
 }
