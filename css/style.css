@@ -140,8 +140,10 @@ a:hover {
   align-items: center;
   justify-content: center;
 
-  width: 2rem;
-  margin-right: 0.8rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-right: 0.4rem;
+  padding-top: 0.2rem;
 }
 
 .nav-logo-icon {
