@@ -76,7 +76,7 @@ const cartItemTemplate = function (item) {
             >
               <button
                 class="button-cart button-add"
-                onclick="handleAddToCart(event)"
+                onclick="addToCart(event)"
                 data-id="${item.product.id}"
               >
                 <span class="material-symbols-outlined button-cart-icon">
