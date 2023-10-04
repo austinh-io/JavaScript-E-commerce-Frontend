@@ -73,10 +73,10 @@
   background-color: var(--radio-color);
 }
 
-input[type='radio']#light {
+/* input[type='radio']#light {
   --radio-color: rgb(223, 232, 238);
 }
 
 input[type='radio']#dark {
   --radio-color: rgb(23, 28, 32);
-}
+} */

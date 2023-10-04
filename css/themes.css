@@ -6,6 +6,7 @@
   --color-font-secondary: #90979c;
   --color-accent: #4a6eff;
   --color-disabled: #87909f;
+  --color-radio: #47be9c;
 }
 
 :root:has(#light:checked) {
