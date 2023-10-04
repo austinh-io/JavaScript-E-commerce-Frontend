@@ -389,8 +389,7 @@ div.nav-menu-toggle {
   height: 100%;
 
   /* background-color: var(--color-bg-trans); */
-  backdrop-filter: grayscale(100%);
-  backdrop-filter: brightness(30%);
+  backdrop-filter: grayscale(100%) brightness(30%);
 }
 
 img.hero-bg-image {
