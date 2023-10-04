@@ -15,12 +15,12 @@ const navToggleClose = document.querySelector('.nav-menu-toggle-close');
 cartToggle.addEventListener('click', handleCartMenu);
 cartToggleClose.addEventListener('click', handleCartMenu);
 
-themeToggle.addEventListener('click', handleThemeMenu);
+// themeToggle.addEventListener('click', handleThemeMenu);
 
-filterToggle.addEventListener('click', handleFilterMenu);
+// filterToggle.addEventListener('click', handleFilterMenu);
 
-navMenu.addEventListener('click', handleNavMenu);
-navToggle.addEventListener('click', handleNavMenu);
+// navMenu.addEventListener('click', handleNavMenu);
+// navToggle.addEventListener('click', handleNavMenu);
 // navToggleClose.addEventListener('click', handleNavMenu);
 
 function handleCartMenu() {

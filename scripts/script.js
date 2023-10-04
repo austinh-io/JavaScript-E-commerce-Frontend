@@ -1,3 +1,20 @@
+'use strict';
+
+const productsList = document.querySelector('.products-list');
+const cartItemsList = document.querySelector('.cart-items-container');
+const cartIconCounter = document.querySelector('.cart-icon-counter');
+const totalCostValueElement = document.querySelector('.total-cost-value');
+
+let cartItems = new Array();
+let addToCartButtons = new Array();
+let products = new Array();
+
+function cartItem(count, product, totalPrice) {
+  this.count = count;
+  this.product = product;
+  this.totalPrice = totalPrice;
+}
+
 const productCardTemplate = function (product) {
   return `
   <div class="product" data-id=${product.id}>
@@ -87,21 +104,6 @@ const cartItemTemplate = function (item) {
         </div>
   `;
 };
-
-const productsList = document.querySelector('.products-list');
-const cartItemsList = document.querySelector('.cart-items-container');
-const cartIconCounter = document.querySelector('.cart-icon-counter');
-const totalCostValueElement = document.querySelector('.total-cost-value');
-
-function cartItem(count, product, totalPrice) {
-  this.count = count;
-  this.product = product;
-  this.totalPrice = totalPrice;
-}
-
-let cartItems = [];
-let addToCartButtons = [];
-let products = new Array();
 
 function formatCurrency(currency) {
   return new Intl.NumberFormat('en-US', {
