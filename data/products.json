@@ -92,7 +92,7 @@
       {
         "optionId": 0,
         "brand": "Brand 3 - Brandy's",
-        "title": "Item 0",
+        "title": "Item 9",
         "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
         "price": 9.99,
         "imageSource": "https://picsum.photos/id/30/800/"
@@ -100,7 +100,7 @@
       {
         "optionId": 1,
         "brand": "Brand 3 - Brandy's",
-        "title": "Item 1",
+        "title": "Item 10",
         "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
         "price": 10.99,
         "imageSource": "https://picsum.photos/id/31/800/"
@@ -113,7 +113,7 @@
       {
         "optionId": 0,
         "brand": "Brand 4 - McBrand Business Name",
-        "title": "Item 0",
+        "title": "Item 11",
         "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
         "price": 12.99,
         "imageSource": "https://picsum.photos/id/40/800/"
