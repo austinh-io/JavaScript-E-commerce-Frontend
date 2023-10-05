@@ -55,6 +55,14 @@
         "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
         "price": 5.99,
         "imageSource": "https://picsum.photos/id/12/800/"
+      },
+      {
+        "optionId": 3,
+        "brand": "Brand 1 - Lorem Ipsum Group",
+        "title": "Item 1 - 4",
+        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "price": 69.98,
+        "imageSource": "https://picsum.photos/id/13/800/"
       }
     ]
   },

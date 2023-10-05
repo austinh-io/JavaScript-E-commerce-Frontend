@@ -1,0 +1,62 @@
+<fieldset class="product-fieldset">
+  <legend class="hidden">Variant</legend>
+  <div>
+    <input
+      type="radio"
+      id="option-${product.id}-${product.options[0].optionId}"
+      name="options-item-${product.id}"
+      value="option-${product.options[0].optionId}"
+      checked
+    />
+    <label
+      for="red1"
+      class="hidden"
+      >Red</label
+    >
+  </div>
+
+  <div>
+    <input
+      type="radio"
+      id="option-${product.id}-${product.options[1].optionId}"
+      name="options-item-${product.id}"
+      value="option-${product.options[1].optionId}"
+    />
+    <label
+      for="blue1"
+      class="hidden"
+      >Blue</label
+    >
+  </div>
+
+  <div>
+    <input
+      type="radio"
+      id="option-${product.id}-${product.options[2].optionId}"
+      name="options-item-${product.id}"
+      value="option-${product.options[2].optionId}"
+    />
+    <label
+      for="green1"
+      class="hidden"
+      >Green</label
+    >
+  </div>
+</fieldset>
+
+<!-- Card Option Field -->
+<div>
+  <input
+    type="radio"
+    id="option-${product.id}-${product.options[0].optionId}"
+    name="options-item-${product.id}"
+    value="option-${product.options[0].optionId}"
+    onChange="handleProductOptionChange(event)"
+    checked
+  />
+  <label
+    for="option-${product.id}-${product.options[0].optionId}"
+    class="hidden"
+    >Red</label
+  >
+</div>

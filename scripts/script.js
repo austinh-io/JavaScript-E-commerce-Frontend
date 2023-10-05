@@ -18,106 +18,46 @@ function cartItem(count, product, totalPrice) {
   this.totalPrice = totalPrice;
 }
 
-const productCardTemplate = function (product) {
-  const placeHolderFieldset = `  
-  <fieldset class="product-fieldset">
-    <legend class="hidden">Variant</legend>
-    <div>
-      <input
-        type="radio"
-        id="option-${product.id}-${product.options[0].optionId}"
-        name="options-item-${product.id}"
-        value="option-${product.options[0].optionId}"
-        checked
-      />
-      <label
-        for="red1"
-        class="hidden"
-        >Red</label
-      >
-    </div>
-
-    <div>
-      <input
-        type="radio"
-        id="option-${product.id}-${product.options[1].optionId}"
-        name="options-item-${product.id}"
-        value="option-${product.options[1].optionId}"
-      />
-      <label
-        for="blue1"
-        class="hidden"
-        >Blue</label
-      >
-    </div>
-
-    <div>
-      <input
-        type="radio"
-        id="option-${product.id}-${product.options[2].optionId}"
-        name="options-item-${product.id}"
-        value="option-${product.options[2].optionId}"
-      />
-      <label
-        for="green1"
-        class="hidden"
-        >Green</label
-      >
-    </div>
-  </fieldset>
+function cardOptionField(product, index) {
+  return `
+  <div>
+    <input
+      type="radio"
+      id="option-${product.id}-${product.options[index].optionId}"
+      name="options-item-${product.id}"
+      value="option-${product.options[index].optionId}"
+      onChange="handleProductOptionChange(event)"
+      checked
+    />
+    <label
+      for="option-${product.id}-${product.options[index].optionId}"
+      class="hidden"
+      >Option ${index}</label
+    >
+  </div>
   `;
+}
 
-  const cardOptions = undefined;
-  const cardOptionsFieldset = undefined;
+const productCardTemplate = function (product) {
+  let cardOptionsFieldset = undefined;
 
   if (product.options.length > 1) {
+    let cardOptions = '';
+
+    for (let i = 0; i < product.options.length; i++) {
+      cardOptions += cardOptionField(product, i);
+    }
+
     cardOptionsFieldset = `
     <fieldset class="product-fieldset">
       <legend class="hidden">Variant</legend>
-      <div>
-        <input
-          type="radio"
-          id="option-${product.id}-${product.options[0].optionId}"
-          name="options-item-${product.id}"
-          value="option-${product.options[0].optionId}"
-          checked
-        />
-        <label
-          for="red1"
-          class="hidden"
-          >Red</label
-        >
-      </div>
 
-      <div>
-        <input
-          type="radio"
-          id="option-${product.id}-${product.options[0].optionId}"
-          name="options-item-${product.id}"
-          value="option-${product.options[0].optionId}"
-        />
-        <label
-          for="blue1"
-          class="hidden"
-          >Blue</label
-        >
-      </div>
+      ${cardOptions}
 
-      <div>
-        <input
-          type="radio"
-          id="option-${product.id}-${product.options[0].optionId}"
-          name="options-item-${product.id}"
-          value="option-${product.options[0].optionId}"
-        />
-        <label
-          for="green1"
-          class="hidden"
-          >Green</label
-        >
-      </div>
     </fieldset>
     `;
+  } else {
+    cardOptionsFieldset = '';
   }
 
   return `
@@ -137,51 +77,7 @@ const productCardTemplate = function (product) {
           </p>          
         </div>
 
-      <fieldset class="product-fieldset">
-        <legend class="hidden">Variant</legend>
-        <div>
-          <input
-            type="radio"
-            id="option-${product.id}-${product.options[0].optionId}"
-            name="options-item-${product.id}"
-            value="option-${product.options[0].optionId}"
-            checked
-          />
-          <label
-            for="red1"
-            class="hidden"
-            >Red</label
-          >
-        </div>
-
-        <div>
-          <input
-            type="radio"
-            id="option-${product.id}-${product.options[1].optionId}"
-            name="options-item-${product.id}"
-            value="option-${product.options[1].optionId}"
-          />
-          <label
-            for="blue1"
-            class="hidden"
-            >Blue</label
-          >
-        </div>
-
-        <div>
-          <input
-            type="radio"
-            id="option-${product.id}-${product.options[2].optionId}"
-            name="options-item-${product.id}"
-            value="option-${product.options[2].optionId}"
-          />
-          <label
-            for="green1"
-            class="hidden"
-            >Green</label
-          >
-        </div>
-      </fieldset>
+        ${cardOptionsFieldset}        
 
         <div class="product-price">
           <span class="product-price-value">${formatCurrency(
@@ -306,7 +202,9 @@ function subtractFromCart(event) {
     }
   }
 
-  updateUi();
+  updateUi(); //Note: this function can be redundant since it is also called in removeFromCart() sometimes.
+  //If updateUi() begins to affect performance, then I should find a way to only call this only once as opposed to twice
+  //Or only update the UI elements that are necessary
 }
 
 function removeFromCart(event) {
@@ -342,10 +240,21 @@ function removeFromCart(event) {
   updateUi();
 }
 
+function handleProductOptionChange(event) {
+  console.log(event);
+}
+
+function updateCatalogItemsCartButtons() {
+  //TODO:
+  //Find way to activate/deactivate buttons based on if item is in cart/not in cart.
+  //This check should happen every time an item is added, removed, or an option of an item is selected
+}
+
 function updateUi() {
   updateCartList();
   updateCartItemsCount();
   updateCartSubtotal();
+  updateCatalogItemsCartButtons();
 }
 
 function updateCartItemsCount() {
@@ -390,8 +299,6 @@ async function catchProductList() {
   const response = await fetch('./data/products.json');
   const productsObj = await response.json();
   products = [...productsObj];
-
-  // console.log(products[0].options[1]);
 }
 
 async function initializeProducts() {
