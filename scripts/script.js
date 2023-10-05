@@ -252,9 +252,6 @@ function handleProductOptionChange(event) {
     (productOption) => productOption.optionId == productOptionId
   );
 
-  console.log(targetProduct.options);
-  console.log(targetProductOption);
-
   const targetElement = document.getElementById(
     `product-${event.target.dataset.id}`
   );
@@ -332,8 +329,6 @@ async function catchProductList() {
 
 async function initializeProducts() {
   await catchProductList();
-
-  console.log(products.length);
 
   for (let i = 0; i < products.length; i++) {
     productsList.insertAdjacentHTML(
