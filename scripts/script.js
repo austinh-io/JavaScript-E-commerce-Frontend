@@ -19,6 +19,107 @@ function cartItem(count, product, totalPrice) {
 }
 
 const productCardTemplate = function (product) {
+  const placeHolderFieldset = `  
+  <fieldset class="product-fieldset">
+    <legend class="hidden">Variant</legend>
+    <div>
+      <input
+        type="radio"
+        id="option-${product.id}-${product.options[0].optionId}"
+        name="options-item-${product.id}"
+        value="option-${product.options[0].optionId}"
+        checked
+      />
+      <label
+        for="red1"
+        class="hidden"
+        >Red</label
+      >
+    </div>
+
+    <div>
+      <input
+        type="radio"
+        id="option-${product.id}-${product.options[1].optionId}"
+        name="options-item-${product.id}"
+        value="option-${product.options[1].optionId}"
+      />
+      <label
+        for="blue1"
+        class="hidden"
+        >Blue</label
+      >
+    </div>
+
+    <div>
+      <input
+        type="radio"
+        id="option-${product.id}-${product.options[2].optionId}"
+        name="options-item-${product.id}"
+        value="option-${product.options[2].optionId}"
+      />
+      <label
+        for="green1"
+        class="hidden"
+        >Green</label
+      >
+    </div>
+  </fieldset>
+  `;
+
+  const cardOptions = undefined;
+  const cardOptionsFieldset = undefined;
+
+  if (product.options.length > 1) {
+    cardOptionsFieldset = `
+    <fieldset class="product-fieldset">
+      <legend class="hidden">Variant</legend>
+      <div>
+        <input
+          type="radio"
+          id="option-${product.id}-${product.options[0].optionId}"
+          name="options-item-${product.id}"
+          value="option-${product.options[0].optionId}"
+          checked
+        />
+        <label
+          for="red1"
+          class="hidden"
+          >Red</label
+        >
+      </div>
+
+      <div>
+        <input
+          type="radio"
+          id="option-${product.id}-${product.options[0].optionId}"
+          name="options-item-${product.id}"
+          value="option-${product.options[0].optionId}"
+        />
+        <label
+          for="blue1"
+          class="hidden"
+          >Blue</label
+        >
+      </div>
+
+      <div>
+        <input
+          type="radio"
+          id="option-${product.id}-${product.options[0].optionId}"
+          name="options-item-${product.id}"
+          value="option-${product.options[0].optionId}"
+        />
+        <label
+          for="green1"
+          class="hidden"
+          >Green</label
+        >
+      </div>
+    </fieldset>
+    `;
+  }
+
   return `
   <div class="product" data-id=${product.id}>
     <div class="product-image-container">
@@ -36,14 +137,14 @@ const productCardTemplate = function (product) {
           </p>          
         </div>
 
-        <fieldset class="product-fieldset">
+      <fieldset class="product-fieldset">
         <legend class="hidden">Variant</legend>
         <div>
           <input
             type="radio"
-            id="red1"
-            name="colors"
-            value="red"
+            id="option-${product.id}-${product.options[0].optionId}"
+            name="options-item-${product.id}"
+            value="option-${product.options[0].optionId}"
             checked
           />
           <label
@@ -56,9 +157,9 @@ const productCardTemplate = function (product) {
         <div>
           <input
             type="radio"
-            id="blue1"
-            name="colors"
-            value="blue"
+            id="option-${product.id}-${product.options[1].optionId}"
+            name="options-item-${product.id}"
+            value="option-${product.options[1].optionId}"
           />
           <label
             for="blue1"
@@ -70,9 +171,9 @@ const productCardTemplate = function (product) {
         <div>
           <input
             type="radio"
-            id="green1"
-            name="colors"
-            value="green"
+            id="option-${product.id}-${product.options[2].optionId}"
+            name="options-item-${product.id}"
+            value="option-${product.options[2].optionId}"
           />
           <label
             for="green1"
