@@ -26,8 +26,10 @@ function cardOptionField(product, index) {
       id="option-${product.id}-${product.options[index].optionId}"
       name="options-item-${product.id}"
       value="option-${product.options[index].optionId}"
+      data-id="${product.id}"
+      data-optionid="${product.options[index].optionId}"
       onChange="handleProductOptionChange(event)"
-      checked
+      ${index == 0 ? 'checked' : ''}
     />
     <label
       for="option-${product.id}-${product.options[index].optionId}"
@@ -61,7 +63,7 @@ const productCardTemplate = function (product) {
   }
 
   return `
-  <div class="product" data-id=${product.id}>
+  <div class="product" id="product-${product.id}" data-id=${product.id}>
     <div class="product-image-container">
         <img
         class="product-image"
@@ -241,7 +243,34 @@ function removeFromCart(event) {
 }
 
 function handleProductOptionChange(event) {
-  console.log(event);
+  let productId = event.target.dataset.id;
+  let productOptionId = event.target.dataset.optionid;
+
+  let targetProduct = products.find((product) => product.id == productId);
+
+  let targetProductOption = targetProduct.options.find(
+    (productOption) => productOption.optionId == productOptionId
+  );
+
+  console.log(targetProduct.options);
+  console.log(targetProductOption);
+
+  const targetElement = document.getElementById(
+    `product-${event.target.dataset.id}`
+  );
+
+  const image = targetElement.querySelector('.product-image');
+  const brand = targetElement.querySelector('.product-brand');
+  const title = targetElement.querySelector('.product-title');
+  const description = targetElement.querySelector('.product-description')
+    .children[0];
+  const price = targetElement.querySelector('.product-price-value');
+
+  image.src = targetProductOption.imageSource;
+  brand.innerText = targetProductOption.brand;
+  title.innerText = targetProductOption.title;
+  description.innerText = targetProductOption.description;
+  price.innerText = formatCurrency(targetProductOption.price);
 }
 
 function updateCatalogItemsCartButtons() {
