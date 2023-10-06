@@ -28,7 +28,6 @@
 .product-info-container {
   display: flex;
   flex-direction: column;
-  /* padding: 0.8rem; */
   padding-top: 0.8rem;
   width: 100%;
 }
@@ -119,22 +118,6 @@
   background-color: var(--color-disabled);
 }
 
-/* ----- Fieldset ----- */
-/* .product-fieldset {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  gap: 1rem;
-  border: none;
-  margin-top: 0.6rem;
-} */
-
-/* .product-fieldset input {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-
 fieldset.product-fieldset {
   display: flex;
   align-items: center;
@@ -162,13 +145,19 @@ fieldset.product-fieldset {
   transition: all 0.1s ease-out;
 }
 
+.product-fieldset input[type='radio']:hover {
+  outline: 3px solid var(--color-accent, currentColor);
+  border: none;
+}
+
 .product-fieldset input[type='radio']:checked {
   outline: 3px solid var(--color-font, currentColor);
   border: none;
 }
 
-.product-fieldset input[type='radio']:hover {
-  outline: 3px solid var(--color-accent, currentColor);
+.product-fieldset input[type='radio']:checked:hover {
+  outline: 3px solid var(--color-font, currentColor);
+  cursor: default;
   border: none;
 }
 
