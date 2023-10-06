@@ -24,6 +24,7 @@ function cartItem(id, productId, option, count, totalPrice) {
 }
 
 function cardOptionField(product, index) {
+  let colors = ['#f9dbbd', '#fca17d', '#da627d', '#9a348e'];
   return `
   <div>
     <input
@@ -35,6 +36,9 @@ function cardOptionField(product, index) {
       data-optionid="${product.options[index].optionId}"
       onChange="handleProductOptionChange(event)"
       ${index == 0 ? 'checked' : ''}
+      style="
+        background-color: ${colors[index]};
+      "
     />
     <label
       for="option-${product.id}-${product.options[index].optionId}"
