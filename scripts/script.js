@@ -201,16 +201,11 @@ function addToCart(event) {
     (productOption) => productOption.optionId == productOptionId
   );
 
-  if (findItem(cartItems, productId, productOptionId)) {
-    const foundItem = cartItems.find((item) => {
-      if (
-        item.productId == productId &&
-        item.option.optionId == productOptionId
-      )
-        return item;
-    });
-    foundItem.count += 1;
-    foundItem.totalPrice = foundItem.count * foundItem.option.price;
+  let cartItemToAdd = findItem(cartItems, productId, productOptionId);
+
+  if (cartItemToAdd) {
+    cartItemToAdd.count += 1;
+    cartItemToAdd.totalPrice = cartItemToAdd.count * cartItemToAdd.option.price;
   } else {
     const newItem = new cartItem(
       productId + productOptionId,
