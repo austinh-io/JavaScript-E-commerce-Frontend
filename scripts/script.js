@@ -23,23 +23,23 @@ function cartItem(id, productId, option, count, totalPrice) {
   this.totalPrice = totalPrice;
 }
 
-function cardOptionField(option, index) {
+function cardOptionField(product, index) {
   return `
   <div>
     <input
       type="radio"
-      id="option-${option.id}-${option.options[index].optionId}"
-      name="options-item-${option.id}"
-      value="option-${option.options[index].optionId}"
-      data-id="${option.id}"
-      data-optionid="${option.options[index].optionId}"
+      id="option-${product.id}-${product.options[index].optionId}"
+      name="options-item-${product.id}"
+      value="option-${product.options[index].optionId}"
+      data-id="${product.id}"
+      data-optionid="${product.options[index].optionId}"
       onChange="handleProductOptionChange(event)"
       ${index == 0 ? 'checked' : ''}
     />
     <label
-      for="option-${option.id}-${option.options[index].optionId}"
+      for="option-${product.id}-${product.options[index].optionId}"
       class="hidden"
-      >Option ${index}</label
+      >${product.options[index].optionLabel}</label
     >
   </div>
   `;
