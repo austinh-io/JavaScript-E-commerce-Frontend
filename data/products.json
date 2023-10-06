@@ -43,7 +43,7 @@
       {
         "optionId": 1,
         "brand": "Lorem Ipsum Group",
-        "title": "Item 1 - 2",
+        "title": "Item 1 - 1",
         "description": "Nisi scelerisque eu ultrices vitae auctor eu augue ut lectus. Condimentum mattis pellentesque id nibh tortor id aliquet lectus proin.",
         "price": 4.99,
         "imageSource": "./assets/images/productImages/item4-0.jpg"
@@ -51,7 +51,7 @@
       {
         "optionId": 2,
         "brand": "Lorem Ipsum Group",
-        "title": "Item 1 - 3",
+        "title": "Item 1 - 2",
         "description": "Feugiat vivamus at augue eget arcu dictum varius duis at. Neque gravida in fermentum et sollicitudin ac.",
         "price": 5.99,
         "imageSource": "./assets/images/productImages/item5-0.jpg"
@@ -59,7 +59,7 @@
       {
         "optionId": 3,
         "brand": "Lorem Ipsum Group",
-        "title": "Item 1 - 4",
+        "title": "Item 1 - 3",
         "description": "Massa tincidunt dui ut ornare lectus sit amet est placerat. Ut consequat semper viverra nam libero justo laoreet.",
         "price": 69.98,
         "imageSource": "./assets/images/productImages/item6-0.jpg"

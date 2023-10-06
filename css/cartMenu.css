@@ -78,24 +78,16 @@
   border: 2px solid var(--color-font);
   overflow: hidden;
   border-radius: 3pt;
-}
 
-.cart-item-col3 {
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-  justify-content: space-between;
-
-  margin-left: auto;
-
-  max-width: 20%;
+  z-index: 990;
 }
 
 .button-cart {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.4rem;
+  /* padding: 0.4rem; */
+  margin: 0.2rem;
 
   width: 100%;
   max-width: 12rem;
@@ -106,6 +98,8 @@
   background: none;
 
   color: var(--color-font);
+
+  z-index: 995;
 }
 
 .button-cart :hover {
@@ -129,6 +123,17 @@
 .material-symbols-outlined.button-cart-icon {
   font-size: 2rem;
   border-radius: 3pt;
+}
+
+.cart-item-col3 {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: space-between;
+
+  margin-left: auto;
+
+  max-width: 20%;
 }
 
 /* Cart Menu Button */

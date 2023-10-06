@@ -4,6 +4,9 @@ const productsList = document.querySelector('.products-list');
 const cartItemsList = document.querySelector('.cart-items-container');
 const cartIconCounter = document.querySelector('.cart-icon-counter');
 const totalCostValueElement = document.querySelector('.total-cost-value');
+const catalogProductsButtons = document.getElementsByClassName(
+  'button-product button-add'
+);
 
 let cartItems = new Array();
 let addToCartButtons = new Array();
@@ -12,27 +15,29 @@ let products = new Array();
 const catalogItemButtonText_Enabled = 'Add to Cart';
 const catalogItemButtonText_Disabled = 'Item in Cart';
 
-function cartItem(count, product, totalPrice) {
+function cartItem(id, productId, option, count, totalPrice) {
+  this.id = id;
+  this.productId = productId;
+  this.option = option;
   this.count = count;
-  this.product = product;
   this.totalPrice = totalPrice;
 }
 
-function cardOptionField(product, index) {
+function cardOptionField(option, index) {
   return `
   <div>
     <input
       type="radio"
-      id="option-${product.id}-${product.options[index].optionId}"
-      name="options-item-${product.id}"
-      value="option-${product.options[index].optionId}"
-      data-id="${product.id}"
-      data-optionid="${product.options[index].optionId}"
+      id="option-${option.id}-${option.options[index].optionId}"
+      name="options-item-${option.id}"
+      value="option-${option.options[index].optionId}"
+      data-id="${option.id}"
+      data-optionid="${option.options[index].optionId}"
       onChange="handleProductOptionChange(event)"
       ${index == 0 ? 'checked' : ''}
     />
     <label
-      for="option-${product.id}-${product.options[index].optionId}"
+      for="option-${option.id}-${option.options[index].optionId}"
       class="hidden"
       >Option ${index}</label
     >
@@ -43,23 +48,23 @@ function cardOptionField(product, index) {
 const productCardTemplate = function (product) {
   let cardOptionsFieldset = undefined;
 
-  if (product.options.length > 1) {
-    let cardOptions = '';
+  if (product.options.length < 1) {
+    cardOptionsFieldset = '';
+  } else {
+    let cardProductOptions = '';
 
     for (let i = 0; i < product.options.length; i++) {
-      cardOptions += cardOptionField(product, i);
+      cardProductOptions += cardOptionField(product, i);
     }
 
     cardOptionsFieldset = `
     <fieldset class="product-fieldset">
       <legend class="hidden">Variant</legend>
 
-      ${cardOptions}
+      ${cardProductOptions}
 
     </fieldset>
     `;
-  } else {
-    cardOptionsFieldset = '';
   }
 
   return `
@@ -92,7 +97,7 @@ const productCardTemplate = function (product) {
   }>
           <button
             class="button-product button-add"
-            id="button-product-${product.id}${product.options[0].optionId}"
+            id="button-product-${product.id + product.options[0].optionId}"
             onclick="addToCart(event)"
           >
             ${catalogItemButtonText_Enabled}
@@ -107,16 +112,17 @@ const cartItemTemplate = function (item) {
   return `
         <div
           class="cart-item-container"
-          data-id="${item.product.id}"
+          data-id="${item.productId}"
+          data-optionid="${item.option.optionId}"
         >
           <div class="cart-item-col1">
             <img
-              src="${item.product.options[0].imageSource}"
+              src="${item.option.imageSource}"
               class="cart-item-image"
             />
           </div>
           <div class="cart-item-col2">
-            <div class="cart-item-title">${item.product.options[0].title}</div>
+            <div class="cart-item-title">${item.option.title}</div>
 
             <div
               class="cart-item-buttons-container"
@@ -124,19 +130,21 @@ const cartItemTemplate = function (item) {
               <button
                 class="button-cart button-add"
                 onclick="addToCart(event)"
-                data-id="${item.product.id}"
+                data-id="${item.productId}"
+                data-optionid="${item.option.optionId}"
               >
                 <span class="material-symbols-outlined button-cart-icon">
                   stat_1
                 </span>
               </button>
 
-              <div class="cart-item-count">${item.options[0].count}</div>
+              <div class="cart-item-count">${item.count}</div>
 
               <button
                 class="button-cart button-subtract"
                 onclick="subtractFromCart(event)"
-                data-id="${item.product.id}"
+                data-id="${item.productId}"
+                data-optionid="${item.option.optionId}"
               >
                 <span class="material-symbols-outlined button-cart-icon">
                   stat_minus_1
@@ -147,7 +155,8 @@ const cartItemTemplate = function (item) {
           <div class="cart-item-col3">
             <button
               class="button-cart button-remove"
-              data-id="${item.product.id}"
+              data-id="${item.productId}"
+              data-optionid="${item.option.optionId}"
               onclick="removeFromCart(event)"
             >
               <span class="material-symbols-outlined"> delete </span>
@@ -168,87 +177,62 @@ function formatCurrency(value) {
   }).format(value);
 }
 
-//OLD, WORKING FUNCTION
-// function addToCart(event) {
-//   const productId = event.target.parentElement.dataset.id;
-//   let productToAdd = products.find((product) => product.id == productId);
-
-//   //new stuff
-//   let productId = event.target.dataset.id;
-//   let productOptionId = event.target.dataset.optionid;
-
-//   let targetProduct = products.find((product) => product.id == productId);
-
-//   let targetProductOption = targetProduct.options.find(
-//     (productOption) => productOption.optionId == productOptionId
-//   );
-//   //end new stuff
-
-//   if (cartItems.find((item) => item.product.id === productToAdd.id)) {
-//     const foundItem = cartItems.find((item) => item.product === productToAdd);
-//     foundItem.count += 1;
-//     foundItem.totalPrice = foundItem.count * foundItem.product.price;
-//   } else {
-//     const newItem = new cartItem(1, productToAdd, productToAdd.price);
-//     cartItems.push(newItem);
-//   }
-
-//   updateUi();
-
-//   if (event.srcElement.classList.contains('button-product')) {
-//     event.srcElement.disabled = true;
-//     event.srcElement.innerText = catalogItemButtonText_Disabled;
-//   }
-// }
+function findItem(_itemList, _productId, _optionId) {
+  return _itemList.find((item) => {
+    if (item.productId == _productId && item.option.optionId == _optionId)
+      return item;
+  });
+}
 
 function addToCart(event) {
-  // const productId = event.target.parentElement.dataset.id;
-  // let productToAdd = products.find((product) => product.id == productId);
-
   let eventTarget = event.target.parentElement;
 
-  //
   let productId = eventTarget.dataset.id;
+
   let productOptionId = eventTarget.dataset.optionid;
 
   let targetProduct = products.find((product) => product.id == productId);
 
-  let productToAdd = targetProduct.options.find(
+  let productOptionToAdd = targetProduct.options.find(
     (productOption) => productOption.optionId == productOptionId
   );
-  //
 
-  if (cartItems.find((item) => item.product.id === productToAdd.id)) {
-    const foundItem = cartItems.find((item) => item.product === productToAdd);
+  if (findItem(cartItems, productId, productOptionId)) {
+    const foundItem = cartItems.find((item) => {
+      if (
+        item.productId == productId &&
+        item.option.optionId == productOptionId
+      )
+        return item;
+    });
     foundItem.count += 1;
-    foundItem.totalPrice = foundItem.count * foundItem.product.price;
+    foundItem.totalPrice = foundItem.count * foundItem.option.price;
   } else {
-    const newItem = new cartItem(1, productToAdd, productToAdd.price);
+    const newItem = new cartItem(
+      productId + productOptionId,
+      productId,
+      productOptionToAdd,
+      1,
+      productOptionToAdd.price
+    );
     cartItems.push(newItem);
   }
 
   updateUi();
-
-  if (event.srcElement.classList.contains('button-product')) {
-    event.srcElement.disabled = true;
-    event.srcElement.innerText = catalogItemButtonText_Disabled;
-  }
 }
 
 function subtractFromCart(event) {
   const productId = event.target.parentElement.dataset.id;
-  let productToRemove = products.find((product) => product.id == productId);
+  const optionId = event.target.parentElement.dataset.optionid;
 
-  const foundItem = cartItems.find((item) => item.product === productToRemove);
+  let itemToRemove = findItem(cartItems, productId, optionId);
 
-  if (foundItem) {
-    if (
-      cartItems.find((item) => item.product.id === productToRemove.id).count > 1
-    ) {
-      foundItem.count -= 1;
-      foundItem.totalPrice = foundItem.count * foundItem.product.price;
+  if (itemToRemove) {
+    if (itemToRemove.count > 1) {
+      itemToRemove.count -= 1;
+      itemToRemove.totalPrice = itemToRemove.count * itemToRemove.option.price;
     } else {
-      removeFromCart(foundItem);
+      removeFromCart(itemToRemove);
     }
   }
 
@@ -258,34 +242,15 @@ function subtractFromCart(event) {
 }
 
 function removeFromCart(event) {
-  let catalogItemButton = undefined;
-
   if (event.target) {
     const targetProductId = event.target.parentElement.dataset.id;
+    const targetOptionId = event.target.parentElement.dataset.optionid;
 
-    let targetProduct = products.find(
-      (product) => product.id == targetProductId
-    );
-
-    let targetCartItem = cartItems.find(
-      (item) => item.product === targetProduct
-    );
-
-    cartItems.splice(cartItems.indexOf(targetCartItem), 1);
-
-    catalogItemButton = document.getElementById(
-      `button-product-${targetProductId}`
-    );
-  } else if (event.product) {
+    let targetItem = findItem(cartItems, targetProductId, targetOptionId);
+    cartItems.splice(cartItems.indexOf(targetItem), 1);
+  } else {
     cartItems.splice(cartItems.indexOf(event), 1);
-
-    catalogItemButton = document.getElementById(
-      `button-product-${event.product.id}`
-    );
   }
-
-  catalogItemButton.innerText = catalogItemButtonText_Enabled;
-  catalogItemButton.disabled = false;
 
   updateUi();
 }
@@ -313,6 +278,7 @@ function handleProductOptionChange(event) {
   const targetButtonGroup = targetElement.querySelector(
     '.product-button-group'
   );
+  const targetButtonGroupChild = targetButtonGroup.children[0];
 
   image.src = targetProductOption.imageSource;
   brand.innerText = targetProductOption.brand;
@@ -320,12 +286,28 @@ function handleProductOptionChange(event) {
   description.innerText = targetProductOption.description;
   price.innerText = formatCurrency(targetProductOption.price);
   targetButtonGroup.dataset.optionid = productOptionId;
+  targetButtonGroupChild.dataset.id = productId;
+  targetButtonGroupChild.dataset.optionid = productOptionId;
+
+  updateUi();
 }
 
 function updateCatalogItemsCartButtons() {
-  //TODO:
-  //Find way to activate/deactivate buttons based on if item is in cart/not in cart.
-  //This check should happen every time an item is added, removed, or an option of an item is selected
+  for (let i = 0; i < catalogProductsButtons.length; i++) {
+    if (
+      findItem(
+        cartItems,
+        catalogProductsButtons[i].parentElement.dataset.id,
+        catalogProductsButtons[i].parentElement.dataset.optionid
+      )
+    ) {
+      catalogProductsButtons[i].disabled = true;
+      catalogProductsButtons[i].innerText = catalogItemButtonText_Disabled;
+    } else {
+      catalogProductsButtons[i].disabled = false;
+      catalogProductsButtons[i].innerText = catalogItemButtonText_Enabled;
+    }
+  }
 }
 
 function updateUi() {
@@ -366,9 +348,7 @@ function fillCartList() {
   cartItems.forEach((cartListItem) => {
     cartItemsList.insertAdjacentHTML(
       'afterbegin',
-      cartItemTemplate(
-        cartItems.find((item) => item.product.id === cartListItem.product.id)
-      )
+      cartItemTemplate(cartListItem)
     );
   });
 }
