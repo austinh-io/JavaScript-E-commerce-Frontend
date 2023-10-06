@@ -48,7 +48,7 @@ function cardOptionField(option, index) {
 const productCardTemplate = function (product) {
   let cardOptionsFieldset = undefined;
 
-  if (product.options.length < 1) {
+  if (product.options.length <= 1) {
     cardOptionsFieldset = '';
   } else {
     let cardProductOptions = '';
