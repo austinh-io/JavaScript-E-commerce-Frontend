@@ -168,9 +168,55 @@ function formatCurrency(value) {
   }).format(value);
 }
 
+//OLD, WORKING FUNCTION
+// function addToCart(event) {
+//   const productId = event.target.parentElement.dataset.id;
+//   let productToAdd = products.find((product) => product.id == productId);
+
+//   //new stuff
+//   let productId = event.target.dataset.id;
+//   let productOptionId = event.target.dataset.optionid;
+
+//   let targetProduct = products.find((product) => product.id == productId);
+
+//   let targetProductOption = targetProduct.options.find(
+//     (productOption) => productOption.optionId == productOptionId
+//   );
+//   //end new stuff
+
+//   if (cartItems.find((item) => item.product.id === productToAdd.id)) {
+//     const foundItem = cartItems.find((item) => item.product === productToAdd);
+//     foundItem.count += 1;
+//     foundItem.totalPrice = foundItem.count * foundItem.product.price;
+//   } else {
+//     const newItem = new cartItem(1, productToAdd, productToAdd.price);
+//     cartItems.push(newItem);
+//   }
+
+//   updateUi();
+
+//   if (event.srcElement.classList.contains('button-product')) {
+//     event.srcElement.disabled = true;
+//     event.srcElement.innerText = catalogItemButtonText_Disabled;
+//   }
+// }
+
 function addToCart(event) {
-  const productId = event.target.parentElement.dataset.id;
-  let productToAdd = products.find((product) => product.id == productId);
+  // const productId = event.target.parentElement.dataset.id;
+  // let productToAdd = products.find((product) => product.id == productId);
+
+  let eventTarget = event.target.parentElement;
+
+  //
+  let productId = eventTarget.dataset.id;
+  let productOptionId = eventTarget.dataset.optionid;
+
+  let targetProduct = products.find((product) => product.id == productId);
+
+  let productToAdd = targetProduct.options.find(
+    (productOption) => productOption.optionId == productOptionId
+  );
+  //
 
   if (cartItems.find((item) => item.product.id === productToAdd.id)) {
     const foundItem = cartItems.find((item) => item.product === productToAdd);
@@ -264,12 +310,16 @@ function handleProductOptionChange(event) {
   const description = targetElement.querySelector('.product-description')
     .children[0];
   const price = targetElement.querySelector('.product-price-value');
+  const targetButtonGroup = targetElement.querySelector(
+    '.product-button-group'
+  );
 
   image.src = targetProductOption.imageSource;
   brand.innerText = targetProductOption.brand;
   title.innerText = targetProductOption.title;
   description.innerText = targetProductOption.description;
   price.innerText = formatCurrency(targetProductOption.price);
+  targetButtonGroup.dataset.optionid = productOptionId;
 }
 
 function updateCatalogItemsCartButtons() {
