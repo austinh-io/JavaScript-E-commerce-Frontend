@@ -4,28 +4,28 @@
     "options": [
       {
         "optionId": 0,
-        "brand": "Brand 0 - Placeholder Inc.",
+        "brand": "Placeholder Inc.",
         "title": "Item 0 - 0",
-        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
         "price": 0.99,
-        "imageSource": "https://picsum.photos/id/1/800/",
+        "imageSource": "./assets/images/productImages/item21-0.jpg",
         "optionValue": "default"
       },
       {
         "optionId": 1,
-        "brand": "Brand 0 - Placeholder Inc.",
+        "brand": "Placeholder Inc.",
         "title": "Item 0 - 1",
-        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "price": 1.99,
-        "imageSource": "https://picsum.photos/id/2/800/"
+        "imageSource": "./assets/images/productImages/item20-0.jpg"
       },
       {
         "optionId": 2,
-        "brand": "Brand 0 - Placeholder Inc.",
+        "brand": "Placeholder Inc.",
         "title": "Item 0 - 2",
-        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "description": "Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Sagittis eu volutpat odio facilisis mauris sit. Porta lorem mollis aliquam ut porttitor leo a diam sollicitudin.",
         "price": 2.99,
-        "imageSource": "https://picsum.photos/id/3/800/"
+        "imageSource": "./assets/images/productImages/item19-0.jpg"
       }
     ]
   },
@@ -34,33 +34,33 @@
     "options": [
       {
         "optionId": 0,
-        "brand": "Brand 1 - Lorem Ipsum Group",
+        "brand": "Lorem Ipsum Group",
         "title": "Item 1 - 0",
-        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "description": "Eu lobortis elementum nibh tellus molestie nunc non blandit. Mauris augue neque gravida in fermentum. Magna fermentum iaculis eu non diam phasellus vestibulum lorem.",
         "price": 3.99,
         "imageSource": "https://picsum.photos/id/10/800/"
       },
       {
         "optionId": 1,
-        "brand": "Brand 1 - Lorem Ipsum Group",
+        "brand": "Lorem Ipsum Group",
         "title": "Item 1 - 2",
-        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "description": "Nisi scelerisque eu ultrices vitae auctor eu augue ut lectus. Condimentum mattis pellentesque id nibh tortor id aliquet lectus proin.",
         "price": 4.99,
         "imageSource": "https://picsum.photos/id/11/800/"
       },
       {
         "optionId": 2,
-        "brand": "Brand 1 - Lorem Ipsum Group",
+        "brand": "Lorem Ipsum Group",
         "title": "Item 1 - 3",
-        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "description": "Feugiat vivamus at augue eget arcu dictum varius duis at. Neque gravida in fermentum et sollicitudin ac.",
         "price": 5.99,
         "imageSource": "https://picsum.photos/id/12/800/"
       },
       {
         "optionId": 3,
-        "brand": "Brand 1 - Lorem Ipsum Group",
+        "brand": "Lorem Ipsum Group",
         "title": "Item 1 - 4",
-        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "description": "Massa tincidunt dui ut ornare lectus sit amet est placerat. Ut consequat semper viverra nam libero justo laoreet.",
         "price": 69.98,
         "imageSource": "https://picsum.photos/id/13/800/"
       }
@@ -71,25 +71,25 @@
     "options": [
       {
         "optionId": 0,
-        "brand": "Brand 2 - Business Name LTD",
+        "brand": "Business Name LTD",
         "title": "Item 2 - 0",
-        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "description": "Nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus. Tellus elementum sagittis vitae et leo.",
         "price": 6.99,
         "imageSource": "https://picsum.photos/id/20/800/"
       },
       {
         "optionId": 1,
-        "brand": "Brand 2 - Business Name LTD",
+        "brand": "Business Name LTD",
         "title": "Item 2 - 1",
-        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "description": "Enim sed faucibus turpis in eu. Habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Ut diam quam nulla porttitor massa id neque.",
         "price": 7.99,
         "imageSource": "https://picsum.photos/id/21/800/"
       },
       {
         "optionId": 2,
-        "brand": "Brand 2",
+        "brand": "Business Name LTD",
         "title": "Item 2 - 2",
-        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "description": "Fermentum iaculis eu non diam phasellus vestibulum lorem sed risus. Viverra nibh cras pulvinar mattis. Ornare massa eget egestas purus viverra accumsan in nisl nisi.",
         "price": 8.99,
         "imageSource": "https://picsum.photos/id/22/800/"
       }
@@ -100,17 +100,17 @@
     "options": [
       {
         "optionId": 0,
-        "brand": "Brand 3 - Brandy's",
+        "brand": "Brandy's",
         "title": "Item 3 - 0",
-        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "description": "Orci porta non pulvinar neque laoreet suspendisse interdum consectetur libero. Rhoncus aenean vel elit scelerisque.",
         "price": 9.99,
         "imageSource": "https://picsum.photos/id/30/800/"
       },
       {
         "optionId": 1,
-        "brand": "Brand 3 - Brandy's",
+        "brand": "Brandy's",
         "title": "Item 3 - 1",
-        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "description": "Aliquet porttitor lacus luctus accumsan tortor posuere ac. Enim ut tellus elementum sagittis vitae. In egestas erat imperdiet sed euismod nisi porta.",
         "price": 10.99,
         "imageSource": "https://picsum.photos/id/31/800/"
       }
@@ -121,9 +121,9 @@
     "options": [
       {
         "optionId": 0,
-        "brand": "Brand 4 - McBrand Business Name",
+        "brand": "McBrand Business Name",
         "title": "Item 4 - 0",
-        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+        "description": "Aliquam purus sit amet luctus. Turpis tincidunt id aliquet risus. Faucibus purus in massa tempor nec. Ipsum dolor sit amet consectetur adipiscing elit.",
         "price": 12.99,
         "imageSource": "https://picsum.photos/id/40/800/"
       }
