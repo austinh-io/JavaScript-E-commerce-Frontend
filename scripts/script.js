@@ -87,10 +87,12 @@ const productCardTemplate = function (product) {
           )}</span>
         </div>
 
-        <div class="product-button-group" data-id=${product.id}>
+        <div class="product-button-group" data-id=${product.id} data-optionid=${
+    product.options[0].optionId
+  }>
           <button
             class="button-product button-add"
-            id="button-product-${product.id}"
+            id="button-product-${product.id}${product.options[0].optionId}"
             onclick="addToCart(event)"
           >
             ${catalogItemButtonText_Enabled}
