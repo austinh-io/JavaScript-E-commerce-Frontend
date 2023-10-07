@@ -8,7 +8,7 @@
         "title": "Item 0 - 0",
         "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
         "price": 0.99,
-        "imageSource": "./assets/images/productImages/item0-0.jpg",
+        "imageName": "item0-0",
         "optionLabel": "default"
       },
       {
@@ -17,7 +17,7 @@
         "title": "Item 0 - 1",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "price": 1.99,
-        "imageSource": "./assets/images/productImages/item1-0.jpg",
+        "imageName": "item1-0",
         "optionLabel": "variant1"
       },
       {
@@ -26,7 +26,7 @@
         "title": "Item 0 - 2",
         "description": "Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Sagittis eu volutpat odio facilisis mauris sit. Porta lorem mollis aliquam ut porttitor leo a diam sollicitudin.",
         "price": 2.99,
-        "imageSource": "./assets/images/productImages/item2-0.jpg",
+        "imageName": "item2-0",
         "optionLabel": "variant2"
       }
     ]
@@ -40,7 +40,7 @@
         "title": "Item 1 - 0",
         "description": "Eu lobortis elementum nibh tellus molestie nunc non blandit. Mauris augue neque gravida in fermentum. Magna fermentum iaculis eu non diam phasellus vestibulum lorem.",
         "price": 3.99,
-        "imageSource": "./assets/images/productImages/item3-0.jpg",
+        "imageName": "item3-0",
         "optionLabel": "default"
       },
       {
@@ -49,7 +49,7 @@
         "title": "Item 1 - 1",
         "description": "Nisi scelerisque eu ultrices vitae auctor eu augue ut lectus. Condimentum mattis pellentesque id nibh tortor id aliquet lectus proin.",
         "price": 4.99,
-        "imageSource": "./assets/images/productImages/item4-0.jpg",
+        "imageName": "item4-0",
         "optionLabel": "variant1"
       },
       {
@@ -58,7 +58,7 @@
         "title": "Item 1 - 2",
         "description": "Feugiat vivamus at augue eget arcu dictum varius duis at. Neque gravida in fermentum et sollicitudin ac.",
         "price": 5.99,
-        "imageSource": "./assets/images/productImages/item5-0.jpg",
+        "imageName": "item5-0",
         "optionLabel": "variant2"
       },
       {
@@ -67,7 +67,7 @@
         "title": "Item 1 - 3",
         "description": "Massa tincidunt dui ut ornare lectus sit amet est placerat. Ut consequat semper viverra nam libero justo laoreet.",
         "price": 69.98,
-        "imageSource": "./assets/images/productImages/item6-0.jpg",
+        "imageName": "item6-0",
         "optionLabel": "variant3"
       }
     ]
@@ -81,7 +81,7 @@
         "title": "Item 2 - 0",
         "description": "Nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus. Tellus elementum sagittis vitae et leo.",
         "price": 6.99,
-        "imageSource": "./assets/images/productImages/item7-0.jpg",
+        "imageName": "item7-0",
         "optionLabel": "default"
       },
       {
@@ -90,7 +90,7 @@
         "title": "Item 2 - 1",
         "description": "Enim sed faucibus turpis in eu. Habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Ut diam quam nulla porttitor massa id neque.",
         "price": 7.99,
-        "imageSource": "./assets/images/productImages/item8-0.jpg",
+        "imageName": "item8-0",
         "optionLabel": "variant1"
       },
       {
@@ -99,7 +99,7 @@
         "title": "Item 2 - 2",
         "description": "Fermentum iaculis eu non diam phasellus vestibulum lorem sed risus. Viverra nibh cras pulvinar mattis. Ornare massa eget egestas purus viverra accumsan in nisl nisi.",
         "price": 8.99,
-        "imageSource": "./assets/images/productImages/item9-0.jpg",
+        "imageName": "item9-0",
         "optionLabel": "variant2"
       }
     ]
@@ -113,7 +113,7 @@
         "title": "Item 3 - 0",
         "description": "Orci porta non pulvinar neque laoreet suspendisse interdum consectetur libero. Rhoncus aenean vel elit scelerisque.",
         "price": 9.99,
-        "imageSource": "./assets/images/productImages/item10-0.jpg",
+        "imageName": "item10-0",
         "optionLabel": "default"
       },
       {
@@ -122,7 +122,7 @@
         "title": "Item 3 - 1",
         "description": "Aliquet porttitor lacus luctus accumsan tortor posuere ac. Enim ut tellus elementum sagittis vitae. In egestas erat imperdiet sed euismod nisi porta.",
         "price": 10.99,
-        "imageSource": "./assets/images/productImages/item11-0.jpg",
+        "imageName": "item11-0",
         "optionLabel": "variant1"
       }
     ]
@@ -136,7 +136,7 @@
         "title": "Item 4 - 0",
         "description": "Aliquam purus sit amet luctus. Turpis tincidunt id aliquet risus. Faucibus purus in massa tempor nec. Ipsum dolor sit amet consectetur adipiscing elit.",
         "price": 12.99,
-        "imageSource": "./assets/images/productImages/item12-0.jpg",
+        "imageName": "item12-0",
         "optionLabel": "default"
       }
     ]

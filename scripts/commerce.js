@@ -2,7 +2,7 @@
 
 const productsList = document.querySelector('.products-list');
 const cartItemsList = document.querySelector('.cart-items-container');
-const cartIconCounter = document.querySelector('.cart-icon-counter');
+const cartIconCounters = document.getElementsByClassName('cart-icon-counter');
 const totalCostValueElement = document.querySelector('.total-cost-value');
 const catalogProductsButtons = document.getElementsByClassName(
   'button-product button-add'
@@ -76,7 +76,9 @@ const productCardTemplate = function (product) {
     <div class="product-image-container">
         <img
         class="product-image"
-        src="${product.options[0].imageSource}"
+        src="/assets/images/productImages/small/${
+          product.options[0].imageName
+        }_small.webp/"
         />
     </div>
     <div class="product-info-container">
@@ -121,7 +123,9 @@ const cartItemTemplate = function (item) {
         >
           <div class="cart-item-col1">
             <img
-              src="${item.option.imageSource}"
+              src="/assets/images/productImages/small/${
+                item.option.imageName
+              }_small.webp/"
               class="cart-item-image"
             />
           </div>
@@ -280,7 +284,7 @@ function handleProductOptionChange(event) {
   );
   const targetButtonGroupChild = targetButtonGroup.children[0];
 
-  image.src = targetProductOption.imageSource;
+  image.src = `/assets/images/productImages/small/${targetProductOption.imageName}_small.webp/ `;
   brand.innerText = targetProductOption.brand;
   title.innerText = targetProductOption.title;
   description.innerText = targetProductOption.description;
@@ -319,12 +323,19 @@ function updateUi() {
 
 function updateCartItemsCount() {
   let totalItems = cartItems.reduce((sum, cur) => sum + cur.count, 0);
-  cartIconCounter.innerText = totalItems;
+
+  for (let i = 0; i < cartIconCounters.length; i++) {
+    cartIconCounters[i].innerText = totalItems;
+  }
 
   if (cartItems.length > 0) {
-    cartIconCounter.classList.remove('hidden');
+    for (let i = 0; i < cartIconCounters.length; i++) {
+      cartIconCounters[i].classList.remove('hidden');
+    }
   } else {
-    cartIconCounter.classList.add('hidden');
+    for (let i = 0; i < cartIconCounters.length; i++) {
+      cartIconCounters[i].classList.add('hidden');
+    }
   }
 }
 

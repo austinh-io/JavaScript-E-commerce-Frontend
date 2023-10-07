@@ -65,8 +65,10 @@ a:hover {
   display: none;
 }
 
-.hidden {
-  display: none !important;
+.hidden,
+span.hidden,
+div.hidden {
+  display: none;
 }
 
 .wrapper {
