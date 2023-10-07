@@ -38,6 +38,7 @@ function handleNavMenu() {
 
 function updateNavMenuOnScreenSizeChange() {
   if (mediaQuery.matches) navMenu.setAttribute('data-visible', 'true');
+  else navMenu.setAttribute('data-visible', 'false');
 }
 
 // --------- Cart ---------
