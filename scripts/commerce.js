@@ -127,6 +127,7 @@ const cartItemTemplate = function (item) {
           </div>
           <div class="cart-item-col2">
             <div class="cart-item-title">${item.option.title}</div>
+            <div class="cart-item-option-label">${item.option.optionLabel}</div>
 
             <div
               class="cart-item-buttons-container"
