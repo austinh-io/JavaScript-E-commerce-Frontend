@@ -1,0 +1,84 @@
+<div
+  class="product"
+  data-id="999999999"
+>
+  <div class="product-image-container">
+    <img
+      class="product-image"
+      src="https://picsum.photos/id/622/800/"
+    />
+  </div>
+  <div class="product-info-container">
+    <div class="product-brand">Test Brand</div>
+    <div class="product-title">Test Item Title</div>
+    <div class="product-description">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
+        blanditiis?
+      </p>
+    </div>
+
+    <fieldset class="product-fieldset">
+      <legend class="hidden">Variant</legend>
+      <div>
+        <input
+          type="radio"
+          id="red1"
+          name="colors"
+          value="red"
+          checked
+        />
+        <label
+          for="red1"
+          class="hidden"
+          >Red</label
+        >
+      </div>
+
+      <div>
+        <input
+          type="radio"
+          id="blue1"
+          name="colors"
+          value="blue"
+        />
+        <label
+          for="blue1"
+          class="hidden"
+          >Blue</label
+        >
+      </div>
+
+      <div>
+        <input
+          type="radio"
+          id="green1"
+          name="colors"
+          value="green"
+        />
+        <label
+          for="green1"
+          class="hidden"
+          >Green</label
+        >
+      </div>
+    </fieldset>
+
+    <div class="product-price">
+      <span class="product-price-value">$69.99</span>
+    </div>
+
+    <div
+      class="product-button-group"
+      data-id="999999"
+    >
+      <button
+        class="button-product button-add"
+        id="button-product-999999"
+        onclick="addToCart(event)"
+      >
+        Button Text
+      </button>
+    </div>
+  </div>
+</div>
