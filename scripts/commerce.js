@@ -286,7 +286,7 @@ function handleProductOptionChange(event) {
   );
   const targetButtonGroupChild = targetButtonGroup.children[0];
 
-  image.src = `${baseUrl}/assets/images/productImages/small/${targetProductOption.imageName}_small.webp/ `;
+  image.src = `${baseUrl}/assets/images/productImages/small/${targetProductOption.imageName}_small.webp `;
   brand.innerText = targetProductOption.brand;
   title.innerText = targetProductOption.title;
   description.innerText = targetProductOption.description;
