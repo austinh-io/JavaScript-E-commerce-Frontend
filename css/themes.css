@@ -1,4 +1,8 @@
 :root {
+  color-scheme: light dark;
+}
+
+:root[data-theme='dark'] {
   --color-bg: #1c1f25;
   --color-bg-trans: #181a1bc5;
   --color-fg: #2f3237;
@@ -7,9 +11,10 @@
   --color-accent: #1863c5;
   --color-disabled: #646874;
   --color-radio: #47be9c;
+  color-scheme: dark;
 }
 
-:root:has(#btn-theme-menu-toggle[data-theme='light']) {
+:root[data-theme='light'] {
   --color-bg: #d4d7d9;
   --color-bg-trans: #e4e6e7be;
   --color-fg: #e4e6e7;
@@ -17,4 +22,6 @@
   --color-font-secondary: #626a6f;
   --color-accent: #558afa;
   --color-disabled: #9a9ea5;
+  --color-radio: #47be9c;
+  color-scheme: light;
 }
