@@ -2,8 +2,8 @@ const cartMenu = document.querySelector('.cart-menu');
 const cartToggle = document.querySelector('.cart-menu-toggle');
 const cartToggleClose = document.querySelector('.cart-menu-toggle-close');
 
-const themeMenu = document.querySelector('.theme-menu');
-const themeToggle = document.querySelector('.theme-menu-toggle');
+// const themeMenu = document.querySelector('.theme-menu');
+const themeToggle = document.getElementById('btn-theme-menu-toggle');
 
 const filterMenu = document.querySelector('.filter-menu');
 const filterToggle = document.querySelector('.filter-menu-toggle');
@@ -15,7 +15,7 @@ const navToggleClose = document.querySelector('.nav-menu-toggle-close');
 cartToggle.addEventListener('click', handleCartMenu);
 cartToggleClose.addEventListener('click', handleCartMenu);
 
-// themeToggle.addEventListener('click', handleThemeMenu);
+themeToggle.addEventListener('click', handleThemeMenu);
 
 // filterToggle.addEventListener('click', handleFilterMenu);
 
@@ -36,14 +36,12 @@ function handleCartMenu() {
 }
 
 function handleThemeMenu() {
-  const visibility = themeMenu.getAttribute('data-visible');
+  const theme = themeToggle.getAttribute('data-theme');
 
-  if (visibility === 'false') {
-    themeMenu.setAttribute('data-visible', 'true');
-    themeToggle.setAttribute('aria-expanded', 'true');
+  if (theme == 'dark') {
+    themeToggle.setAttribute('data-theme', 'light');
   } else {
-    themeMenu.setAttribute('data-visible', false);
-    themeToggle.setAttribute('aria-expanded', 'false');
+    themeToggle.setAttribute('data-theme', 'dark');
   }
 }
 

@@ -4,17 +4,17 @@
   --color-fg: #2f3237;
   --color-font: #e9eef1;
   --color-font-secondary: #90979c;
-  --color-accent: #4a6eff;
-  --color-disabled: #87909f;
+  --color-accent: #1863c5;
+  --color-disabled: #646874;
   --color-radio: #47be9c;
 }
 
-:root:has(#light:checked) {
+:root:has(#btn-theme-menu-toggle[data-theme='light']) {
   --color-bg: #d4d7d9;
   --color-bg-trans: #e4e6e7be;
   --color-fg: #e4e6e7;
   --color-font: #283133;
   --color-font-secondary: #626a6f;
-  --color-accent: #094fc8;
-  --color-disabled: #3c485d;
+  --color-accent: #558afa;
+  --color-disabled: #9a9ea5;
 }
