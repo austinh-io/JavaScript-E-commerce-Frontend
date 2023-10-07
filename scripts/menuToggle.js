@@ -2,8 +2,9 @@ const cartMenu = document.querySelector('.cart-menu');
 const cartToggle = document.querySelector('.cart-menu-toggle');
 const cartToggleClose = document.querySelector('.cart-menu-toggle-close');
 
-// const themeMenu = document.querySelector('.theme-menu');
 const themeToggle = document.getElementById('btn-theme-menu-toggle');
+const themeIconDark = document.querySelector('.theme-icon-dark');
+const themeIconLight = document.querySelector('.theme-icon-light');
 
 const filterMenu = document.querySelector('.filter-menu');
 const filterToggle = document.querySelector('.filter-menu-toggle');
@@ -38,10 +39,17 @@ function handleCartMenu() {
 function handleThemeMenu() {
   const theme = themeToggle.getAttribute('data-theme');
 
+  console.log(themeIconDark);
+  console.log(themeIconLight);
+
   if (theme == 'dark') {
     themeToggle.setAttribute('data-theme', 'light');
+    themeIconDark.classList.remove('hidden');
+    themeIconLight.classList.add('hidden');
   } else {
     themeToggle.setAttribute('data-theme', 'dark');
+    themeIconDark.classList.add('hidden');
+    themeIconLight.classList.remove('hidden');
   }
 }
 
