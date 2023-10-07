@@ -12,6 +12,8 @@ let cartItems = new Array();
 let addToCartButtons = new Array();
 let products = new Array();
 
+const baseUrl = '';
+
 const catalogItemButtonText_Enabled = 'Add to Cart';
 const catalogItemButtonText_Disabled = 'Item in Cart';
 
@@ -76,9 +78,9 @@ const productCardTemplate = function (product) {
     <div class="product-image-container">
         <img
         class="product-image"
-        src="/assets/images/productImages/small/${
-          product.options[0].imageName
-        }_small.webp/"
+        src="${baseUrl}/assets/images/productImages/small/${
+    product.options[0].imageName
+  }_small.webp"
         />
     </div>
     <div class="product-info-container">
@@ -284,7 +286,7 @@ function handleProductOptionChange(event) {
   );
   const targetButtonGroupChild = targetButtonGroup.children[0];
 
-  image.src = `/assets/images/productImages/small/${targetProductOption.imageName}_small.webp/ `;
+  image.src = `${baseUrl}/assets/images/productImages/small/${targetProductOption.imageName}_small.webp/ `;
   brand.innerText = targetProductOption.brand;
   title.innerText = targetProductOption.title;
   description.innerText = targetProductOption.description;
@@ -365,7 +367,7 @@ function fillCartList() {
 }
 
 async function catchProductList() {
-  const response = await fetch('./data/products.json');
+  const response = await fetch(`${baseUrl}/data/products.json`);
   const productsObj = await response.json();
   products = [...productsObj];
 }

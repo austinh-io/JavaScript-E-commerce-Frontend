@@ -23,7 +23,6 @@ const mediaQuery = window.matchMedia('(min-width: 768px)');
 
 navToggle.addEventListener('click', handleNavMenu);
 mediaQuery.addEventListener('change', updateNavMenuOnScreenSizeChange);
-// addEventListener('load', () => navMenu.setAttribute('data-visible', false));
 addEventListener('load', updateNavMenuOnScreenSizeChange);
 
 function handleNavMenu() {
