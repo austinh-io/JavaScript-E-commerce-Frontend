@@ -16,9 +16,48 @@
 
   /******* Nav *******/
 
+  header.header-container {
+    /*** TEMP, UNCOMMENT WHEN DONE ***/
+    /* display: none; */
+
+    height: 100svh;
+    z-index: 700;
+  }
+
+  .nav-container {
+    height: 100%;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    justify-content: start;
+    height: 100%;
+  }
+
+  .nav-site-logo {
+    margin-top: 4rem;
+    margin-bottom: 100%;
+    margin-right: 0;
+  }
+
+  .nav-container ul {
+    align-items: end;
+  }
+
+  .nav-buttons-container {
+    /* display: none; */
+    margin-top: auto;
+  }
+
+  .cart-menu-toggle {
+    display: none;
+  }
+
   .mobile-nav {
     position: fixed;
+    /*** TEMP, UNCOMMENT WHEN DONE ***/
     display: block;
+    /* display: hidden; */
     width: 100vw;
 
     background-color: var(--color-bg-trans);
@@ -73,11 +112,6 @@
   }
 
   /******* Main ********/
-
-  header.header-container {
-    display: none;
-    width: 0;
-  }
 
   h1 {
     font-size: 2rem;

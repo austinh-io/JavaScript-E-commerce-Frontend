@@ -1,15 +1,7 @@
 const filterMenu = document.querySelector('.filter-menu');
 const filterToggle = document.querySelector('.filter-menu-toggle');
 
-const navMenu = document.querySelector('.nav-menu');
-const navToggle = document.querySelector('.nav-menu-toggle');
-const navToggleClose = document.querySelector('.nav-menu-toggle-close');
-
 // filterToggle.addEventListener('click', handleFilterMenu);
-
-// navMenu.addEventListener('click', handleNavMenu);
-// navToggle.addEventListener('click', handleNavMenu);
-// navToggleClose.addEventListener('click', handleNavMenu);
 
 function handleFilterMenu() {
   const visibility = filterMenu.getAttribute('data-visible');
@@ -23,16 +15,29 @@ function handleFilterMenu() {
   }
 }
 
+/********* Navigation *********/
+const navMenu = document.querySelector('.header-container');
+const navToggle = document.querySelector('.nav-menu-toggle');
+
+const mediaQuery = window.matchMedia('(min-width: 768px)');
+
+navToggle.addEventListener('click', handleNavMenu);
+mediaQuery.addEventListener('change', updateNavMenuOnScreenSizeChange);
+
 function handleNavMenu() {
   const visibility = navMenu.getAttribute('data-visible');
 
   if (visibility === 'false') {
     navMenu.setAttribute('data-visible', 'true');
-    navToggle.setAttribute('aria-expanded', 'true');
+    // navToggle.setAttribute('aria-expanded', 'true');
   } else {
     navMenu.setAttribute('data-visible', false);
-    navToggle.setAttribute('aria-expanded', 'false');
+    // navToggle.setAttribute('aria-expanded', 'false');
   }
+}
+
+function updateNavMenuOnScreenSizeChange() {
+  if (mediaQuery.matches) navMenu.setAttribute('data-visible', 'true');
 }
 
 // --------- Cart ---------
@@ -40,15 +45,10 @@ const cartMenu = document.querySelector('.cart-menu');
 const cartToggles = document.getElementsByClassName('cart-menu-toggle');
 const cartToggleClose = document.querySelector('.cart-menu-toggle-close');
 
-// for (let i = 0; i < cartMenus.length; i++) {
-//   cartMenus[i].addEventListener('click')
-// }
-
 for (let i = 0; i < cartToggles.length; i++) {
   cartToggles[i].addEventListener('click', handleCartMenu);
 }
 
-// cartToggle.addEventListener('click', handleCartMenu);
 cartToggleClose.addEventListener('click', handleCartMenu);
 
 function handleCartMenu() {
