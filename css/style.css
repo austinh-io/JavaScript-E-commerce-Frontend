@@ -61,6 +61,10 @@ a:hover {
 
 /* ------- Universal ------- */
 
+.mobile-nav {
+  display: none;
+}
+
 .hidden {
   display: none !important;
 }
@@ -332,7 +336,9 @@ a.hero-anchor:hover {
   grid-template-columns: repeat(auto-fill, minmax(24rem, auto));
   width: 100%;
   gap: 2rem;
+  row-gap: 4rem;
   align-items: center;
+  justify-content: space-between;
 }
 
 /* ------ Footer ------- */

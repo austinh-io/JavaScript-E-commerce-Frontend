@@ -28,6 +28,11 @@
 
     <link
       rel="stylesheet"
+      href="/css/responsive.css"
+    />
+
+    <link
+      rel="stylesheet"
       href="/css/catalogItem.css"
     />
 
@@ -57,6 +62,31 @@
     ></script>
   </head>
   <body>
+    <nav class="mobile-nav">
+      <div class="mobile-nav-container wrapper">
+        <div class="nav-menu-toggle-container">
+          <button class="nav-menu-toggle mobile-button">
+            <span class="material-symbols-outlined"> menu </span>
+          </button>
+        </div>
+        <button class="mobile-search-btn mobile-button">
+          <span class="material-symbols-outlined"> search </span>
+        </button>
+        <button
+          class="cart-menu-toggle cart-menu-toggle-open mobile-button"
+          aria-controls="cart-menu"
+          aria-expanded="false"
+        >
+          <div class="cart-icon-container">
+            <span class="material-symbols-outlined cart-icon">
+              shopping_cart
+            </span>
+            <span class="cart-icon-counter hidden"></span>
+          </div>
+        </button>
+      </div>
+    </nav>
+
     <header class="header-container">
       <nav class="nav-container wrapper">
         <ul class="nav-menu">

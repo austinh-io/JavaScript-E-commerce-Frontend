@@ -37,10 +37,18 @@ function handleNavMenu() {
 
 // --------- Cart ---------
 const cartMenu = document.querySelector('.cart-menu');
-const cartToggle = document.querySelector('.cart-menu-toggle');
+const cartToggles = document.getElementsByClassName('cart-menu-toggle');
 const cartToggleClose = document.querySelector('.cart-menu-toggle-close');
 
-cartToggle.addEventListener('click', handleCartMenu);
+// for (let i = 0; i < cartMenus.length; i++) {
+//   cartMenus[i].addEventListener('click')
+// }
+
+for (let i = 0; i < cartToggles.length; i++) {
+  cartToggles[i].addEventListener('click', handleCartMenu);
+}
+
+// cartToggle.addEventListener('click', handleCartMenu);
 cartToggleClose.addEventListener('click', handleCartMenu);
 
 function handleCartMenu() {
@@ -48,10 +56,16 @@ function handleCartMenu() {
 
   if (visibility === 'false') {
     cartMenu.setAttribute('data-visible', 'true');
-    cartToggle.setAttribute('aria-expanded', 'true');
+    // cartToggle.setAttribute('aria-expanded', 'true');
+    for (let i = 0; i < cartToggles.length; i++) {
+      cartToggles[i].setAttribute('aria-expanded', 'true');
+    }
   } else {
     cartMenu.setAttribute('data-visible', false);
-    cartToggle.setAttribute('aria-expanded', 'false');
+    // cartToggle.setAttribute('aria-expanded', 'false');
+    for (let i = 0; i < cartToggles.length; i++) {
+      cartToggles[i].setAttribute('aria-expanded', 'false');
+    }
   }
 }
 
