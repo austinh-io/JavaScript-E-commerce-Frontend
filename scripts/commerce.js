@@ -41,7 +41,7 @@ function cardOptionField(product, index) {
       onChange="handleProductOptionChange(event)"
       ${index == 0 ? 'checked' : ''}
       style="
-        background-color: ${colors[index]};
+        background-color: ${product.options[index].optionVisual.value};
       "
     />
     <label
@@ -55,6 +55,17 @@ function cardOptionField(product, index) {
 
 const productCardTemplate = function (product) {
   let cardOptionsFieldset = undefined;
+
+  // console.log(product);
+  // console.log(product.options.length);
+
+  // let optionStylesCount = product.options.reduce((acc, curr) => {
+  //   acc += curr.inStock;
+  // }, 0);
+
+  console.log(product.options[0].optionVisual.value);
+
+  // console.log(optionStylesCount);
 
   if (product.options.length <= 1) {
     cardOptionsFieldset = '';
@@ -93,11 +104,11 @@ const productCardTemplate = function (product) {
         />
     </div>
     <div class="product-info-container">
-        <div class="product-brand">${product.options[0].brand}</div>
-        <div class="product-title">${product.options[0].title}</div>
+        <div class="product-brand">${product.brand}</div>
+        <div class="product-title">${product.title}</div>
         <div class="product-description">
           <p>
-            ${product.options[0].description}
+            ${product.description}
           </p>          
         </div>
 
@@ -390,10 +401,10 @@ async function catchProductList() {
 async function initializeProducts() {
   await catchProductList();
 
-  for (let i = 0; i < products.length; i++) {
+  for (const productObject of products) {
     productsList.insertAdjacentHTML(
       'beforeend',
-      productCardTemplate(products[i])
+      productCardTemplate(productObject)
     );
   }
 }
