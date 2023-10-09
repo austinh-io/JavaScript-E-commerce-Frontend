@@ -10,7 +10,7 @@ function handleFilterMenu() {
     filterMenu.setAttribute('data-visible', 'true');
     filterToggle.setAttribute('aria-expanded', 'true');
   } else {
-    filterMenu.setAttribute('data-visible', false);
+    filterMenu.setAttribute('data-visible', 'false');
     filterToggle.setAttribute('aria-expanded', 'false');
   }
 }
@@ -32,7 +32,7 @@ function handleNavMenu() {
     navMenu.setAttribute('data-visible', 'true');
     // navToggle.setAttribute('aria-expanded', 'true');
   } else {
-    navMenu.setAttribute('data-visible', false);
+    navMenu.setAttribute('data-visible', 'false');
     // navToggle.setAttribute('aria-expanded', 'false');
   }
 }
@@ -47,8 +47,12 @@ const cartMenu = document.querySelector('.cart-menu');
 const cartToggles = document.getElementsByClassName('cart-menu-toggle');
 const cartToggleClose = document.querySelector('.cart-menu-toggle-close');
 
-for (let i = 0; i < cartToggles.length; i++) {
-  cartToggles[i].addEventListener('click', handleCartMenu);
+// for (let i = 0; i < cartToggles.length; i++) {
+//   cartToggles[i].addEventListener('click', handleCartMenu);
+// }
+
+for (cartToggle of cartToggles) {
+  cartToggle.addEventListener('click', handleCartMenu);
 }
 
 cartToggleClose.addEventListener('click', handleCartMenu);
@@ -58,16 +62,14 @@ function handleCartMenu() {
 
   if (visibility === 'false') {
     cartMenu.setAttribute('data-visible', 'true');
-    // cartToggle.setAttribute('aria-expanded', 'true');
-    for (let i = 0; i < cartToggles.length; i++) {
-      cartToggles[i].setAttribute('aria-expanded', 'true');
-    }
+
+    for (cartToggle of cartToggles)
+      cartToggle.setAttribute('aria-expanded', 'true');
   } else {
-    cartMenu.setAttribute('data-visible', false);
-    // cartToggle.setAttribute('aria-expanded', 'false');
-    for (let i = 0; i < cartToggles.length; i++) {
-      cartToggles[i].setAttribute('aria-expanded', 'false');
-    }
+    cartMenu.setAttribute('data-visible', 'false');
+
+    for (cartToggle of cartToggles)
+      cartToggle.setAttribute('aria-expanded', 'false');
   }
 }
 

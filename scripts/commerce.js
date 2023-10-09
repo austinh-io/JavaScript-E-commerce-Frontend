@@ -12,7 +12,7 @@ let cartItems = new Array();
 let addToCartButtons = new Array();
 let products = new Array();
 
-const baseUrl = '';
+const baseUrl = '.';
 
 const catalogItemButtonText_Enabled = 'Add to Cart';
 const catalogItemButtonText_Disabled = 'Item in Cart';
