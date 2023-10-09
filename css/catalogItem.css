@@ -15,7 +15,14 @@
   overflow: hidden;
   aspect-ratio: 5/3;
   height: 100%;
+  width: 100%;
+
+  background-size: cover;
+
   border-radius: 3pt;
+
+  background-repeat: no-repeat;
+  display: block;
 }
 
 .product-image {

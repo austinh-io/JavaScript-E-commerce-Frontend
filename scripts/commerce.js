@@ -12,7 +12,9 @@ let cartItems = new Array();
 let addToCartButtons = new Array();
 let products = new Array();
 
-const baseUrl = '.';
+const baseUrlLive = 'simple-ecommerce';
+const baseUrlLocal = '.';
+const baseUrl = baseUrlLocal;
 
 const catalogItemButtonText_Enabled = 'Add to Cart';
 const catalogItemButtonText_Disabled = 'Item in Cart';
@@ -75,8 +77,15 @@ const productCardTemplate = function (product) {
 
   return `
   <div class="product" id="product-${product.id}" data-id=${product.id}>
-    <div class="product-image-container">
+    <div
+      class="product-image-container"
+      style="
+      background-image: url(${baseUrl}/assets/images/productImages/smaller_alt/${
+    product.options[0].imageName
+  }_smaller_alt.jpg);"
+      >
         <img
+        loading="lazy"
         class="product-image"
         src="${baseUrl}/assets/images/productImages/small/${
     product.options[0].imageName
@@ -275,6 +284,11 @@ function handleProductOptionChange(event) {
     `product-${event.target.dataset.id}`
   );
 
+  console.log(targetElement);
+
+  const imageContainer = targetElement.querySelector(
+    '.product-image-container'
+  );
   const image = targetElement.querySelector('.product-image');
   const brand = targetElement.querySelector('.product-brand');
   const title = targetElement.querySelector('.product-title');
@@ -294,6 +308,7 @@ function handleProductOptionChange(event) {
   targetButtonGroup.dataset.optionid = productOptionId;
   targetButtonGroupChild.dataset.id = productId;
   targetButtonGroupChild.dataset.optionid = productOptionId;
+  imageContainer.style = `background-image: url(${baseUrl}/assets/images/productImages/smaller_alt/${targetProductOption.imageName}_smaller_alt.jpg);`;
 
   updateUi();
 }
