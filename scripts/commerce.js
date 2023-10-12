@@ -27,27 +27,27 @@ function cartItem(id, productId, option, count, totalPrice) {
   this.totalPrice = totalPrice;
 }
 
-function cardOptionField(product, index) {
+function cardOptionField(product, option) {
   let colors = ['#f9dbbd', '#fca17d', '#da627d', '#9a348e'];
   return `
   <div>
     <input
       type="radio"
-      id="option-${product.id}-${product.options[index].optionId}"
+      id="option-${product.id}-${option.optionId}"
       name="options-item-${product.id}"
-      value="option-${product.options[index].optionId}"
+      value="option-${option.optionId}"
       data-id="${product.id}"
-      data-optionid="${product.options[index].optionId}"
+      data-optionid="${option.optionId}"
       onChange="handleProductOptionChange(event)"
-      ${index == 0 ? 'checked' : ''}
+      ${product.options.indexOf(option) == 0 ? 'checked' : ''}
       style="
-        background-color: ${product.options[index].optionVisual.value};
+        background-color: ${option.optionVisual.value};
       "
     />
     <label
-      for="option-${product.id}-${product.options[index].optionId}"
+      for="option-${product.id}-${option.optionId}"
       class="hidden"
-      >${product.options[index].optionLabel}</label
+      >${option.optionLabel}</label
     >
   </div>
   `;
@@ -55,25 +55,41 @@ function cardOptionField(product, index) {
 
 const productCardTemplate = function (product) {
   let cardOptionsFieldset = undefined;
+  let uniqueOptionsByStyle = [];
 
-  // console.log(product);
-  // console.log(product.options.length);
+  product.options.filter((option) => {
+    if (
+      uniqueOptionsByStyle.find((element) => {
+        return option.optionVisual.value == element.optionVisual.value;
+      })
+    ) {
+      return option;
+    } else {
+      uniqueOptionsByStyle.push(option);
+    }
+  });
 
-  // let optionStylesCount = product.options.reduce((acc, curr) => {
-  //   acc += curr.inStock;
-  // }, 0);
+  console.table(uniqueOptionsByStyle);
 
-  console.log(product.options[0].optionVisual.value);
+  // const productionOptionsStyles = new Array();
 
-  // console.log(optionStylesCount);
+  // for (let productOption of product.options) {
+  //   productionOptionsStyles.push(productOption.optionVisual.value);
+  // }
 
-  if (product.options.length <= 1) {
+  // const productOptionsStylesSet = [...new Set(productionOptionsStyles)];
+
+  if (uniqueOptionsByStyle.length <= 1) {
     cardOptionsFieldset = '';
   } else {
     let cardProductOptions = '';
 
-    for (let i = 0; i < product.options.length; i++) {
-      cardProductOptions += cardOptionField(product, i);
+    // for (let i = 0; i < uniqueOptionStyles.length; i++) {
+    //   cardProductOptions += cardOptionField(product, i);
+    // }
+
+    for (let option of uniqueOptionsByStyle) {
+      cardProductOptions += cardOptionField(product, option);
     }
 
     cardOptionsFieldset = `

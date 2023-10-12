@@ -16,7 +16,7 @@
         "imageName": "item0-0",
         "optionVisual": {
           "type": "color",
-          "value": "#fff"
+          "value": "#f9dbbd"
         }
       },
       {
@@ -28,7 +28,7 @@
         "imageName": "item0-0",
         "optionVisual": {
           "type": "color",
-          "value": "#fff"
+          "value": "#f9dbbd"
         }
       },
       {
@@ -40,7 +40,7 @@
         "imageName": "item0-0",
         "optionVisual": {
           "type": "color",
-          "value": "#fff"
+          "value": "#f9dbbd"
         }
       },
       {
@@ -52,7 +52,7 @@
         "imageName": "item1-0",
         "optionVisual": {
           "type": "color",
-          "value": "#000"
+          "value": "#fca17d"
         }
       },
       {
@@ -64,7 +64,7 @@
         "imageName": "item1-0",
         "optionVisual": {
           "type": "color",
-          "value": "#000"
+          "value": "#fca17d"
         }
       },
       {
@@ -76,7 +76,7 @@
         "imageName": "item1-0",
         "optionVisual": {
           "type": "color",
-          "value": "#000"
+          "value": "#fca17d"
         }
       },
       {
@@ -88,7 +88,7 @@
         "imageName": "item2-0",
         "optionVisual": {
           "type": "color",
-          "value": "#f00"
+          "value": "#da627d"
         }
       },
       {
@@ -100,7 +100,7 @@
         "imageName": "item2-0",
         "optionVisual": {
           "type": "color",
-          "value": "#f00"
+          "value": "#da627d"
         }
       },
       {
@@ -112,7 +112,7 @@
         "imageName": "item2-0",
         "optionVisual": {
           "type": "color",
-          "value": "#f00"
+          "value": "#da627d"
         }
       },
       {
@@ -124,7 +124,7 @@
         "imageName": "item3-0",
         "optionVisual": {
           "type": "color",
-          "value": "#00f"
+          "value": "#9a348e"
         }
       },
       {
@@ -136,7 +136,7 @@
         "imageName": "item3-0",
         "optionVisual": {
           "type": "color",
-          "value": "#00f"
+          "value": "#9a348e"
         }
       },
       {
@@ -148,7 +148,7 @@
         "imageName": "item3-0",
         "optionVisual": {
           "type": "color",
-          "value": "#00f"
+          "value": "#9a348e"
         }
       }
     ]
@@ -170,7 +170,7 @@
         "imageName": "item4-0",
         "optionVisual": {
           "type": "color",
-          "value": "#fff"
+          "value": "#f9dbbd"
         }
       },
       {
@@ -182,7 +182,7 @@
         "imageName": "item4-0",
         "optionVisual": {
           "type": "color",
-          "value": "#fff"
+          "value": "#f9dbbd"
         }
       },
       {
@@ -194,7 +194,7 @@
         "imageName": "item4-0",
         "optionVisual": {
           "type": "color",
-          "value": "#fff"
+          "value": "#f9dbbd"
         }
       },
       {
@@ -206,7 +206,7 @@
         "imageName": "item5-0",
         "optionVisual": {
           "type": "color",
-          "value": "#000"
+          "value": "#fca17d"
         }
       },
       {
@@ -218,7 +218,7 @@
         "imageName": "item5-0",
         "optionVisual": {
           "type": "color",
-          "value": "#000"
+          "value": "#fca17d"
         }
       },
       {
@@ -230,7 +230,7 @@
         "imageName": "item5-0",
         "optionVisual": {
           "type": "color",
-          "value": "#000"
+          "value": "#fca17d"
         }
       },
       {
@@ -242,7 +242,7 @@
         "imageName": "item6-0",
         "optionVisual": {
           "type": "color",
-          "value": "#f00"
+          "value": "#da627d"
         }
       },
       {
@@ -254,7 +254,7 @@
         "imageName": "item6-0",
         "optionVisual": {
           "type": "color",
-          "value": "#f00"
+          "value": "#da627d"
         }
       },
       {
@@ -266,7 +266,7 @@
         "imageName": "item6-0",
         "optionVisual": {
           "type": "color",
-          "value": "#f00"
+          "value": "#da627d"
         }
       },
       {
@@ -278,7 +278,7 @@
         "imageName": "item7-0",
         "optionVisual": {
           "type": "color",
-          "value": "#00f"
+          "value": "#9a348e"
         }
       },
       {
@@ -290,7 +290,7 @@
         "imageName": "item7-0",
         "optionVisual": {
           "type": "color",
-          "value": "#00f"
+          "value": "#9a348e"
         }
       },
       {
@@ -302,7 +302,7 @@
         "imageName": "item7-0",
         "optionVisual": {
           "type": "color",
-          "value": "#00f"
+          "value": "#9a348e"
         }
       }
     ]
@@ -324,7 +324,7 @@
         "imageName": "item8-0",
         "optionVisual": {
           "type": "color",
-          "value": "#fff"
+          "value": "#f9dbbd"
         }
       },
       {
@@ -336,7 +336,7 @@
         "imageName": "item8-0",
         "optionVisual": {
           "type": "color",
-          "value": "#fff"
+          "value": "#f9dbbd"
         }
       },
       {
@@ -348,7 +348,7 @@
         "imageName": "item9-0",
         "optionVisual": {
           "type": "color",
-          "value": "#f00"
+          "value": "#da627d"
         }
       },
       {
@@ -360,7 +360,7 @@
         "imageName": "item9-0",
         "optionVisual": {
           "type": "color",
-          "value": "#f00"
+          "value": "#da627d"
         }
       }
     ]
