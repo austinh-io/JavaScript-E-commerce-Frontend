@@ -28,15 +28,14 @@ function cartItem(id, productId, option, count, totalPrice) {
 }
 
 function cardOptionField(product, option) {
-  let colors = ['#f9dbbd', '#fca17d', '#da627d', '#9a348e'];
   return `
   <div>
     <input
       type="radio"
-      id="option-${product.id}-${option.optionId}"
-      name="options-item-${product.id}"
+      id="option-${product.productId}-${option.optionId}"
+      name="options-item-${product.productId}"
       value="option-${option.optionId}"
-      data-id="${product.id}"
+      data-id="${product.productId}"
       data-optionid="${option.optionId}"
       onChange="handleProductOptionChange(event)"
       ${product.options.indexOf(option) == 0 ? 'checked' : ''}
@@ -45,7 +44,7 @@ function cardOptionField(product, option) {
       "
     />
     <label
-      for="option-${product.id}-${option.optionId}"
+      for="option-${product.productId}-${option.optionId}"
       class="hidden"
       >${option.optionLabel}</label
     >
@@ -69,7 +68,7 @@ const productCardTemplate = function (product) {
     }
   });
 
-  console.table(uniqueOptionsByStyle);
+  // console.table(uniqueOptionsByStyle);
 
   // const productionOptionsStyles = new Array();
 
@@ -103,7 +102,9 @@ const productCardTemplate = function (product) {
   }
 
   return `
-  <div class="product" id="product-${product.id}" data-id=${product.id}>
+  <div class="product" id="product-${product.productId}" data-id=${
+    product.productId
+  }>
     <div
       class="product-image-container"
       style="
@@ -136,12 +137,14 @@ const productCardTemplate = function (product) {
           )}</span>
         </div>
 
-        <div class="product-button-group" data-id=${product.id} data-optionid=${
-    product.options[0].optionId
-  }>
+        <div class="product-button-group" data-id=${
+          product.productId
+        } data-optionid=${product.options[0].optionId}>
           <button
             class="button-product button-add"
-            id="button-product-${product.id + product.options[0].optionId}"
+            id="button-product-${
+              product.productId + product.options[0].optionId
+            }"
             onclick="addToCart(event)"
           >
             ${catalogItemButtonText_Enabled}
@@ -229,6 +232,16 @@ function findItem(_itemList, _productId, _optionId) {
     if (item.productId == _productId && item.option.optionId == _optionId)
       return item;
   });
+
+  // return _itemList.find((item) => {
+  //   if (
+  //     item.productId == _productId &&
+  //     item.options.find((option) => {
+  //       option.optionId == _optionId;
+  //     }) == _optionId
+  //   )
+  //     return item;
+  // });
 }
 
 function addToCart(event) {
@@ -298,10 +311,21 @@ function removeFromCart(event) {
 }
 
 function handleProductOptionChange(event) {
+  console.log(event.target);
+  console.log(event.target.dataset.id);
+
   let productId = event.target.dataset.id;
   let productOptionId = event.target.dataset.optionid;
 
-  let targetProduct = products.find((product) => product.id == productId);
+  console.log(productId);
+  console.log(productOptionId);
+
+  let targetProduct = products.find(
+    (product) => product.productId == productId
+  );
+  // let targetProduct = findItem(products, productId, productOptionId);
+
+  console.log(targetProduct);
 
   let targetProductOption = targetProduct.options.find(
     (productOption) => productOption.optionId == productOptionId
@@ -328,9 +352,9 @@ function handleProductOptionChange(event) {
   const targetButtonGroupChild = targetButtonGroup.children[0];
 
   image.src = `${baseUrl}/assets/images/productImages/small/${targetProductOption.imageName}_small.webp `;
-  brand.innerText = targetProductOption.brand;
-  title.innerText = targetProductOption.title;
-  description.innerText = targetProductOption.description;
+  // brand.innerText = targetProductOption.brand;
+  // title.innerText = targetProductOption.title;
+  // description.innerText = targetProductOption.description;
   price.innerText = formatCurrency(targetProductOption.price);
   targetButtonGroup.dataset.optionid = productOptionId;
   targetButtonGroupChild.dataset.id = productId;
