@@ -52,8 +52,24 @@ function cardOptionField(product, option) {
   `;
 }
 
+function cardOptionSelect(product, option) {
+  return `
+  <label for="size-select">Size</label>
+
+  <select name="sizes" id="size-select">
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="hamster">Hamster</option>
+    <option value="parrot">Parrot</option>
+    <option value="spider">Spider</option>
+    <option value="goldfish">Goldfish</option>
+  </select>
+  `;
+}
+
 const productCardTemplate = function (product) {
   let cardOptionsFieldset = undefined;
+  let cardOptionsSelections = undefined;
   let uniqueOptionsByStyle = [];
 
   product.options.filter((option) => {
@@ -68,24 +84,10 @@ const productCardTemplate = function (product) {
     }
   });
 
-  // console.table(uniqueOptionsByStyle);
-
-  // const productionOptionsStyles = new Array();
-
-  // for (let productOption of product.options) {
-  //   productionOptionsStyles.push(productOption.optionVisual.value);
-  // }
-
-  // const productOptionsStylesSet = [...new Set(productionOptionsStyles)];
-
   if (uniqueOptionsByStyle.length <= 1) {
     cardOptionsFieldset = '';
   } else {
     let cardProductOptions = '';
-
-    // for (let i = 0; i < uniqueOptionStyles.length; i++) {
-    //   cardProductOptions += cardOptionField(product, i);
-    // }
 
     for (let option of uniqueOptionsByStyle) {
       cardProductOptions += cardOptionField(product, option);
@@ -129,7 +131,9 @@ const productCardTemplate = function (product) {
           </p>          
         </div>
 
-        ${cardOptionsFieldset}        
+        ${cardOptionsFieldset}
+        
+
 
         <div class="product-price">
           <span class="product-price-value">${formatCurrency(
