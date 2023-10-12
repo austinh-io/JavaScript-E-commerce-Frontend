@@ -364,5 +364,39 @@
         }
       }
     ]
+  },
+  {
+    "productId": 3,
+    "brand": "L.I",
+    "title": "Cute Mug",
+    "description": "Nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus. Tellus elementum sagittis vitae et leo.",
+    "dateReleased": "2019-02-03",
+    "categories": ["Home", "Kitchen", "Coffee"],
+    "options": [
+      {
+        "optionId": 0,
+        "optionStyle": "White",
+        "optionSize": "S",
+        "price": 24.95,
+        "inStock": 0,
+        "imageName": "item10-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#f9dbbd"
+        }
+      },
+      {
+        "optionId": 2,
+        "optionStyle": "White",
+        "optionSize": "L",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item11-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#f9dbbd"
+        }
+      }
+    ]
   }
 ]
