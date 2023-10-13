@@ -1,143 +1,505 @@
 [
   {
-    "id": 0,
+    "productId": 0,
+    "brand": "Placeholder Inc.",
+    "title": "Extra Soft T-Shirt",
+    "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+    "dateReleased": "2023-09-23",
+    "categories": ["T-Shirts", "Tops", "Womens"],
     "options": [
       {
-        "optionId": 0,
-        "brand": "Placeholder Inc.",
-        "title": "Item 0 - 0",
-        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
-        "price": 0.99,
+        "optionId": 69,
+        "optionStyle": "White",
+        "optionSize": "S",
+        "price": 34.95,
+        "inStock": 10,
         "imageName": "item0-0",
-        "optionLabel": "default"
+        "optionVisual": {
+          "type": "color",
+          "value": "#f9dbbd"
+        }
       },
       {
         "optionId": 1,
-        "brand": "Placeholder Inc.",
-        "title": "Item 0 - 1",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        "price": 1.99,
-        "imageName": "item1-0",
-        "optionLabel": "variant1"
+        "optionStyle": "White",
+        "optionSize": "M",
+        "price": 34.95,
+        "inStock": 0,
+        "imageName": "item0-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#f9dbbd"
+        }
       },
       {
         "optionId": 2,
-        "brand": "Placeholder Inc.",
-        "title": "Item 0 - 2",
-        "description": "Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Sagittis eu volutpat odio facilisis mauris sit. Porta lorem mollis aliquam ut porttitor leo a diam sollicitudin.",
-        "price": 2.99,
-        "imageName": "item2-0",
-        "optionLabel": "variant2"
-      }
-    ]
-  },
-  {
-    "id": 1,
-    "options": [
-      {
-        "optionId": 0,
-        "brand": "Lorem Ipsum Group",
-        "title": "Item 1 - 0",
-        "description": "Eu lobortis elementum nibh tellus molestie nunc non blandit. Mauris augue neque gravida in fermentum. Magna fermentum iaculis eu non diam phasellus vestibulum lorem.",
-        "price": 3.99,
-        "imageName": "item3-0",
-        "optionLabel": "default"
+        "optionStyle": "White",
+        "optionSize": "L",
+        "price": 34.95,
+        "inStock": 9,
+        "imageName": "item0-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#f9dbbd"
+        }
       },
       {
-        "optionId": 1,
-        "brand": "Lorem Ipsum Group",
-        "title": "Item 1 - 1",
-        "description": "Nisi scelerisque eu ultrices vitae auctor eu augue ut lectus. Condimentum mattis pellentesque id nibh tortor id aliquet lectus proin.",
-        "price": 4.99,
-        "imageName": "item4-0",
-        "optionLabel": "variant1"
-      },
-      {
-        "optionId": 2,
-        "brand": "Lorem Ipsum Group",
-        "title": "Item 1 - 2",
-        "description": "Feugiat vivamus at augue eget arcu dictum varius duis at. Neque gravida in fermentum et sollicitudin ac.",
-        "price": 5.99,
-        "imageName": "item5-0",
-        "optionLabel": "variant2"
+        "optionId": 21,
+        "optionStyle": "White",
+        "optionSize": "XL",
+        "price": 84.95,
+        "inStock": 9,
+        "imageName": "item0-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#f9dbbd"
+        }
       },
       {
         "optionId": 3,
-        "brand": "Lorem Ipsum Group",
-        "title": "Item 1 - 3",
-        "description": "Massa tincidunt dui ut ornare lectus sit amet est placerat. Ut consequat semper viverra nam libero justo laoreet.",
-        "price": 69.98,
-        "imageName": "item6-0",
-        "optionLabel": "variant3"
+        "optionStyle": "Black",
+        "optionSize": "XS",
+        "price": 44.95,
+        "inStock": 4,
+        "imageName": "item1-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#fca17d"
+        }
+      },
+      {
+        "optionId": 4,
+        "optionStyle": "Black",
+        "optionSize": "S",
+        "price": 34.95,
+        "inStock": 1,
+        "imageName": "item1-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#fca17d"
+        }
+      },
+      {
+        "optionId": 6,
+        "optionStyle": "Red",
+        "optionSize": "S",
+        "price": 34.95,
+        "inStock": 10,
+        "imageName": "item2-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#da627d"
+        }
+      },
+      {
+        "optionId": 7,
+        "optionStyle": "Red",
+        "optionSize": "M",
+        "price": 34.95,
+        "inStock": 10,
+        "imageName": "item2-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#da627d"
+        }
+      },
+      {
+        "optionId": 8,
+        "optionStyle": "Red",
+        "optionSize": "L",
+        "price": 34.95,
+        "inStock": 10,
+        "imageName": "item2-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#da627d"
+        }
+      },
+      {
+        "optionId": 9,
+        "optionStyle": "Blue",
+        "optionSize": "S",
+        "price": 34.95,
+        "inStock": 10,
+        "imageName": "item3-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#9a348e"
+        }
+      },
+      {
+        "optionId": 10,
+        "optionStyle": "Blue",
+        "optionSize": "M",
+        "price": 34.95,
+        "inStock": 10,
+        "imageName": "item3-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#9a348e"
+        }
+      },
+      {
+        "optionId": 11,
+        "optionStyle": "Blue",
+        "optionSize": "L",
+        "price": 34.95,
+        "inStock": 10,
+        "imageName": "item3-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#9a348e"
+        }
       }
     ]
   },
   {
-    "id": 2,
+    "productId": 1,
+    "brand": "Lorem Ipsum Group",
+    "title": "Extra Soft T-Shirt",
+    "description": "Eu lobortis elementum nibh tellus molestie nunc non blandit. Mauris augue neque gravida in fermentum. Magna fermentum iaculis eu non diam phasellus vestibulum lorem.",
+    "dateReleased": "2023-01-21",
+    "categories": ["T-Shirts", "Tops", "Mens"],
     "options": [
       {
+        "optionId": 1000,
+        "optionStyle": "White",
+        "optionSize": "XS",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item4-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#ffbe0b"
+        }
+      },
+      {
         "optionId": 0,
-        "brand": "Business Name LTD",
-        "title": "Item 2 - 0",
-        "description": "Nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus. Tellus elementum sagittis vitae et leo.",
-        "price": 6.99,
-        "imageName": "item7-0",
-        "optionLabel": "default"
+        "optionStyle": "White",
+        "optionSize": "S",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item4-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#ffbe0b"
+        }
       },
       {
         "optionId": 1,
-        "brand": "Business Name LTD",
-        "title": "Item 2 - 1",
-        "description": "Enim sed faucibus turpis in eu. Habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Ut diam quam nulla porttitor massa id neque.",
-        "price": 7.99,
-        "imageName": "item8-0",
-        "optionLabel": "variant1"
+        "optionStyle": "White",
+        "optionSize": "M",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item4-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#ffbe0b"
+        }
       },
       {
         "optionId": 2,
-        "brand": "Business Name LTD",
-        "title": "Item 2 - 2",
-        "description": "Fermentum iaculis eu non diam phasellus vestibulum lorem sed risus. Viverra nibh cras pulvinar mattis. Ornare massa eget egestas purus viverra accumsan in nisl nisi.",
-        "price": 8.99,
-        "imageName": "item9-0",
-        "optionLabel": "variant2"
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "options": [
-      {
-        "optionId": 0,
-        "brand": "Brandy's",
-        "title": "Item 3 - 0",
-        "description": "Orci porta non pulvinar neque laoreet suspendisse interdum consectetur libero. Rhoncus aenean vel elit scelerisque.",
-        "price": 9.99,
-        "imageName": "item10-0",
-        "optionLabel": "default"
+        "optionStyle": "White",
+        "optionSize": "L",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item4-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#ffbe0b"
+        }
       },
       {
-        "optionId": 1,
-        "brand": "Brandy's",
-        "title": "Item 3 - 1",
-        "description": "Aliquet porttitor lacus luctus accumsan tortor posuere ac. Enim ut tellus elementum sagittis vitae. In egestas erat imperdiet sed euismod nisi porta.",
-        "price": 10.99,
-        "imageName": "item11-0",
-        "optionLabel": "variant1"
+        "optionId": 3,
+        "optionStyle": "Black",
+        "optionSize": "S",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item5-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#ff006e"
+        }
+      },
+      {
+        "optionId": 4,
+        "optionStyle": "Black",
+        "optionSize": "M",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item5-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#ff006e"
+        }
+      },
+      {
+        "optionId": 5,
+        "optionStyle": "Black",
+        "optionSize": "L",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item5-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#ff006e"
+        }
+      },
+      {
+        "optionId": 6,
+        "optionStyle": "Red",
+        "optionSize": "S",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item6-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#8338ec"
+        }
+      },
+      {
+        "optionId": 7,
+        "optionStyle": "Red",
+        "optionSize": "M",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item6-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#8338ec"
+        }
+      },
+      {
+        "optionId": 8,
+        "optionStyle": "Red",
+        "optionSize": "L",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item6-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#8338ec"
+        }
+      },
+      {
+        "optionId": 9,
+        "optionStyle": "Blue",
+        "optionSize": "S",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item7-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#3a86ff"
+        }
+      },
+      {
+        "optionId": 10,
+        "optionStyle": "Blue",
+        "optionSize": "M",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item7-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#3a86ff"
+        }
+      },
+      {
+        "optionId": 11,
+        "optionStyle": "Blue",
+        "optionSize": "L",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item7-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#3a86ff"
+        }
       }
     ]
   },
   {
-    "id": 4,
+    "productId": 2,
+    "brand": "Business Name LTD",
+    "title": "Very Cool Hoody",
+    "description": "Nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus. Tellus elementum sagittis vitae et leo.",
+    "dateReleased": "2020-02-03",
+    "categories": ["Sweatshirts", "Tops", "Mens"],
     "options": [
       {
         "optionId": 0,
-        "brand": "McBrand Business Name",
-        "title": "Item 4 - 0",
-        "description": "Aliquam purus sit amet luctus. Turpis tincidunt id aliquet risus. Faucibus purus in massa tempor nec. Ipsum dolor sit amet consectetur adipiscing elit.",
-        "price": 12.99,
-        "imageName": "item12-0",
-        "optionLabel": "default"
+        "optionStyle": "White",
+        "optionSize": "S",
+        "price": 24.95,
+        "inStock": 0,
+        "imageName": "item8-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#2a9d8f"
+        }
+      },
+      {
+        "optionId": 2,
+        "optionStyle": "White",
+        "optionSize": "L",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item8-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#2a9d8f"
+        }
+      },
+      {
+        "optionId": 6,
+        "optionStyle": "Red",
+        "optionSize": "S",
+        "price": 24.95,
+        "inStock": 2,
+        "imageName": "item9-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#e9c46a"
+        }
+      },
+      {
+        "optionId": 7,
+        "optionStyle": "Red",
+        "optionSize": "M",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item9-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#e9c46a"
+        }
+      },
+      {
+        "optionId": 8,
+        "optionStyle": "Velvet",
+        "optionSize": "XS",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item14-0",
+        "optionVisual": {
+          "type": "image",
+          "value": "option_bg_01"
+        }
+      },
+      {
+        "optionId": 9,
+        "optionStyle": "Velvet",
+        "optionSize": "S",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item14-0",
+        "optionVisual": {
+          "type": "image",
+          "value": "option_bg_01"
+        }
+      },
+      {
+        "optionId": 10,
+        "optionStyle": "Velvet",
+        "optionSize": "M",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item14-0",
+        "optionVisual": {
+          "type": "image",
+          "value": "option_bg_01"
+        }
+      }
+    ]
+  },
+  {
+    "productId": 3,
+    "brand": "L.I",
+    "title": "Cute Mug",
+    "description": "Nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus. Tellus elementum sagittis vitae et leo.",
+    "dateReleased": "2019-02-03",
+    "categories": ["Home", "Kitchen", "Coffee"],
+    "options": [
+      {
+        "optionId": 0,
+        "optionStyle": "White",
+        "optionSize": "S",
+        "price": 24.95,
+        "inStock": 0,
+        "imageName": "item10-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#f9dbbd"
+        }
+      },
+      {
+        "optionId": 2,
+        "optionStyle": "White",
+        "optionSize": "L",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item11-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#f9dbbd"
+        }
+      }
+    ]
+  },
+  {
+    "productId": 4,
+    "brand": "Loris Ipsium Co.",
+    "title": "Fantastic Pants",
+    "description": "Nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus. Tellus elementum sagittis vitae et leo.",
+    "dateReleased": "2019-02-03",
+    "categories": ["Home", "Kitchen", "Coffee"],
+    "options": [
+      {
+        "optionId": 0,
+        "optionStyle": "White",
+        "optionSize": "",
+        "price": 24.95,
+        "inStock": 0,
+        "imageName": "item16-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#00f5d4"
+        }
+      },
+      {
+        "optionId": 2,
+        "optionStyle": "White",
+        "optionSize": "",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item17-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#aeb8fe"
+        }
+      }
+    ]
+  },
+  {
+    "productId": 5,
+    "brand": "Big Ipsum",
+    "title": "World's Okayest Jacket",
+    "description": "Nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus. Tellus elementum sagittis vitae et leo.",
+    "dateReleased": "2019-02-03",
+    "categories": ["Home", "Kitchen", "Coffee"],
+    "options": [
+      {
+        "optionId": 0,
+        "optionStyle": "White",
+        "optionSize": "onesize",
+        "price": 24.95,
+        "inStock": 0,
+        "imageName": "item19-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#00f5d4"
+        }
       }
     ]
   }
