@@ -482,7 +482,6 @@ function updateCartItem(cartItem) {
     `cart-item-${cartItem.productId + cartItem.option.optionId}`
   );
   cartItemElement.querySelector('.cart-item-count').innerText = cartItem.count;
-  console.log(cartItemElement);
 }
 
 function addCartItem(cartItem) {
