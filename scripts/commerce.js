@@ -42,7 +42,7 @@ function cardOptionField(product, option) {
       id="option-${product.productId}-${option.optionId}"
       name="options-item-${product.productId}"
       value="option-${option.optionId}"
-      data-id="${product.productId}"
+      data-productId="${product.productId}"
       data-optionid="${option.optionId}"
       onChange="handleProductOptionChange(event)"
       ${product.options.indexOf(option) == 0 ? 'checked' : ''}
@@ -86,14 +86,19 @@ function cardOptionSelectionGroup(product, option) {
     optionSelections += cardOptionSelection(optionSize);
   }
 
-  console.log(optionSelections[0].optionSize);
   if (optionStyleSizes.length <= 1) {
     return '';
   } else
     return `
   <label for="product-size-select-${product.productId}" class="hidden">Size</label>
 
-  <select class="product-size-selection" name="sizes" id="product-size-select-${product.productId}" data-productId=${product.productId}>
+  <select
+    class="product-size-selection"
+    name="sizes"
+    id="product-size-select-${product.productId}"
+    data-productId=${product.productId}
+    onChange="handleProductOptionChange(event)"
+  >
     ${optionSelections}
   </select>
   `;
@@ -154,7 +159,7 @@ const productCardTemplate = function (product) {
   let cardOptionsFieldset = getProductFieldset(uniqueOptionsByStyle, product);
 
   return `
-  <div class="product" id="product-${product.productId}" data-id=${
+  <div class="product" id="product-${product.productId}" data-productId=${
     product.productId
   }>
     <div
@@ -191,7 +196,7 @@ const productCardTemplate = function (product) {
           )}</span>
         </div>
 
-        <div class="product-button-group" data-id=${
+        <div class="product-button-group" data-productId=${
           product.productId
         } data-optionid=${product.options[0].optionId}>
           <button
@@ -213,7 +218,7 @@ const cartItemTemplate = function (item) {
   return `
         <div
           class="cart-item-container"
-          data-id="${item.productId}"
+          data-productId="${item.productId}"
           data-optionid="${item.option.optionId}"
         >
           <div class="cart-item-col1">
@@ -234,7 +239,7 @@ const cartItemTemplate = function (item) {
               <button
                 class="button-cart button-add"
                 onclick="addToCart(event)"
-                data-id="${item.productId}"
+                data-productId="${item.productId}"
                 data-optionid="${item.option.optionId}"
               >
                 <span class="material-symbols-outlined button-cart-icon">
@@ -247,7 +252,7 @@ const cartItemTemplate = function (item) {
               <button
                 class="button-cart button-subtract"
                 onclick="subtractFromCart(event)"
-                data-id="${item.productId}"
+                data-productId="${item.productId}"
                 data-optionid="${item.option.optionId}"
               >
                 <span class="material-symbols-outlined button-cart-icon">
@@ -259,7 +264,7 @@ const cartItemTemplate = function (item) {
           <div class="cart-item-col3">
             <button
               class="button-cart button-remove"
-              data-id="${item.productId}"
+              data-productId="${item.productId}"
               data-optionid="${item.option.optionId}"
               onclick="removeFromCart(event)"
             >
@@ -295,7 +300,11 @@ function addToCart(event) {
 
   let productOptionId = eventTarget.dataset.optionid;
 
-  let targetProduct = products.find((product) => product.id == productId);
+  let targetProduct = products.find(
+    (product) => product.productId == productId
+  );
+
+  console.log(targetProduct);
 
   let productOptionToAdd = targetProduct.options.find(
     (productOption) => productOption.optionId == productOptionId
@@ -355,8 +364,12 @@ function removeFromCart(event) {
 }
 
 function handleProductOptionChange(event) {
-  let productId = event.target.dataset.id;
+  let productId = event.target.dataset.productid;
   let productOptionId = event.target.dataset.optionid;
+  if (!productOptionId) {
+    productOptionId =
+      event.target.options[event.target.selectedIndex].dataset.optionid;
+  }
 
   let targetProduct = products.find(
     (product) => product.productId == productId
@@ -367,7 +380,7 @@ function handleProductOptionChange(event) {
   );
 
   const targetElement = document.getElementById(
-    `product-${event.target.dataset.id}`
+    `product-${event.target.dataset.productid}`
   );
 
   const imageContainer = targetElement.querySelector(
@@ -395,7 +408,11 @@ function handleProductOptionChange(event) {
     targetProductOption
   );
 
-  targetSizeSelections.innerHTML = cardOptionsSelections;
+  console.log(event.target);
+
+  if (!(event.target.classList[0] == 'product-size-selection')) {
+    targetSizeSelections.innerHTML = cardOptionsSelections;
+  }
 
   updateUi();
 }
