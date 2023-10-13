@@ -91,9 +91,9 @@ function cardOptionSelectionGroup(product, option) {
     return '';
   } else
     return `
-  <label for="product-size-select-${product.productId}">Size</label>
+  <label for="product-size-select-${product.productId}" class="hidden">Size</label>
 
-  <select name="sizes" id="product-size-select-${product.productId}" data-productId=${product.productId}>
+  <select class="product-size-selection" name="sizes" id="product-size-select-${product.productId}" data-productId=${product.productId}>
     ${optionSelections}
   </select>
   `;
