@@ -231,7 +231,12 @@ const cartItemTemplate = function (item) {
           </div>
           <div class="cart-item-col2">
             <div class="cart-item-title">${item.option.title}</div>
-            <div class="cart-item-option-label">${item.option.optionLabel}</div>
+            <div class="cart-item-option-label">Style: ${
+              item.option.optionStyle
+            }</div>
+            <div class="cart-item-option-label">Size: ${
+              item.option.optionSize
+            }</div>
 
             <div
               class="cart-item-buttons-container"
@@ -296,7 +301,7 @@ function findItem(_itemList, _productId, _optionId) {
 function addToCart(event) {
   let eventTarget = event.target.parentElement;
 
-  let productId = eventTarget.dataset.id;
+  let productId = eventTarget.dataset.productid;
 
   let productOptionId = eventTarget.dataset.optionid;
 
