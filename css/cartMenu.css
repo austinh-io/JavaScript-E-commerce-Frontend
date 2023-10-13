@@ -11,7 +11,7 @@
   right: 0;
 
   height: 100svh;
-  width: 28rem;
+  width: 34rem;
 
   background-color: var(--color-bg-trans);
   backdrop-filter: blur(50px);
@@ -210,7 +210,6 @@ button.btn-checkout {
   align-items: center;
   justify-content: center;
 
-  width: 100%;
   gap: 0.2rem;
   border: 2px solid var(--color-font);
   overflow: hidden;

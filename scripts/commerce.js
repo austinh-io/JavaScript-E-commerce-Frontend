@@ -221,6 +221,7 @@ const cartItemTemplate = function (item) {
           class="cart-item-container"
           data-productId="${item.productId}"
           data-optionid="${item.option.optionId}"
+          id="cart-item-${item.productId + item.option.optionId}"
         >
           <div class="cart-item-col1">
             <img
@@ -248,9 +249,9 @@ const cartItemTemplate = function (item) {
                 data-productId="${item.productId}"
                 data-optionid="${item.option.optionId}"
               >
-                <span class="material-symbols-outlined button-cart-icon">
-                  stat_1
-                </span>
+              <span class="material-symbols-outlined button-cart-icon">
+              add
+              </span>
               </button>
 
               <div class="cart-item-count">${item.count}</div>
@@ -261,9 +262,9 @@ const cartItemTemplate = function (item) {
                 data-productId="${item.productId}"
                 data-optionid="${item.option.optionId}"
               >
-                <span class="material-symbols-outlined button-cart-icon">
-                  stat_minus_1
-                </span>
+              <span class="material-symbols-outlined button-cart-icon">
+              remove
+              </span>
               </button>
             </div>
           </div>
@@ -319,6 +320,7 @@ function addToCart(event) {
   if (cartItemToAdd) {
     cartItemToAdd.count += 1;
     cartItemToAdd.totalPrice = cartItemToAdd.count * cartItemToAdd.option.price;
+    updateCartItem(cartItemToAdd);
   } else {
     const newItem = new cartItem(
       productId + productOptionId,
@@ -329,6 +331,7 @@ function addToCart(event) {
       targetProduct.title
     );
     cartItems.push(newItem);
+    addCartItem(newItem);
   }
 
   updateUi();
@@ -344,6 +347,7 @@ function subtractFromCart(event) {
     if (itemToRemove.count > 1) {
       itemToRemove.count -= 1;
       itemToRemove.totalPrice = itemToRemove.count * itemToRemove.option.price;
+      updateCartItem(itemToRemove);
     } else {
       removeFromCart(itemToRemove);
     }
@@ -359,9 +363,12 @@ function removeFromCart(event) {
     const targetProductId = event.target.parentElement.dataset.productid;
     const targetOptionId = event.target.parentElement.dataset.optionid;
 
+    clearCartItem(targetProductId, targetOptionId);
+
     let targetItem = findItem(cartItems, targetProductId, targetOptionId);
     cartItems.splice(cartItems.indexOf(targetItem), 1);
   } else {
+    clearCartItem(event.productId, event.option.optionId);
     cartItems.splice(cartItems.indexOf(event), 1);
   }
 
@@ -442,7 +449,6 @@ function updateCatalogItemsCartButtons() {
 }
 
 function updateUi() {
-  updateCartList();
   updateCartItemsCount();
   updateCartSubtotal();
   updateCatalogItemsCartButtons();
@@ -471,9 +477,23 @@ function updateCartSubtotal() {
   totalCostValueElement.innerText = formatCurrency(totalCost);
 }
 
-function updateCartList() {
-  clearCartList();
-  fillCartList();
+function updateCartItem(cartItem) {
+  let cartItemElement = document.getElementById(
+    `cart-item-${cartItem.productId + cartItem.option.optionId}`
+  );
+  cartItemElement.querySelector('.cart-item-count').innerText = cartItem.count;
+  console.log(cartItemElement);
+}
+
+function addCartItem(cartItem) {
+  cartItemsList.insertAdjacentHTML('afterbegin', cartItemTemplate(cartItem));
+}
+
+function clearCartItem(productId, optionId) {
+  let targetCartItem = document.getElementById(
+    `cart-item-${productId + optionId}`
+  );
+  cartItemsList.removeChild(targetCartItem);
 }
 
 function clearCartList() {

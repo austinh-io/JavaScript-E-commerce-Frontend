@@ -15,10 +15,10 @@
 }
 
 :root[data-theme='light'] {
-  --color-bg: #d4d7d9;
+  --color-bg: #eef1f3;
   --color-bg-trans: #e4e6e7be;
-  --color-fg: #e4e6e7;
-  --color-font: #283133;
+  --color-fg: #f7f8f9;
+  --color-font: #282e33;
   --color-font-secondary: #626a6f;
   --color-accent: #558afa;
   --color-disabled: #9a9ea5;
