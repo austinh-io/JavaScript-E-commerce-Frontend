@@ -44,9 +44,21 @@
         }
       },
       {
+        "optionId": 21,
+        "optionStyle": "White",
+        "optionSize": "XL",
+        "price": 84.95,
+        "inStock": 9,
+        "imageName": "item0-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#f9dbbd"
+        }
+      },
+      {
         "optionId": 3,
         "optionStyle": "Black",
-        "optionSize": "S",
+        "optionSize": "XS",
         "price": 44.95,
         "inStock": 4,
         "imageName": "item1-0",
@@ -58,21 +70,9 @@
       {
         "optionId": 4,
         "optionStyle": "Black",
-        "optionSize": "M",
+        "optionSize": "S",
         "price": 34.95,
         "inStock": 1,
-        "imageName": "item1-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#fca17d"
-        }
-      },
-      {
-        "optionId": 5,
-        "optionStyle": "Black",
-        "optionSize": "L",
-        "price": 34.95,
-        "inStock": 10,
         "imageName": "item1-0",
         "optionVisual": {
           "type": "color",
@@ -162,6 +162,18 @@
     "categories": ["T-Shirts", "Tops", "Mens"],
     "options": [
       {
+        "optionId": 1000,
+        "optionStyle": "White",
+        "optionSize": "XS",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item4-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#ffbe0b"
+        }
+      },
+      {
         "optionId": 0,
         "optionStyle": "White",
         "optionSize": "S",
@@ -170,7 +182,7 @@
         "imageName": "item4-0",
         "optionVisual": {
           "type": "color",
-          "value": "#f9dbbd"
+          "value": "#ffbe0b"
         }
       },
       {
@@ -182,7 +194,7 @@
         "imageName": "item4-0",
         "optionVisual": {
           "type": "color",
-          "value": "#f9dbbd"
+          "value": "#ffbe0b"
         }
       },
       {
@@ -194,7 +206,7 @@
         "imageName": "item4-0",
         "optionVisual": {
           "type": "color",
-          "value": "#f9dbbd"
+          "value": "#ffbe0b"
         }
       },
       {
@@ -206,7 +218,7 @@
         "imageName": "item5-0",
         "optionVisual": {
           "type": "color",
-          "value": "#fca17d"
+          "value": "#ff006e"
         }
       },
       {
@@ -218,7 +230,7 @@
         "imageName": "item5-0",
         "optionVisual": {
           "type": "color",
-          "value": "#fca17d"
+          "value": "#ff006e"
         }
       },
       {
@@ -230,7 +242,7 @@
         "imageName": "item5-0",
         "optionVisual": {
           "type": "color",
-          "value": "#fca17d"
+          "value": "#ff006e"
         }
       },
       {
@@ -242,7 +254,7 @@
         "imageName": "item6-0",
         "optionVisual": {
           "type": "color",
-          "value": "#da627d"
+          "value": "#8338ec"
         }
       },
       {
@@ -254,7 +266,7 @@
         "imageName": "item6-0",
         "optionVisual": {
           "type": "color",
-          "value": "#da627d"
+          "value": "#8338ec"
         }
       },
       {
@@ -266,7 +278,7 @@
         "imageName": "item6-0",
         "optionVisual": {
           "type": "color",
-          "value": "#da627d"
+          "value": "#8338ec"
         }
       },
       {
@@ -278,7 +290,7 @@
         "imageName": "item7-0",
         "optionVisual": {
           "type": "color",
-          "value": "#9a348e"
+          "value": "#3a86ff"
         }
       },
       {
@@ -290,7 +302,7 @@
         "imageName": "item7-0",
         "optionVisual": {
           "type": "color",
-          "value": "#9a348e"
+          "value": "#3a86ff"
         }
       },
       {
@@ -302,7 +314,7 @@
         "imageName": "item7-0",
         "optionVisual": {
           "type": "color",
-          "value": "#9a348e"
+          "value": "#3a86ff"
         }
       }
     ]
@@ -324,7 +336,7 @@
         "imageName": "item8-0",
         "optionVisual": {
           "type": "color",
-          "value": "#f9dbbd"
+          "value": "#2a9d8f"
         }
       },
       {
@@ -336,7 +348,7 @@
         "imageName": "item8-0",
         "optionVisual": {
           "type": "color",
-          "value": "#f9dbbd"
+          "value": "#2a9d8f"
         }
       },
       {
@@ -348,7 +360,7 @@
         "imageName": "item9-0",
         "optionVisual": {
           "type": "color",
-          "value": "#da627d"
+          "value": "#e9c46a"
         }
       },
       {
@@ -360,12 +372,36 @@
         "imageName": "item9-0",
         "optionVisual": {
           "type": "color",
-          "value": "#da627d"
+          "value": "#e9c46a"
         }
       },
       {
         "optionId": 8,
-        "optionStyle": "Red",
+        "optionStyle": "Velvet",
+        "optionSize": "XS",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item14-0",
+        "optionVisual": {
+          "type": "image",
+          "value": "option_bg_01"
+        }
+      },
+      {
+        "optionId": 9,
+        "optionStyle": "Velvet",
+        "optionSize": "S",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item14-0",
+        "optionVisual": {
+          "type": "image",
+          "value": "option_bg_01"
+        }
+      },
+      {
+        "optionId": 10,
+        "optionStyle": "Velvet",
         "optionSize": "M",
         "price": 24.95,
         "inStock": 10,

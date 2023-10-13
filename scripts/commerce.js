@@ -34,6 +34,7 @@ function cardOptionField(product, option) {
   } else if (option.optionVisual.type == 'image') {
     inputBackground = `background-image: url(${baseUrl}/assets/images/productImages/${option.optionVisual.value}.jpg);`;
   }
+
   return `
   <div>
     <input
@@ -58,17 +59,36 @@ function cardOptionField(product, option) {
   `;
 }
 
-function cardOptionSelect(product, option) {
-  return `
-  <label for="size-select">Size</label>
+function getOptionStyleSizes(product, option) {
+  let optionStyleSizes = [];
 
-  <select name="sizes" id="size-select">
-    <option value="dog">${option.optionSize}</option>
-    <option value="cat">Cat</option>
-    <option value="hamster">Hamster</option>
-    <option value="parrot">Parrot</option>
-    <option value="spider">Spider</option>
-    <option value="goldfish">Goldfish</option>
+  for (let options of product.options) {
+    if (
+      options.optionVisual.value == option.optionVisual.value &&
+      options.optionVisual.value == option.optionVisual.value
+    ) {
+      optionStyleSizes.push(options);
+    }
+  }
+  return optionStyleSizes;
+}
+
+function cardOptionSelection(option) {
+  return `
+  <option value="${option.optionSize}" data-optionId=${option.optionId}>${option.optionSize}</option>
+  `;
+}
+
+function cardOptionSelectionGroup(product, option) {
+  let optionSelections = '';
+  for (let optionSize of getOptionStyleSizes(product, option)) {
+    optionSelections += cardOptionSelection(optionSize);
+  }
+  return `
+  <label for="product-size-select-${product.productId}">Size</label>
+
+  <select name="sizes" id="product-size-select-${product.productId}" data-productId=${product.productId}>
+    ${optionSelections}
   </select>
   `;
 }
@@ -120,7 +140,10 @@ function getProductFieldset(productOptions, product) {
 }
 
 const productCardTemplate = function (product) {
-  let cardOptionsSelections = cardOptionSelect(null, product.options[0]);
+  let cardOptionsSelections = cardOptionSelectionGroup(
+    product,
+    product.options[0]
+  );
   let uniqueOptionsByStyle = getUniqueOptionStyles(product);
   let cardOptionsFieldset = getProductFieldset(uniqueOptionsByStyle, product);
 
@@ -257,16 +280,6 @@ function findItem(_itemList, _productId, _optionId) {
     if (item.productId == _productId && item.option.optionId == _optionId)
       return item;
   });
-
-  // return _itemList.find((item) => {
-  //   if (
-  //     item.productId == _productId &&
-  //     item.options.find((option) => {
-  //       option.optionId == _optionId;
-  //     }) == _optionId
-  //   )
-  //     return item;
-  // });
 }
 
 function addToCart(event) {
@@ -336,55 +349,52 @@ function removeFromCart(event) {
 }
 
 function handleProductOptionChange(event) {
-  console.log(event.target);
-  console.log(event.target.dataset.id);
-
   let productId = event.target.dataset.id;
   let productOptionId = event.target.dataset.optionid;
-
-  console.log(productId);
-  console.log(productOptionId);
 
   let targetProduct = products.find(
     (product) => product.productId == productId
   );
-  // let targetProduct = findItem(products, productId, productOptionId);
-
-  console.log(targetProduct);
 
   let targetProductOption = targetProduct.options.find(
     (productOption) => productOption.optionId == productOptionId
+  );
+
+  let targetProductOptionSizes = getOptionStyleSizes(
+    targetProduct,
+    targetProductOption
   );
 
   const targetElement = document.getElementById(
     `product-${event.target.dataset.id}`
   );
 
-  console.log(targetElement);
-
   const imageContainer = targetElement.querySelector(
     '.product-image-container'
   );
   const image = targetElement.querySelector('.product-image');
-  const brand = targetElement.querySelector('.product-brand');
-  const title = targetElement.querySelector('.product-title');
-  const description = targetElement.querySelector('.product-description')
-    .children[0];
   const price = targetElement.querySelector('.product-price-value');
   const targetButtonGroup = targetElement.querySelector(
     '.product-button-group'
   );
-  const targetButtonGroupChild = targetButtonGroup.children[0];
+  const targetButton = targetButtonGroup.children[0];
+  const targetSizeSelections = targetElement.querySelector(
+    `#product-size-select-${productId}`
+  );
 
   image.src = `${baseUrl}/assets/images/productImages/small/${targetProductOption.imageName}_small.webp `;
-  // brand.innerText = targetProductOption.brand;
-  // title.innerText = targetProductOption.title;
-  // description.innerText = targetProductOption.description;
   price.innerText = formatCurrency(targetProductOption.price);
   targetButtonGroup.dataset.optionid = productOptionId;
-  targetButtonGroupChild.dataset.id = productId;
-  targetButtonGroupChild.dataset.optionid = productOptionId;
+  targetButton.dataset.id = productId;
+  targetButton.dataset.optionid = productOptionId;
   imageContainer.style = `background-image: url(${baseUrl}/assets/images/productImages/smaller_alt/${targetProductOption.imageName}_smaller_alt.jpg);`;
+
+  let cardOptionsSelections = cardOptionSelectionGroup(
+    targetProduct,
+    targetProductOption
+  );
+
+  targetSizeSelections.innerHTML = cardOptionsSelections;
 
   updateUi();
 }
