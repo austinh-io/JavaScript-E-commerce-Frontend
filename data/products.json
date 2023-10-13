@@ -446,5 +446,61 @@
         }
       }
     ]
+  },
+  {
+    "productId": 4,
+    "brand": "Loris Ipsium Co.",
+    "title": "Fantastic Pants",
+    "description": "Nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus. Tellus elementum sagittis vitae et leo.",
+    "dateReleased": "2019-02-03",
+    "categories": ["Home", "Kitchen", "Coffee"],
+    "options": [
+      {
+        "optionId": 0,
+        "optionStyle": "White",
+        "optionSize": "",
+        "price": 24.95,
+        "inStock": 0,
+        "imageName": "item16-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#00f5d4"
+        }
+      },
+      {
+        "optionId": 2,
+        "optionStyle": "White",
+        "optionSize": "",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item17-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#aeb8fe"
+        }
+      }
+    ]
+  },
+  {
+    "productId": 5,
+    "brand": "Big Ipsum",
+    "title": "World's Okayest Jacket",
+    "description": "Nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus. Tellus elementum sagittis vitae et leo.",
+    "dateReleased": "2019-02-03",
+    "categories": ["Home", "Kitchen", "Coffee"],
+    "options": [
+      {
+        "optionId": 0,
+        "optionStyle": "White",
+        "optionSize": "onesize",
+        "price": 24.95,
+        "inStock": 0,
+        "imageName": "item19-0",
+        "optionVisual": {
+          "type": "color",
+          "value": "#00f5d4"
+        }
+      }
+    ]
   }
 ]

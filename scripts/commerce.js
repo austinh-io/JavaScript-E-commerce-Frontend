@@ -81,10 +81,16 @@ function cardOptionSelection(option) {
 
 function cardOptionSelectionGroup(product, option) {
   let optionSelections = '';
-  for (let optionSize of getOptionStyleSizes(product, option)) {
+  const optionStyleSizes = getOptionStyleSizes(product, option);
+  for (let optionSize of optionStyleSizes) {
     optionSelections += cardOptionSelection(optionSize);
   }
-  return `
+
+  console.log(optionSelections[0].optionSize);
+  if (optionStyleSizes.length <= 1) {
+    return '';
+  } else
+    return `
   <label for="product-size-select-${product.productId}">Size</label>
 
   <select name="sizes" id="product-size-select-${product.productId}" data-productId=${product.productId}>
@@ -358,11 +364,6 @@ function handleProductOptionChange(event) {
 
   let targetProductOption = targetProduct.options.find(
     (productOption) => productOption.optionId == productOptionId
-  );
-
-  let targetProductOptionSizes = getOptionStyleSizes(
-    targetProduct,
-    targetProductOption
   );
 
   const targetElement = document.getElementById(
