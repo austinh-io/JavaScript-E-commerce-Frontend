@@ -19,12 +19,13 @@ const baseUrl = baseUrlLocal;
 const catalogItemButtonText_Enabled = 'Add to Cart';
 const catalogItemButtonText_Disabled = 'Item in Cart';
 
-function cartItem(id, productId, option, count, totalPrice) {
+function cartItem(id, productId, option, count, totalPrice, title) {
   this.id = id;
   this.productId = productId;
   this.option = option;
   this.count = count;
   this.totalPrice = totalPrice;
+  this.title = title;
 }
 
 function cardOptionField(product, option) {
@@ -230,7 +231,7 @@ const cartItemTemplate = function (item) {
             />
           </div>
           <div class="cart-item-col2">
-            <div class="cart-item-title">${item.option.title}</div>
+            <div class="cart-item-title">${item.title}</div>
             <div class="cart-item-option-label">Style: ${
               item.option.optionStyle
             }</div>
@@ -309,8 +310,6 @@ function addToCart(event) {
     (product) => product.productId == productId
   );
 
-  console.log(targetProduct);
-
   let productOptionToAdd = targetProduct.options.find(
     (productOption) => productOption.optionId == productOptionId
   );
@@ -326,7 +325,8 @@ function addToCart(event) {
       productId,
       productOptionToAdd,
       1,
-      productOptionToAdd.price
+      productOptionToAdd.price,
+      targetProduct.title
     );
     cartItems.push(newItem);
   }
@@ -335,7 +335,7 @@ function addToCart(event) {
 }
 
 function subtractFromCart(event) {
-  const productId = event.target.parentElement.dataset.id;
+  const productId = event.target.parentElement.dataset.productid;
   const optionId = event.target.parentElement.dataset.optionid;
 
   let itemToRemove = findItem(cartItems, productId, optionId);
@@ -356,7 +356,7 @@ function subtractFromCart(event) {
 
 function removeFromCart(event) {
   if (event.target) {
-    const targetProductId = event.target.parentElement.dataset.id;
+    const targetProductId = event.target.parentElement.dataset.productid;
     const targetOptionId = event.target.parentElement.dataset.optionid;
 
     let targetItem = findItem(cartItems, targetProductId, targetOptionId);
@@ -404,7 +404,7 @@ function handleProductOptionChange(event) {
   image.src = `${baseUrl}/assets/images/productImages/small/${targetProductOption.imageName}_small.webp `;
   price.innerText = formatCurrency(targetProductOption.price);
   targetButtonGroup.dataset.optionid = productOptionId;
-  targetButton.dataset.id = productId;
+  targetButton.dataset.productid = productId;
   targetButton.dataset.optionid = productOptionId;
   imageContainer.style = `background-image: url(${baseUrl}/assets/images/productImages/smaller_alt/${targetProductOption.imageName}_smaller_alt.jpg);`;
 
@@ -413,9 +413,10 @@ function handleProductOptionChange(event) {
     targetProductOption
   );
 
-  console.log(event.target);
-
-  if (!(event.target.classList[0] == 'product-size-selection')) {
+  if (
+    !(event.target.classList[0] == 'product-size-selection') &&
+    cardOptionsSelections
+  ) {
     targetSizeSelections.innerHTML = cardOptionsSelections;
   }
 
@@ -427,7 +428,7 @@ function updateCatalogItemsCartButtons() {
     if (
       findItem(
         cartItems,
-        catalogProductsButtons[i].parentElement.dataset.id,
+        catalogProductsButtons[i].parentElement.dataset.productid,
         catalogProductsButtons[i].parentElement.dataset.optionid
       )
     ) {
