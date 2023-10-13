@@ -1,3 +1,4 @@
+// ---------- Filter Menu ---------- //
 const filterMenu = document.querySelector('.filter-menu');
 const filterToggle = document.querySelector('.filter-menu-toggle');
 
