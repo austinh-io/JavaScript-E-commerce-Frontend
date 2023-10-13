@@ -362,6 +362,18 @@
           "type": "color",
           "value": "#da627d"
         }
+      },
+      {
+        "optionId": 8,
+        "optionStyle": "Red",
+        "optionSize": "M",
+        "price": 24.95,
+        "inStock": 10,
+        "imageName": "item14-0",
+        "optionVisual": {
+          "type": "image",
+          "value": "option_bg_01"
+        }
       }
     ]
   },

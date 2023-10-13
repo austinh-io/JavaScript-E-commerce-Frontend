@@ -28,6 +28,12 @@ function cartItem(id, productId, option, count, totalPrice) {
 }
 
 function cardOptionField(product, option) {
+  let inputBackground = '';
+  if (option.optionVisual.type == 'color') {
+    inputBackground = `background-color: ${option.optionVisual.value};`;
+  } else if (option.optionVisual.type == 'image') {
+    inputBackground = `background-image: url(${baseUrl}/assets/images/productImages/${option.optionVisual.value}.jpg);`;
+  }
   return `
   <div>
     <input
@@ -40,7 +46,7 @@ function cardOptionField(product, option) {
       onChange="handleProductOptionChange(event)"
       ${product.options.indexOf(option) == 0 ? 'checked' : ''}
       style="
-        background-color: ${option.optionVisual.value};
+        ${inputBackground};
       "
     />
     <label
@@ -57,7 +63,7 @@ function cardOptionSelect(product, option) {
   <label for="size-select">Size</label>
 
   <select name="sizes" id="size-select">
-    <option value="dog">Dog</option>
+    <option value="dog">${option.optionSize}</option>
     <option value="cat">Cat</option>
     <option value="hamster">Hamster</option>
     <option value="parrot">Parrot</option>
@@ -67,15 +73,16 @@ function cardOptionSelect(product, option) {
   `;
 }
 
-const productCardTemplate = function (product) {
-  let cardOptionsFieldset = undefined;
-  let cardOptionsSelections = undefined;
+function getUniqueOptionStyles(product) {
   let uniqueOptionsByStyle = [];
 
   product.options.filter((option) => {
     if (
       uniqueOptionsByStyle.find((element) => {
-        return option.optionVisual.value == element.optionVisual.value;
+        return (
+          option.optionVisual.type == element.optionVisual.type &&
+          option.optionVisual.value == element.optionVisual.value
+        );
       })
     ) {
       return option;
@@ -84,12 +91,18 @@ const productCardTemplate = function (product) {
     }
   });
 
-  if (uniqueOptionsByStyle.length <= 1) {
+  return uniqueOptionsByStyle;
+}
+
+function getProductFieldset(productOptions, product) {
+  let cardOptionsFieldset = undefined;
+
+  if (productOptions.length <= 1) {
     cardOptionsFieldset = '';
   } else {
     let cardProductOptions = '';
 
-    for (let option of uniqueOptionsByStyle) {
+    for (let option of productOptions) {
       cardProductOptions += cardOptionField(product, option);
     }
 
@@ -102,6 +115,14 @@ const productCardTemplate = function (product) {
     </fieldset>
     `;
   }
+
+  return cardOptionsFieldset;
+}
+
+const productCardTemplate = function (product) {
+  let cardOptionsSelections = cardOptionSelect(null, product.options[0]);
+  let uniqueOptionsByStyle = getUniqueOptionStyles(product);
+  let cardOptionsFieldset = getProductFieldset(uniqueOptionsByStyle, product);
 
   return `
   <div class="product" id="product-${product.productId}" data-id=${
@@ -132,7 +153,7 @@ const productCardTemplate = function (product) {
         </div>
 
         ${cardOptionsFieldset}
-        
+        ${cardOptionsSelections}
 
 
         <div class="product-price">
