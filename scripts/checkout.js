@@ -87,17 +87,6 @@ function getCartLocalStorage() {
   cartItems = JSON.parse(localCartItems);
 }
 
-// function initializeProducts() {
-//   if (checkoutCartList) {
-//     cartItems.forEach((cartListItem) => {
-//       checkoutCartList.insertAdjacentHTML(
-//         'afterbegin',
-//         cartItemTemplate(cartListItem)
-//       );
-//     });
-//   }
-// }
-
 function fillCartList() {
   cartItems.forEach((cartListItem) => {
     checkoutCartList.insertAdjacentHTML(
@@ -110,9 +99,6 @@ function fillCartList() {
 async function initializePage() {
   getCartLocalStorage();
   fillCartList();
-  // checkoutButton.addEventListener('click', handleCheckout);
 }
-
-// initializePage();
 
 document.addEventListener('DOMContentLoaded', initializePage);
