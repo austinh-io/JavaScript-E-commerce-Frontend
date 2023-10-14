@@ -1,14 +1,16 @@
-const checkoutButton = document.querySelector('.btn-checkout');
+// const checkoutButton = document.querySelector('.btn-checkout');
 
-checkoutButton.addEventListener('click', test);
+// checkoutButton.addEventListener('click', test);
 
-function test() {
-  console.log('clicked');
-  var lat = 'AMOGUS';
-  var long = 'heyyyyylol';
+// function test() {
+//   console.log('clicked');
+//   var lat = 'AMOGUS';
+//   var long = 'heyyyyylol';
 
-  window.location.href = `/test.html?testVariable1=${lat}&testVariable2=${long}&setLatLon=Set`;
-}
+//   window.location.href = `archive/test.html?testVariable1=${encodeURIComponent(
+//     lat
+//   )}&testVariable2=${encodeURIComponent(long)}&setLatLon=Set`;
+// }
 
 // ---------- Filter Menu ---------- //
 const filterMenu = document.querySelector('.filter-menu');

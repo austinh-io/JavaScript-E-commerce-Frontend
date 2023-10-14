@@ -1,5 +1,7 @@
 'use strict';
 
+// const checkoutCartList = document.querySelector('.checkout-cart-items');
+const checkoutButton = document.querySelector('.btn-checkout');
 const productsList = document.querySelector('.products-list');
 const cartItemsList = document.querySelector('.cart-items-container');
 const cartIconCounters = document.getElementsByClassName('cart-icon-counter');
@@ -452,6 +454,7 @@ function updateUi() {
   updateCartItemsCount();
   updateCartSubtotal();
   updateCatalogItemsCartButtons();
+  setCartLocalStorage();
 }
 
 function updateCartItemsCount() {
@@ -501,6 +504,19 @@ function clearCartList() {
   }
 }
 
+function setCartLocalStorage() {
+  localStorage.setItem('localCart', JSON.stringify(cartItems));
+  // let i = localStorage.getItem('localCart');
+  // console.log(JSON.parse(i));
+}
+
+function getCartLocalStorage() {
+  let localCartItems = localStorage.getItem('localCart');
+  cartItems = JSON.parse(localCartItems);
+  updateUi();
+  fillCartList();
+}
+
 function fillCartList() {
   cartItems.forEach((cartListItem) => {
     cartItemsList.insertAdjacentHTML(
@@ -519,16 +535,26 @@ async function catchProductList() {
 async function initializeProducts() {
   await catchProductList();
 
-  for (const productObject of products) {
-    productsList.insertAdjacentHTML(
-      'beforeend',
-      productCardTemplate(productObject)
-    );
+  if (productsList) {
+    for (const productObject of products) {
+      productsList.insertAdjacentHTML(
+        'beforeend',
+        productCardTemplate(productObject)
+      );
+    }
   }
+
+  cartItems.forEach((cartListItem) => {
+    checkoutCartList.insertAdjacentHTML(
+      'afterbegin',
+      cartItemTemplate(cartListItem)
+    );
+  });
 }
 
 async function initializePage() {
   await initializeProducts();
+  getCartLocalStorage();
 }
 
-initializePage();
+document.addEventListener('DOMContentLoaded', initializePage);
