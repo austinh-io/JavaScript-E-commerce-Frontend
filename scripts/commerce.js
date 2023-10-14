@@ -35,7 +35,11 @@ function cardOptionField(product, option) {
   if (option.optionVisual.type == 'color') {
     inputBackground = `background-color: ${option.optionVisual.value};`;
   } else if (option.optionVisual.type == 'image') {
-    inputBackground = `background-image: url(${baseUrl}/assets/images/productImages/${option.optionVisual.value}.jpg);`;
+    inputBackground = `
+      background-image: url(${baseUrl}/assets/images/productImages/${option.optionVisual.value}.jpg);
+      background-position: center;
+      background-size: cover;
+    `;
   }
 
   return `
