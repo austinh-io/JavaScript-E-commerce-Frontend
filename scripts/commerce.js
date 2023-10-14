@@ -485,6 +485,8 @@ function updateCartItem(cartItem) {
     `cart-item-${cartItem.productId + cartItem.option.optionId}`
   );
   cartItemElement.querySelector('.cart-item-count').innerText = cartItem.count;
+  cartItemElement.querySelector('.cart-item-price').children[0].innerText =
+    formatCurrency(cartItem.totalPrice);
 }
 
 function addCartItem(cartItem) {
@@ -506,8 +508,6 @@ function clearCartList() {
 
 function setCartLocalStorage() {
   localStorage.setItem('localCart', JSON.stringify(cartItems));
-  // let i = localStorage.getItem('localCart');
-  // console.log(JSON.parse(i));
 }
 
 function getCartLocalStorage() {
