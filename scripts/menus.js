@@ -1,8 +1,8 @@
 const checkoutButton = document.querySelector('.btn-checkout');
 
-checkoutButton.addEventListener('click', geoPreview);
+checkoutButton.addEventListener('click', test);
 
-function geoPreview() {
+function test() {
   console.log('clicked');
   var lat = 'AMOGUS';
   var long = 'heyyyyylol';
