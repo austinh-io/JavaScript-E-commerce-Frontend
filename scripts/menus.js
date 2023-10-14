@@ -53,13 +53,14 @@ const catalogProductButtons = document.getElementsByClassName('button-product');
 //   cartToggles[i].addEventListener('click', handleCartMenu);
 // }
 
-for (cartToggle of cartToggles) {
+for (let cartToggle of cartToggles) {
   cartToggle.addEventListener('click', handleCartMenu);
 }
 
-for (catalogProductButton of catalogProductButtons) {
-  catalogProductButton.addEventListener('click', openCartMenu);
-}
+// for (let catalogProductButton of catalogProductButtons) {
+
+//   catalogProductButton.addEventListener('click', openCartMenu);
+// }
 
 cartToggleClose.addEventListener('click', handleCartMenu);
 
@@ -69,12 +70,12 @@ function handleCartMenu() {
   if (visibility === 'false') {
     cartMenu.setAttribute('data-visible', 'true');
 
-    for (cartToggle of cartToggles)
+    for (let cartToggle of cartToggles)
       cartToggle.setAttribute('aria-expanded', 'true');
   } else {
     cartMenu.setAttribute('data-visible', 'false');
 
-    for (cartToggle of cartToggles)
+    for (let cartToggle of cartToggles)
       cartToggle.setAttribute('aria-expanded', 'false');
   }
 }
@@ -85,7 +86,7 @@ function openCartMenu() {
   if (visibility === 'false') {
     cartMenu.setAttribute('data-visible', 'true');
 
-    for (cartToggle of cartToggles)
+    for (let cartToggle of cartToggles)
       cartToggle.setAttribute('aria-expanded', 'true');
   }
 }

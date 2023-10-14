@@ -205,7 +205,7 @@ const productCardTemplate = function (product) {
             id="button-product-${
               product.productId + product.options[0].optionId
             }"
-            onclick="addToCart(event)"
+            onclick="addToCart(event); openCartMenu()"
           >
             ${catalogItemButtonText_Enabled}
           </button>
