@@ -1,3 +1,15 @@
+const checkoutButton = document.querySelector('.btn-checkout');
+
+checkoutButton.addEventListener('click', geoPreview);
+
+function geoPreview() {
+  console.log('clicked');
+  var lat = 'AMOGUS';
+  var long = 'heyyyyylol';
+
+  window.location.href = `/test.html?testVariable1=${lat}&testVariable2=${long}&setLatLon=Set`;
+}
+
 // ---------- Filter Menu ---------- //
 const filterMenu = document.querySelector('.filter-menu');
 const filterToggle = document.querySelector('.filter-menu-toggle');

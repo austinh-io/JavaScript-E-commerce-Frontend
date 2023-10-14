@@ -74,7 +74,8 @@
   font-weight: 600;
 }
 
-button.btn-checkout {
+button.btn-checkout,
+a.btn-checkout {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -90,6 +91,13 @@ button.btn-checkout {
 
   background-color: var(--color-font);
   color: var(--color-fg);
+}
+
+button.btn-checkout:hover,
+a.btn-checkout:hover {
+  background-color: var(--color-fg);
+  color: var(--color-font);
+  outline: 5px solid var(--color-accent);
 }
 
 .material-symbols-outlined.checkout-icon {
