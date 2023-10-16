@@ -116,6 +116,14 @@ div.hidden {
 
 /* -- Logo/Business Name -- */
 
+a.nav-site-logo {
+  text-decoration: none;
+}
+
+a.nav-site-logo:visited {
+  color: inherit;
+}
+
 .nav-site-logo {
   display: flex;
   align-items: ba;
