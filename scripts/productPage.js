@@ -5,6 +5,8 @@ const productBrandElement = document.querySelector('.product-brand');
 const productDescriptionElement = document.querySelector(
   '.product-description'
 );
+const productSizeElement = document.querySelector('.product-size');
+const productStyleElement = document.querySelector('.product-style');
 const productPriceElement = document.querySelector('.product-price');
 const productImageElement = document.querySelector('.product-image');
 
@@ -49,6 +51,8 @@ async function initializePage() {
   productTitleElement.innerText = product.title;
   productBrandElement.innerText = product.brand;
   productDescriptionElement.innerText = product.description;
+  productSizeElement.innerText = productOption.optionSize;
+  productStyleElement.innerText = productOption.optionStyle;
   productPriceElement.innerText = productOption.price;
   productImageElement.src = `${baseUrl}/assets/images/productImages/small/${productOption.imageName}_small.webp`;
 }
