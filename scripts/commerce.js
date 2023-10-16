@@ -190,7 +190,9 @@ const productCardTemplate = function (product) {
     <div class="product-info-container">
         <div class="product-brand">${product.brand}</div>
         <div class="product-title">
-          <a href="https://example.com">
+          <a href="productPage.html?productId=${product.productId}&optionId=${
+    product.options[0].optionId
+  }">
           ${product.title}
           </a>          
         </div>
@@ -412,6 +414,7 @@ function handleProductOptionChange(event) {
     '.product-image-container'
   );
   const image = targetElement.querySelector('.product-image');
+  const title = targetElement.querySelector('.product-title').children[0];
   const price = targetElement.querySelector('.product-price-value');
   const targetButtonGroup = targetElement.querySelector(
     '.product-button-group'
@@ -422,6 +425,10 @@ function handleProductOptionChange(event) {
   );
 
   image.src = `${baseUrl}/assets/images/productImages/small/${targetProductOption.imageName}_small.webp `;
+  title.setAttribute(
+    'href',
+    `productPage.html?productId=${targetProduct.productId}&optionId=${targetProductOption.optionId}`
+  );
   price.innerText = formatCurrency(targetProductOption.price);
   targetButtonGroup.dataset.optionid = productOptionId;
   targetButton.dataset.productid = productId;

@@ -26,11 +26,11 @@
 }
 
 img.product-image {
-  transition: transform 0.15s ease-out;
+  transition: transform 0.25s ease;
 }
 
 img.product-image:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .product-image {
