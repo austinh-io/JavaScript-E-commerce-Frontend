@@ -189,7 +189,11 @@ const productCardTemplate = function (product) {
     </a>
     <div class="product-info-container">
         <div class="product-brand">${product.brand}</div>
-        <div class="product-title">${product.title}</div>
+        <div class="product-title">
+          <a href="https://example.com">
+          ${product.title}
+          </a>          
+        </div>
         <div class="product-description">
           <p>
             ${product.description}
