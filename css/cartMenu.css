@@ -74,6 +74,10 @@
   font-weight: 600;
 }
 
+a.btn-checkout {
+  text-decoration: none;
+}
+
 button.btn-checkout,
 a.btn-checkout {
   display: flex;

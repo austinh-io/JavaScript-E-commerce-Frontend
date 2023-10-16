@@ -114,6 +114,15 @@ const themeIconLight = document.querySelector('.theme-icon-light');
 
 themeToggle.addEventListener('click', handleThemeMenu);
 
+function setThemeLocalStorage(theme) {
+  localStorage.setItem('theme', theme);
+}
+
+// function getCartLocalStorage() {
+//   let localSetTheme = localStorage.getItem('theme');
+//   setColorTheme(localSetTheme);
+// }
+
 function setColorTheme(theme) {
   switch (theme) {
     case 'dark':
@@ -132,6 +141,7 @@ function setColorTheme(theme) {
       document.documentElement.setAttribute('data-theme', 'light');
       break;
   }
+  setThemeLocalStorage(theme);
 }
 
 function getColorThemePreference() {
@@ -150,7 +160,9 @@ function handleThemeMenu() {
 }
 
 function updateTheme() {
-  setColorTheme(getColorThemePreference());
+  if (localStorage.getItem('theme'))
+    setColorTheme(localStorage.getItem('theme'));
+  else setColorTheme(getColorThemePreference());
 }
 
 updateTheme();
