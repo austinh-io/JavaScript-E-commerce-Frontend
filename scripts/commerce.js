@@ -169,12 +169,15 @@ const productCardTemplate = function (product) {
   <div class="product" id="product-${product.productId}" data-productId=${
     product.productId
   }>
-    <div
+    <a
       class="product-image-container"
       style="
       background-image: url(${baseUrl}/assets/images/productImages/smaller_alt/${
     product.options[0].imageName
   }_smaller_alt.jpg);"
+      href="productPage.html?productId=${product.productId}&optionId=${
+    product.options[0].optionId
+  }"
       >
         <img
         loading="lazy"
@@ -183,7 +186,7 @@ const productCardTemplate = function (product) {
     product.options[0].imageName
   }_small.webp"
         />
-    </div>
+    </a>
     <div class="product-info-container">
         <div class="product-brand">${product.brand}</div>
         <div class="product-title">${product.title}</div>

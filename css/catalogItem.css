@@ -25,6 +25,14 @@
   display: block;
 }
 
+img.product-image {
+  transition: transform 0.15s ease-out;
+}
+
+img.product-image:hover {
+  transform: scale(1.1);
+}
+
 .product-image {
   width: 100%;
   height: 100%;
