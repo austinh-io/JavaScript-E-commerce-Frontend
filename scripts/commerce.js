@@ -423,6 +423,10 @@ function handleProductOptionChange(event) {
   targetButton.dataset.productid = productId;
   targetButton.dataset.optionid = productOptionId;
   imageContainer.style = `background-image: url(${baseUrl}/assets/images/productImages/smaller_alt/${targetProductOption.imageName}_smaller_alt.jpg);`;
+  imageContainer.setAttribute(
+    'href',
+    `productPage.html?productId=${targetProduct.productId}&optionId=${targetProductOption.optionId}`
+  );
 
   let cardOptionsSelections = cardOptionSelectionGroup(
     targetProduct,
