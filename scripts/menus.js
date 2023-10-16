@@ -16,7 +16,9 @@
 const filterMenu = document.querySelector('.filter-menu');
 const filterToggle = document.querySelector('.filter-menu-toggle');
 
-filterToggle.addEventListener('click', handleFilterMenu);
+if (filterToggle) {
+  filterToggle.addEventListener('click', handleFilterMenu);
+}
 
 function handleFilterMenu() {
   const visibility = filterMenu.getAttribute('data-visible');

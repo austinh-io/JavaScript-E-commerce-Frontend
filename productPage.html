@@ -10,8 +10,35 @@
 
     <link
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+
+    <link
+      rel="stylesheet"
       href="/css/style.css"
     />
+
+    <link rel="stylesheet" href="/css/responsive.css" media="screen and
+    (max-width: 768px)"" />
+
+    <link
+      rel="stylesheet"
+      href="css/cartMenu.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="css/shared.css"
+    />
+
+    <script
+      defer
+      src="/scripts/menus.js"
+    ></script>
 
     <script
       defer
@@ -19,19 +46,145 @@
     ></script>
   </head>
   <body>
-    <h1>Welcome to the Product Page</h1>
-    <div class="product-container">
-      <h2 class="product-title">Product Title</h2>
-      <h3 class="product-brand">Product Brand</h3>
-      <p class="product-description">Product Description</p>
-      <p class="product-style">Product Style</p>
-      <p class="product-size">Product Size</p>
-      <p class="product-price">Product Price</p>
-      <img
-        src=""
-        alt=""
-        class="product-image"
-      />
+    <nav class="mobile-nav">
+      <div class="mobile-nav-container wrapper">
+        <div class="nav-menu-toggle-container">
+          <button class="nav-menu-toggle mobile-button">
+            <span class="material-symbols-outlined"> menu </span>
+          </button>
+        </div>
+        <button class="mobile-search-btn mobile-button">
+          <span class="material-symbols-outlined"> search </span>
+        </button>
+        <button
+          class="cart-menu-toggle cart-menu-toggle-open mobile-button"
+          aria-controls="cart-menu"
+          aria-expanded="false"
+        >
+          <div class="cart-icon-container">
+            <span class="material-symbols-outlined cart-icon">
+              shopping_cart
+            </span>
+            <span class="cart-icon-counter hidden"></span>
+          </div>
+        </button>
+      </div>
+    </nav>
+
+    <header
+      class="header-container menu-horizontal-from-left-mobile"
+      data-visible="false"
+    >
+      <nav class="nav-container wrapper">
+        <ul class="nav-menu">
+          <div class="nav-site-logo">
+            <a
+              class="nav-logo-container"
+              href="index.html"
+            >
+              <div class="nav-logo-icon"></div>
+            </a>
+            <div class="nav-logo-text">Lorem Ipsum</div>
+          </div>
+
+          <li><a>Page 1</a></li>
+          <li><a>Page 2</a></li>
+          <li><a>Page 3</a></li>
+
+          <div class="nav-buttons-container">
+            <button
+              class="button theme-toggle"
+              id="theme-toggle"
+            >
+              <span
+                class="material-symbols-outlined btn-themes-icon theme-icon-dark hidden"
+              >
+                dark_mode
+              </span>
+              <span
+                class="material-symbols-outlined theme-icon-light btn-themes-icon"
+              >
+                light_mode
+              </span>
+            </button>
+
+            <button
+              class="cart-menu-toggle cart-menu-toggle-open"
+              aria-controls="cart-menu"
+              aria-expanded="false"
+            >
+              <div class="cart-icon-container">
+                <span class="material-symbols-outlined cart-icon">
+                  shopping_cart
+                </span>
+                <span class="cart-icon-counter hidden"></span>
+              </div>
+            </button>
+          </div>
+        </ul>
+      </nav>
+    </header>
+
+    <div
+      class="cart-menu menu-horizontal menu-shadow"
+      id="cart-menu"
+      data-visible="false"
+    >
+      <div class="cart-menu-header">
+        <h2 class="cart-menu-header-title">Cart</h2>
+        <button class="cart-menu-toggle-close">
+          <span class="material-symbols-outlined"> close </span>
+        </button>
+      </div>
+
+      <div class="cart-items-container">
+        <!-- Cart Items -->
+      </div>
+      <div class="cart-display-footer">
+        <div class="subtotal-container">
+          <div class="total-cost">
+            <div class="subtotal-label">Cart Subtotal</div>
+            <span class="total-cost-value">$0.00</span>
+          </div>
+        </div>
+
+        <!-- <button class="btn-checkout">
+        Checkout<span class="material-symbols-outlined checkout-icon">
+          shopping_cart_checkout
+        </span>
+      </button> -->
+
+        <a
+          class="btn-checkout"
+          href="checkout.html"
+        >
+          Checkout<span class="material-symbols-outlined checkout-icon">
+            shopping_cart_checkout
+          </span>
+        </a>
+      </div>
     </div>
+
+    <main class="wrapper">
+      <h1 style="margin-top: 5rem">Welcome to the Product Page</h1>
+      <br />
+      <div
+        class="product-container"
+        style="max-width: 30rem"
+      >
+        <h2 class="product-title">Product Title</h2>
+        <h3 class="product-brand">Product Brand</h3>
+        <p class="product-description">Product Description</p>
+        <p class="product-style">Product Style</p>
+        <p class="product-size">Product Size</p>
+        <p class="product-price">Product Price</p>
+        <img
+          src=""
+          alt=""
+          class="product-image"
+          style="width: 100%"
+        />
+      </div>
+    </main>
   </body>
 </html>
