@@ -13,7 +13,7 @@
 // }
 
 // ---------- Filter Menu ---------- //
-const filterMenu = document.querySelector('.filter-menu');
+const filterMenu = document.querySelector('.filter-options-menu');
 const filterToggle = document.querySelector('.filter-menu-toggle');
 
 if (filterToggle) {
