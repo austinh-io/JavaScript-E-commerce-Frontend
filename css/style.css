@@ -322,7 +322,7 @@ a.hero-anchor:hover {
 
 .products-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(24rem, auto));
+  grid-template-columns: repeat(auto-fill, minmax(22rem, auto));
   width: 100%;
   gap: 2rem;
   row-gap: 4rem;
