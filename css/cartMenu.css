@@ -28,19 +28,29 @@
 }
 
 .cart-menu-header-title {
-  padding: 1rem;
+  padding-left: 1rem;
+  font-size: 2rem;
 }
 
 .cart-menu-toggle-close {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 0.8rem;
   border: none;
   cursor: pointer;
 
   background-color: var(--color-font);
   color: var(--color-fg);
+}
+
+.cart-menu-toggle-close:hover {
+  color: var(--color-warning);
+}
+
+.material-symbols-outlined.cart-menu-toggle-icon {
+  font-size: 2.2rem;
+  font-weight: 600;
 }
 
 .cart-items-container {
