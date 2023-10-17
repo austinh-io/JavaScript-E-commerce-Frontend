@@ -2,7 +2,8 @@
 
 // const checkoutCartList = document.querySelector('.checkout-cart-items');
 const checkoutButton = document.querySelector('.btn-checkout');
-const productsList = document.querySelector('.products-list');
+// const productsList = document.querySelector('.products-list');
+let productsList = undefined;
 const cartItemsList = document.querySelector('.cart-items-container');
 const cartIconCounters = document.getElementsByClassName('cart-icon-counter');
 const totalCostValueElement = document.querySelector('.total-cost-value');
@@ -556,6 +557,7 @@ async function catchProductList() {
 
 async function initializeProducts() {
   await catchProductList();
+  productsList = document.querySelector('.products-list');
 
   if (productsList) {
     for (const productObject of products) {
