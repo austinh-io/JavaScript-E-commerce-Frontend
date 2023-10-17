@@ -1,8 +1,14 @@
 @import url(/css/shared.css);
 
+:root {
+  --filter-options-container-height: 10rem;
+}
+
 /***** Filter Menu *****/
 
 .filters-parent-container {
+  display: flex;
+  flex-direction: column;
   margin-top: 1rem;
 
   overflow: hidden;
@@ -63,23 +69,49 @@ hr.hr-filters {
 
 .filters-container {
   overflow: hidden;
+  transition: max-height var(--menu-transition-speed) ease-out;
+  -webkit-transition: max-height var(--menu-transition-speed) ease-out;
+  -moz-transition: max-height var(--menu-transition-speed) ease-out;
+  -ms-transition: max-height var(--menu-transition-speed) ease-out;
+  -o-transition: max-height var(--menu-transition-speed) ease-out;
+  /* border: 1px solid red; */
+}
+
+.filters-container:has(.filter-menu[data-visible='true']) {
+  max-height: var(--filter-options-container-height);
+}
+
+.filters-container:has(.filter-menu[data-visible='false']) {
+  max-height: 0;
 }
 
 .filter-menu {
+  position: relative;
   display: flex;
   align-items: center;
   width: 100%;
+  height: var(--filter-options-container-height);
+
+  padding: 1rem;
 
   border-radius: 0 0 3pt 3pt;
 
   background-color: var(--color-fg);
 
-  max-height: 0;
+  /* max-height: 0; */
+
+  transition: all 0.2s ease;
 }
 
 .filter-menu[data-visible='true'] {
-  padding: 1rem;
-  max-height: 100%;
+  /* padding: 1rem; */
+  /* max-height: 100%; */
+  /* transform: translateY(10px); */
+}
+
+.filter-menu[data-visible='false'] {
+  /* max-height: 0; */
+  /* transform: translateY(-100px); */
 }
 
 fieldset.fieldset-filter {
