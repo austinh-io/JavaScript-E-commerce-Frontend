@@ -55,6 +55,10 @@ header {
   padding-block: 0.6rem;
 }
 
+a {
+  color: inherit;
+}
+
 a:hover {
   cursor: pointer;
 }
