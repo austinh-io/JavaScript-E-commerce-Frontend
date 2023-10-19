@@ -55,7 +55,8 @@ header {
   padding-block: 0.6rem;
 }
 
-a {
+a,
+a:visited {
   color: inherit;
 }
 
