@@ -1,6 +1,8 @@
 :root {
   color-scheme: light dark;
   --menu-transition-speed: 150ms;
+  --font-body: 'Poppins', sans-serif;
+  --font-title: 'Comfortaa', sans-serif;
 }
 
 :root[data-theme='dark'] {

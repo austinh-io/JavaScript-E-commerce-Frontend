@@ -1,4 +1,12 @@
-'use strict';
+import {
+  formatCurrency,
+  findItem,
+  baseUrl,
+  catchProductList,
+  catalogProducts,
+} from './utilities/commerceUtilities.js';
+import { cartItem } from './utilities/cartUtilities.js';
+('use strict');
 
 // const checkoutCartList = document.querySelector('.checkout-cart-items');
 const checkoutButton = document.querySelector('.btn-checkout');
@@ -13,23 +21,9 @@ const catalogProductsButtons = document.getElementsByClassName(
 
 let cartItems = new Array();
 let addToCartButtons = new Array();
-let products = new Array();
-
-const baseUrlLive = 'simple-ecommerce';
-const baseUrlLocal = '.';
-const baseUrl = baseUrlLocal;
 
 const catalogItemButtonText_Enabled = 'Add to Cart';
 const catalogItemButtonText_Disabled = 'Item in Cart';
-
-function cartItem(id, productId, option, count, totalPrice, title) {
-  this.id = id;
-  this.productId = productId;
-  this.option = option;
-  this.count = count;
-  this.totalPrice = totalPrice;
-  this.title = title;
-}
 
 function cardOptionField(product, option) {
   let inputBackground = '';
@@ -302,20 +296,6 @@ const cartItemTemplate = function (item) {
   `;
 };
 
-function formatCurrency(value) {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  }).format(value);
-}
-
-function findItem(_itemList, _productId, _optionId) {
-  return _itemList.find((item) => {
-    if (item.productId == _productId && item.option.optionId == _optionId)
-      return item;
-  });
-}
-
 function addToCart(event) {
   let eventTarget = event.target.parentElement;
 
@@ -323,7 +303,7 @@ function addToCart(event) {
 
   let productOptionId = eventTarget.dataset.optionid;
 
-  let targetProduct = products.find(
+  let targetProduct = catalogProducts.find(
     (product) => product.productId == productId
   );
 
@@ -399,7 +379,7 @@ function handleProductOptionChange(event) {
       event.target.options[event.target.selectedIndex].dataset.optionid;
   }
 
-  let targetProduct = products.find(
+  let targetProduct = catalogProducts.find(
     (product) => product.productId == productId
   );
 
@@ -549,18 +529,12 @@ function fillCartList() {
   });
 }
 
-async function catchProductList() {
-  const response = await fetch(`${baseUrl}/data/products.json`);
-  const productsObj = await response.json();
-  products = [...productsObj];
-}
-
 async function initializeProducts() {
   await catchProductList();
   productsList = document.querySelector('.products-list');
 
   if (productsList) {
-    for (const productObject of products) {
+    for (const productObject of catalogProducts) {
       productsList.insertAdjacentHTML(
         'beforeend',
         productCardTemplate(productObject)
@@ -579,6 +553,60 @@ async function initializeProducts() {
 async function initializePage() {
   await initializeProducts();
   getCartLocalStorage();
+
+  function getRandomId() {
+    let i = Math.floor(Math.random() * 100);
+    return i;
+  }
+
+  function getRandomGender() {
+    let num = Math.floor(Math.random() * 50);
+    if (num < 25) {
+      return 'men';
+    } else {
+      return 'women';
+    }
+  }
+
+  function getRandomJob() {
+    let num = Math.floor(Math.random() * 100);
+    if (num < 50) {
+      return 'employed';
+    } else {
+      return '';
+    }
+  }
+
+  function getRandomWage() {
+    let i = Math.floor(Math.random() * 10000);
+    return i;
+  }
+
+  function userCard(userId, userGender, userWage, email, job) {
+    return `
+      <user-card
+        name="Jane Doe"
+        avatar="https://randomuser.me/api/portraits/${userGender}/${userId}.jpg"
+        wage="${userWage}"
+        id="user-${email}"
+        job="${job}"
+        >
+        <div slot="email">${email}abc@example.com</div>
+        <div slot="phone">555-555-5555</div>
+      </user-card>
+      `;
+  }
+
+  for (let i = 0; i < 5; i++) {
+    let user = userCard(
+      getRandomId(),
+      getRandomGender(),
+      getRandomWage(),
+      i,
+      getRandomJob()
+    );
+    productsList.insertAdjacentHTML('beforeend', user);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', initializePage);

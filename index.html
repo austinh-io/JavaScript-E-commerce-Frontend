@@ -47,12 +47,30 @@
     />
 
     <script
+      type="module"
+      src="scripts/main.js"
+    ></script>
+
+    <script
+      defer
+      type="module"
+      src="scripts/components/productCard.js"
+    ></script>
+
+    <script
+      defer
+      type="module"
+      src="scripts/components/userCard.js"
+    ></script>
+
+    <script
       defer
       src="/scripts/menus.js"
     ></script>
 
     <script
       defer
+      type="module"
       src="/scripts/commerce.js"
     ></script>
   </head>
@@ -221,6 +239,27 @@
         </div>
 
         <div class="wrapper">
+          <div>
+            <catalog-product
+              name="Jane Doe"
+              avatar="https://randomuser.me/api/portraits/women/27.jpg"
+              wage="50"
+              id="assign-me"
+            >
+              <div slot="email">janedoe@example.com</div>
+              <div slot="phone">555-555-5555</div>
+            </catalog-product>
+
+            <catalog-product
+              name="John Doe"
+              avatar="https://randomuser.me/api/portraits/men/4.jpg"
+              wage="23"
+            >
+              <div slot="email">johndoe@example.com</div>
+              <div slot="phone">333-555-5555</div>
+            </catalog-product>
+          </div>
+
           <h2
             class="catalog-title"
             id="catalog"

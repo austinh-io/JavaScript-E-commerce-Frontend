@@ -1,4 +1,5 @@
-'use strict';
+import { findItem, formatCurrency } from './utilities.js';
+('use strict');
 
 const productTitleElement = document.querySelector('.product-title');
 const productBrandElement = document.querySelector('.product-brand');
@@ -13,20 +14,6 @@ const productImageElement = document.querySelector('.product-image');
 const baseUrl = '';
 
 let products = new Array();
-
-function findItem(_itemList, _productId, _optionId) {
-  return _itemList.find((item) => {
-    if (item.productId == _productId && item.option.optionId == _optionId)
-      return item;
-  });
-}
-
-function formatCurrency(value) {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  }).format(value);
-}
 
 async function catchProductList() {
   const response = await fetch(`${baseUrl}/data/products.json`);
