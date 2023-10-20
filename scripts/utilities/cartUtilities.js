@@ -13,9 +13,6 @@ const cartItemsList = document.querySelector('.cart-items-container');
 const cartIconCounters = document.getElementsByClassName('cart-icon-counter');
 const totalCostValueElement = document.querySelector('.total-cost-value');
 
-const catalogItemButtonText_Enabled = 'Add to Cart';
-const catalogItemButtonText_Disabled = 'Item in Cart';
-
 let addToCartButtons = new Array();
 
 export let cartItems = new Array();
@@ -39,7 +36,6 @@ export function updateCart() {
   if (cartItems) {
     updateCartItemsCount();
     updateCartSubtotal();
-    updateCatalogItemsCartButtons(); //not working
     setCartLocalStorage();
   }
 }
@@ -63,24 +59,6 @@ export function updateCartItemsCount() {
 export function updateCartSubtotal() {
   let totalCost = cartItems.reduce((sum, cur) => sum + cur.totalPrice, 0);
   totalCostValueElement.innerText = formatCurrency(totalCost);
-}
-
-export function updateCatalogItemsCartButtons() {
-  for (let i = 0; i < catalogProductsButtons.length; i++) {
-    if (
-      findItem(
-        cartItems,
-        catalogProductsButtons[i].parentElement.dataset.productid,
-        catalogProductsButtons[i].parentElement.dataset.optionid
-      )
-    ) {
-      catalogProductsButtons[i].disabled = true;
-      catalogProductsButtons[i].innerText = catalogItemButtonText_Disabled;
-    } else {
-      catalogProductsButtons[i].disabled = false;
-      catalogProductsButtons[i].innerText = catalogItemButtonText_Enabled;
-    }
-  }
 }
 
 export function getCart() {

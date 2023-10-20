@@ -10,7 +10,6 @@ import {
   cartItems,
   setCartItems,
   removeFromCart,
-  updateCatalogItemsCartButtons,
   updateCartItemsCount,
   updateCart,
   updateCartSubtotal,

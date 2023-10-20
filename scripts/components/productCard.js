@@ -6,7 +6,7 @@ import {
   catalogProducts,
 } from '/scripts/utilities/commerceUtilities.js';
 
-import { addToCart } from '../utilities/cartUtilities.js';
+import { addToCart, cartItems } from '../utilities/cartUtilities.js';
 
 ('use strict');
 
@@ -488,10 +488,24 @@ class catalogProduct extends HTMLElement {
     }
   }
 
-  // addToCart() {
-  //   const productId = this.getAttribute('productId');
-  //   console.log(productId);
-  // }
+  updateCatalogItemButton() {
+    const catalogItemButtonText_Enabled = 'Add to Cart';
+    const catalogItemButtonText_Disabled = 'Item in Cart';
+
+    const targetElement = this.closest('.product');
+    const productButton = targetElement.querySelector('.button-product');
+
+    let productId = productButton.getAttribute('productid');
+    let optionId = productButton.getAttribute('productoptionid');
+
+    if (findItem(cartItems, productId, optionId)) {
+      productButton.disabled = true;
+      productButton.textContent = catalogItemButtonText_Disabled;
+    } else {
+      productButton.disabled = false;
+      productButton.textContent = catalogItemButtonText_Enabled;
+    }
+  }
 
   handleProductOptionChange() {
     const targetElement = this.closest('.product');
@@ -562,10 +576,12 @@ class catalogProduct extends HTMLElement {
 
   connectedCallback() {
     this.productButton.addEventListener('click', addToCart);
+    this.productButton.addEventListener('click', this.updateCatalogItemButton);
 
     if (this.hasFieldset) {
       for (let input of this.productFieldsetInputs) {
         input.addEventListener('change', this.handleProductOptionChange);
+        input.addEventListener('change', this.updateCatalogItemButton);
       }
     }
 
@@ -573,6 +589,10 @@ class catalogProduct extends HTMLElement {
       this.productSelectGroup.addEventListener(
         'change',
         this.handleProductOptionChange
+      );
+      this.productSelectGroup.addEventListener(
+        'change',
+        this.updateCatalogItemButton
       );
     }
   }
