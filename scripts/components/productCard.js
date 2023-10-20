@@ -513,7 +513,7 @@ class catalogProduct extends HTMLElement {
     this.productTitle.textContent = product.title;
     this.productTitle.href = productPageUrl;
 
-    this.productDescription = shadow.querySelector('.product-description');
+    this.productDescription = shadow.querySelector('.product-description p');
     this.productDescription.textContent = product.description;
 
     this.productPrice = shadow.querySelector('.product-price-value');
