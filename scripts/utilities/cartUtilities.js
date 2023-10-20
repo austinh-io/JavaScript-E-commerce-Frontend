@@ -37,6 +37,18 @@ export function updateCart() {
     updateCartItemsCount();
     updateCartSubtotal();
     setCartLocalStorage();
+    updateCartItemsButtons();
+  }
+}
+
+export function updateCartItemsButtons() {
+  let removeButtons = document.getElementsByClassName(
+    'button-cart button-remove'
+  );
+
+  console.log(removeButtons);
+  for (let removeButton of removeButtons) {
+    removeButton.addEventListener('click', removeFromCart);
   }
 }
 
@@ -89,6 +101,7 @@ export function fillCartList() {
       );
     });
   }
+  updateCartItemsButtons();
 }
 
 export function addToCart(event) {
@@ -251,7 +264,6 @@ export const cartItemTemplate = function (item) {
               class="button-cart button-remove"
               data-productId="${item.productId}"
               data-optionid="${item.option.optionId}"
-              onclick="removeFromCart(event)"
             >
               <span class="material-symbols-outlined"> delete </span>
             </button>
