@@ -6,9 +6,16 @@ import {
 
 ('use strict');
 
-const catalogProductsButtons = document.getElementsByClassName(
-  'button-product button-add'
-);
+// const testing = [1, 2, 3];
+// const testingProxy = new Proxy(testing, {
+//   get: (obj, prop) => {
+//     console.log(obj);
+//     console.log(prop);
+//   },
+// });
+// console.log(testingProxy[1]);
+
+let catalogProductsButtons = undefined;
 const cartItemsList = document.querySelector('.cart-items-container');
 const cartIconCounters = document.getElementsByClassName('cart-icon-counter');
 const totalCostValueElement = document.querySelector('.total-cost-value');
@@ -16,6 +23,16 @@ const totalCostValueElement = document.querySelector('.total-cost-value');
 let addToCartButtons = new Array();
 
 export let cartItems = new Array();
+
+export async function setCatalogProductButtons() {
+  catalogProductsButtons = document.getElementsByClassName(
+    'button-product button-add'
+  );
+}
+
+export function getCatalogProductButtons() {
+  return catalogProductsButtons;
+}
 
 export function setCartItems(newItems) {
   cartItems = newItems;
@@ -46,7 +63,7 @@ export function updateCartItemsButtons() {
     'button-cart button-remove'
   );
 
-  console.log(removeButtons);
+  // console.log(removeButtons);
   for (let removeButton of removeButtons) {
     removeButton.addEventListener('click', removeFromCart);
   }
@@ -163,18 +180,33 @@ export function subtractFromCart(event) {
 }
 
 export function removeFromCart(event) {
+  // console.log(event.target.parentElement);
+  let productId = undefined;
+  let optionId = undefined;
+
   if (event.target) {
-    const targetProductId = event.target.parentElement.dataset.productid;
-    const targetOptionId = event.target.parentElement.dataset.optionid;
+    productId = event.target.parentElement.dataset.productid;
+    optionId = event.target.parentElement.dataset.optionid;
 
-    clearCartItem(targetProductId, targetOptionId);
+    clearCartItem(productId, optionId);
 
-    let targetItem = findItem(cartItems, targetProductId, targetOptionId);
+    let targetItem = findItem(cartItems, productId, optionId);
     cartItems.splice(cartItems.indexOf(targetItem), 1);
   } else {
-    clearCartItem(event.productId, event.option.optionId);
+    productId = event.productid;
+    optionId = event.option.optionid;
+
+    clearCartItem(productId, optionId);
     cartItems.splice(cartItems.indexOf(event), 1);
   }
+
+  // console.log(catalogProductsButtons);
+
+  // let catalogItem = document.querySelector(
+  //   `.button-product button-add productid="${productId}" productoptionid="${optionId}"`
+  // );
+
+  // console.log(catalogItem);
 
   updateCart();
 }

@@ -21,6 +21,7 @@ import {
   setCartLocalStorage,
   getCartLocalStorage,
   cartItemTemplate,
+  setCatalogProductButtons,
 } from './utilities/cartUtilities.js';
 ('use strict');
 
@@ -46,6 +47,7 @@ async function initializePage() {
   getCartLocalStorage();
   fillCartList();
   await initializeProducts();
+  await setCatalogProductButtons();
 }
 
 document.addEventListener('DOMContentLoaded', initializePage);

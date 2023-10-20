@@ -603,6 +603,7 @@ class catalogProduct extends HTMLElement {
     }
 
     this.updateCatalogItemButton();
+    // this.addEventListener()
   }
 }
 
