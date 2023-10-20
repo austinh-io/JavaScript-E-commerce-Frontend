@@ -6,6 +6,8 @@ import {
   catalogProducts,
 } from '/scripts/utilities/commerceUtilities.js';
 
+import { addToCart } from '../utilities/cartUtilities.js';
+
 ('use strict');
 
 const tpl_catalogProductCard = document.createElement('template');
@@ -486,10 +488,10 @@ class catalogProduct extends HTMLElement {
     }
   }
 
-  addToCart() {
-    const productId = this.getAttribute('productId');
-    console.log(productId);
-  }
+  // addToCart() {
+  //   const productId = this.getAttribute('productId');
+  //   console.log(productId);
+  // }
 
   handleProductOptionChange() {
     const targetElement = this.closest('.product');
@@ -523,8 +525,8 @@ class catalogProduct extends HTMLElement {
       `productPage.html?productId=${targetProduct.productId}&optionId=${targetProductOption.optionId}`
     );
     productPrice.textContent = formatCurrency(targetProductOption.price);
-    productButton.setAttribute('productid', this.dataset.productid);
-    productButton.setAttribute('optionid', this.dataset.optionid);
+    productButton.setAttribute('productid', productId);
+    productButton.setAttribute('productoptionid', optionId);
     productImageContainer.style = `background-image: url(${baseUrl}/assets/images/productImages/smaller_alt/${targetProductOption.imageName}_smaller_alt.jpg);`;
     productImageContainer.setAttribute(
       'href',
@@ -559,7 +561,7 @@ class catalogProduct extends HTMLElement {
   }
 
   connectedCallback() {
-    this.productButton.addEventListener('click', this.addToCart);
+    this.productButton.addEventListener('click', addToCart);
 
     if (this.hasFieldset) {
       for (let input of this.productFieldsetInputs) {
