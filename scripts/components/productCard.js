@@ -13,6 +13,10 @@ const tpl_catalogProductCSS = `
 <style>
     @import url(/css/shared.css);
 
+    :host {
+      height: 100%;
+    }
+
     h1, h2, h3, h4, h5, h6 {
         font-family: var(--font-title);
     }
