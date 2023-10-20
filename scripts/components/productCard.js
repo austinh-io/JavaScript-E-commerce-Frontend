@@ -354,7 +354,6 @@ function cardOptionSelectionGroup(product, option) {
       name="sizes"
       id="product-size-select-${product.productId}"
       data-productId=${product.productId}
-      onChange="handleProductOptionChange(event)"
     >
       ${optionSelections}
     </select>
@@ -477,29 +476,19 @@ class catalogProduct extends HTMLElement {
         this.productFieldset.getElementsByTagName('input');
     }
 
-    this.hasOptionSet = shadow.querySelector('.product-size-selection')
+    this.hasSelectGroup = shadow.querySelector('.product-size-selection')
       ? true
       : false;
-    if (this.hasOptionSet) {
-      this.productOptionSet = shadow.querySelector('.product-size-selection');
-      this.productOptionSetOptions =
-        this.productOptionSet.getElementsByTagName('option');
+    if (this.hasSelectGroup) {
+      this.productSelectGroup = shadow.querySelector('.product-size-selection');
+      this.productSelectOptions =
+        this.productSelectGroup.getElementsByTagName('option');
     }
   }
 
   addToCart() {
     const productId = this.getAttribute('productId');
     console.log(productId);
-  }
-
-  handleProductOptionChange_Test() {
-    let targetProduct = catalogProducts.find(
-      (product) => product.productId == this.dataset.productid
-    );
-
-    let targetProductOption = targetProduct.options.find(
-      (productOption) => productOption.optionId == this.dataset.optionid
-    );
   }
 
   handleProductOptionChange() {
@@ -513,12 +502,19 @@ class catalogProduct extends HTMLElement {
     const productPrice = targetElement.querySelector('.product-price-value');
     const productButton = targetElement.querySelector('.button-product');
 
+    let productId = this.dataset.productid;
+    let optionId = this.dataset.optionid;
+
+    if (!optionId) {
+      optionId = this.options[this.selectedIndex].dataset.optionid;
+    }
+
     let targetProduct = catalogProducts.find(
-      (product) => product.productId == this.dataset.productid
+      (product) => product.productId == productId
     );
 
     let targetProductOption = targetProduct.options.find(
-      (productOption) => productOption.optionId == this.dataset.optionid
+      (productOption) => productOption.optionId == optionId
     );
 
     productImage.src = `${baseUrl}/assets/images/productImages/small/${targetProductOption.imageName}_small.webp `;
@@ -541,18 +537,23 @@ class catalogProduct extends HTMLElement {
     );
 
     let productOptionSet = undefined;
-    // let productOptionSetOptions = undefined;
+    let productOptionSetOptions = undefined;
 
-    const hasOptionSet = targetElement.querySelector('.product-size-selection')
+    const hasSelectGroup = targetElement.querySelector(
+      '.product-size-selection'
+    )
       ? true
       : false;
 
-    if (hasOptionSet) {
+    if (hasSelectGroup) {
       productOptionSet = targetElement.querySelector('.product-size-selection');
-      // productOptionSetOptions = productOptionSet.getElementsByTagName('option');
+      productOptionSetOptions = productOptionSet.getElementsByTagName('option');
     }
 
-    if (cardOptionsSelections) {
+    if (
+      !(this.classList[0] == 'product-size-selection') &&
+      cardOptionsSelections
+    ) {
       productOptionSet.innerHTML = cardOptionsSelections;
     }
   }
@@ -560,16 +561,17 @@ class catalogProduct extends HTMLElement {
   connectedCallback() {
     this.productButton.addEventListener('click', this.addToCart);
 
-    // console.log(this.productFieldset);
-
     if (this.hasFieldset) {
-      for (let productFieldSetInput of this.productFieldsetInputs) {
-        productFieldSetInput.addEventListener(
-          'change',
-          this.handleProductOptionChange
-        );
-        // console.log(productFieldSetInput);
+      for (let input of this.productFieldsetInputs) {
+        input.addEventListener('change', this.handleProductOptionChange);
       }
+    }
+
+    if (this.hasSelectGroup) {
+      this.productSelectGroup.addEventListener(
+        'change',
+        this.handleProductOptionChange
+      );
     }
   }
 }
