@@ -10,6 +10,8 @@ const totalCostValueElement = document.querySelector('.total-cost-value');
 const catalogItemButtonText_Enabled = 'Add to Cart';
 const catalogItemButtonText_Disabled = 'Item in Cart';
 
+let addToCartButtons = new Array();
+
 export let cartItems = new Array();
 
 export function setCartItems(newItems) {
@@ -28,10 +30,12 @@ export class cartItem {
 }
 
 export function updateCart() {
-  updateCartItemsCount();
-  updateCartSubtotal();
-  updateCatalogItemsCartButtons();
-  setCartLocalStorage();
+  if (cartItems) {
+    updateCartItemsCount();
+    updateCartSubtotal();
+    updateCatalogItemsCartButtons();
+    setCartLocalStorage();
+  }
 }
 
 export function updateCartItemsCount() {
@@ -80,20 +84,22 @@ export function setCartLocalStorage() {
 export function getCartLocalStorage() {
   let localCartItems = localStorage.getItem('localCart');
   setCartItems(JSON.parse(localCartItems));
-  updateUi();
+  updateCart();
   fillCartList();
 }
 
 export function fillCartList() {
-  cartItems.forEach((cartListItem) => {
-    cartItemsList.insertAdjacentHTML(
-      'afterbegin',
-      cartItemTemplate(cartListItem)
-    );
-  });
+  if (cartItems) {
+    cartItems.forEach((cartListItem) => {
+      cartItemsList.insertAdjacentHTML(
+        'afterbegin',
+        cartItemTemplate(cartListItem)
+      );
+    });
+  }
 }
 
-function addToCart(event) {
+export function addToCart(event) {
   let eventTarget = event.target.parentElement;
 
   let productId = eventTarget.dataset.productid;
@@ -166,4 +172,30 @@ export function removeFromCart(event) {
   }
 
   updateUi();
+}
+
+export function addCartItem(cartItem) {
+  cartItemsList.insertAdjacentHTML('afterbegin', cartItemTemplate(cartItem));
+}
+
+export function clearCartItem(productId, optionId) {
+  let targetCartItem = document.getElementById(
+    `cart-item-${productId + optionId}`
+  );
+  cartItemsList.removeChild(targetCartItem);
+}
+
+export function clearCartList() {
+  while (cartItemsList.firstChild) {
+    cartItemsList.removeChild(cartItemsList.lastChild);
+  }
+}
+
+export function updateCartItem(cartItem) {
+  let cartItemElement = document.getElementById(
+    `cart-item-${cartItem.productId + cartItem.option.optionId}`
+  );
+  cartItemElement.querySelector('.cart-item-count').innerText = cartItem.count;
+  cartItemElement.querySelector('.cart-item-price').children[0].innerText =
+    formatCurrency(cartItem.totalPrice);
 }

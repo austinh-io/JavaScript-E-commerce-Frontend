@@ -325,7 +325,7 @@ a.hero-anchor:hover {
   width: 100%;
   gap: 2rem;
   row-gap: 4rem;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
 }
 

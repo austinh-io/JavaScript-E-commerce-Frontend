@@ -15,7 +15,11 @@ const tpl_catalogProductCSS = `
     @import url(/css/shared.css);
 
     :host {
-      height: 100%;
+      /*Uncomment the height below if you want all cards to be the same height, as they currently
+      can be shorter or taller if they have more or less options. Right now the image will grow as the
+      card grows, so if that bothers you then turn this on.*/
+
+      /*height: 100%;*/
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -499,14 +503,6 @@ class catalogProduct extends HTMLElement {
   }
 
   handleProductOptionChange() {
-    let targetProduct = catalogProducts.find(
-      (product) => product.productId == this.dataset.productid
-    );
-
-    let targetProductOption = targetProduct.options.find(
-      (productOption) => productOption.optionId == this.dataset.optionid
-    );
-
     const targetElement = this.closest('.product');
 
     const productImageContainer = targetElement.querySelector(
@@ -516,6 +512,14 @@ class catalogProduct extends HTMLElement {
     const productTitle = targetElement.querySelector('.product-title a');
     const productPrice = targetElement.querySelector('.product-price-value');
     const productButton = targetElement.querySelector('.button-product');
+
+    let targetProduct = catalogProducts.find(
+      (product) => product.productId == this.dataset.productid
+    );
+
+    let targetProductOption = targetProduct.options.find(
+      (productOption) => productOption.optionId == this.dataset.optionid
+    );
 
     productImage.src = `${baseUrl}/assets/images/productImages/small/${targetProductOption.imageName}_small.webp `;
     productTitle.setAttribute(
@@ -537,17 +541,18 @@ class catalogProduct extends HTMLElement {
     );
 
     let productOptionSet = undefined;
-    let productOptionSetOptions = undefined;
+    // let productOptionSetOptions = undefined;
 
     const hasOptionSet = targetElement.querySelector('.product-size-selection')
       ? true
       : false;
+
     if (hasOptionSet) {
       productOptionSet = targetElement.querySelector('.product-size-selection');
-      productOptionSetOptions = productOptionSet.getElementsByTagName('option');
+      // productOptionSetOptions = productOptionSet.getElementsByTagName('option');
     }
 
-    if (!hasOptionSet && cardOptionsSelections) {
+    if (cardOptionsSelections) {
       productOptionSet.innerHTML = cardOptionsSelections;
     }
   }
