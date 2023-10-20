@@ -443,7 +443,7 @@ ${tpl_catalogProductCSS}
       <div class="product-info-container">
           <div class="product-brand"></div>
           <div class="product-title">
-            <a href="#"></a>          
+            <a></a>          
           </div>
           <div class="product-description">
             <p></p>          
@@ -458,10 +458,7 @@ ${tpl_catalogProductCSS}
           <div class="product-button-group">
             <button
               class="button-product button-add"
-              id="button-product-assign-me"
-              onclick=""
             >
-              Button
             </button>
         </div>
       </div>
@@ -500,6 +497,7 @@ class catalogProduct extends HTMLElement {
     this.productPrice.textContent = formatCurrency(1);
 
     this.productButton = shadow.querySelector('.button-product');
+    this.productButton.textContent = 'Add to Cart';
     this.productButton.setAttribute('productId', this.productId);
   }
 
