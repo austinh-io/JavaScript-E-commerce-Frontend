@@ -1,205 +1,13 @@
-import { formatCurrency } from '/scripts/utilities/commerceUtilities.js';
+import {
+  formatCurrency,
+  findItem,
+  baseUrl,
+  catchProductList,
+  catalogProducts,
+} from '/scripts/utilities/commerceUtilities.js';
 ('use strict');
 
-function cardOptionField(product, option) {
-  let inputBackground = '';
-  if (option.optionVisual.type == 'color') {
-    inputBackground = `background-color: ${option.optionVisual.value};`;
-  } else if (option.optionVisual.type == 'image') {
-    inputBackground = `
-        background-image: url(${baseUrl}/assets/images/productImages/${option.optionVisual.value}.jpg);
-        background-position: center;
-        background-size: cover;
-      `;
-  }
-
-  return `
-    <div>
-      <input
-        type="radio"
-        id="option-${product.productId}-${option.optionId}"
-        name="options-item-${product.productId}"
-        value="option-${option.optionId}"
-        data-productId="${product.productId}"
-        data-optionid="${option.optionId}"
-        onChange="handleProductOptionChange(event)"
-        ${product.options.indexOf(option) == 0 ? 'checked' : ''}
-        style="
-          ${inputBackground};
-        "
-      />
-      <label
-        for="option-${product.productId}-${option.optionId}"
-        class="hidden"
-        >${option.optionLabel}</label
-      >
-    </div>
-    `;
-}
-
-function getOptionStyleSizes(product, option) {
-  let optionStyleSizes = [];
-
-  for (let options of product.options) {
-    if (
-      options.optionVisual.value == option.optionVisual.value &&
-      options.optionVisual.value == option.optionVisual.value
-    ) {
-      optionStyleSizes.push(options);
-    }
-  }
-  return optionStyleSizes;
-}
-
-function cardOptionSelection(option) {
-  return `
-    <option value="${option.optionSize}" data-optionId=${option.optionId}>${option.optionSize}</option>
-    `;
-}
-
-function cardOptionSelectionGroup(product, option) {
-  let optionSelections = '';
-  const optionStyleSizes = getOptionStyleSizes(product, option);
-  for (let optionSize of optionStyleSizes) {
-    optionSelections += cardOptionSelection(optionSize);
-  }
-
-  if (optionStyleSizes.length <= 1) {
-    return '';
-  } else
-    return `
-    <label for="product-size-select-${product.productId}" class="hidden">Size</label>
-  
-    <select
-      class="product-size-selection"
-      name="sizes"
-      id="product-size-select-${product.productId}"
-      data-productId=${product.productId}
-      onChange="handleProductOptionChange(event)"
-    >
-      ${optionSelections}
-    </select>
-    `;
-}
-
-function getUniqueOptionStyles(product) {
-  let uniqueOptionsByStyle = [];
-
-  product.options.filter((option) => {
-    if (
-      uniqueOptionsByStyle.find((element) => {
-        return (
-          option.optionVisual.type == element.optionVisual.type &&
-          option.optionVisual.value == element.optionVisual.value
-        );
-      })
-    ) {
-      return option;
-    } else {
-      uniqueOptionsByStyle.push(option);
-    }
-  });
-
-  return uniqueOptionsByStyle;
-}
-
-function getProductFieldset(productOptions, product) {
-  let cardOptionsFieldset = undefined;
-
-  if (productOptions.length <= 1) {
-    cardOptionsFieldset = '';
-  } else {
-    let cardProductOptions = '';
-
-    for (let option of productOptions) {
-      cardProductOptions += cardOptionField(product, option);
-    }
-
-    cardOptionsFieldset = `
-      <fieldset class="product-fieldset">
-        <legend class="hidden">Variant</legend>
-  
-        ${cardProductOptions}
-  
-      </fieldset>
-      `;
-  }
-
-  return cardOptionsFieldset;
-}
-
-const productCardTemplate = function (product) {
-  let cardOptionsSelections = cardOptionSelectionGroup(
-    product,
-    product.options[0]
-  );
-  let uniqueOptionsByStyle = getUniqueOptionStyles(product);
-  let cardOptionsFieldset = getProductFieldset(uniqueOptionsByStyle, product);
-
-  return `
-    <div class="product" id="product-${product.productId}" data-productId=${
-    product.productId
-  }>
-      <a
-        class="product-image-container"
-        style="
-        background-image: url(${baseUrl}/assets/images/productImages/smaller_alt/${
-    product.options[0].imageName
-  }_smaller_alt.jpg);"
-        href="productPage.html?productId=${product.productId}&optionId=${
-    product.options[0].optionId
-  }"
-        >
-          <img
-          loading="lazy"
-          class="product-image"
-          src="${baseUrl}/assets/images/productImages/small/${
-    product.options[0].imageName
-  }_small.webp"
-          />
-      </a>
-      <div class="product-info-container">
-          <div class="product-brand">${product.brand}</div>
-          <div class="product-title">
-            <a href="productPage.html?productId=${product.productId}&optionId=${
-    product.options[0].optionId
-  }">
-            ${product.title}
-            </a>          
-          </div>
-          <div class="product-description">
-            <p>
-              ${product.description}
-            </p>          
-          </div>
-  
-          ${cardOptionsFieldset}
-          ${cardOptionsSelections}
-  
-  
-          <div class="product-price">
-            <span class="product-price-value">${formatCurrency(
-              product.options[0].price
-            )}</span>
-          </div>
-  
-          <div class="product-button-group" data-productId=${
-            product.productId
-          } data-optionid=${product.options[0].optionId}>
-            <button
-              class="button-product button-add"
-              id="button-product-${
-                product.productId + product.options[0].optionId
-              }"
-              onclick="addToCart(event); openCartMenu()"
-            >
-              ${catalogItemButtonText_Enabled}
-            </button>
-        </div>
-      </div>
-    </div>
-  `;
-};
+const tpl_catalogProductCard = document.createElement('template');
 
 const tpl_catalogProductCSS = `
 <style>
@@ -426,7 +234,6 @@ const tpl_catalogProductCSS = `
 </style>
 `;
 
-const tpl_catalogProductCard = document.createElement('template');
 tpl_catalogProductCard.innerHTML = `
 ${tpl_catalogProductCSS}
 
@@ -465,6 +272,206 @@ ${tpl_catalogProductCSS}
     </div>
 `;
 
+const productCardTemplate = function (product) {
+  let cardOptionsSelections = cardOptionSelectionGroup(
+    product,
+    product.options[0]
+  );
+  let uniqueOptionsByStyle = getUniqueOptionStyles(product);
+  let cardOptionsFieldset = getProductFieldset(uniqueOptionsByStyle, product);
+
+  return `
+    <div class="product" id="product-${product.productId}" data-productId=${
+    product.productId
+  }>
+      <a
+        class="product-image-container"
+        style="
+        background-image: url(${baseUrl}/assets/images/productImages/smaller_alt/${
+    product.options[0].imageName
+  }_smaller_alt.jpg);"
+        href="productPage.html?productId=${product.productId}&optionId=${
+    product.options[0].optionId
+  }"
+        >
+          <img
+          loading="lazy"
+          class="product-image"
+          src="${baseUrl}/assets/images/productImages/small/${
+    product.options[0].imageName
+  }_small.webp"
+          />
+      </a>
+      <div class="product-info-container">
+          <div class="product-brand">${product.brand}</div>
+          <div class="product-title">
+            <a href="productPage.html?productId=${product.productId}&optionId=${
+    product.options[0].optionId
+  }">
+            ${product.title}
+            </a>          
+          </div>
+          <div class="product-description">
+            <p>
+              ${product.description}
+            </p>          
+          </div>
+  
+          ${cardOptionsFieldset}
+          ${cardOptionsSelections}
+  
+  
+          <div class="product-price">
+            <span class="product-price-value">${formatCurrency(
+              product.options[0].price
+            )}</span>
+          </div>
+  
+          <div class="product-button-group" data-productId=${
+            product.productId
+          } data-optionid=${product.options[0].optionId}>
+            <button
+              class="button-product button-add"
+              id="button-product-${
+                product.productId + product.options[0].optionId
+              }"
+              onclick="addToCart(event); openCartMenu()"
+            >
+              ${catalogItemButtonText_Enabled}
+            </button>
+        </div>
+      </div>
+    </div>
+  `;
+};
+
+function cardOptionField(product, option) {
+  let inputBackground = '';
+  if (option.optionVisual.type == 'color') {
+    inputBackground = `background-color: ${option.optionVisual.value};`;
+  } else if (option.optionVisual.type == 'image') {
+    inputBackground = `
+        background-image: url(${baseUrl}/assets/images/productImages/${option.optionVisual.value}.jpg);
+        background-position: center;
+        background-size: cover;
+      `;
+  }
+
+  return `
+    <div>
+      <input
+        type="radio"
+        id="option-${product.productId}-${option.optionId}"
+        name="options-item-${product.productId}"
+        value="option-${option.optionId}"
+        data-productId="${product.productId}"
+        data-optionid="${option.optionId}"
+        onChange="handleProductOptionChange(event)"
+        ${product.options.indexOf(option) == 0 ? 'checked' : ''}
+        style="
+          ${inputBackground};
+        "
+      />
+      <label
+        for="option-${product.productId}-${option.optionId}"
+        class="hidden"
+        >${option.optionLabel}</label
+      >
+    </div>
+    `;
+}
+
+function getOptionStyleSizes(product, option) {
+  let optionStyleSizes = [];
+
+  for (let options of product.options) {
+    if (
+      options.optionVisual.value == option.optionVisual.value &&
+      options.optionVisual.value == option.optionVisual.value
+    ) {
+      optionStyleSizes.push(options);
+    }
+  }
+  return optionStyleSizes;
+}
+
+function cardOptionSelection(option) {
+  return `
+    <option value="${option.optionSize}" data-optionId=${option.optionId}>${option.optionSize}</option>
+    `;
+}
+
+function cardOptionSelectionGroup(product, option) {
+  let optionSelections = '';
+  const optionStyleSizes = getOptionStyleSizes(product, option);
+  for (let optionSize of optionStyleSizes) {
+    optionSelections += cardOptionSelection(optionSize);
+  }
+
+  if (optionStyleSizes.length <= 1) {
+    return '';
+  } else
+    return `
+    <label for="product-size-select-${product.productId}" class="hidden">Size</label>
+  
+    <select
+      class="product-size-selection"
+      name="sizes"
+      id="product-size-select-${product.productId}"
+      data-productId=${product.productId}
+      onChange="handleProductOptionChange(event)"
+    >
+      ${optionSelections}
+    </select>
+    `;
+}
+
+function getUniqueOptionStyles(product) {
+  let uniqueOptionsByStyle = [];
+
+  product.options.filter((option) => {
+    if (
+      uniqueOptionsByStyle.find((element) => {
+        return (
+          option.optionVisual.type == element.optionVisual.type &&
+          option.optionVisual.value == element.optionVisual.value
+        );
+      })
+    ) {
+      return option;
+    } else {
+      uniqueOptionsByStyle.push(option);
+    }
+  });
+
+  return uniqueOptionsByStyle;
+}
+
+function getProductFieldset(productOptions, product) {
+  let cardOptionsFieldset = undefined;
+
+  if (productOptions.length <= 1) {
+    cardOptionsFieldset = '';
+  } else {
+    let cardProductOptions = '';
+
+    for (let option of productOptions) {
+      cardProductOptions += cardOptionField(product, option);
+    }
+
+    cardOptionsFieldset = `
+      <fieldset class="product-fieldset">
+        <legend class="hidden">Variant</legend>
+  
+        ${cardProductOptions}
+  
+      </fieldset>
+      `;
+  }
+
+  return cardOptionsFieldset;
+}
+
 class catalogProduct extends HTMLElement {
   constructor() {
     super();
@@ -474,27 +481,43 @@ class catalogProduct extends HTMLElement {
 
     this.productId = this.getAttribute('productId');
 
+    const product = catalogProducts.find((i) => i.productId == this.productId);
+
+    const cardOptionsSelections = cardOptionSelectionGroup(
+      product,
+      product.options[0]
+    );
+
+    const uniqueOptionsByStyle = getUniqueOptionStyles(product);
+
+    const cardOptionsFieldset = getProductFieldset(
+      uniqueOptionsByStyle,
+      product
+    );
+
+    const productPageUrl = `productPage.html?productId=${product.productId}&optionId=${product.options[0].optionId}`;
+
     this.productImageContainer = shadow.querySelector(
       '.product-image-container'
     );
-    this.productImageContainer.style.backgroundImage =
-      'url(/assets/images/productImages/small_alt/item18-0_small_alt.png)';
+    this.productImageContainer.style.backgroundImage = `url(${baseUrl}/assets/images/productImages/small_alt/item18-0_small_alt.png)`;
+    this.productImageContainer.href = productPageUrl;
 
     this.productImage = shadow.querySelector('.product-image');
-    this.productImage.src = '/assets/images/productImages/item18-0.jpg';
+    this.productImage.src = `${baseUrl}assets/images/productImages/small/${product.options[0].imageName}_small.webp`;
 
     this.productBrand = shadow.querySelector('.product-brand');
-    this.productBrand.textContent = 'Product Brand';
+    this.productBrand.textContent = product.brand;
 
     this.productTitle = shadow.querySelector('.product-title a');
-    this.productTitle.textContent = 'Product Title';
-    this.productTitle.href = 'https://example.com/';
+    this.productTitle.textContent = product.title;
+    this.productTitle.href = productPageUrl;
 
     this.productDescription = shadow.querySelector('.product-description');
-    this.productDescription.textContent = 'Product description.';
+    this.productDescription.textContent = product.description;
 
     this.productPrice = shadow.querySelector('.product-price-value');
-    this.productPrice.textContent = formatCurrency(1);
+    this.productPrice.textContent = formatCurrency(product.options[0].price);
 
     this.productButton = shadow.querySelector('.button-product');
     this.productButton.textContent = 'Add to Cart';
