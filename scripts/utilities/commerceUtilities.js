@@ -12,17 +12,6 @@ export function formatCurrency(value) {
   }).format(value);
 }
 
-// export class cartItem {
-//   constructor(id, productId, option, count, totalPrice, title) {
-//     this.id = id;
-//     this.productId = productId;
-//     this.option = option;
-//     this.count = count;
-//     this.totalPrice = totalPrice;
-//     this.title = title;
-//   }
-// }
-
 export function findItem(_itemList, _productId, _optionId) {
   return _itemList.find((item) => {
     if (item.productId == _productId && item.option.optionId == _optionId)

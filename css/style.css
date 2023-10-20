@@ -21,7 +21,7 @@ body {
   flex-direction: column;
   background-color: var(--color-bg);
   color: var(--color-font);
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
 
   min-height: 100vh;
 }

@@ -5,7 +5,11 @@ import {
   catchProductList,
   catalogProducts,
 } from './utilities/commerceUtilities.js';
-import { cartItem } from './utilities/cartUtilities.js';
+import {
+  cartItem,
+  cartItems,
+  setCartItems,
+} from './utilities/cartUtilities.js';
 ('use strict');
 
 // const checkoutCartList = document.querySelector('.checkout-cart-items');
@@ -19,7 +23,6 @@ const catalogProductsButtons = document.getElementsByClassName(
   'button-product button-add'
 );
 
-let cartItems = new Array();
 let addToCartButtons = new Array();
 
 const catalogItemButtonText_Enabled = 'Add to Cart';
@@ -461,26 +464,24 @@ function updateUi() {
 }
 
 function updateCartItemsCount() {
-  let totalItems = cartItems.reduce((sum, cur) => sum + cur.count, 0);
-
-  for (let i = 0; i < cartIconCounters.length; i++) {
-    cartIconCounters[i].innerText = totalItems;
-  }
-
-  if (cartItems.length > 0) {
-    for (let i = 0; i < cartIconCounters.length; i++) {
-      cartIconCounters[i].classList.remove('hidden');
-    }
-  } else {
-    for (let i = 0; i < cartIconCounters.length; i++) {
-      cartIconCounters[i].classList.add('hidden');
-    }
-  }
+  // let totalItems = cartItems.reduce((sum, cur) => sum + cur.count, 0);
+  // for (let i = 0; i < cartIconCounters.length; i++) {
+  //   cartIconCounters[i].innerText = totalItems;
+  // }
+  // if (cartItems.length > 0) {
+  //   for (let i = 0; i < cartIconCounters.length; i++) {
+  //     cartIconCounters[i].classList.remove('hidden');
+  //   }
+  // } else {
+  //   for (let i = 0; i < cartIconCounters.length; i++) {
+  //     cartIconCounters[i].classList.add('hidden');
+  //   }
+  // }
 }
 
 function updateCartSubtotal() {
-  let totalCost = cartItems.reduce((sum, cur) => sum + cur.totalPrice, 0);
-  totalCostValueElement.innerText = formatCurrency(totalCost);
+  // let totalCost = cartItems.reduce((sum, cur) => sum + cur.totalPrice, 0);
+  // totalCostValueElement.innerText = formatCurrency(totalCost);
 }
 
 function updateCartItem(cartItem) {
@@ -515,29 +516,40 @@ function setCartLocalStorage() {
 
 function getCartLocalStorage() {
   let localCartItems = localStorage.getItem('localCart');
-  cartItems = JSON.parse(localCartItems);
+  setCartItems(JSON.parse(localCartItems));
   updateUi();
   fillCartList();
 }
 
 function fillCartList() {
-  cartItems.forEach((cartListItem) => {
-    cartItemsList.insertAdjacentHTML(
-      'afterbegin',
-      cartItemTemplate(cartListItem)
-    );
-  });
+  // cartItems.forEach((cartListItem) => {
+  //   cartItemsList.insertAdjacentHTML(
+  //     'afterbegin',
+  //     cartItemTemplate(cartListItem)
+  //   );
+  // });
 }
 
 async function initializeProducts() {
   await catchProductList();
   productsList = document.querySelector('.products-list');
 
+  // if (productsList) {
+  //   for (const productObject of catalogProducts) {
+  //     productsList.insertAdjacentHTML(
+  //       'beforeend',
+  //       productCardTemplate(productObject)
+  //     );
+  //   }
+  // }
+
   if (productsList) {
     for (const productObject of catalogProducts) {
       productsList.insertAdjacentHTML(
         'beforeend',
-        productCardTemplate(productObject)
+        `<catalog-product
+          productId=${productObject.productId}
+        > </catalog-product>`
       );
     }
   }
@@ -553,60 +565,6 @@ async function initializeProducts() {
 async function initializePage() {
   await initializeProducts();
   getCartLocalStorage();
-
-  function getRandomId() {
-    let i = Math.floor(Math.random() * 100);
-    return i;
-  }
-
-  function getRandomGender() {
-    let num = Math.floor(Math.random() * 50);
-    if (num < 25) {
-      return 'men';
-    } else {
-      return 'women';
-    }
-  }
-
-  function getRandomJob() {
-    let num = Math.floor(Math.random() * 100);
-    if (num < 50) {
-      return 'employed';
-    } else {
-      return '';
-    }
-  }
-
-  function getRandomWage() {
-    let i = Math.floor(Math.random() * 10000);
-    return i;
-  }
-
-  function userCard(userId, userGender, userWage, email, job) {
-    return `
-      <user-card
-        name="Jane Doe"
-        avatar="https://randomuser.me/api/portraits/${userGender}/${userId}.jpg"
-        wage="${userWage}"
-        id="user-${email}"
-        job="${job}"
-        >
-        <div slot="email">${email}abc@example.com</div>
-        <div slot="phone">555-555-5555</div>
-      </user-card>
-      `;
-  }
-
-  for (let i = 0; i < 5; i++) {
-    let user = userCard(
-      getRandomId(),
-      getRandomGender(),
-      getRandomWage(),
-      i,
-      getRandomJob()
-    );
-    productsList.insertAdjacentHTML('beforeend', user);
-  }
 }
 
 document.addEventListener('DOMContentLoaded', initializePage);

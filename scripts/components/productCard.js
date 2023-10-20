@@ -201,7 +201,7 @@ const productCardTemplate = function (product) {
   `;
 };
 
-const catalogProductTplCss = `
+const tpl_catalogProductCSS = `
 <style>
     @import url(/css/shared.css);
 
@@ -214,7 +214,8 @@ const catalogProductTplCss = `
       flex-direction: column;
       height: 100%;
       max-height: 38rem;
-      max-width: 100%;
+      width: 100%;
+      max-width: 30rem;
 
       overflow: hidden;
       border-radius: 3pt;
@@ -425,47 +426,40 @@ const catalogProductTplCss = `
 </style>
 `;
 
-const catalogProductCardTPL = document.createElement('template');
-catalogProductCardTPL.innerHTML = `
-${catalogProductTplCss}
+const tpl_catalogProductCard = document.createElement('template');
+tpl_catalogProductCard.innerHTML = `
+${tpl_catalogProductCSS}
 
-<div class="product" id="assign-me" data-productId=0>
+<div class="product">
       <a
-        class="product-image-container"
-        style="
-        background-image: url(/assets/images/productImages/small_alt/item18-0_small_alt.png);"
+        class="product-image-container"        
         href="#"
         >
           <img
           loading="lazy"
           class="product-image"
-          src="/assets/images/productImages/item18-0.jpg"
           />
       </a>
       <div class="product-info-container">
-          <div class="product-brand">Product Brand</div>
+          <div class="product-brand"></div>
           <div class="product-title">
-            <a href="#">
-            Product Title
-            </a>          
+            <a href="#"></a>          
           </div>
           <div class="product-description">
-            <p>
-              Product description.
-            </p>          
+            <p></p>          
           </div> 
 
   
   
           <div class="product-price">
-            <span class="product-price-value">${formatCurrency(0)}</span>
+            <span class="product-price-value"></span>
           </div>
   
-          <div class="product-button-group" data-productId="assign-me" data-optionid="assign-me">
+          <div class="product-button-group">
             <button
               class="button-product button-add"
               id="button-product-assign-me"
-              onclick="addToCart(event); openCartMenu()"
+              onclick=""
             >
               Button
             </button>
@@ -477,45 +471,52 @@ ${catalogProductTplCss}
 class catalogProduct extends HTMLElement {
   constructor() {
     super();
+    const shadow = this.attachShadow({ mode: 'open' });
+    const clone = tpl_catalogProductCard.content.cloneNode(true);
+    shadow.append(clone);
 
-    this.showInfo = true;
-    const shadowRoot = this.attachShadow({ mode: 'open' });
-    const clone = catalogProductCardTPL.content.cloneNode(true);
-    shadowRoot.append(clone);
-    // shadowRoot.appendChild(catalogProductCardTPL.content.cloneNode(true));
+    this.productId = this.getAttribute('productId');
 
-    shadowRoot.getElementById('assign-me').setAttribute('id', 'amogus');
+    this.productImageContainer = shadow.querySelector(
+      '.product-image-container'
+    );
+    this.productImageContainer.style.backgroundImage =
+      'url(/assets/images/productImages/small_alt/item18-0_small_alt.png)';
 
-    shadowRoot.querySelector('h3').innerText = this.getAttribute('name');
-    // this.shadowRoot.querySelector('img').src = this.getAttribute('avatar');
-    // this.shadowRoot.querySelector('.wage').innerText = formatCurrency(
-    //   this.getAttribute('wage')
-    // );
+    this.productImage = shadow.querySelector('.product-image');
+    this.productImage.src = '/assets/images/productImages/item18-0.jpg';
+
+    this.productBrand = shadow.querySelector('.product-brand');
+    this.productBrand.textContent = 'Product Brand';
+
+    this.productTitle = shadow.querySelector('.product-title a');
+    this.productTitle.textContent = 'Product Title';
+    this.productTitle.href = 'https://example.com/';
+
+    this.productDescription = shadow.querySelector('.product-description');
+    this.productDescription.textContent = 'Product description.';
+
+    this.productPrice = shadow.querySelector('.product-price-value');
+    this.productPrice.textContent = formatCurrency(1);
+
+    this.productButton = shadow.querySelector('.button-product');
+    this.productButton.setAttribute('productId', this.productId);
   }
 
-  toggleInfo() {
-    this.showInfo = !this.showInfo;
-
-    const info = this.shadowRoot.querySelector('.info');
-    const toggleButton = this.shadowRoot.querySelector('#toggle-info');
-
-    if (this.showInfo) {
-      info.style.display = 'block';
-      toggleButton.innerText = 'Hide Info';
-    } else {
-      info.style.display = 'none';
-      toggleButton.innerText = 'Show Info';
-    }
+  addToCart() {
+    // console.log('hello');
+    const productId = this.getAttribute('productId');
+    console.log(productId);
+    // console.log(this);
   }
 
   connectedCallback() {
-    this.shadowRoot
-      .querySelector('#toggle-info')
-      .addEventListener('click', () => this.toggleInfo());
-  }
+    // console.log('hi');
+    // console.log(this.productId);
+    // this.sayHello();
+    // this.sayHello();
 
-  disconnectedCallback() {
-    this.shadowRoot.querySelector('#toggle-info').removeEventListener();
+    this.productButton.addEventListener('click', this.addToCart);
   }
 }
 
