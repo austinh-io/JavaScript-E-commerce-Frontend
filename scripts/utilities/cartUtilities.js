@@ -206,11 +206,9 @@ export function clearCartList() {
 }
 
 export function updateCartItem(cartItem) {
-  console.log('update cart item');
   let cartItemElement = document.getElementById(
     `cart-item-${cartItem.productId + cartItem.option.optionId}`
   );
-  console.log(cartItemElement);
 
   cartItemElement.querySelector('.cart-item-count').innerText = cartItem.count;
   cartItemElement.querySelector('.cart-item-price').children[0].innerText =
@@ -218,7 +216,6 @@ export function updateCartItem(cartItem) {
 }
 
 export const cartItemTemplate = function (item) {
-  console.log('asdklfjasdjfjfjf');
   return `
         <div
           class="cart-item-container"
