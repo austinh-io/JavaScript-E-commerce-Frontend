@@ -179,7 +179,7 @@ const tpl_catalogProductCSS = `
       gap: 1rem;
       margin-block: 1rem;
 
-      padding-inline: 0.4rem;
+      padding-inline: 0;
 
       border: 0;
     }
