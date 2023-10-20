@@ -70,12 +70,6 @@ a:hover {
   display: none;
 }
 
-.hidden,
-span.hidden,
-div.hidden {
-  display: none;
-}
-
 .wrapper {
   padding-inline: 2%;
   margin-inline: auto;

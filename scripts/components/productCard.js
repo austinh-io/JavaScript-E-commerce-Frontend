@@ -256,7 +256,7 @@ ${tpl_catalogProductCSS}
             <p></p>          
           </div> 
 
-  
+          <div class="product-options-container"></div>
   
           <div class="product-price">
             <span class="product-price-value"></span>
@@ -271,79 +271,6 @@ ${tpl_catalogProductCSS}
       </div>
     </div>
 `;
-
-const productCardTemplate = function (product) {
-  let cardOptionsSelections = cardOptionSelectionGroup(
-    product,
-    product.options[0]
-  );
-  let uniqueOptionsByStyle = getUniqueOptionStyles(product);
-  let cardOptionsFieldset = getProductFieldset(uniqueOptionsByStyle, product);
-
-  return `
-    <div class="product" id="product-${product.productId}" data-productId=${
-    product.productId
-  }>
-      <a
-        class="product-image-container"
-        style="
-        background-image: url(${baseUrl}/assets/images/productImages/smaller_alt/${
-    product.options[0].imageName
-  }_smaller_alt.jpg);"
-        href="productPage.html?productId=${product.productId}&optionId=${
-    product.options[0].optionId
-  }"
-        >
-          <img
-          loading="lazy"
-          class="product-image"
-          src="${baseUrl}/assets/images/productImages/small/${
-    product.options[0].imageName
-  }_small.webp"
-          />
-      </a>
-      <div class="product-info-container">
-          <div class="product-brand">${product.brand}</div>
-          <div class="product-title">
-            <a href="productPage.html?productId=${product.productId}&optionId=${
-    product.options[0].optionId
-  }">
-            ${product.title}
-            </a>          
-          </div>
-          <div class="product-description">
-            <p>
-              ${product.description}
-            </p>          
-          </div>
-  
-          ${cardOptionsFieldset}
-          ${cardOptionsSelections}
-  
-  
-          <div class="product-price">
-            <span class="product-price-value">${formatCurrency(
-              product.options[0].price
-            )}</span>
-          </div>
-  
-          <div class="product-button-group" data-productId=${
-            product.productId
-          } data-optionid=${product.options[0].optionId}>
-            <button
-              class="button-product button-add"
-              id="button-product-${
-                product.productId + product.options[0].optionId
-              }"
-              onclick="addToCart(event); openCartMenu()"
-            >
-              ${catalogItemButtonText_Enabled}
-            </button>
-        </div>
-      </div>
-    </div>
-  `;
-};
 
 function cardOptionField(product, option) {
   let inputBackground = '';
@@ -375,7 +302,7 @@ function cardOptionField(product, option) {
       <label
         for="option-${product.productId}-${option.optionId}"
         class="hidden"
-        >${option.optionLabel}</label
+        >${option.optionStyle}</label
       >
     </div>
     `;
@@ -522,6 +449,12 @@ class catalogProduct extends HTMLElement {
     this.productButton = shadow.querySelector('.button-product');
     this.productButton.textContent = 'Add to Cart';
     this.productButton.setAttribute('productId', this.productId);
+
+    this.productOptionsContainer = shadow.querySelector(
+      '.product-options-container'
+    );
+    this.productOptionsContainer.innerHTML =
+      cardOptionsFieldset + cardOptionsSelections;
   }
 
   addToCart() {
