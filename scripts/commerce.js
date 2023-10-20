@@ -27,7 +27,6 @@ import {
 let productsList = undefined;
 
 async function initializeProducts() {
-  await catchProductList();
   productsList = document.querySelector('.products-list');
 
   if (productsList) {
@@ -40,18 +39,13 @@ async function initializeProducts() {
       );
     }
   }
-
-  cartItems.forEach((cartListItem) => {
-    checkoutCartList.insertAdjacentHTML(
-      'afterbegin',
-      cartItemTemplate(cartListItem)
-    );
-  });
 }
 
 async function initializePage() {
-  await initializeProducts();
+  await catchProductList();
   getCartLocalStorage();
+  fillCartList();
+  await initializeProducts();
 }
 
 document.addEventListener('DOMContentLoaded', initializePage);

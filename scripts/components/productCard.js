@@ -492,8 +492,14 @@ class catalogProduct extends HTMLElement {
     const catalogItemButtonText_Enabled = 'Add to Cart';
     const catalogItemButtonText_Disabled = 'Item in Cart';
 
-    const targetElement = this.closest('.product');
-    const productButton = targetElement.querySelector('.button-product');
+    let productButton = undefined;
+
+    let targetElement = this.closest('.product');
+    if (targetElement) {
+      productButton = targetElement.querySelector('.button-product');
+    } else {
+      productButton = this.productButton;
+    }
 
     let productId = productButton.getAttribute('productid');
     let optionId = productButton.getAttribute('productoptionid');
@@ -595,6 +601,8 @@ class catalogProduct extends HTMLElement {
         this.updateCatalogItemButton
       );
     }
+
+    this.updateCatalogItemButton();
   }
 }
 

@@ -71,12 +71,12 @@ export function getCart() {
 }
 
 export function setCartLocalStorage() {
-  // localStorage.setItem('localCart', JSON.stringify(cartItems));
+  localStorage.setItem('localCart', JSON.stringify(cartItems));
 }
 
 export function getCartLocalStorage() {
-  // let localCartItems = localStorage.getItem('localCart');
-  // setCartItems(JSON.parse(localCartItems));
+  let localCartItems = localStorage.getItem('localCart');
+  setCartItems(JSON.parse(localCartItems));
   updateCart();
 }
 
