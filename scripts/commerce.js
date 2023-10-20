@@ -28,205 +28,204 @@ let addToCartButtons = new Array();
 const catalogItemButtonText_Enabled = 'Add to Cart';
 const catalogItemButtonText_Disabled = 'Item in Cart';
 
-function cardOptionField(product, option) {
-  let inputBackground = '';
-  if (option.optionVisual.type == 'color') {
-    inputBackground = `background-color: ${option.optionVisual.value};`;
-  } else if (option.optionVisual.type == 'image') {
-    inputBackground = `
-      background-image: url(${baseUrl}/assets/images/productImages/${option.optionVisual.value}.jpg);
-      background-position: center;
-      background-size: cover;
-    `;
-  }
+// function cardOptionField(product, option) {
+//   let inputBackground = '';
+//   if (option.optionVisual.type == 'color') {
+//     inputBackground = `background-color: ${option.optionVisual.value};`;
+//   } else if (option.optionVisual.type == 'image') {
+//     inputBackground = `
+//       background-image: url(${baseUrl}/assets/images/productImages/${option.optionVisual.value}.jpg);
+//       background-position: center;
+//       background-size: cover;
+//     `;
+//   }
 
-  return `
-  <div>
-    <input
-      type="radio"
-      id="option-${product.productId}-${option.optionId}"
-      name="options-item-${product.productId}"
-      value="option-${option.optionId}"
-      data-productId="${product.productId}"
-      data-optionid="${option.optionId}"
-      onChange="handleProductOptionChange(event)"
-      ${product.options.indexOf(option) == 0 ? 'checked' : ''}
-      style="
-        ${inputBackground};
-      "
-    />
-    <label
-      for="option-${product.productId}-${option.optionId}"
-      class="hidden"
-      >${option.optionLabel}</label
-    >
-  </div>
-  `;
-}
+//   return `
+//   <div>
+//     <input
+//       type="radio"
+//       id="option-${product.productId}-${option.optionId}"
+//       name="options-item-${product.productId}"
+//       value="option-${option.optionId}"
+//       data-productId="${product.productId}"
+//       data-optionid="${option.optionId}"
+//       onChange="handleProductOptionChange(event)"
+//       ${product.options.indexOf(option) == 0 ? 'checked' : ''}
+//       style="
+//         ${inputBackground};
+//       "
+//     />
+//     <label
+//       for="option-${product.productId}-${option.optionId}"
+//       class="hidden"
+//       >${option.optionLabel}</label
+//     >
+//   </div>
+//   `;
+// }
 
-function getOptionStyleSizes(product, option) {
-  let optionStyleSizes = [];
+// function getOptionStyleSizes(product, option) {
+//   let optionStyleSizes = [];
 
-  for (let options of product.options) {
-    if (
-      options.optionVisual.value == option.optionVisual.value &&
-      options.optionVisual.value == option.optionVisual.value
-    ) {
-      optionStyleSizes.push(options);
-    }
-  }
-  return optionStyleSizes;
-}
+//   for (let options of product.options) {
+//     if (
+//       options.optionVisual.value == option.optionVisual.value &&
+//       options.optionVisual.value == option.optionVisual.value
+//     ) {
+//       optionStyleSizes.push(options);
+//     }
+//   }
+//   return optionStyleSizes;
+// }
 
-function cardOptionSelection(option) {
-  return `
-  <option value="${option.optionSize}" data-optionId=${option.optionId}>${option.optionSize}</option>
-  `;
-}
+// function cardOptionSelection(option) {
+//   return `
+//   <option value="${option.optionSize}" data-optionId=${option.optionId}>${option.optionSize}</option>
+//   `;
+// }
 
-function cardOptionSelectionGroup(product, option) {
-  let optionSelections = '';
-  const optionStyleSizes = getOptionStyleSizes(product, option);
-  for (let optionSize of optionStyleSizes) {
-    optionSelections += cardOptionSelection(optionSize);
-  }
+// function cardOptionSelectionGroup(product, option) {
+//   let optionSelections = '';
+//   const optionStyleSizes = getOptionStyleSizes(product, option);
+//   for (let optionSize of optionStyleSizes) {
+//     optionSelections += cardOptionSelection(optionSize);
+//   }
 
-  if (optionStyleSizes.length <= 1) {
-    return '';
-  } else
-    return `
-  <label for="product-size-select-${product.productId}" class="hidden">Size</label>
+//   if (optionStyleSizes.length <= 1) {
+//     return '';
+//   } else
+//     return `
+//   <label for="product-size-select-${product.productId}" class="hidden">Size</label>
 
-  <select
-    class="product-size-selection"
-    name="sizes"
-    id="product-size-select-${product.productId}"
-    data-productId=${product.productId}
-    onChange="handleProductOptionChange(event)"
-  >
-    ${optionSelections}
-  </select>
-  `;
-}
+//   <select
+//     class="product-size-selection"
+//     name="sizes"
+//     id="product-size-select-${product.productId}"
+//     data-productId=${product.productId}
+//     onChange="handleProductOptionChange(event)"
+//   >
+//     ${optionSelections}
+//   </select>
+//   `;
+// }
 
-function getUniqueOptionStyles(product) {
-  let uniqueOptionsByStyle = [];
+// function getUniqueOptionStyles(product) {
+//   let uniqueOptionsByStyle = [];
 
-  product.options.filter((option) => {
-    if (
-      uniqueOptionsByStyle.find((element) => {
-        return (
-          option.optionVisual.type == element.optionVisual.type &&
-          option.optionVisual.value == element.optionVisual.value
-        );
-      })
-    ) {
-      return option;
-    } else {
-      uniqueOptionsByStyle.push(option);
-    }
-  });
+//   product.options.filter((option) => {
+//     if (
+//       uniqueOptionsByStyle.find((element) => {
+//         return (
+//           option.optionVisual.type == element.optionVisual.type &&
+//           option.optionVisual.value == element.optionVisual.value
+//         );
+//       })
+//     ) {
+//       return option;
+//     } else {
+//       uniqueOptionsByStyle.push(option);
+//     }
+//   });
 
-  return uniqueOptionsByStyle;
-}
+//   return uniqueOptionsByStyle;
+// }
 
-function getProductFieldset(productOptions, product) {
-  let cardOptionsFieldset = undefined;
+// function getProductFieldset(productOptions, product) {
+//   let cardOptionsFieldset = undefined;
 
-  if (productOptions.length <= 1) {
-    cardOptionsFieldset = '';
-  } else {
-    let cardProductOptions = '';
+//   if (productOptions.length <= 1) {
+//     cardOptionsFieldset = '';
+//   } else {
+//     let cardProductOptions = '';
 
-    for (let option of productOptions) {
-      cardProductOptions += cardOptionField(product, option);
-    }
+//     for (let option of productOptions) {
+//       cardProductOptions += cardOptionField(product, option);
+//     }
 
-    cardOptionsFieldset = `
-    <fieldset class="product-fieldset">
-      <legend class="hidden">Variant</legend>
+//     cardOptionsFieldset = `
+//     <fieldset class="product-fieldset">
+//       <legend class="hidden">Variant</legend>
 
-      ${cardProductOptions}
+//       ${cardProductOptions}
 
-    </fieldset>
-    `;
-  }
+//     </fieldset>
+//     `;
+//   }
 
-  return cardOptionsFieldset;
-}
+//   return cardOptionsFieldset;
+// }
 
-const productCardTemplate = function (product) {
-  let cardOptionsSelections = cardOptionSelectionGroup(
-    product,
-    product.options[0]
-  );
-  let uniqueOptionsByStyle = getUniqueOptionStyles(product);
-  let cardOptionsFieldset = getProductFieldset(uniqueOptionsByStyle, product);
+// const productCardTemplate = function (product) {
+//   let cardOptionsSelections = cardOptionSelectionGroup(
+//     product,
+//     product.options[0]
+//   );
+//   let uniqueOptionsByStyle = getUniqueOptionStyles(product);
+//   let cardOptionsFieldset = getProductFieldset(uniqueOptionsByStyle, product);
 
-  return `
-  <div class="product" id="product-${product.productId}" data-productId=${
-    product.productId
-  }>
-    <a
-      class="product-image-container"
-      style="
-      background-image: url(${baseUrl}/assets/images/productImages/smaller_alt/${
-    product.options[0].imageName
-  }_smaller_alt.jpg);"
-      href="productPage.html?productId=${product.productId}&optionId=${
-    product.options[0].optionId
-  }"
-      >
-        <img
-        loading="lazy"
-        class="product-image"
-        src="${baseUrl}/assets/images/productImages/small/${
-    product.options[0].imageName
-  }_small.webp"
-        />
-    </a>
-    <div class="product-info-container">
-        <div class="product-brand">${product.brand}</div>
-        <div class="product-title">
-          <a href="productPage.html?productId=${product.productId}&optionId=${
-    product.options[0].optionId
-  }">
-          ${product.title}
-          </a>          
-        </div>
-        <div class="product-description">
-          <p>
-            ${product.description}
-          </p>          
-        </div>
+//   return `
+//   <div class="product" id="product-${product.productId}" data-productId=${
+//     product.productId
+//   }>
+//     <a
+//       class="product-image-container"
+//       style="
+//       background-image: url(${baseUrl}/assets/images/productImages/smaller_alt/${
+//     product.options[0].imageName
+//   }_smaller_alt.jpg);"
+//       href="productPage.html?productId=${product.productId}&optionId=${
+//     product.options[0].optionId
+//   }"
+//       >
+//         <img
+//         loading="lazy"
+//         class="product-image"
+//         src="${baseUrl}/assets/images/productImages/small/${
+//     product.options[0].imageName
+//   }_small.webp"
+//         />
+//     </a>
+//     <div class="product-info-container">
+//         <div class="product-brand">${product.brand}</div>
+//         <div class="product-title">
+//           <a href="productPage.html?productId=${product.productId}&optionId=${
+//     product.options[0].optionId
+//   }">
+//           ${product.title}
+//           </a>
+//         </div>
+//         <div class="product-description">
+//           <p>
+//             ${product.description}
+//           </p>
+//         </div>
 
-        ${cardOptionsFieldset}
-        ${cardOptionsSelections}
+//         ${cardOptionsFieldset}
+//         ${cardOptionsSelections}
 
+//         <div class="product-price">
+//           <span class="product-price-value">${formatCurrency(
+//             product.options[0].price
+//           )}</span>
+//         </div>
 
-        <div class="product-price">
-          <span class="product-price-value">${formatCurrency(
-            product.options[0].price
-          )}</span>
-        </div>
-
-        <div class="product-button-group" data-productId=${
-          product.productId
-        } data-optionid=${product.options[0].optionId}>
-          <button
-            class="button-product button-add"
-            id="button-product-${
-              product.productId + product.options[0].optionId
-            }"
-            onclick="addToCart(event); openCartMenu()"
-          >
-            ${catalogItemButtonText_Enabled}
-          </button>
-      </div>
-    </div>
-  </div>
-`;
-};
+//         <div class="product-button-group" data-productId=${
+//           product.productId
+//         } data-optionid=${product.options[0].optionId}>
+//           <button
+//             class="button-product button-add"
+//             id="button-product-${
+//               product.productId + product.options[0].optionId
+//             }"
+//             onclick="addToCart(event); openCartMenu()"
+//           >
+//             ${catalogItemButtonText_Enabled}
+//           </button>
+//       </div>
+//     </div>
+//   </div>
+// `;
+// };
 
 const cartItemTemplate = function (item) {
   return `

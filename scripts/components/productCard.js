@@ -5,6 +5,7 @@ import {
   catchProductList,
   catalogProducts,
 } from '/scripts/utilities/commerceUtilities.js';
+
 ('use strict');
 
 const tpl_catalogProductCard = document.createElement('template');
@@ -297,7 +298,6 @@ function cardOptionField(product, option) {
         value="option-${option.optionId}"
         data-productId="${product.productId}"
         data-optionid="${option.optionId}"
-        onChange="handleProductOptionChange(event)"
         ${product.options.indexOf(option) == 0 ? 'checked' : ''}
         style="
           ${inputBackground};
@@ -450,31 +450,122 @@ class catalogProduct extends HTMLElement {
     this.productPrice = shadow.querySelector('.product-price-value');
     this.productPrice.textContent = formatCurrency(product.options[0].price);
 
+    // this.productButtonGroup = shadow.querySelector('.product-button-group');
+
     this.productButton = shadow.querySelector('.button-product');
     this.productButton.textContent = 'Add to Cart';
     this.productButton.setAttribute('productId', this.productId);
+    this.productButton.setAttribute(
+      'productOptionId',
+      product.options[0].optionId
+    );
 
     this.productOptionsContainer = shadow.querySelector(
       '.product-options-container'
     );
     this.productOptionsContainer.innerHTML =
       cardOptionsFieldset + cardOptionsSelections;
+
+    this.hasFieldset = shadow.querySelector('.product-fieldset') ? true : false;
+    if (this.hasFieldset) {
+      this.productFieldset = shadow.querySelector('.product-fieldset');
+      this.productFieldsetInputs =
+        this.productFieldset.getElementsByTagName('input');
+    }
+
+    this.hasOptionSet = shadow.querySelector('.product-size-selection')
+      ? true
+      : false;
+    if (this.hasOptionSet) {
+      this.productOptionSet = shadow.querySelector('.product-size-selection');
+      this.productOptionSetOptions =
+        this.productOptionSet.getElementsByTagName('option');
+    }
   }
 
   addToCart() {
-    // console.log('hello');
     const productId = this.getAttribute('productId');
     console.log(productId);
-    // console.log(this);
+  }
+
+  handleProductOptionChange_Test() {
+    let targetProduct = catalogProducts.find(
+      (product) => product.productId == this.dataset.productid
+    );
+
+    let targetProductOption = targetProduct.options.find(
+      (productOption) => productOption.optionId == this.dataset.optionid
+    );
+  }
+
+  handleProductOptionChange() {
+    let targetProduct = catalogProducts.find(
+      (product) => product.productId == this.dataset.productid
+    );
+
+    let targetProductOption = targetProduct.options.find(
+      (productOption) => productOption.optionId == this.dataset.optionid
+    );
+
+    const targetElement = this.closest('.product');
+
+    const productImageContainer = targetElement.querySelector(
+      '.product-image-container'
+    );
+    const productImage = targetElement.querySelector('.product-image');
+    const productTitle = targetElement.querySelector('.product-title a');
+    const productPrice = targetElement.querySelector('.product-price-value');
+    const productButton = targetElement.querySelector('.button-product');
+
+    productImage.src = `${baseUrl}/assets/images/productImages/small/${targetProductOption.imageName}_small.webp `;
+    productTitle.setAttribute(
+      'href',
+      `productPage.html?productId=${targetProduct.productId}&optionId=${targetProductOption.optionId}`
+    );
+    productPrice.textContent = formatCurrency(targetProductOption.price);
+    productButton.setAttribute('productid', this.dataset.productid);
+    productButton.setAttribute('optionid', this.dataset.optionid);
+    productImageContainer.style = `background-image: url(${baseUrl}/assets/images/productImages/smaller_alt/${targetProductOption.imageName}_smaller_alt.jpg);`;
+    productImageContainer.setAttribute(
+      'href',
+      `productPage.html?productId=${targetProduct.productId}&optionId=${targetProductOption.optionId}`
+    );
+
+    let cardOptionsSelections = cardOptionSelectionGroup(
+      targetProduct,
+      targetProductOption
+    );
+
+    let productOptionSet = undefined;
+    let productOptionSetOptions = undefined;
+
+    const hasOptionSet = targetElement.querySelector('.product-size-selection')
+      ? true
+      : false;
+    if (hasOptionSet) {
+      productOptionSet = targetElement.querySelector('.product-size-selection');
+      productOptionSetOptions = productOptionSet.getElementsByTagName('option');
+    }
+
+    if (!hasOptionSet && cardOptionsSelections) {
+      productOptionSet.innerHTML = cardOptionsSelections;
+    }
   }
 
   connectedCallback() {
-    // console.log('hi');
-    // console.log(this.productId);
-    // this.sayHello();
-    // this.sayHello();
-
     this.productButton.addEventListener('click', this.addToCart);
+
+    // console.log(this.productFieldset);
+
+    if (this.hasFieldset) {
+      for (let productFieldSetInput of this.productFieldsetInputs) {
+        productFieldSetInput.addEventListener(
+          'change',
+          this.handleProductOptionChange
+        );
+        // console.log(productFieldSetInput);
+      }
+    }
   }
 }
 
