@@ -54,8 +54,22 @@ export function updateCartItemsButtons() {
     'button-cart button-remove'
   );
 
+  let subtractButtons = document.getElementsByClassName(
+    'button-cart button-subtract'
+  );
+
+  let addButtons = document.getElementsByClassName('button-cart button-add');
+
   for (let removeButton of removeButtons) {
     removeButton.addEventListener('click', removeFromCart);
+  }
+
+  for (let subtractButton of subtractButtons) {
+    subtractButton.addEventListener('click', subtractFromCart);
+  }
+
+  for (let addButton of addButtons) {
+    addButton.addEventListener('click', addToCart);
   }
 }
 
@@ -117,6 +131,12 @@ export function addToCart(event) {
   let eventTarget = event.target;
   let productId = eventTarget.getAttribute('productid');
   let productOptionId = eventTarget.getAttribute('productoptionid');
+
+  if (!productId) {
+    eventTarget = event.target.parentElement;
+    productId = eventTarget.dataset.productid;
+    productOptionId = eventTarget.dataset.optionid;
+  }
 
   let targetProduct = catalogProducts.find(
     (product) => product.productId == productId
@@ -183,7 +203,6 @@ export function updateCatalogProductButton(productId) {
 }
 
 export function removeFromCart(event) {
-  // console.log(event.target.parentElement);
   let productId = undefined;
   let optionId = undefined;
 
@@ -210,7 +229,6 @@ export function removeFromCart(event) {
 
 export function addCartItem(cartItem) {
   cartItemsList.insertAdjacentHTML('afterbegin', cartItemTemplate(cartItem));
-  //
 }
 
 export function clearCartItem(productId, optionId) {
@@ -266,7 +284,6 @@ export const cartItemTemplate = function (item) {
             >
               <button
                 class="button-cart button-add"
-                onclick="addToCart(event)"
                 data-productId="${item.productId}"
                 data-optionid="${item.option.optionId}"
               >
@@ -279,7 +296,6 @@ export const cartItemTemplate = function (item) {
 
               <button
                 class="button-cart button-subtract"
-                onclick="subtractFromCart(event)"
                 data-productId="${item.productId}"
                 data-optionid="${item.option.optionId}"
               >
