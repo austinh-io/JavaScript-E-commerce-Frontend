@@ -1,3 +1,5 @@
+('use strict');
+
 // const checkoutButton = document.querySelector('.btn-checkout');
 
 // checkoutButton.addEventListener('click', test);
@@ -96,7 +98,7 @@ function handleCartMenu() {
   }
 }
 
-function openCartMenu() {
+export function openCartMenu() {
   const visibility = cartMenu.getAttribute('data-visible');
 
   if (visibility === 'false') {

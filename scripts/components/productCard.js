@@ -12,6 +12,8 @@ import {
   cartItemsList,
 } from '../utilities/cartUtilities.js';
 
+import { openCartMenu } from '../menus.js';
+
 ('use strict');
 
 const tpl_catalogProductCard = document.createElement('template');
@@ -584,6 +586,7 @@ class catalogProduct extends HTMLElement {
 
   connectedCallback() {
     this.productButton.addEventListener('click', addToCart);
+    this.productButton.addEventListener('click', openCartMenu);
     this.productButton.addEventListener('click', this.updateCatalogItemButton);
     cartItemsList.addEventListener('change', this.updateCatalogItemButton);
 
