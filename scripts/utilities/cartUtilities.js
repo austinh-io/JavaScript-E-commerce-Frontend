@@ -15,20 +15,39 @@ let addToCartButtons = new Array();
 
 export let cartItems = new Array();
 
+/**
+ * Sets the catalog product buttons by selecting all elements with the class 'button-product button-add'.
+ * @async
+ * @function
+ * @returns {Promise<void>}
+ */
 export async function setCatalogProductButtons() {
   catalogProductsButtons = document.getElementsByClassName(
     'button-product button-add'
   );
 }
 
+/**
+ * Returns an array of catalog product buttons.
+ *
+ * @returns {Array} An array of catalog product buttons.
+ */
 export function getCatalogProductButtons() {
   return catalogProductsButtons;
 }
 
+/**
+ * Sets the cart items to the provided array of items.
+ * @param {Array} newItems - The new array of cart items.
+ */
 export function setCartItems(newItems) {
   cartItems = newItems;
 }
 
+/**
+ * Represents an item in the shopping cart.
+ * @class
+ */
 export class cartItem {
   constructor(id, productId, option, count, totalPrice, title) {
     this.id = id;
@@ -40,6 +59,9 @@ export class cartItem {
   }
 }
 
+/**
+ * Updates the cart by updating the cart items count, cart subtotal, cart local storage, and cart items buttons.
+ */
 export function updateCart() {
   if (cartItems) {
     updateCartItemsCount();
@@ -49,6 +71,11 @@ export function updateCart() {
   }
 }
 
+/**
+ * Updates the event listeners for the cart item buttons.
+ * @function
+ * @returns {void}
+ */
 export function updateCartItemsButtons() {
   let removeButtons = document.getElementsByClassName(
     'button-cart button-remove'
@@ -73,6 +100,9 @@ export function updateCartItemsButtons() {
   }
 }
 
+/**
+ * Updates the cart items count and displays it in the cart icon.
+ */
 export function updateCartItemsCount() {
   let totalItems = cartItems.reduce((sum, cur) => sum + cur.count, 0);
   for (let i = 0; i < cartIconCounters.length; i++) {
@@ -89,11 +119,17 @@ export function updateCartItemsCount() {
   }
 }
 
+/**
+ * Updates the cart subtotal by calculating the total cost of all items in the cart and displaying it on the page.
+ */
 export function updateCartSubtotal() {
   let totalCost = cartItems.reduce((sum, cur) => sum + cur.totalPrice, 0);
   totalCostValueElement.innerText = formatCurrency(totalCost);
 }
 
+/**
+ * Retrieves the cart items from local storage, or initializes an empty cart if none exists.
+ */
 export function getCart() {
   if (!cartItems || !localStorage.getItem('localCart')) {
     cartItems = new Array();
@@ -103,16 +139,30 @@ export function getCart() {
   }
 }
 
+/**
+ * Sets the cart items in local storage as a JSON string.
+ * @function
+ * @name setCartLocalStorage
+ * @returns {void}
+ */
 export function setCartLocalStorage() {
   localStorage.setItem('localCart', JSON.stringify(cartItems));
 }
 
+/**
+ * Retrieves cart items from local storage and updates the cart.
+ */
 export function getCartLocalStorage() {
   let localCartItems = localStorage.getItem('localCart');
   setCartItems(JSON.parse(localCartItems));
   updateCart();
 }
 
+/**
+ * Fills the cart items list with the items in the cart.
+ * @function
+ * @returns {void}
+ */
 export function fillCartList() {
   if (cartItems) {
     cartItems.forEach((cartListItem) => {
@@ -125,6 +175,10 @@ export function fillCartList() {
   updateCartItemsButtons();
 }
 
+/**
+ * Adds a product to the cart.
+ * @param {Event} event - The event object.
+ */
 export function addToCart(event) {
   getCart();
 
@@ -168,6 +222,11 @@ export function addToCart(event) {
   updateCart();
 }
 
+/**
+ * Subtracts one item from the cart for the given product and option IDs.
+ * If the item count becomes zero, it removes the item from the cart.
+ * @param {Event} event - The click event that triggered the function.
+ */
 export function subtractFromCart(event) {
   const productId = event.target.parentElement.dataset.productid;
   const optionId = event.target.parentElement.dataset.optionid;
@@ -192,6 +251,10 @@ export function subtractFromCart(event) {
   //A lot has changed since I moved towards a component and module based approach
 }
 
+/**
+ * Updates the button of a catalog product with the given product ID.
+ * @param {string} productId - The ID of the product to update the button for.
+ */
 export function updateCatalogProductButton(productId) {
   const catalogProduct = document.querySelector(
     `catalog-product[productid="${productId}"]`
@@ -202,6 +265,11 @@ export function updateCatalogProductButton(productId) {
   }
 }
 
+/**
+ * Removes a product from the cart and updates the cart UI.
+ * @param {Event} event - The event object that triggered the function call.
+ * @returns {void}
+ */
 export function removeFromCart(event) {
   let productId = undefined;
   let optionId = undefined;
@@ -227,10 +295,24 @@ export function removeFromCart(event) {
   updateCart();
 }
 
+/**
+ * Adds a new item to the shopping cart.
+ *
+ * @param {Object} cartItem - The item to add to the cart.
+ * @param {string} cartItem.name - The name of the item.
+ * @param {number} cartItem.price - The price of the item.
+ * @param {number} cartItem.quantity - The quantity of the item.
+ * @returns {void}
+ */
 export function addCartItem(cartItem) {
   cartItemsList.insertAdjacentHTML('afterbegin', cartItemTemplate(cartItem));
 }
 
+/**
+ * Removes a cart item from the cart items list.
+ * @param {string} productId - The ID of the product to remove.
+ * @param {string} optionId - The ID of the option to remove.
+ */
 export function clearCartItem(productId, optionId) {
   let targetCartItem = document.getElementById(
     `cart-item-${productId + optionId}`
@@ -238,12 +320,24 @@ export function clearCartItem(productId, optionId) {
   cartItemsList.removeChild(targetCartItem);
 }
 
+/**
+ * Removes all items from the cart list.
+ */
 export function clearCartList() {
   while (cartItemsList.firstChild) {
     cartItemsList.removeChild(cartItemsList.lastChild);
   }
 }
 
+/**
+ * Updates the count and total price of a cart item in the DOM.
+ * @param {Object} cartItem - The cart item to update.
+ * @param {string} cartItem.productId - The ID of the product.
+ * @param {Object} cartItem.option - The selected product option.
+ * @param {string} cartItem.option.optionId - The ID of the selected option.
+ * @param {number} cartItem.count - The updated count of the cart item.
+ * @param {number} cartItem.totalPrice - The updated total price of the cart item.
+ */
 export function updateCartItem(cartItem) {
   let cartItemElement = document.getElementById(
     `cart-item-${cartItem.productId + cartItem.option.optionId}`
@@ -254,6 +348,22 @@ export function updateCartItem(cartItem) {
     formatCurrency(cartItem.totalPrice);
 }
 
+/**
+ * Returns a string containing the HTML template for a cart item.
+ *
+ * @param {Object} item - The cart item object.
+ * @param {string} item.productId - The ID of the product.
+ * @param {Object} item.option - The selected option object.
+ * @param {string} item.option.optionId - The ID of the selected option.
+ * @param {string} item.option.imageName - The name of the image file for the selected option.
+ * @param {string} item.title - The title of the product.
+ * @param {string} item.option.optionStyle - The selected style option.
+ * @param {string} item.option.optionSize - The selected size option.
+ * @param {number} item.count - The quantity of the product in the cart.
+ * @param {number} item.totalPrice - The total price of the product in the cart.
+ *
+ * @returns {string} The HTML template for a cart item.
+ */
 export const cartItemTemplate = function (item) {
   return `
         <div

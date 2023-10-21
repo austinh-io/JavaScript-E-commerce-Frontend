@@ -18,12 +18,20 @@ const baseUrl = '';
 
 let products = new Array();
 
+/**
+ * Fetches the product list from the server and stores it in the `products` array.
+ * @returns {Promise<void>} A Promise that resolves when the product list has been fetched and stored.
+ */
 async function catchProductList() {
   const response = await fetch(`${baseUrl}/data/products.json`);
   const productsObj = await response.json();
   products = [...productsObj];
 }
 
+/**
+ * Initializes the product page by fetching the product list, retrieving the product and option IDs from the URL, and updating the page with the product information.
+ * @returns {Promise<void>}
+ */
 async function initializePage() {
   await catchProductList();
 
