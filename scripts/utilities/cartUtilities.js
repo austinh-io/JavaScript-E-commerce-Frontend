@@ -215,8 +215,8 @@ export function removeFromCart(event) {
     let targetItem = findItem(cartItems, productId, optionId);
     cartItems.splice(cartItems.indexOf(targetItem), 1);
   } else {
-    productId = event.productid;
-    optionId = event.option.optionid;
+    productId = event.productId;
+    optionId = event.option.optionId;
 
     clearCartItem(productId, optionId);
     cartItems.splice(cartItems.indexOf(event), 1);
