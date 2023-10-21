@@ -6,15 +6,6 @@ import {
 
 ('use strict');
 
-// const testing = [1, 2, 3];
-// const testingProxy = new Proxy(testing, {
-//   get: (obj, prop) => {
-//     console.log(obj);
-//     console.log(prop);
-//   },
-// });
-// console.log(testingProxy[1]);
-
 let catalogProductsButtons = undefined;
 export const cartItemsList = document.querySelector('.cart-items-container');
 const cartIconCounters = document.getElementsByClassName('cart-icon-counter');
@@ -63,7 +54,6 @@ export function updateCartItemsButtons() {
     'button-cart button-remove'
   );
 
-  // console.log(removeButtons);
   for (let removeButton of removeButtons) {
     removeButton.addEventListener('click', removeFromCart);
   }
@@ -177,6 +167,19 @@ export function subtractFromCart(event) {
   updateCart(); //Note: this function can be redundant since it is also called in removeFromCart() sometimes.
   //If updateCart() begins to affect performance, then I should find a way to only call this only once as opposed to twice
   //Or only update the UI elements that are necessary
+
+  //Double note: idk if the above is still valid, but I'm leaving it in for now
+  //A lot has changed since I moved towards a component and module based approach
+}
+
+export function updateCatalogProductButton(productId) {
+  const catalogProduct = document.querySelector(
+    `catalog-product[productid="${productId}"]`
+  );
+
+  if (catalogProduct) {
+    catalogProduct.updateCatalogItemButton();
+  }
 }
 
 export function removeFromCart(event) {
@@ -200,13 +203,7 @@ export function removeFromCart(event) {
     cartItems.splice(cartItems.indexOf(event), 1);
   }
 
-  // console.log(catalogProductsButtons);
-
-  // let catalogItem = document.querySelector(
-  //   `.button-product button-add productid="${productId}" productoptionid="${optionId}"`
-  // );
-
-  // console.log(catalogItem);
+  updateCatalogProductButton(productId);
 
   updateCart();
 }

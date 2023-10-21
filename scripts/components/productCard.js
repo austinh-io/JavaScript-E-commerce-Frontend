@@ -459,8 +459,6 @@ class catalogProduct extends HTMLElement {
     this.productPrice = shadow.querySelector('.product-price-value');
     this.productPrice.textContent = formatCurrency(product.options[0].price);
 
-    // this.productButtonGroup = shadow.querySelector('.product-button-group');
-
     this.productButton = shadow.querySelector('.button-product');
     this.productButton.textContent = 'Add to Cart';
     this.productButton.setAttribute('productId', this.productId);
@@ -493,7 +491,6 @@ class catalogProduct extends HTMLElement {
   }
 
   updateCatalogItemButton() {
-    // console.log('called');
     const catalogItemButtonText_Enabled = 'Add to Cart';
     const catalogItemButtonText_Disabled = 'Item in Cart';
 
@@ -505,8 +502,6 @@ class catalogProduct extends HTMLElement {
     } else {
       productButton = this.productButton;
     }
-
-    console.log(targetElement);
 
     let productId = productButton.getAttribute('productid');
     let optionId = productButton.getAttribute('productoptionid');
@@ -611,7 +606,6 @@ class catalogProduct extends HTMLElement {
     }
 
     this.updateCatalogItemButton();
-    // this.addEventListener()
   }
 }
 
