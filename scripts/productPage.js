@@ -1,4 +1,7 @@
-import { findItem, formatCurrency } from './utilities.js';
+import {
+  findItem,
+  formatCurrency,
+} from '/scripts/utilities/commerceUtilities.js';
 ('use strict');
 
 const productTitleElement = document.querySelector('.product-title');
