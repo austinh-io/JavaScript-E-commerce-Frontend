@@ -412,24 +412,15 @@ function cardOptionSelectionGroup(product, option) {
  * @returns {Array} An array of unique product options based on their style.
  */
 function getUniqueOptionStyles(product) {
-  let uniqueOptionsByStyle = [];
-
-  product.options.filter((option) => {
-    if (
-      uniqueOptionsByStyle.find((element) => {
-        return (
-          option.optionVisual.type == element.optionVisual.type &&
-          option.optionVisual.value == element.optionVisual.value
-        );
-      })
-    ) {
-      return option;
-    } else {
-      uniqueOptionsByStyle.push(option);
+  const uniqueOptions = product.options.reduce((acc, option) => {
+    const key = `${option.optionVisual.type}-${option.optionVisual.value}`;
+    if (!acc[key]) {
+      acc[key] = option;
     }
-  });
+    return acc;
+  }, {});
 
-  return uniqueOptionsByStyle;
+  return Object.values(uniqueOptions);
 }
 
 /**
