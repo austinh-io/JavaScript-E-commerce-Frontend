@@ -6,7 +6,11 @@ import {
   catalogProducts,
 } from '/scripts/utilities/commerceUtilities.js';
 
-import { addToCart, cartItems } from '../utilities/cartUtilities.js';
+import {
+  addToCart,
+  cartItems,
+  cartItemsList,
+} from '../utilities/cartUtilities.js';
 
 ('use strict');
 
@@ -489,6 +493,7 @@ class catalogProduct extends HTMLElement {
   }
 
   updateCatalogItemButton() {
+    // console.log('called');
     const catalogItemButtonText_Enabled = 'Add to Cart';
     const catalogItemButtonText_Disabled = 'Item in Cart';
 
@@ -500,6 +505,8 @@ class catalogProduct extends HTMLElement {
     } else {
       productButton = this.productButton;
     }
+
+    console.log(targetElement);
 
     let productId = productButton.getAttribute('productid');
     let optionId = productButton.getAttribute('productoptionid');
@@ -583,6 +590,7 @@ class catalogProduct extends HTMLElement {
   connectedCallback() {
     this.productButton.addEventListener('click', addToCart);
     this.productButton.addEventListener('click', this.updateCatalogItemButton);
+    cartItemsList.addEventListener('change', this.updateCatalogItemButton);
 
     if (this.hasFieldset) {
       for (let input of this.productFieldsetInputs) {

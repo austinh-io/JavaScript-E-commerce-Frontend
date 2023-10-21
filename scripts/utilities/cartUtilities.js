@@ -16,7 +16,7 @@ import {
 // console.log(testingProxy[1]);
 
 let catalogProductsButtons = undefined;
-const cartItemsList = document.querySelector('.cart-items-container');
+export const cartItemsList = document.querySelector('.cart-items-container');
 const cartIconCounters = document.getElementsByClassName('cart-icon-counter');
 const totalCostValueElement = document.querySelector('.total-cost-value');
 
@@ -213,6 +213,7 @@ export function removeFromCart(event) {
 
 export function addCartItem(cartItem) {
   cartItemsList.insertAdjacentHTML('afterbegin', cartItemTemplate(cartItem));
+  //
 }
 
 export function clearCartItem(productId, optionId) {
