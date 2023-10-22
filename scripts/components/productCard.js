@@ -66,20 +66,27 @@ const tpl_catalogProductCSS = `
 
       background-repeat: no-repeat;
       display: block;
+
+      backdrop-filter: blur(10px);
+      
+      background-size: 100%;
+      background-position: center;
+
+      transition: background-size 0.25s ease;
     }
 
-    a.product-image-container {
-      backdrop-filter: blur(10px);
-      background-size: cover;
-      background-position: center;
+    .product-image-container:hover {
+      background-size: 105%;
     }
 
     img.product-image {
       transition: transform 0.25s ease;
+      transform: scale(1.01);
+
     }
 
     img.product-image:hover {
-      transform: scale(1.05);
+      transform: scale(1.06);
     }
 
     .product-image {
@@ -488,7 +495,7 @@ class catalogProduct extends HTMLElement {
     this.productImageContainer = shadow.querySelector(
       '.product-image-container'
     );
-    this.productImageContainer.style.backgroundImage = `url(${baseUrl}/assets/images/productImages/small_alt/item18-0_small_alt.png)`;
+    this.productImageContainer.style.backgroundImage = `url(${baseUrl}/assets/images/productImages/smaller_alt/${product.options[0].imageName}_smaller_alt.jpg)`;
     this.productImageContainer.href = productPageUrl;
 
     this.productImage = shadow.querySelector('.product-image');
