@@ -77,27 +77,41 @@ export function updateCart() {
  * @returns {void}
  */
 export function updateCartItemsButtons() {
-  let removeButtons = document.getElementsByClassName(
-    'button-cart button-remove'
+  // let removeButtons = document.getElementsByClassName(
+  //   'button-cart button-remove'
+  // );
+
+  // let subtractButtons = document.getElementsByClassName(
+  //   'button-cart button-subtract'
+  // );
+
+  // let addButtons = document.getElementsByClassName('button-cart button-add');
+
+  // for (let removeButton of removeButtons) {
+  //   removeButton.addEventListener('click', removeFromCart);
+  // }
+
+  // for (let subtractButton of subtractButtons) {
+  //   subtractButton.addEventListener('click', subtractFromCart);
+  // }
+
+  // for (let addButton of addButtons) {
+  //   addButton.addEventListener('click', addToCart);
+  // }
+
+  let removeButtons = document.querySelectorAll('.button-cart.button-remove');
+  let subtractButtons = document.querySelectorAll(
+    '.button-cart.button-subtract'
   );
+  let addButtons = document.querySelectorAll('.button-cart.button-add');
 
-  let subtractButtons = document.getElementsByClassName(
-    'button-cart button-subtract'
+  removeButtons.forEach((button) =>
+    button.addEventListener('click', removeFromCart)
   );
-
-  let addButtons = document.getElementsByClassName('button-cart button-add');
-
-  for (let removeButton of removeButtons) {
-    removeButton.addEventListener('click', removeFromCart);
-  }
-
-  for (let subtractButton of subtractButtons) {
-    subtractButton.addEventListener('click', subtractFromCart);
-  }
-
-  for (let addButton of addButtons) {
-    addButton.addEventListener('click', addToCart);
-  }
+  subtractButtons.forEach((button) =>
+    button.addEventListener('click', subtractFromCart)
+  );
+  addButtons.forEach((button) => button.addEventListener('click', addToCart));
 }
 
 /**
@@ -275,14 +289,21 @@ export function removeFromCart(event) {
   let optionId = undefined;
 
   if (event.target) {
-    productId = event.target.parentElement.dataset.productid;
-    optionId = event.target.parentElement.dataset.optionid;
+    let target = event.target;
+
+    if (!target.matches('.button-cart.button-remove'))
+      target = target.closest('.button-cart.button-remove');
+
+    productId = target.dataset.productid;
+    optionId = target.dataset.optionid;
 
     clearCartItem(productId, optionId);
 
     let targetItem = findItem(cartItems, productId, optionId);
     cartItems.splice(cartItems.indexOf(targetItem), 1);
   } else {
+    console.log('B');
+
     productId = event.productId;
     optionId = event.option.optionId;
 
@@ -314,9 +335,13 @@ export function addCartItem(cartItem) {
  * @param {string} optionId - The ID of the option to remove.
  */
 export function clearCartItem(productId, optionId) {
-  let targetCartItem = document.getElementById(
-    `cart-item-${productId + optionId}`
+  let targetCartItem = document.querySelector(
+    `#cart-item-${productId + optionId}`
   );
+
+  // console.log(productId);
+  // console.log(optionId);
+  // console.log(targetCartItem);
   cartItemsList.removeChild(targetCartItem);
 }
 
