@@ -30,7 +30,7 @@ const tpl_catalogProductCard = document.createElement('template');
  */
 const tpl_catalogProductCSS = `
 <style>
-    @import url(/css/shared.css);
+    @import url(${baseUrl}/css/shared.css);
 
     :host {
       /*Uncomment the height below if you want all cards to be the same height, as they currently
