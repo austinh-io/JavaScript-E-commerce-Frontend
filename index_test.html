@@ -58,6 +58,11 @@
     ></script>
 
     <script
+      type="module"
+      src="scripts/components/cartItemCard.js"
+    ></script>
+
+    <script
       defer
       type="module"
       src="/scripts/menus.js"
@@ -108,7 +113,6 @@
           <li><a>Page 1</a></li>
           <li><a>Page 2</a></li>
           <li><a>Page 3</a></li>
-          <li><a href="index_test.html">Test</a></li>
 
           <div class="nav-buttons-container">
             <button
@@ -148,7 +152,7 @@
     <div
       class="cart-menu menu-horizontal menu-shadow"
       id="cart-menu"
-      data-visible="false"
+      data-visible="true"
     >
       <div class="cart-menu-header">
         <div class="cart-menu-header-title">Cart</div>
@@ -161,6 +165,21 @@
 
       <div class="cart-items-container">
         <!-- Cart Items -->
+        <cart-item
+          data-productid="0"
+          data-optionid="69"
+          id="cart-item-0-69"
+        ></cart-item>
+        <cart-item
+          data-productid="0"
+          data-optionid="69"
+          id="cart-item-0-69"
+        ></cart-item>
+        <cart-item
+          data-productid="0"
+          data-optionid="69"
+          id="cart-item-0-69"
+        ></cart-item>
       </div>
       <div class="cart-display-footer">
         <div class="subtotal-container">
