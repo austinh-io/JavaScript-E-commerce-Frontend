@@ -77,28 +77,6 @@ export function updateCart() {
  * @returns {void}
  */
 export function updateCartItemsButtons() {
-  // let removeButtons = document.getElementsByClassName(
-  //   'button-cart button-remove'
-  // );
-
-  // let subtractButtons = document.getElementsByClassName(
-  //   'button-cart button-subtract'
-  // );
-
-  // let addButtons = document.getElementsByClassName('button-cart button-add');
-
-  // for (let removeButton of removeButtons) {
-  //   removeButton.addEventListener('click', removeFromCart);
-  // }
-
-  // for (let subtractButton of subtractButtons) {
-  //   subtractButton.addEventListener('click', subtractFromCart);
-  // }
-
-  // for (let addButton of addButtons) {
-  //   addButton.addEventListener('click', addToCart);
-  // }
-
   let removeButtons = document.querySelectorAll('.button-cart.button-remove');
   let subtractButtons = document.querySelectorAll(
     '.button-cart.button-subtract'
@@ -197,24 +175,22 @@ export function addToCart(event) {
   getCart();
 
   let eventTarget = event.target;
-  let productId = eventTarget.getAttribute('productid');
-  let productOptionId = eventTarget.getAttribute('productoptionid');
+  let { productid: productId, optionid: optionId } = eventTarget.dataset;
 
   if (!productId) {
-    eventTarget = event.target.parentElement;
-    productId = eventTarget.dataset.productid;
-    productOptionId = eventTarget.dataset.optionid;
+    eventTarget = eventTarget.parentElement;
+    ({ productid: productId, optionid: optionId } = eventTarget.dataset);
   }
 
-  let targetProduct = catalogProducts.find(
+  let targetProductIndex = catalogProducts.findIndex(
     (product) => product.productId == productId
   );
 
-  let productOptionToAdd = targetProduct.options.find(
-    (productOption) => productOption.optionId == productOptionId
-  );
+  let targetProductOptionIndex = catalogProducts[
+    targetProductIndex
+  ].options.findIndex((productOption) => productOption.optionId == optionId);
 
-  let cartItemToAdd = findItem(cartItems, productId, productOptionId);
+  let cartItemToAdd = findItem(cartItems, productId, optionId);
 
   if (cartItemToAdd) {
     cartItemToAdd.count += 1;
@@ -222,14 +198,16 @@ export function addToCart(event) {
     updateCartItem(cartItemToAdd);
   } else {
     const newItem = new cartItem(
-      productId + productOptionId,
+      productId + optionId,
       productId,
-      productOptionToAdd,
+      catalogProducts[targetProductIndex].options[targetProductOptionIndex],
       1,
-      productOptionToAdd.price,
-      targetProduct.title
+      catalogProducts[targetProductIndex].options[
+        targetProductOptionIndex
+      ].price,
+      catalogProducts[targetProductIndex].title
     );
-    cartItems.push(newItem);
+    cartItems = [...cartItems, newItem];
     addCartItem(newItem);
   }
 
@@ -271,7 +249,7 @@ export function subtractFromCart(event) {
  */
 export function updateCatalogProductButton(productId) {
   const catalogProduct = document.querySelector(
-    `catalog-product[productid="${productId}"]`
+    `catalog-product[data-productid="${productId}"]`
   );
 
   if (catalogProduct) {
@@ -302,8 +280,6 @@ export function removeFromCart(event) {
     let targetItem = findItem(cartItems, productId, optionId);
     cartItems.splice(cartItems.indexOf(targetItem), 1);
   } else {
-    console.log('B');
-
     productId = event.productId;
     optionId = event.option.optionId;
 
@@ -338,10 +314,6 @@ export function clearCartItem(productId, optionId) {
   let targetCartItem = document.querySelector(
     `#cart-item-${productId + optionId}`
   );
-
-  // console.log(productId);
-  // console.log(optionId);
-  // console.log(targetCartItem);
   cartItemsList.removeChild(targetCartItem);
 }
 

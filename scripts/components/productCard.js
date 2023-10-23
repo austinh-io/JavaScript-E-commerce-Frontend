@@ -378,7 +378,7 @@ function getOptionStyleSizes(product, option) {
  */
 function cardOptionSelection(option) {
   return `
-    <option value="${option.optionSize}" data-optionId=${option.optionId}>${option.optionSize}</option>
+    <option value="${option.optionSize}" data-optionid=${option.optionId}>${option.optionSize}</option>
     `;
 }
 
@@ -490,7 +490,7 @@ class catalogProduct extends HTMLElement {
       product
     );
 
-    const productPageUrl = `productPage.html?productId=${product.productId}&optionId=${product.options[0].optionId}`;
+    const productPageUrl = `productPage.html?productid=${product.productId}&optionid=${product.options[0].optionId}`;
 
     this.productImageContainer = shadow.querySelector(
       '.product-image-container'
@@ -516,11 +516,15 @@ class catalogProduct extends HTMLElement {
 
     this.productButton = shadow.querySelector('.button-product');
     this.productButton.textContent = 'Add to Cart';
-    this.productButton.setAttribute('productId', this.productId);
-    this.productButton.setAttribute(
-      'productOptionId',
-      product.options[0].optionId
-    );
+
+    // this.productButton.setAttribute('data-productId', this.productId);
+    // this.productButton.setAttribute(
+    //   'data-optionid',
+    //   product.options[0].optionId
+    // );
+
+    this.productButton.dataset.productid = this.productId;
+    this.productButton.dataset.optionid = product.options[0].optionId;
 
     this.productOptionsContainer = shadow.querySelector(
       '.product-options-container'
@@ -564,8 +568,8 @@ class catalogProduct extends HTMLElement {
       productButton = this.productButton;
     }
 
-    let productId = productButton.getAttribute('productid');
-    let optionId = productButton.getAttribute('productoptionid');
+    let productId = productButton.dataset.productid;
+    let optionId = productButton.dataset.optionid;
 
     if (findItem(cartItems, productId, optionId)) {
       productButton.disabled = true;
@@ -607,19 +611,15 @@ class catalogProduct extends HTMLElement {
       (productOption) => productOption.optionId == optionId
     );
 
+    let productUrl = `productPage.html?productid=${targetProduct.productId}&optionid=${targetProductOption.optionId}`;
+
     productImage.src = `${baseUrl}/assets/images/productImages/small/${targetProductOption.imageName}_small.webp `;
-    productTitle.setAttribute(
-      'href',
-      `productPage.html?productId=${targetProduct.productId}&optionId=${targetProductOption.optionId}`
-    );
+    productTitle.setAttribute('href', productUrl);
     productPrice.textContent = formatCurrency(targetProductOption.price);
-    productButton.setAttribute('productid', productId);
-    productButton.setAttribute('productoptionid', optionId);
+    productButton.dataset.productid = productId;
+    productButton.dataset.optionid = optionId;
     productImageContainer.style = `background-image: url(${baseUrl}/assets/images/productImages/smaller_alt/${targetProductOption.imageName}_smaller_alt.jpg);`;
-    productImageContainer.setAttribute(
-      'href',
-      `productPage.html?productId=${targetProduct.productId}&optionId=${targetProductOption.optionId}`
-    );
+    productImageContainer.setAttribute('href', productUrl);
 
     let cardOptionsSelections = cardOptionSelectionGroup(
       targetProduct,

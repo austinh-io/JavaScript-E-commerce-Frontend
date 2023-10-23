@@ -36,11 +36,10 @@ async function initializePage() {
   await catchProductList();
 
   const productId = new URLSearchParams(window.location.search).get(
-    'productId'
+    'productid'
   );
 
-  const optionId = new URLSearchParams(window.location.search).get('optionId');
-  console.log('Option ID: ' + optionId);
+  const optionId = new URLSearchParams(window.location.search).get('optionid');
 
   const product = products.find((i) => i.productId == productId);
 
