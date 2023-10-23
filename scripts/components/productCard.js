@@ -32,6 +32,12 @@ const tpl_catalogProductCSS = `
 <style>
     @import url(${baseUrl}/css/shared.css);
 
+    @media (max-width: 768px) {
+      div.product {
+        max-width: 100%;
+      }
+    }
+
     :host {
       /*Uncomment the height below if you want all cards to be the same height, as they currently
       can be shorter or taller if they have more or less options. Right now the image will grow as the
