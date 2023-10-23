@@ -7,23 +7,10 @@ import {
 ('use strict');
 
 let catalogProductsButtons = undefined;
-export const cartItemsList = document.querySelector('.cart-items-container');
+export const storeCartMenu = document.querySelector('store-cart');
 const cartIconCounters = document.getElementsByClassName('cart-icon-counter');
-const totalCostValueElement = document.querySelector('.total-cost-value');
 
 export let cartItems = new Array();
-
-/**
- * Sets the catalog product buttons by selecting all elements with the class 'button-product button-add'.
- * @async
- * @function
- * @returns {Promise<void>}
- */
-export async function setCatalogProductButtons() {
-  catalogProductsButtons = document.getElementsByClassName(
-    'button-product button-add'
-  );
-}
 
 /**
  * Returns an array of catalog product buttons.
@@ -114,7 +101,7 @@ export function updateCartItemsCount() {
  */
 export function updateCartSubtotal() {
   let totalCost = cartItems.reduce((sum, cur) => sum + cur.totalPrice, 0);
-  totalCostValueElement.innerText = formatCurrency(totalCost);
+  storeCartMenu.updateSubtotal(totalCost);
 }
 
 /**
@@ -154,14 +141,9 @@ export function getCartLocalStorage() {
  * @returns {void}
  */
 export function fillCartList() {
-  if (cartItems) {
-    cartItems.forEach((cartListItem) => {
-      cartItemsList.insertAdjacentHTML(
-        'afterbegin',
-        cartItemTemplate(cartListItem)
-      );
-    });
-  }
+  cartItems.forEach((cartListItem) => {
+    storeCartMenu.addCartItem(cartItemTemplate(cartListItem));
+  });
   updateCartItemsButtons();
 }
 
@@ -263,7 +245,7 @@ export function removeFromCart(event) {
   let optionId = undefined;
 
   if (event.target) {
-    let target = event.target.parentElement;
+    let target = event.target;
 
     if (!target.matches('.button-cart.button-remove'))
       target = target.closest('.button-cart.button-remove');
@@ -288,38 +270,12 @@ export function removeFromCart(event) {
   updateCart();
 }
 
-/**
- * Adds a new item to the shopping cart.
- *
- * @param {Object} cartItem - The item to add to the cart.
- * @param {string} cartItem.name - The name of the item.
- * @param {number} cartItem.price - The price of the item.
- * @param {number} cartItem.quantity - The quantity of the item.
- * @returns {void}
- */
 export function addCartItem(cartItem) {
-  cartItemsList.insertAdjacentHTML('afterbegin', cartItemTemplate(cartItem));
+  storeCartMenu.addCartItem(cartItemTemplate(cartItem));
 }
 
-/**
- * Removes a cart item from the cart items list.
- * @param {string} productId - The ID of the product to remove.
- * @param {string} optionId - The ID of the option to remove.
- */
 export function clearCartItem(productId, optionId) {
-  let targetCartItem = document.querySelector(
-    `#cart-item-${productId + optionId}`
-  );
-  cartItemsList.removeChild(targetCartItem);
-}
-
-/**
- * Removes all items from the cart list.
- */
-export function clearCartList() {
-  while (cartItemsList.firstChild) {
-    cartItemsList.removeChild(cartItemsList.lastChild);
-  }
+  storeCartMenu.removeCartItem(productId, optionId);
 }
 
 export const cartItemTemplate = function (item) {

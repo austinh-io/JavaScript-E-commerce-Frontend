@@ -1,8 +1,13 @@
-'use strict';
+import {
+  formatCurrency,
+  catalogProducts,
+} from '/scripts/utilities/commerceUtilities.js';
+import { initializeProducts } from '/scripts/catalog.js';
+import { cartItems } from './utilities/cartUtilities.js';
+
+('use strict');
 
 const checkoutCartList = document.querySelector('.checkout-cart-items');
-
-let cartItems = new Array();
 
 const cartItemTemplate = function (item) {
   return `
@@ -31,12 +36,10 @@ const cartItemTemplate = function (item) {
   
               <div
                 class="cart-item-buttons-container"
-              >
-                
-  
-                <div class="cart-item-count">${item.count}</div>
-  
-                
+              >            
+                <div class="cart-item-count">${
+                  item.count
+                }</div>                 
               </div>
             </div>
             <div class="cart-item-col3">  
@@ -48,19 +51,9 @@ const cartItemTemplate = function (item) {
     `;
 };
 
-function formatCurrency(value) {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  }).format(value);
-}
-
-function getCartLocalStorage() {
-  let localCartItems = localStorage.getItem('localCart');
-  cartItems = JSON.parse(localCartItems);
-}
-
-function fillCartList() {
+async function fillCartList() {
+  await initializeProducts();
+  console.log(cartItems);
   cartItems.forEach((cartListItem) => {
     checkoutCartList.insertAdjacentHTML(
       'afterbegin',
@@ -69,9 +62,4 @@ function fillCartList() {
   });
 }
 
-async function initializePage() {
-  getCartLocalStorage();
-  fillCartList();
-}
-
-document.addEventListener('DOMContentLoaded', initializePage);
+document.addEventListener('DOMContentLoaded', fillCartList);

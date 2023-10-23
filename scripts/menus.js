@@ -1,18 +1,6 @@
+import { storeCartMenu } from './utilities/cartUtilities.js';
+
 ('use strict');
-
-// const checkoutButton = document.querySelector('.btn-checkout');
-
-// checkoutButton.addEventListener('click', test);
-
-// function test() {
-//   console.log('clicked');
-//   var lat = 'AMOGUS';
-//   var long = 'heyyyyylol';
-
-//   window.location.href = `archive/test.html?testVariable1=${encodeURIComponent(
-//     lat
-//   )}&testVariable2=${encodeURIComponent(long)}&setLatLon=Set`;
-// }
 
 // ---------- Filter Menu ---------- //
 const filterMenu = document.querySelector('.filter-options-menu');
@@ -71,39 +59,35 @@ function updateNavMenuOnScreenSizeChange() {
 }
 
 // --------- Cart ---------
-const cartMenu = document.querySelector('.cart-menu');
 const cartToggles = document.getElementsByClassName('cart-menu-toggle');
-const cartToggleClose = document.querySelector('.cart-menu-toggle-close');
-const catalogProductButtons = document.getElementsByClassName('button-product');
-
-// for (let i = 0; i < cartToggles.length; i++) {
-//   cartToggles[i].addEventListener('click', handleCartMenu);
-// }
 
 for (let cartToggle of cartToggles) {
-  cartToggle.addEventListener('click', handleCartMenu);
+  if (cartToggle) {
+    cartToggle.addEventListener('click', handleOpenCartMenu);
+  }
 }
-
-// for (let catalogProductButton of catalogProductButtons) {
-
-//   catalogProductButton.addEventListener('click', openCartMenu);
-// }
-
-cartToggleClose.addEventListener('click', handleCartMenu);
 
 /**
  * Toggles the visibility of the cart menu and updates the aria-expanded attribute of the cart toggles accordingly.
  */
-function handleCartMenu() {
-  const visibility = cartMenu.getAttribute('data-visible');
+export function handleOpenCartMenu() {
+  const _cartMenu = storeCartMenu.shadowRoot.querySelector('.cart-menu');
+  const visibility = _cartMenu.getAttribute('data-visible');
 
   if (visibility === 'false') {
-    cartMenu.setAttribute('data-visible', 'true');
+    _cartMenu.setAttribute('data-visible', 'true');
 
     for (let cartToggle of cartToggles)
       cartToggle.setAttribute('aria-expanded', 'true');
-  } else {
-    cartMenu.setAttribute('data-visible', 'false');
+  }
+}
+
+export function handleCloseCartMenu(e) {
+  const _cartMenu = e.target.closest('#cart-menu');
+  const visibility = _cartMenu.getAttribute('data-visible');
+
+  if (visibility === 'true') {
+    _cartMenu.setAttribute('data-visible', 'false');
 
     for (let cartToggle of cartToggles)
       cartToggle.setAttribute('aria-expanded', 'false');
@@ -115,10 +99,10 @@ function handleCartMenu() {
  * updating the `aria-expanded` attribute of all cart toggles to `true`.
  */
 export function openCartMenu() {
-  const visibility = cartMenu.getAttribute('data-visible');
+  const visibility = storeCartMenu.getAttribute('data-visible');
 
   if (visibility === 'false') {
-    cartMenu.setAttribute('data-visible', 'true');
+    storeCartMenu.setAttribute('data-visible', 'true');
 
     for (let cartToggle of cartToggles)
       cartToggle.setAttribute('aria-expanded', 'true');

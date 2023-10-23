@@ -37,18 +37,13 @@
 
     <link
       rel="stylesheet"
-      href="/css/cartMenu.css"
-    />
-
-    <link
-      rel="stylesheet"
       href="/css/filterMenu.css"
     />
 
     <script
       defer
       type="module"
-      src="/scripts/catalog.js"
+      src="scripts/catalog.js"
     ></script>
 
     <script
@@ -66,7 +61,13 @@
     <script
       defer
       type="module"
-      src="/scripts/menus.js"
+      src="scripts/components/storeCart.js"
+    ></script>
+
+    <script
+      defer
+      type="module"
+      src="scripts/menus.js"
     ></script>
   </head>
   <body>
@@ -149,48 +150,7 @@
       </nav>
     </header>
 
-    <!--DON'T FORGET TO SET data-visible TO "false"-->
-    <div
-      class="cart-menu menu-horizontal menu-shadow"
-      id="cart-menu"
-      data-visible="false"
-    >
-      <div class="cart-menu-header">
-        <div class="cart-menu-header-title">Cart</div>
-        <button class="cart-menu-toggle-close">
-          <span class="material-symbols-outlined cart-menu-toggle-icon">
-            close
-          </span>
-        </button>
-      </div>
-
-      <div class="cart-items-container">
-        <!-- Cart Items -->
-      </div>
-      <div class="cart-display-footer">
-        <div class="subtotal-container">
-          <div class="total-cost">
-            <div class="subtotal-label">Cart Subtotal</div>
-            <span class="total-cost-value">$0.00</span>
-          </div>
-        </div>
-
-        <!-- <button class="btn-checkout">
-          Checkout<span class="material-symbols-outlined checkout-icon">
-            shopping_cart_checkout
-          </span>
-        </button> -->
-
-        <a
-          class="btn-checkout"
-          href="checkout.html"
-        >
-          Checkout<span class="material-symbols-outlined checkout-icon">
-            shopping_cart_checkout
-          </span>
-        </a>
-      </div>
-    </div>
+    <store-cart> </store-cart>
 
     <div class="main-container">
       <main>
@@ -340,8 +300,6 @@
           <section class="catalog-container">
             <div class="products-list">
               <!-- Products List -->
-
-              <!-- End Products List -->
             </div>
           </section>
         </div>

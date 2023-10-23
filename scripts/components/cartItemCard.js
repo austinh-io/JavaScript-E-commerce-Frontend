@@ -2,17 +2,13 @@ import {
   formatCurrency,
   findItem,
   baseUrl,
-  catchProductList,
-  catalogProducts,
 } from '/scripts/utilities/commerceUtilities.js';
 
 import {
   addToCart,
   cartItems,
-  cartItemsList,
   removeFromCart,
   subtractFromCart,
-  updateCatalogProductButton,
 } from '../utilities/cartUtilities.js';
 
 import { openCartMenu } from '../menus.js';

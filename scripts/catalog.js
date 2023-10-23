@@ -5,7 +5,7 @@ import {
 import {
   fillCartList,
   getCartLocalStorage,
-  setCatalogProductButtons,
+  cartItems,
 } from './utilities/cartUtilities.js';
 ('use strict');
 
@@ -17,7 +17,7 @@ let productsList = undefined;
  * @function initializeProducts
  * @returns {Promise<void>}
  */
-async function initializeProducts() {
+async function initializeCatalog() {
   productsList = document.querySelector('.products-list');
 
   if (productsList) {
@@ -32,18 +32,12 @@ async function initializeProducts() {
   }
 }
 
-/**
- * Initializes the page by fetching the product list, getting the cart from local storage,
- * filling the cart list, initializing the products, and setting the catalog product buttons.
- * @returns {Promise<void>}
- */
-async function initializePage() {
+export async function initializeProducts() {
   await catchProductList();
   getCartLocalStorage();
   fillCartList();
-  await initializeProducts();
-  await setCatalogProductButtons();
+  await initializeCatalog();
 }
 
 // Add an event listener to initialize the page when the DOM is loaded.
-document.addEventListener('DOMContentLoaded', initializePage);
+document.addEventListener('DOMContentLoaded', initializeProducts);

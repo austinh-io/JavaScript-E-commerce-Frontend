@@ -12,11 +12,7 @@ import {
   catalogProducts,
 } from '/scripts/utilities/commerceUtilities.js';
 
-import {
-  addToCart,
-  cartItems,
-  cartItemsList,
-} from '../utilities/cartUtilities.js';
+import { addToCart, cartItems } from '../utilities/cartUtilities.js';
 
 import { openCartMenu } from '../menus.js';
 
@@ -523,12 +519,6 @@ class catalogProduct extends HTMLElement {
     this.productButton = shadow.querySelector('.button-product');
     this.productButton.textContent = 'Add to Cart';
 
-    // this.productButton.setAttribute('data-productId', this.productId);
-    // this.productButton.setAttribute(
-    //   'data-optionid',
-    //   product.options[0].optionId
-    // );
-
     this.productButton.dataset.productid = this.productId;
     this.productButton.dataset.optionid = product.options[0].optionId;
 
@@ -575,12 +565,8 @@ class catalogProduct extends HTMLElement {
     let optionId = productButton.dataset.optionid;
 
     if (findItem(cartItems, productId, optionId)) {
-      // productButton.disabled = true;
-      // productButton.textContent = catalogItemButtonText_Disabled;
       this.disableCatalogItemButton(productButton);
     } else {
-      // productButton.disabled = false;
-      // productButton.textContent = catalogItemButtonText_Enabled;
       this.enableCatalogItemButton(productButton);
     }
   };
@@ -672,7 +658,6 @@ class catalogProduct extends HTMLElement {
     this.productButton.addEventListener('click', addToCart);
     this.productButton.addEventListener('click', openCartMenu);
     this.productButton.addEventListener('click', this.updateCatalogItemButton);
-    cartItemsList.addEventListener('change', this.updateCatalogItemButton);
 
     if (this.hasFieldset) {
       for (let input of this.productFieldsetInputs) {

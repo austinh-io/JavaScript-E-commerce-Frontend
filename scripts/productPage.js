@@ -1,7 +1,11 @@
 import {
   findItem,
   formatCurrency,
+  catchProductList,
+  catalogProducts,
 } from '/scripts/utilities/commerceUtilities.js';
+
+import { initializeProducts } from './catalog.js';
 ('use strict');
 
 const productTitleElement = document.querySelector('.product-title');
@@ -16,24 +20,17 @@ const productImageElement = document.querySelector('.product-image');
 
 const baseUrl = '';
 
-let products = new Array();
-
 /**
  * Fetches the product list from the server and stores it in the `products` array.
  * @returns {Promise<void>} A Promise that resolves when the product list has been fetched and stored.
  */
-async function catchProductList() {
-  const response = await fetch(`${baseUrl}/data/products.json`);
-  const productsObj = await response.json();
-  products = [...productsObj];
-}
 
 /**
  * Initializes the product page by fetching the product list, retrieving the product and option IDs from the URL, and updating the page with the product information.
  * @returns {Promise<void>}
  */
 async function initializePage() {
-  await catchProductList();
+  await initializeProducts();
 
   const productId = new URLSearchParams(window.location.search).get(
     'productid'
@@ -41,7 +38,7 @@ async function initializePage() {
 
   const optionId = new URLSearchParams(window.location.search).get('optionid');
 
-  const product = products.find((i) => i.productId == productId);
+  const product = catalogProducts.find((i) => i.productId == productId);
 
   const productOption = product.options.find((i) => i.optionId == optionId);
 
