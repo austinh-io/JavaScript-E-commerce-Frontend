@@ -11,8 +11,6 @@ export const cartItemsList = document.querySelector('.cart-items-container');
 const cartIconCounters = document.getElementsByClassName('cart-icon-counter');
 const totalCostValueElement = document.querySelector('.total-cost-value');
 
-let addToCartButtons = new Array();
-
 export let cartItems = new Array();
 
 /**
@@ -195,7 +193,6 @@ export function addToCart(event) {
   if (cartItemToAdd) {
     cartItemToAdd.count += 1;
     cartItemToAdd.totalPrice = cartItemToAdd.count * cartItemToAdd.option.price;
-    updateCartItem(cartItemToAdd);
   } else {
     const newItem = new cartItem(
       productId + optionId,
@@ -229,7 +226,6 @@ export function subtractFromCart(event) {
     if (itemToRemove.count > 1) {
       itemToRemove.count -= 1;
       itemToRemove.totalPrice = itemToRemove.count * itemToRemove.option.price;
-      updateCartItem(itemToRemove);
     } else {
       removeFromCart(itemToRemove);
     }
@@ -249,7 +245,7 @@ export function subtractFromCart(event) {
  */
 export function updateCatalogProductButton(productId) {
   const catalogProduct = document.querySelector(
-    `catalog-product[data-productid="${productId}"]`
+    `catalog-product[productid="${productId}"]`
   );
 
   if (catalogProduct) {
@@ -267,7 +263,7 @@ export function removeFromCart(event) {
   let optionId = undefined;
 
   if (event.target) {
-    let target = event.target;
+    let target = event.target.parentElement;
 
     if (!target.matches('.button-cart.button-remove'))
       target = target.closest('.button-cart.button-remove');
@@ -326,105 +322,8 @@ export function clearCartList() {
   }
 }
 
-/**
- * Updates the count and total price of a cart item in the DOM.
- * @param {Object} cartItem - The cart item to update.
- * @param {string} cartItem.productId - The ID of the product.
- * @param {Object} cartItem.option - The selected product option.
- * @param {string} cartItem.option.optionId - The ID of the selected option.
- * @param {number} cartItem.count - The updated count of the cart item.
- * @param {number} cartItem.totalPrice - The updated total price of the cart item.
- */
-export function updateCartItem(cartItem) {
-  let cartItemElement = document.getElementById(
-    `cart-item-${cartItem.productId + cartItem.option.optionId}`
-  );
-
-  cartItemElement.querySelector('.cart-item-count').innerText = cartItem.count;
-  cartItemElement.querySelector('.cart-item-price').children[0].innerText =
-    formatCurrency(cartItem.totalPrice);
-}
-
-/**
- * Returns a string containing the HTML template for a cart item.
- *
- * @param {Object} item - The cart item object.
- * @param {string} item.productId - The ID of the product.
- * @param {Object} item.option - The selected option object.
- * @param {string} item.option.optionId - The ID of the selected option.
- * @param {string} item.option.imageName - The name of the image file for the selected option.
- * @param {string} item.title - The title of the product.
- * @param {string} item.option.optionStyle - The selected style option.
- * @param {string} item.option.optionSize - The selected size option.
- * @param {number} item.count - The quantity of the product in the cart.
- * @param {number} item.totalPrice - The total price of the product in the cart.
- *
- * @returns {string} The HTML template for a cart item.
- */
 export const cartItemTemplate = function (item) {
   return `
-        <div
-          class="cart-item-container"
-          data-productId="${item.productId}"
-          data-optionid="${item.option.optionId}"
-          id="cart-item-${item.productId + item.option.optionId}"
-        >
-          <div class="cart-item-col1">
-            <img
-              src="/assets/images/productImages/small/${
-                item.option.imageName
-              }_small.webp/"
-              class="cart-item-image"
-            />
-          </div>
-          <div class="cart-item-col2">
-            <div class="cart-item-title">${item.title}</div>
-            <div class="cart-item-option-label">Style: ${
-              item.option.optionStyle
-            }</div>
-            <div class="cart-item-option-label">Size: ${
-              item.option.optionSize
-            }</div>
-
-            <div
-              class="cart-item-buttons-container"
-            >
-              <button
-                class="button-cart button-add"
-                data-productId="${item.productId}"
-                data-optionid="${item.option.optionId}"
-              >
-              <span class="material-symbols-outlined button-cart-icon">
-              add
-              </span>
-              </button>
-
-              <div class="cart-item-count">${item.count}</div>
-
-              <button
-                class="button-cart button-subtract"
-                data-productId="${item.productId}"
-                data-optionid="${item.option.optionId}"
-              >
-              <span class="material-symbols-outlined button-cart-icon">
-              remove
-              </span>
-              </button>
-            </div>
-          </div>
-          <div class="cart-item-col3">
-            <button
-              class="button-cart button-remove"
-              data-productId="${item.productId}"
-              data-optionid="${item.option.optionId}"
-            >
-              <span class="material-symbols-outlined"> delete </span>
-            </button>
-
-            <div class="cart-item-price">
-              <span>${formatCurrency(item.totalPrice)}</span>
-            </div>
-          </div>
-        </div>
+        <cart-item data-productid="${item.productId}" data-optionid="${item.option.optionId}"></cart-item>
   `;
 };

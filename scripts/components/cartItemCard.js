@@ -10,6 +10,9 @@ import {
   addToCart,
   cartItems,
   cartItemsList,
+  removeFromCart,
+  subtractFromCart,
+  updateCatalogProductButton,
 } from '../utilities/cartUtilities.js';
 
 import { openCartMenu } from '../menus.js';
@@ -232,31 +235,54 @@ class cartItem extends HTMLElement {
     this.optionId = this.dataset.optionid;
     this.id = `cart-item-${this.productId + this.optionId}`;
 
+    const cartItem = findItem(cartItems, this.productId, this.optionId);
+
     this.image = shadow.querySelector('.cart-item-image');
-    this.image.src = `/assets/images/productImages/small/item0-0_small.webp`;
+    this.image.src = `/assets/images/productImages/small/${cartItem.option.imageName}_small.webp`;
 
     this.titleLabel = shadow.querySelector('.cart-item-title');
-    this.titleLabel.textContent = 'Title';
+    this.titleLabel.textContent = cartItem.title;
 
     this.styleLabel = shadow.querySelector('.cart-item-style-label');
-    this.styleLabel.textContent = 'Style: Style label';
+    this.styleLabel.textContent = `Style: ${cartItem.option.optionStyle}`;
 
     this.optionLabel = shadow.querySelector('.cart-item-option-label');
-    this.optionLabel.textContent = 'Style: Option label';
+    this.optionLabel.textContent = `Size: ${cartItem.option.optionSize}`;
 
     this.addButton = shadow.querySelector('.button-cart.button-add');
     this.addButton.dataset.productid = this.productId;
     this.addButton.dataset.optionid = this.optionId;
 
     this.itemCount = shadow.querySelector('.cart-item-count');
-    this.itemCount.textContent = '0';
+    this.itemCount.textContent = cartItem.count;
 
     this.subtractButton = shadow.querySelector('.button-cart.button-subtract');
-    this.subtractButton.dataset.productId = this.productId;
-    this.subtractButton.dataset.optionId = this.optionId;
+    this.subtractButton.dataset.productid = this.productId;
+    this.subtractButton.dataset.optionid = this.optionId;
+
+    this.removeButton = shadow.querySelector('.button-cart.button-remove');
+    this.removeButton.dataset.productid = this.productId;
+    this.removeButton.dataset.optionid = this.optionId;
 
     this.price = shadow.querySelector('.cart-item-price');
     this.price.textContent = formatCurrency(0);
+  }
+
+  updateItemCountLabel = () => {
+    if (findItem(cartItems, this.productId, this.optionId))
+      this.itemCount.textContent = findItem(
+        cartItems,
+        this.productId,
+        this.optionId
+      ).count;
+  };
+
+  connectedCallback() {
+    this.addButton.addEventListener('click', addToCart);
+    this.addButton.addEventListener('click', this.updateItemCountLabel);
+    this.subtractButton.addEventListener('click', subtractFromCart);
+    this.subtractButton.addEventListener('click', this.updateItemCountLabel);
+    this.removeButton.addEventListener('click', removeFromCart);
   }
 }
 

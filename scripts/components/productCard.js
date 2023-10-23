@@ -555,10 +555,7 @@ class catalogProduct extends HTMLElement {
    * @memberof ProductCard
    * @returns {void}
    */
-  updateCatalogItemButton() {
-    const catalogItemButtonText_Enabled = 'Add to Cart';
-    const catalogItemButtonText_Disabled = 'Item in Cart';
-
+  updateCatalogItemButton = () => {
     let productButton = undefined;
 
     let targetElement = this.closest('.product');
@@ -572,13 +569,25 @@ class catalogProduct extends HTMLElement {
     let optionId = productButton.dataset.optionid;
 
     if (findItem(cartItems, productId, optionId)) {
-      productButton.disabled = true;
-      productButton.textContent = catalogItemButtonText_Disabled;
+      // productButton.disabled = true;
+      // productButton.textContent = catalogItemButtonText_Disabled;
+      this.disableCatalogItemButton(productButton);
     } else {
-      productButton.disabled = false;
-      productButton.textContent = catalogItemButtonText_Enabled;
+      // productButton.disabled = false;
+      // productButton.textContent = catalogItemButtonText_Enabled;
+      this.enableCatalogItemButton(productButton);
     }
-  }
+  };
+
+  enableCatalogItemButton = (productButton) => {
+    productButton.disabled = false;
+    productButton.textContent = 'Add to Cart';
+  };
+
+  disableCatalogItemButton = (productButton) => {
+    productButton.disabled = true;
+    productButton.textContent = 'Item in Cart';
+  };
 
   /**
    * Handles the change event for a product option select element.

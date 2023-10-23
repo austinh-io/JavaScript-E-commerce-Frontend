@@ -1,26 +1,10 @@
 import {
-  formatCurrency,
-  findItem,
-  baseUrl,
   catchProductList,
   catalogProducts,
 } from './utilities/commerceUtilities.js';
 import {
-  cartItem,
-  cartItems,
-  setCartItems,
-  removeFromCart,
-  updateCartItemsCount,
-  updateCart,
-  updateCartSubtotal,
-  updateCartItem,
-  addCartItem,
-  clearCartItem,
-  clearCartList,
   fillCartList,
-  setCartLocalStorage,
   getCartLocalStorage,
-  cartItemTemplate,
   setCatalogProductButtons,
 } from './utilities/cartUtilities.js';
 ('use strict');
