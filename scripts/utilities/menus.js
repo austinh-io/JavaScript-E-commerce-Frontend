@@ -1,6 +1,8 @@
-import { storeCartMenu } from './cartUtilities.js';
+import { storeCartMenu } from '../utilities/cartUtilities.js';
 
 ('use strict');
+
+const navMenu = document.querySelector('nav-menu');
 
 // ---------- Filter Menu ---------- //
 const filterMenu = document.querySelector('.filter-options-menu');
@@ -23,26 +25,22 @@ function handleFilterMenu() {
 }
 
 /********* Navigation *********/
-const navMenu = document.querySelector('.header-container');
-const navToggle = document.querySelector('.nav-menu-toggle');
+let headerContainer = undefined;
+let navToggle = undefined;
 
 const mediaQuery = window.matchMedia('(min-width: 768px)');
-
-navToggle.addEventListener('click', handleNavMenu);
-mediaQuery.addEventListener('change', updateNavMenuOnScreenSizeChange);
-addEventListener('load', updateNavMenuOnScreenSizeChange);
 
 /**
  * Toggles the visibility of the navigation menu.
  */
 function handleNavMenu() {
-  const visibility = navMenu.getAttribute('data-visible');
+  const visibility = headerContainer.getAttribute('data-visible');
 
   if (visibility === 'false') {
-    navMenu.setAttribute('data-visible', 'true');
+    headerContainer.setAttribute('data-visible', 'true');
     // navToggle.setAttribute('aria-expanded', 'true');
   } else {
-    navMenu.setAttribute('data-visible', 'false');
+    headerContainer.setAttribute('data-visible', 'false');
     // navToggle.setAttribute('aria-expanded', 'false');
   }
 }
@@ -54,18 +52,13 @@ function handleNavMenu() {
  * @returns {void}
  */
 function updateNavMenuOnScreenSizeChange() {
-  if (mediaQuery.matches) navMenu.setAttribute('data-visible', 'true');
-  else navMenu.setAttribute('data-visible', 'false');
+  if (mediaQuery.matches) headerContainer.setAttribute('data-visible', 'true');
+  else headerContainer.setAttribute('data-visible', 'false');
 }
 
 // --------- Cart ---------
-const cartToggles = document.getElementsByClassName('cart-menu-toggle');
-
-for (let cartToggle of cartToggles) {
-  if (cartToggle) {
-    cartToggle.addEventListener('click', handleOpenCartMenu);
-  }
-}
+// const cartToggles = document.getElementsByClassName('cart-menu-toggle');
+let cartToggles = undefined;
 
 /**
  * Toggles the visibility of the cart menu and updates the aria-expanded attribute of the cart toggles accordingly.
@@ -110,11 +103,9 @@ export function openCartMenu() {
 }
 
 // --------- Themes ---------
-const themeToggle = document.getElementById('theme-toggle');
-const themeIconDark = document.querySelector('.theme-icon-dark');
-const themeIconLight = document.querySelector('.theme-icon-light');
-
-themeToggle.addEventListener('click', handleThemeMenu);
+let themeToggle = undefined;
+let themeIconDark = undefined;
+let themeIconLight = undefined;
 
 /**
  * Sets the selected theme in local storage.
@@ -184,4 +175,36 @@ function updateTheme() {
   else setColorTheme(getColorThemePreference());
 }
 
-updateTheme();
+function initMenuVariables() {
+  const navMenuShadowRoot = navMenu.shadowRoot;
+
+  //------- Nav Menu -------//
+  headerContainer = navMenuShadowRoot.querySelector('.header-container');
+  navToggle = navMenuShadowRoot.querySelector('.nav-menu-toggle');
+
+  if (navToggle) {
+    navToggle.addEventListener('click', handleNavMenu);
+    mediaQuery.addEventListener('change', updateNavMenuOnScreenSizeChange);
+    addEventListener('load', updateNavMenuOnScreenSizeChange);
+  }
+
+  //------- Cart Menu -------//
+  cartToggles = navMenuShadowRoot.querySelectorAll('.cart-menu-toggle');
+
+  for (let cartToggle of cartToggles) {
+    if (cartToggle) {
+      cartToggle.addEventListener('click', handleOpenCartMenu);
+    }
+  }
+
+  //------- Theme Menu -------//
+  themeToggle = navMenuShadowRoot.getElementById('theme-toggle');
+  themeIconDark = navMenuShadowRoot.querySelector('.theme-icon-dark');
+  themeIconLight = navMenuShadowRoot.querySelector('.theme-icon-light');
+
+  themeToggle.addEventListener('click', handleThemeMenu);
+
+  updateTheme();
+}
+
+document.addEventListener('DOMContentLoaded', initMenuVariables);

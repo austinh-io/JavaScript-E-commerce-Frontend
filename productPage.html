@@ -36,12 +36,6 @@
     <script
       defer
       type="module"
-      src="/scripts/utilities/menus.js"
-    ></script>
-
-    <script
-      defer
-      type="module"
       src="scripts/components/cartItemCard.js"
     ></script>
 
@@ -49,6 +43,24 @@
       defer
       type="module"
       src="scripts/components/cartMenu.js"
+    ></script>
+
+    <script
+      defer
+      type="module"
+      src="scripts/components/jsymbol.js"
+    ></script>
+
+    <script
+      defer
+      type="module"
+      src="scripts/components/navMenu.js"
+    ></script>
+
+    <script
+      defer
+      type="module"
+      src="/scripts/utilities/menus.js"
     ></script>
 
     <script
@@ -83,58 +95,8 @@
       </div>
     </nav>
 
-    <header
-      class="header-container menu-horizontal-from-left-mobile"
-      data-visible="false"
-    >
-      <nav class="nav-container wrapper">
-        <ul class="nav-menu">
-          <a
-            class="nav-site-logo"
-            href="index.html"
-          >
-            <div class="nav-logo-container">
-              <span class="nav-logo-icon"></span>
-            </div>
-            <div class="nav-logo-text">Lorem Ipsum</div>
-          </a>
-
-          <li><a>Page 1</a></li>
-          <li><a>Page 2</a></li>
-          <li><a>Page 3</a></li>
-
-          <div class="nav-buttons-container">
-            <button
-              class="button theme-toggle"
-              id="theme-toggle"
-            >
-              <span
-                class="material-symbols-outlined btn-themes-icon theme-icon-dark hidden"
-              >
-                dark_mode
-              </span>
-              <span
-                class="material-symbols-outlined theme-icon-light btn-themes-icon"
-              >
-                light_mode
-              </span>
-            </button>
-
-            <button
-              class="cart-menu-toggle cart-menu-toggle-open"
-              aria-controls="cart-menu"
-              aria-expanded="false"
-            >
-              <div class="cart-icon-container">
-                <span class="material-symbols-outlined cart-icon">
-                  shopping_cart
-                </span>
-                <span class="cart-icon-counter hidden"></span>
-              </div>
-            </button>
-          </div>
-        </ul>
-      </nav>
+    <header>
+      <nav-menu></nav-menu>
     </header>
 
     <store-cart> </store-cart>

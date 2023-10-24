@@ -35,7 +35,6 @@ async function initializeCatalog() {
 export async function initializeProducts() {
   await catchProductList();
   getCartLocalStorage();
-  fillCartList();
   await initializeCatalog();
 }
 

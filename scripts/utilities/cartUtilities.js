@@ -8,7 +8,8 @@ import {
 
 let catalogProductsButtons = undefined;
 export const storeCartMenu = document.querySelector('store-cart');
-const cartIconCounters = document.getElementsByClassName('cart-icon-counter');
+export const navMenu = document.querySelector('nav-menu');
+// const cartIconCounters = document.getElementsByClassName('cart-icon-counter');
 
 export let cartItems = new Array();
 
@@ -82,18 +83,7 @@ export function updateCartItemsButtons() {
  */
 export function updateCartItemsCount() {
   let totalItems = cartItems.reduce((sum, cur) => sum + cur.count, 0);
-  for (let i = 0; i < cartIconCounters.length; i++) {
-    cartIconCounters[i].innerText = totalItems;
-  }
-  if (cartItems.length > 0) {
-    for (let i = 0; i < cartIconCounters.length; i++) {
-      cartIconCounters[i].classList.remove('hidden');
-    }
-  } else {
-    for (let i = 0; i < cartIconCounters.length; i++) {
-      cartIconCounters[i].classList.add('hidden');
-    }
-  }
+  navMenu.updateCartIconCounter(totalItems);
 }
 
 /**

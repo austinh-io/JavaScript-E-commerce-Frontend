@@ -13,6 +13,8 @@ import {
   removeFromCart,
   subtractFromCart,
   updateCatalogProductButton,
+  fillCartList,
+  getCartLocalStorage,
 } from '../utilities/cartUtilities.js';
 
 import { openCartMenu, handleCloseCartMenu } from '../utilities/menus.js';

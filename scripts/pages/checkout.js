@@ -51,8 +51,9 @@ const cartItemTemplate = function (item) {
     `;
 };
 
-async function fillCartList() {
+async function fillCheckoutList() {
   await initializeProducts();
+
   cartItems.forEach((cartListItem) => {
     checkoutCartList.insertAdjacentHTML(
       'afterbegin',
@@ -61,4 +62,4 @@ async function fillCartList() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', fillCartList);
+document.addEventListener('DOMContentLoaded', fillCheckoutList);
