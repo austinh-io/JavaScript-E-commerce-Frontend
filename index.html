@@ -67,6 +67,12 @@
     <script
       defer
       type="module"
+      src="scripts/components/jsymbol.js"
+    ></script>
+
+    <script
+      defer
+      type="module"
       src="scripts/menus.js"
     ></script>
   </head>
@@ -107,12 +113,15 @@
             href="index.html"
           >
             <div class="nav-logo-container">
-              <span class="nav-logo-icon"></span>
+              <!-- <span class="nav-logo-icon"></span> -->
+              <j-symbol name="store-logo"></j-symbol>
             </div>
             <div class="nav-logo-text">Lorem Ipsum</div>
           </a>
 
-          <li><a>Page 1</a></li>
+          <li>
+            <a>Page 1</a>
+          </li>
           <li><a>Page 2</a></li>
           <li><a>Page 3</a></li>
 
@@ -195,13 +204,47 @@
 
         <div class="wrapper">
           <div style="display: flex; flex-direction: column; gap: 4rem"></div>
-
           <h2
             class="catalog-title"
             id="catalog"
           >
             Catalog
           </h2>
+          <div>
+            <j-symbol name="store-logo"></j-symbol>
+
+            <j-symbol name="shopping-bag"></j-symbol>
+
+            <j-symbol name="shopping-bag-add"></j-symbol>
+
+            <j-symbol name="shopping-bag-remove"></j-symbol>
+            <j-symbol name="shopping-bag-check"></j-symbol>
+            <j-symbol name="half-moon"></j-symbol>
+            <j-symbol name="sun"></j-symbol>
+            <j-symbol name="trash-can"></j-symbol>
+            <j-symbol name="add"></j-symbol>
+            <j-symbol name="add-square"></j-symbol>
+            <j-symbol name="add-circle"></j-symbol>
+            <j-symbol name="minus"></j-symbol>
+            <j-symbol name="minus-square"></j-symbol>
+            <j-symbol name="minus-circle"></j-symbol>
+            <j-symbol name="filter"></j-symbol>
+            <j-symbol name="filter-list"></j-symbol>
+            <j-symbol name="menu"></j-symbol>
+            <j-symbol name="cancel"></j-symbol>
+            <j-symbol name="page-right"></j-symbol>
+            <j-symbol name="page-left"></j-symbol>
+            <j-symbol name="more-vertical"></j-symbol>
+            <j-symbol name="more-horizontal"></j-symbol>
+            <j-symbol name="sidebar-expand"></j-symbol>
+            <j-symbol name="sidebar-collapse"></j-symbol>
+            <j-symbol name="search"></j-symbol>
+            <j-symbol name="star"></j-symbol>
+            <j-symbol name="label"></j-symbol>
+            <j-symbol name="bookmark"></j-symbol>
+            <j-symbol name="spark"></j-symbol>
+            <j-symbol name="sparks"></j-symbol>
+          </div>
           <div class="filters-container">
             <div class="filter-controls-container">
               <button

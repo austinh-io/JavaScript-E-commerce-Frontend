@@ -3,6 +3,8 @@
   --menu-transition-speed: 150ms;
   --font-body: 'Poppins', sans-serif;
   --font-title: 'Comfortaa', sans-serif;
+  --store-logo-size: 2rem;
+  --icon-size: 1.4rem;
 }
 
 :root[data-theme='dark'] {

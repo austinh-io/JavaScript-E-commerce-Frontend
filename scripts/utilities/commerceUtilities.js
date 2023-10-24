@@ -20,7 +20,7 @@ export function findItem(_itemList, _productId, _optionId) {
 }
 
 export async function catchProductList() {
-  const response = await fetch(`${baseUrl}/data/products.json`);
+  const response = await fetch(`${baseUrl}/assets/products.json`);
   const productsObj = await response.json();
   catalogProducts = [...productsObj];
 }
