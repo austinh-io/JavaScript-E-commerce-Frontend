@@ -141,6 +141,9 @@ export function getCartLocalStorage() {
  * @returns {void}
  */
 export function fillCartList() {
+  if (!cartItems) {
+    getCart();
+  }
   cartItems.forEach((cartListItem) => {
     storeCartMenu.addCartItem(cartItemTemplate(cartListItem));
   });
