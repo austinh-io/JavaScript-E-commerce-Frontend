@@ -5,3 +5,5 @@ I'm sure some of you may see the irony in me calling this "simple" when it has m
 
 Also, please note, I have not uploaded any of the assets to the repository. This is because a lot of them are stock, and I don't have permission to bundle them, and I'm afraid that may count as redistributing without permission. So if you try this project for yourself, you won't have any images or video.
 The site should still function perfectly fine without, however.
+
+I utilize a custom built system for icons, too. I called it "JSymbol". I haven't made any of the icons myself, however. I use icons from [Iconoir](https://iconoir.com). It is more flexible than what I was using before, though, which was just using a font icon library from Google Material Icons.
