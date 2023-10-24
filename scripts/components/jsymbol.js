@@ -33,9 +33,6 @@ class JSymbol extends HTMLElement {
    */
   updateIcon() {
     const iconName = this.getAttribute('name');
-    let iconSize = this.getAttribute('size');
-
-    if (!iconSize) iconSize = '2rem';
 
     let strokeColor = 'var(--color-font)';
     let fillColor = 'none';
@@ -51,8 +48,8 @@ class JSymbol extends HTMLElement {
           stroke: ${strokeColor};
           fill: ${fillColor};
 
-          width: ${iconSize};
-          height: ${iconSize};
+          width: 2rem;
+          height: 2rem;
         }
       </style>
       <svg class="icon">
