@@ -8,3 +8,5 @@ I have not uploaded any of the assets to the repository. This is because a lot o
 
 ## Custom Icons with JSymbol
 I utilize a custom built system for icons, too. I called it "JSymbol". I haven't made any of the icons myself, however. I use icons from [Iconoir](https://iconoir.com). It is more flexible than what I was using before, though, which was just using a font icon library from Google Material Icons. I think it's also more performant, as before I had to use a trick in CSS using masks to change the color of the icon, while now I simply assign its color through the stroke or fill, as you would normally with an SVG. I'm not sure how well it scales, however. I currently am putting all the SVG data in a single SVG file. At this time it is only around 15kb, but it also only has around 10-15 icons right now. I don't know how big this file will be if significantly more icons are added.
+
+Honestly, the name probably isn't original. However, I did manage to snag jsymbol.com in case I ever make something bigger from it.
