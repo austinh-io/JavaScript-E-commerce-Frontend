@@ -14,7 +14,7 @@
 
     <link
       rel="shortcut icon"
-      href="assets/favicon.ico"
+      href="assets/favicon/favicon.ico"
       type="image/x-icon"
     />
 
@@ -72,11 +72,11 @@
       <div class="mobile-nav-container wrapper">
         <div class="nav-menu-toggle-container">
           <button class="nav-menu-toggle mobile-button">
-            <span class="material-symbols-outlined"> menu </span>
+            <j-symbol name="menu"></j-symbol>
           </button>
         </div>
         <button class="mobile-search-btn mobile-button">
-          <span class="material-symbols-outlined"> search </span>
+          <j-symbol name="search"></j-symbol>
         </button>
         <button
           class="cart-menu-toggle cart-menu-toggle-open mobile-button"
@@ -84,9 +84,10 @@
           aria-expanded="false"
         >
           <div class="cart-icon-container">
-            <span class="material-symbols-outlined cart-icon">
-              shopping_cart
-            </span>
+            <j-symbol
+              class="cart-icon"
+              name="shopping-bag"
+            ></j-symbol>
             <span class="cart-icon-counter hidden"></span>
           </div>
         </button>

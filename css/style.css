@@ -19,6 +19,7 @@ body {
   background-color: var(--color-bg);
   color: var(--color-font);
   font-family: var(--font-body);
+  font-weight: 400;
 
   min-height: 100vh;
 }
@@ -30,6 +31,7 @@ h4,
 h5,
 h6 {
   font-family: var(--font-title);
+  font-weight: 400;
 }
 
 ul {
@@ -237,11 +239,6 @@ a.nav-site-logo:visited {
   height: 1.8rem;
 }
 
-.material-symbols-outlined.btn-themes-icon {
-  font-size: 1.4rem;
-  font-weight: 700;
-}
-
 /* ------ Main ------- */
 
 .main-container {
@@ -268,7 +265,7 @@ a.nav-site-logo:visited {
 }
 
 .hero-content p {
-  font-weight: 200;
+  font-weight: 300;
   font-size: 1.4rem;
 }
 
