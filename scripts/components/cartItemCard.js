@@ -214,7 +214,7 @@ ${tpl_cartItemCardCSS}
       </button>
 
       <div class="cart-item-price">
-        <span></span>
+        <span class="cart-item-price-value"></span>
       </div>
     </div>
   </div>
@@ -260,8 +260,8 @@ class cartItem extends HTMLElement {
     this.removeButton.dataset.productid = this.productId;
     this.removeButton.dataset.optionid = this.optionId;
 
-    this.price = shadow.querySelector('.cart-item-price');
-    this.price.textContent = formatCurrency(0);
+    this.price = shadow.querySelector('.cart-item-price-value');
+    this.price.textContent = formatCurrency(cartItem.totalPrice);
   }
 
   updateItemCountLabel = () => {
@@ -273,11 +273,20 @@ class cartItem extends HTMLElement {
       ).count;
   };
 
+  updateItemTotalPrice = () => {
+    if (findItem(cartItems, this.productId, this.optionId))
+      this.price.textContent = formatCurrency(
+        findItem(cartItems, this.productId, this.optionId).totalPrice
+      );
+  };
+
   connectedCallback() {
     this.addButton.addEventListener('click', addToCart);
     this.addButton.addEventListener('click', this.updateItemCountLabel);
+    this.addButton.addEventListener('click', this.updateItemTotalPrice);
     this.subtractButton.addEventListener('click', subtractFromCart);
     this.subtractButton.addEventListener('click', this.updateItemCountLabel);
+    this.subtractButton.addEventListener('click', this.updateItemTotalPrice);
     this.removeButton.addEventListener('click', removeFromCart);
   }
 }
