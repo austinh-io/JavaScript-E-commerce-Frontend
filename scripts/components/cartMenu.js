@@ -92,7 +92,7 @@ const tpl_storeCartCSS = `
       stroke: var(--color-fg);
     }
     
-    .cart-items-container {
+    .cart-items {
       display: flex;
       flex-direction: column;
       flex-grow: 1;
@@ -133,7 +133,6 @@ const tpl_storeCartCSS = `
       align-items: center;
       justify-content: center;
     
-      width: 100%;
       padding: 1rem;
       font-size: 1.2rem;
       text-transform: uppercase;

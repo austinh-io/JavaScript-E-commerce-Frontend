@@ -111,29 +111,36 @@ const tpl_cartItemCardCSS = `
       display: flex;
       align-items: center;
       justify-content: center;
+      aspect-ratio: 1/1;
+
       margin: 0.2rem;
       padding: 0;
+
     
       width: 100%;
       max-width: 12rem;
     
       border: none;
+      border-radius: 2pt;
       cursor: pointer;
     
       background: none;
-    
-      color: var(--color-font);
     
       z-index: 995;
     }
     
     .button-cart:hover {
-      color: var(--color-fg);
       background-color: var(--color-font);
 
       .button-cart-icon svg{
         stroke: var(--color-fg);
       }
+    }
+
+    .button-cart-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .button-cart.button-remove {
@@ -146,6 +153,8 @@ const tpl_cartItemCardCSS = `
 
     .button-cart.button-remove svg {
       stroke: var(--color-font);
+      width: 1.6rem;
+      height: 1.6rem;
     }
 
     .button-cart.button-remove j-symbol :hover {
