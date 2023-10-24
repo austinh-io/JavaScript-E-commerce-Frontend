@@ -44,9 +44,14 @@
   cursor: pointer;
 }
 
-.material-symbols-outlined.btn-filters-icon {
+.btn-filters-icon {
   margin-right: 0.4rem;
-  font-size: 1.2rem;
+}
+
+.btn-filters-icon svg {
+  stroke: var(--color-fg);
+  width: 1.2rem;
+  height: 1.2rem;
 }
 
 .filter-options-container {
@@ -126,8 +131,14 @@ fieldset.fieldset-filter {
   color: var(--color-font);
 }
 
+.searchbar-icon svg {
+  stroke: var(--color-fg);
+}
+
 .searchbar-icon {
-  color: var(--color-fg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--color-font);
   border: none;
   outline: none;
@@ -142,9 +153,7 @@ fieldset.fieldset-filter {
 }
 
 .searchbar-icon:hover {
-  color: var(--color-font);
   background-color: var(--color-accent);
-  outline: 3px solid var(--color-accent);
 }
 
 .searchbar-icon.material-symbols-outlined {

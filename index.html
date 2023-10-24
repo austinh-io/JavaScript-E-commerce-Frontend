@@ -20,15 +20,6 @@
 
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
-
-    <link
-      rel="stylesheet"
       href="/css/style.css"
     />
 
@@ -130,16 +121,14 @@
               class="button theme-toggle"
               id="theme-toggle"
             >
-              <span
-                class="material-symbols-outlined btn-themes-icon theme-icon-dark hidden"
-              >
-                dark_mode
-              </span>
-              <span
-                class="material-symbols-outlined theme-icon-light btn-themes-icon"
-              >
-                light_mode
-              </span>
+              <j-symbol
+                class="btn-themes-icon theme-icon-dark hidden"
+                name="half-moon"
+              ></j-symbol>
+              <j-symbol
+                class="theme-icon-light btn-themes-icon"
+                name="sun"
+              ></j-symbol>
             </button>
 
             <button
@@ -148,9 +137,7 @@
               aria-expanded="false"
             >
               <div class="cart-icon-container">
-                <span class="material-symbols-outlined cart-icon">
-                  shopping_cart
-                </span>
+                <j-symbol name="shopping-bag"></j-symbol>
                 <span class="cart-icon-counter hidden"></span>
               </div>
             </button>
@@ -210,41 +197,7 @@
           >
             Catalog
           </h2>
-          <div>
-            <j-symbol name="store-logo"></j-symbol>
-
-            <j-symbol name="shopping-bag"></j-symbol>
-
-            <j-symbol name="shopping-bag-add"></j-symbol>
-
-            <j-symbol name="shopping-bag-remove"></j-symbol>
-            <j-symbol name="shopping-bag-check"></j-symbol>
-            <j-symbol name="half-moon"></j-symbol>
-            <j-symbol name="sun"></j-symbol>
-            <j-symbol name="trash-can"></j-symbol>
-            <j-symbol name="add"></j-symbol>
-            <j-symbol name="add-square"></j-symbol>
-            <j-symbol name="add-circle"></j-symbol>
-            <j-symbol name="minus"></j-symbol>
-            <j-symbol name="minus-square"></j-symbol>
-            <j-symbol name="minus-circle"></j-symbol>
-            <j-symbol name="filter"></j-symbol>
-            <j-symbol name="filter-list"></j-symbol>
-            <j-symbol name="menu"></j-symbol>
-            <j-symbol name="cancel"></j-symbol>
-            <j-symbol name="page-right"></j-symbol>
-            <j-symbol name="page-left"></j-symbol>
-            <j-symbol name="more-vertical"></j-symbol>
-            <j-symbol name="more-horizontal"></j-symbol>
-            <j-symbol name="sidebar-expand"></j-symbol>
-            <j-symbol name="sidebar-collapse"></j-symbol>
-            <j-symbol name="search"></j-symbol>
-            <j-symbol name="star"></j-symbol>
-            <j-symbol name="label"></j-symbol>
-            <j-symbol name="bookmark"></j-symbol>
-            <j-symbol name="spark"></j-symbol>
-            <j-symbol name="sparks"></j-symbol>
-          </div>
+          <div></div>
           <div class="filters-container">
             <div class="filter-controls-container">
               <button
@@ -252,9 +205,10 @@
                 aria-controls="filter-menu"
                 aria-expanded="false"
               >
-                <span class="material-symbols-outlined btn-filters-icon">
-                  filter_list
-                </span>
+                <j-symbol
+                  class="btn-filters-icon"
+                  name="filter"
+                ></j-symbol>
                 Filters
               </button>
               <div class="searchbar-container">
@@ -271,9 +225,10 @@
                     placeholder="search"
                   />
                 </div>
-                <span class="material-symbols-outlined searchbar-icon"
-                  >search</span
-                >
+                <j-symbol
+                  class="searchbar-icon"
+                  name="search"
+                ></j-symbol>
               </div>
             </div>
             <div class="filter-options-container">

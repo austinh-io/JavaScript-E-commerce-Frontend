@@ -24,8 +24,6 @@ const tpl_cartitemCard = document.createElement('template');
 const tpl_cartItemCardCSS = `
 <style>
     @import url(${baseUrl}/css/shared.css);
-    @import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200);
-    @import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200);
 
     :host {
       /*Uncomment the height below if you want all cards to be the same height, as they currently
@@ -129,9 +127,13 @@ const tpl_cartItemCardCSS = `
       z-index: 995;
     }
     
-    .button-cart :hover {
+    .button-cart:hover {
       color: var(--color-fg);
       background-color: var(--color-font);
+
+      .button-cart-icon svg{
+        stroke: var(--color-fg);
+      }
     }
     
     .button-cart.button-remove {
@@ -139,17 +141,19 @@ const tpl_cartItemCardCSS = `
       height: 2rem;
       border: none;
       background: none;
-      color: var(--color-font);
-    }
-    
-    .button-cart.button-remove :hover {
-      background: none;
-      color: var(--color-accent);
-    }
-    
-    .material-symbols-outlined.button-cart-icon {
-      font-size: 2rem;
       border-radius: 3pt;
+    }
+
+    .button-cart.button-remove svg {
+      stroke: var(--color-font);
+    }
+
+    .button-cart.button-remove j-symbol :hover {
+      stroke: var(--color-warning);
+    }
+    
+    .button-cart.button-remove svg{
+      stroke: var(--color-font);
     }
     
     /*** Col3 ***/
@@ -190,9 +194,7 @@ ${tpl_cartItemCardCSS}
         <button
           class="button-cart button-add"
         >
-        <span class="material-symbols-outlined button-cart-icon">
-        add
-        </span>
+        <j-symbol class="button-cart-icon" name="add"></j-symbol>
         </button>
 
         <div class="cart-item-count"></div>
@@ -200,9 +202,7 @@ ${tpl_cartItemCardCSS}
         <button
           class="button-cart button-subtract"
         >
-        <span class="material-symbols-outlined button-cart-icon">
-        remove
-        </span>
+        <j-symbol class="button-cart-icon" name="minus"></j-symbol>
         </button>
       </div>
     </div>
@@ -210,7 +210,7 @@ ${tpl_cartItemCardCSS}
       <button
         class="button-cart button-remove"
       >
-        <span class="material-symbols-outlined"> delete </span>
+        <j-symbol name="trash-can"></j-symbol>
       </button>
 
       <div class="cart-item-price">

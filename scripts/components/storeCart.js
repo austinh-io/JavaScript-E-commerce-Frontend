@@ -28,8 +28,6 @@ const tpl_storeCart = document.createElement('template');
 const tpl_storeCartCSS = `
 <style>
     @import url(${baseUrl}/css/shared.css);
-    @import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200);
-    @import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200);
 
     :host {
       /*Uncomment the height below if you want all cards to be the same height, as they currently
@@ -76,7 +74,7 @@ const tpl_storeCartCSS = `
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0.8rem;
+      padding: 0.6rem;
       border: none;
       cursor: pointer;
     
@@ -85,12 +83,13 @@ const tpl_storeCartCSS = `
     }
     
     .cart-menu-toggle-close:hover {
-      color: var(--color-warning);
+      .cart-menu-toggle-icon svg{
+        stroke: var(--color-warning);
+      }
     }
     
-    .material-symbols-outlined.cart-menu-toggle-icon {
-      font-size: 2.2rem;
-      font-weight: 600;
+    .cart-menu-toggle-icon svg{
+      stroke: var(--color-fg);
     }
     
     .cart-items-container {
@@ -152,12 +151,18 @@ const tpl_storeCartCSS = `
       background-color: var(--color-fg);
       color: var(--color-font);
       outline: 5px solid var(--color-accent);
+
+      .checkout-icon svg {
+        stroke: var(--color-font);
+        stroke-width: 3;
+      }
     }
     
-    .material-symbols-outlined.checkout-icon {
+    .checkout-icon svg {
       font-weight: 700;
       font-size: 1.4rem;
       margin-left: 0.6rem;
+      stroke: var(--color-fg);
     }
 </style>
 `;
@@ -172,9 +177,7 @@ ${tpl_storeCartCSS}
     <div class="cart-menu-header">
       <div class="cart-menu-header-title">Cart</div>
       <button class="cart-menu-toggle-close">
-        <span class="material-symbols-outlined cart-menu-toggle-icon">
-          close
-        </span>
+        <j-symbol class="cart-menu-toggle-icon" name="cancel"></j-symbol>
       </button>
     </div>
 
@@ -193,9 +196,8 @@ ${tpl_storeCartCSS}
         class="btn-checkout"
         href="checkout.html"
       >
-        Checkout<span class="material-symbols-outlined checkout-icon">
-          shopping_cart_checkout
-        </span>
+        Checkout
+        <j-symbol class="checkout-icon" name="shopping-bag-check"></j-symbol>
       </a>
     </div>
   </div>

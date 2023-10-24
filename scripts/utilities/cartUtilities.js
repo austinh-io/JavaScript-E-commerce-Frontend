@@ -154,7 +154,9 @@ export function fillCartList() {
 export function addToCart(event) {
   getCart();
 
-  let eventTarget = event.target;
+  console.log(event.target);
+
+  let eventTarget = event.target.closest('.button-add');
   let { productid: productId, optionid: optionId } = eventTarget.dataset;
 
   if (!productId) {
@@ -199,8 +201,10 @@ export function addToCart(event) {
  * @param {Event} event - The click event that triggered the function.
  */
 export function subtractFromCart(event) {
-  const productId = event.target.parentElement.dataset.productid;
-  const optionId = event.target.parentElement.dataset.optionid;
+  let targetButton = event.target.closest('.button-cart.button-subtract');
+
+  const productId = targetButton.dataset.productid;
+  const optionId = targetButton.dataset.optionid;
 
   let itemToRemove = findItem(cartItems, productId, optionId);
 
