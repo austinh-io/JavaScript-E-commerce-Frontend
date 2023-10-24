@@ -2,8 +2,8 @@ import {
   formatCurrency,
   catalogProducts,
 } from '/scripts/utilities/commerceUtilities.js';
-import { initializeProducts } from '/scripts/catalog.js';
-import { cartItems } from './utilities/cartUtilities.js';
+import { initializeProducts } from '/scripts/pages/catalog.js';
+import { cartItems } from '../utilities/cartUtilities.js';
 
 ('use strict');
 
@@ -53,7 +53,6 @@ const cartItemTemplate = function (item) {
 
 async function fillCartList() {
   await initializeProducts();
-  console.log(cartItems);
   cartItems.forEach((cartListItem) => {
     checkoutCartList.insertAdjacentHTML(
       'afterbegin',

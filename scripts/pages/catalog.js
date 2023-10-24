@@ -1,12 +1,12 @@
 import {
   catchProductList,
   catalogProducts,
-} from './utilities/commerceUtilities.js';
+} from '../utilities/commerceUtilities.js';
 import {
   fillCartList,
   getCartLocalStorage,
   cartItems,
-} from './utilities/cartUtilities.js';
+} from '../utilities/cartUtilities.js';
 ('use strict');
 
 let productsList = undefined;

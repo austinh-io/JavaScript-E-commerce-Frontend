@@ -184,20 +184,6 @@ a.nav-site-logo:visited {
   padding-top: 0.2rem;
 }
 
-.nav-logo-icon {
-  mask-image: url(/assets/logo.svg);
-  -webkit-mask-image: url(/assets/logo.svg);
-
-  mask-size: 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  mask-position: center;
-  width: 100%;
-  height: 100%;
-
-  background-color: var(--color-font);
-}
-
 .nav-logo-text {
   display: flex;
   align-items: center;

@@ -14,7 +14,7 @@ import {
 
 import { addToCart, cartItems } from '../utilities/cartUtilities.js';
 
-import { openCartMenu } from '../menus.js';
+import { openCartMenu } from '../utilities/menus.js';
 
 ('use strict');
 

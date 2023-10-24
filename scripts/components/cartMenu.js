@@ -15,7 +15,7 @@ import {
   updateCatalogProductButton,
 } from '../utilities/cartUtilities.js';
 
-import { openCartMenu, handleCloseCartMenu } from '../menus.js';
+import { openCartMenu, handleCloseCartMenu } from '../utilities/menus.js';
 
 ('use strict');
 
