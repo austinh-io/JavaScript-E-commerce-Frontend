@@ -152,6 +152,8 @@ a {
   position: relative;
   overflow: hidden;
   padding-bottom: 3px;
+  color: var(--color-font);
+  transition: color 0.15s ease-out;
 }
 
 a::after {
@@ -164,7 +166,7 @@ a::after {
   background-color: var(--color-accent);
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform 0.15s ease-out, color 0.15s ease-out;
+  transition: transform 0.15s ease-out, color 1s ease-out;
 }
 
 a:hover {
