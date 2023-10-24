@@ -33,6 +33,14 @@
   color-scheme: light;
 }
 
+svg {
+  stroke-width: 2;
+}
+
+div.nav-logo-container svg {
+  stroke-width: 0;
+}
+
 .menu-vertical[data-visible='true'] {
   transform: translateY(0%);
   transition: transform var(--menu-transition-speed) ease-in;

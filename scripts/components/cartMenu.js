@@ -154,7 +154,6 @@ const tpl_storeCartCSS = `
 
       .checkout-icon svg {
         stroke: var(--color-font);
-        stroke-width: 3;
       }
     }
     
