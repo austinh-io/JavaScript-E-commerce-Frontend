@@ -222,11 +222,13 @@ a.no-hover-effect:hover::after {
   --color-bg: #0c1821;
   --color-bg-trans: #0c1821d8;
   --color-fg: #1e2836;
-  --color-fg-alt: #6c7583;
+  --color-fg-alt: #667183;
   --color-font: #eaefff;
   --color-font-secondary: #ccd5d7;
   --color-accent: #5978f5;
   --color-warning: #eb2560;
+  --color-aux: #5582ff;
+  --color-aux-bg: #333f53;
   --color-disabled: #90979c;
   --color-radio: #47be9c;
 }
@@ -234,14 +236,16 @@ a.no-hover-effect:hover::after {
 :root[data-theme='light'] {
   color-scheme: light;
 
-  --color-bg: #edf4fa;
-  --color-bg-trans: #c7dbecbe;
+  --color-bg: #f8fcff;
+  --color-bg-trans: #e5f3ffbe;
   --color-fg: #fafcfd;
-  --color-fg-alt: #5a687c;
+  --color-fg-alt: #b6c1d1;
   --color-font: #282e33;
   --color-font-secondary: #626a6f;
   --color-accent: #607ffa;
   --color-warning: #f0405d;
+  --color-aux: #ffb01f;
+  --color-aux-bg: rgb(239, 245, 250);
   --color-disabled: #9a9ea5;
   --color-radio: #1daf86;
 }
@@ -305,4 +309,3 @@ span.hidden,
 div.hidden {
   display: none;
 }
-

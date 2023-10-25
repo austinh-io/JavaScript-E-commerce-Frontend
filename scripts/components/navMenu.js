@@ -208,13 +208,13 @@ const tpl_navMenuCSS = `
   }
 
   .btn-themes-icon.active-theme {
-    background-color: var(--color-bg);
+    background-color: var(--color-aux-bg);
     border-radius: 100%;
   }
 
   .btn-themes-icon.active-theme svg {
-    stroke: var(--color-accent);
-    fill: var(--color-accent);
+    stroke: var(--color-aux);
+    fill: var(--color-aux);
   }
   </style>
 `;
