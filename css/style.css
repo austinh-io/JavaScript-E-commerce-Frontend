@@ -47,15 +47,6 @@ footer.container {
   width: 100%;
 }
 
-a,
-a:visited {
-  color: inherit;
-}
-
-a:hover {
-  cursor: pointer;
-}
-
 /* ------- Universal ------- */
 
 .mobile-nav {
@@ -71,8 +62,6 @@ a:hover {
 .cart-menu {
   z-index: 910;
 }
-
-
 
 /* ------ Main ------- */
 
@@ -158,7 +147,7 @@ video.hero-bg-video {
   margin-top: 2rem;
 }
 
-a.hero-anchor {
+div.hero-anchor-container .hero-anchor {
   background-color: var(--color-font);
   color: var(--color-fg);
   padding-block: 0.8rem;

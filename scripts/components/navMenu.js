@@ -34,16 +34,7 @@ const tpl_navMenuCSS = `
     ul {
       list-style: none;
     }
-
-    a,
-    a:visited {
-      color: inherit;
-    }
-
-    a:hover {
-      cursor: pointer;
-    }
-
+    
     .wrapper {
       padding-inline: 2%;
       margin-inline: auto;
@@ -110,7 +101,8 @@ const tpl_navMenuCSS = `
       background-color: var(--color-font);
       border: 4px solid var(--color-font);
       color: var(--color-fg);
-      font-weight: 700;
+      font-family: var(--font-body);
+      font-weight: 600;
       font-size: 0.9rem;
     
       width: 0.8rem;
@@ -120,14 +112,6 @@ const tpl_navMenuCSS = `
     }
     
     /* -- Logo/Business Name -- */
-    
-    a.nav-site-logo {
-      text-decoration: none;
-    }
-    
-    a.nav-site-logo:visited {
-      color: inherit;
-    }
     
     .nav-site-logo {
       display: flex;
@@ -229,7 +213,6 @@ tpl_navMenu.innerHTML = `
           href="index.html"
         >
           <div class="nav-logo-container">
-            <!-- <span class="nav-logo-icon"></span> -->
             <j-symbol name="store-logo"></j-symbol>
           </div>
           <div class="nav-logo-text">Lorem Ipsum</div>

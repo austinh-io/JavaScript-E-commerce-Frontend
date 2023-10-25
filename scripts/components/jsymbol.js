@@ -44,6 +44,15 @@ class JSymbol extends HTMLElement {
 
     this.innerHTML = `
       <style>
+
+      a.nav-site-logo:hover {      
+        .icon {
+          fill: var(--color-accent);
+          stroke: var(--color-accent);
+          color: var(--color-accent);
+        }
+      }
+
         .icon {
           stroke: ${strokeColor};
           fill: ${fillColor};
