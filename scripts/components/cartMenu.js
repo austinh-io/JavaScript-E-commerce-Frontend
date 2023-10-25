@@ -150,6 +150,20 @@ const tpl_storeCartCSS = `
       margin-left: 0.6rem;
       stroke: var(--color-fg);
     }
+
+    /* ------- Scrollbar -------*/
+
+    ::-webkit-scrollbar {
+      width: 0.2rem;
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: var(--color-bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--color-accent);
+    }
 </style>
 `;
 

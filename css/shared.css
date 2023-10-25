@@ -222,6 +222,7 @@ a.no-hover-effect:hover::after {
   --color-bg: #0c1821;
   --color-bg-trans: #0c1821d8;
   --color-fg: #1e2836;
+  --color-fg-alt: #2f3a4b;
   --color-font: #eaefff;
   --color-font-secondary: #ccd5d7;
   --color-accent: #7692ff;
@@ -236,6 +237,7 @@ a.no-hover-effect:hover::after {
   --color-bg: #eef1f3;
   --color-bg-trans: #e4e6e7be;
   --color-fg: #f7f8f9;
+  --color-fg-alt: #868b92;
   --color-font: #282e33;
   --color-font-secondary: #626a6f;
   --color-accent: #314cbb;
@@ -303,3 +305,4 @@ span.hidden,
 div.hidden {
   display: none;
 }
+
