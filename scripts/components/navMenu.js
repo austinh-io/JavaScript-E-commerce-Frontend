@@ -176,65 +176,89 @@ const tpl_navMenuCSS = `
       gap: 1rem;
     }
 
-    /* -- Theme Toggle --*/
+  /*------- Theme Switch -------*/
 
-  .theme-toggle {
+  .checkbox {
+    display: none;
+  }
+
+  .theme-toggle-switch {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.8rem;
+    height: 2rem;
+  }
+
+  .switch-label {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: 0.2rem;
-    font-weight: 700;
+    position: absolute;
+    top: 0;
+    left: 0;
 
-    background: none;
-    color: var(--color-font);
-    border: none;
+    width: 3.8rem;
+    height: 2rem;
+
+    border-radius: 15px;
+    background: var(--color-fg);
+    outline: rgba(0, 0, 0, 0) solid 2px;
 
     cursor: pointer;
 
-    transition: all 150ms ease-out;
+    transition: background-color 0.2s ease-out, outline 0.2s ease-out;
   }
 
-  .theme-toggle svg {
-    width: 1rem;
-    height: 1rem;
+  .switch-label:hover {
+    outline: var(--color-accent) solid 2px ;
   }
 
-  .button.theme-toggle{
+  .switch-label::before {    
+    content: '';
+
+    position: absolute;
+    right: 50%;
+
+    width: 1.8rem;
+    height: 1.8rem;
+
+    background: var(--color-aux-bg);
+    border-radius: 50%;
+
+    transition: transform 0.2s ease-out;
+  }
+
+  .checkbox:checked + .switch-label::before {
+    transform: translateX(100%);
+  }
+
+  j-symbol.theme-toggle-icon {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-
-    background-color: var(--color-fg);
-    border-radius: 100pt;
-    width: 4.6rem;
-    height: 2rem;
-
-    margin-right: 2rem;
-    transition: outline 0s, background-color 150ms ease-out;
+    justify-content: center;
   }
 
-  .button.theme-toggle:hover {
-    outline: 2px solid var(--color-accent);
+  .theme-toggle-icon svg{
+    width: 1.2rem;
+    height: 1.2rem;
+    z-index: 1;
+    stroke: var(--color-fg-alt)
   }
 
-  .btn-themes-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;    
-    padding: 0.4rem;
+  .theme-toggle-icon-dark {
+    position: relative;
+    right: .3rem;
   }
 
-  .btn-themes-icon svg{
-    stroke: var(--color-fg-alt);
+  .theme-toggle-icon-light {
+    position: relative;
+    left: .3rem;
   }
 
-  .btn-themes-icon.active-theme {
-    background-color: var(--color-aux-bg);
-    border-radius: 100%;
-  }
-
-  .btn-themes-icon.active-theme svg {
+  .active-theme svg {
     stroke: var(--color-aux);
     fill: var(--color-aux);
   }
@@ -264,19 +288,19 @@ tpl_navMenu.innerHTML = `
         <li><a>Page 3</a></li>
 
         <div class="nav-buttons-container">
-          <button
-            class="button theme-toggle"
-            id="theme-toggle"
-          >
-            <j-symbol
-              class="btn-themes-icon theme-icon-dark"
-              name="half-moon"
-            ></j-symbol>
-            <j-symbol
-              class="theme-icon-light btn-themes-icon"
-              name="sun"
-            ></j-symbol>
-          </button>
+          <div class="theme-toggle-switch">
+            <input type="checkbox" id="theme-switch" class="checkbox">
+            <label for="theme-switch" class="switch-label">
+              <j-symbol
+                class="theme-toggle-icon theme-toggle-icon-dark"
+                name="half-moon"
+              ></j-symbol>
+              <j-symbol
+                class="theme-toggle-icon theme-toggle-icon-light"
+                name="sun"
+              ></j-symbol>
+            </label>
+          </div>
 
           <button
             class="cart-menu-toggle cart-menu-toggle-open"

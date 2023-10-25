@@ -183,9 +183,9 @@ function initMenuVariables() {
   }
 
   //------- Theme Menu -------//
-  themeToggle = navMenuShadowRoot.getElementById('theme-toggle');
-  themeIconDark = navMenuShadowRoot.querySelector('.theme-icon-dark');
-  themeIconLight = navMenuShadowRoot.querySelector('.theme-icon-light');
+  themeToggle = navMenuShadowRoot.getElementById('theme-switch');
+  themeIconDark = navMenuShadowRoot.querySelector('.theme-toggle-icon-dark');
+  themeIconLight = navMenuShadowRoot.querySelector('.theme-toggle-icon-light');
 
   themeToggle.addEventListener('click', handleThemeMenu);
 
