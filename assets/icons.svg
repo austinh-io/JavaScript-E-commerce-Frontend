@@ -125,4 +125,20 @@
   <symbol id="cancel" viewBox="0 0 24 24"> 
     <path stroke-linecap='round' stroke-linejoin='round' d='M6.758 17.243 12.001 12m5.243-5.243L12 12m0 0L6.758 6.757M12.001 12l5.243 5.243'></path>
   </symbol>
+
+  <symbol id="nav-arrow-down" viewBox="0 0 24 24"> 
+    <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"></path>
+  </symbol>
+
+  <symbol id="nav-arrow-up" viewBox="0 0 24 24"> 
+    <path stroke-linecap="round" stroke-linejoin="round" d="m6 15 6-6 6 6"></path>
+  </symbol>
+
+  <symbol id="nav-arrow-right" viewBox="0 0 24 24"> 
+    <path stroke-linecap="round" stroke-linejoin="round" d="m9 6 6 6-6 6"></path>
+  </symbol>
+
+  <symbol id="nav-arrow-left" viewBox="0 0 24 24">    
+   <path stroke-linecap="round" stroke-linejoin="round" d="m15 6-6 6 6 6"></path>
+  </symbol>  
 </svg>

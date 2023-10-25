@@ -255,15 +255,52 @@ const tpl_catalogProductCSS = `
       --radio-color: rgb(23, 28, 32);
     }
 
-    .product-size-selection {
-      font-size: 1.2rem;
-      width: 4rem;
-      max-width: 20rem;
-      padding: 0.4rem;
-      border: none;
-      border-radius: 3pt;
+    /* ----- Select ----- */
+    
+    .select-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
       color: var(--color-font);
       background-color: var(--color-fg);
+      padding-right: 1rem;
+      outline: none;
+      border: none;
+      border-radius: 2pt;
+      width: 200px;
+
+      transition: background-color 0.2s ease-out;
+    }
+
+    .select:hover {
+      cursor: pointer;
+      background-color: var(--color-accent);
+    }
+
+    .select:focus {
+      background-color: var(--color-accent);
+    }
+
+    .select-arrow svg {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      pointer-events: none;
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+
+    .product-size-selection {
+      font-size: 1.2rem;
+      width: 5.2rem;
+      max-width: 20rem;
+      padding: 0.6rem;      
     }
 
 </style>
@@ -402,14 +439,18 @@ function cardOptionSelectionGroup(product, option) {
     return `
     <label for="product-size-select-${product.productId}" class="hidden">Size</label>
   
-    <select
-      class="product-size-selection"
-      name="sizes"
-      id="product-size-select-${product.productId}"
-      data-productId=${product.productId}
-    >
-      ${optionSelections}
-    </select>
+    <div class="select-wrapper">
+      <select
+        class="product-size-selection select"
+        name="sizes"
+        id="product-size-select-${product.productId}"
+        data-productId=${product.productId}
+      >
+        ${optionSelections}
+      </select>
+      <j-symbol name="nav-arrow-down" class="select-arrow"></j-symbol>
+    </div>
+
     `;
 }
 
