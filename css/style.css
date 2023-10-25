@@ -50,7 +50,11 @@ footer.container {
 /* ------- Scrollbar -------*/
 
 ::-webkit-scrollbar {
-  width: 0.2rem;
+  width: 0.4rem;
+}
+
+::-webkit-scrollbar :hover {
+  width: 1rem;
 }
 
 ::-webkit-scrollbar-track {
