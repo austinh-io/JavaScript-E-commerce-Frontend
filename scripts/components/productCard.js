@@ -268,7 +268,7 @@ const tpl_catalogProductCSS = `
       -moz-appearance: none;
       color: var(--color-font);
       background-color: var(--color-fg);
-      padding-right: 1rem;
+      padding-right: 0.8rem;
       outline: none;
       border: none;
       border-radius: 2pt;
@@ -292,8 +292,8 @@ const tpl_catalogProductCSS = `
       right: 10px;
       transform: translateY(-50%);
       pointer-events: none;
-      width: 1.6rem;
-      height: 1.6rem;
+      width: 1.4rem;
+      height: 1.4rem;
     }
 
     .product-size-selection {
