@@ -5,7 +5,7 @@ import { storeCartMenu } from '../utilities/cartUtilities.js';
 const navMenu = document.querySelector('nav-menu');
 
 // ---------- Filter Menu ---------- //
-const filterMenu = document.querySelector('.filter-options-menu');
+const filterMenu = document.querySelector('.filter-options-container');
 const filterToggle = document.querySelector('.filter-menu-toggle');
 
 if (filterToggle) {
