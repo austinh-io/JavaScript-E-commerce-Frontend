@@ -234,9 +234,9 @@ a.no-hover-effect:hover::after {
 :root[data-theme='light'] {
   color-scheme: light;
 
-  --color-bg: #eef1f3;
+  --color-bg: #f1f5f7;
   --color-bg-trans: #e4e6e7be;
-  --color-fg: #f7f8f9;
+  --color-fg: #fafcfd;
   --color-fg-alt: #3b4657;
   --color-font: #282e33;
   --color-font-secondary: #626a6f;
