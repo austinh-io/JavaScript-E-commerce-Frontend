@@ -234,16 +234,16 @@ a.no-hover-effect:hover::after {
 :root[data-theme='light'] {
   color-scheme: light;
 
-  --color-bg: #f1f5f7;
+  --color-bg: #e5f0f5;
   --color-bg-trans: #e4e6e7be;
   --color-fg: #fafcfd;
-  --color-fg-alt: #3b4657;
+  --color-fg-alt: #5a687c;
   --color-font: #282e33;
   --color-font-secondary: #626a6f;
   --color-accent: #7792ff;
   --color-warning: #f0405d;
   --color-disabled: #9a9ea5;
-  --color-radio: #47be9c;
+  --color-radio: #1daf86;
 }
 
 svg {

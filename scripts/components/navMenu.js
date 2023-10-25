@@ -148,34 +148,14 @@ const tpl_navMenuCSS = `
     
     .nav-buttons-container {
       display: flex;
+      align-items: center;
+      justify-content: center;
       margin-left: auto;
       gap: 1rem;
     }
-    
-    /* -- Theme Toggle --*/
-    .theme-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    
-      padding: 0.2rem;
-      font-weight: 700;
-    
-      background: none;
-      color: var(--color-font);
-      border: none;
-    
-      cursor: pointer;
-    
-      transition: all 150ms ease-out;
-    }
-    
-    .theme-toggle svg {
-      width: 1.8rem;
-      height: 1.8rem;
-    }
 
     /* -- Theme Toggle --*/
+
   .theme-toggle {
     display: flex;
     align-items: center;
@@ -194,8 +174,47 @@ const tpl_navMenuCSS = `
   }
 
   .theme-toggle svg {
-    width: 1.8rem;
-    height: 1.8rem;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .button.theme-toggle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: var(--color-fg);
+    border-radius: 100pt;
+    width: 4.6rem;
+    height: 2rem;
+
+    margin-right: 2rem;
+    transition: outline 0s, background-color 150ms ease-out;
+  }
+
+  .button.theme-toggle:hover {
+    outline: 2px solid var(--color-accent);
+  }
+
+  .btn-themes-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    padding: 0.4rem;
+  }
+
+  .btn-themes-icon svg{
+    stroke: var(--color-fg-alt);
+  }
+
+  .btn-themes-icon.active-theme {
+    background-color: var(--color-bg);
+    border-radius: 100%;
+  }
+
+  .btn-themes-icon.active-theme svg {
+    stroke: var(--color-accent);
+    fill: var(--color-accent);
   }
   </style>
 `;
@@ -218,9 +237,7 @@ tpl_navMenu.innerHTML = `
           <div class="nav-logo-text">Lorem Ipsum</div>
         </a>
 
-        <li>
-          <a>Page 1</a>
-        </li>
+        <li><a>Page 1</a></li>
         <li><a>Page 2</a></li>
         <li><a>Page 3</a></li>
 
@@ -230,7 +247,7 @@ tpl_navMenu.innerHTML = `
             id="theme-toggle"
           >
             <j-symbol
-              class="btn-themes-icon theme-icon-dark hidden"
+              class="btn-themes-icon theme-icon-dark"
               name="half-moon"
             ></j-symbol>
             <j-symbol

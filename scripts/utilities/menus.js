@@ -76,18 +76,18 @@ function setThemeLocalStorage(theme) {
 function setColorTheme(theme) {
   switch (theme) {
     case 'dark':
-      themeIconDark.classList.remove('hidden');
-      themeIconLight.classList.add('hidden');
+      themeIconDark.classList.add('active-theme');
+      themeIconLight.classList.remove('active-theme');
       document.documentElement.setAttribute('data-theme', 'dark');
       break;
     case 'light':
-      themeIconDark.classList.add('hidden');
-      themeIconLight.classList.remove('hidden');
+      themeIconDark.classList.remove('active-theme');
+      themeIconLight.classList.add('active-theme');
       document.documentElement.setAttribute('data-theme', 'light');
       break;
     default:
-      themeIconDark.classList.add('hidden');
-      themeIconLight.classList.remove('hidden');
+      themeIconDark.classList.remove('active-theme');
+      themeIconLight.classList.add('active-theme');
       document.documentElement.setAttribute('data-theme', 'light');
       break;
   }
