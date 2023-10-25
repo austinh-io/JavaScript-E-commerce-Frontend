@@ -314,10 +314,13 @@ ${tpl_catalogProductCSS}
         class="product-image-container"        
         href="#"
         >
-          <img
-          loading="lazy"
-          class="product-image"
-          />
+          <picture class="product-image">
+            <source id="product-image-source"/>
+            <img
+            loading="lazy"
+            class="product-image"
+            />
+          </picture>
       </a>
       <div class="product-info-container">
           <div class="product-brand"></div>
@@ -541,7 +544,9 @@ class catalogProduct extends HTMLElement {
     this.productImageContainer.href = productPageUrl;
 
     this.productImage = shadow.querySelector('.product-image');
-    this.productImage.src = `${baseUrl}assets/images/productImages/small/${product.options[0].imageName}_small.webp`;
+    this.productImageSource = shadow.querySelector('#product-image-source');
+    this.productImageSource.srcset = `${baseUrl}assets/images/productImages/small/${product.options[0].imageName}_small.webp`;
+    this.productImageSource.type = 'image/webp';
 
     this.productBrand = shadow.querySelector('.product-brand');
     this.productBrand.textContent = product.brand;
