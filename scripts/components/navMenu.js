@@ -71,18 +71,34 @@ const tpl_navMenuCSS = `
       position: relative;
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 1.2rem;
     }
     
     .cart-menu-toggle {
+      position: relative;
       z-index: 900;
+      top: 0;
     
       background-color: rgba(0, 0, 0, 0);
-      color: var(--color-font);
     
       border: none;
     
       cursor: pointer;
+      transition: all 0.15s ease-out;
+    }
+
+    .cart-menu-toggle:hover {
+      top: -3px;
+    }
+
+    .cart-menu-toggle:hover .cart-icon-counter{
+      background-color: var(--color-accent);
+      border-color: var(--color-accent);
+      color: var(--color-font);
+    }
+
+    .cart-menu-toggle:hover div.cart-icon-container svg {
+      stroke: var(--color-accent);
     }
     
     .cart-icon-container {
@@ -115,12 +131,18 @@ const tpl_navMenuCSS = `
     
     .nav-site-logo {
       display: flex;
-      align-items: ba;
+      align-items: center;
       justify-content: center;
     
       margin-right: auto;
     
       cursor: pointer;
+    }
+
+    a.nav-site-logo:hover {
+      .nav-logo-text {
+        color: var(--color-accent);
+      }
     }
     
     .nav-logo-container {

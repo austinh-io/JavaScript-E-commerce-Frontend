@@ -148,25 +148,18 @@
     format('truetype');
 }
 
-a,
-a:visited {
-  position: relative;
-  overflow: hidden;
-  padding-bottom: 3px;
-  transition: color 0.15s ease-out;
-}
 
-a.nav-site-logo:hover {
-  .nav-logo-text {
-    color: var(--color-accent);
-  }
-}
 
 a,
 a:visited,
 a:active,
 a:link,
 a:focus {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 3px;
+  transition: color 0.15s ease-out;
+
   color: var(--color-font);
   text-decoration: none;
 }
@@ -187,16 +180,16 @@ a::after {
   transition: width 0.15s ease-out;
 }
 
-a .no-hover-effect {
-  color: red;
-}
-
 a:hover {
   color: var(--color-accent);
 }
 
 a:hover::after {
   width: 100%;
+}
+
+a .no-hover-effect {
+  color: red;
 }
 
 a.no-hover-effect::after {
