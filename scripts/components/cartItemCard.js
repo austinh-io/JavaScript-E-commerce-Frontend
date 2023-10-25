@@ -11,8 +11,6 @@ import {
   subtractFromCart,
 } from '../utilities/cartUtilities.js';
 
-import { openCartMenu } from '../utilities/menus.js';
-
 ('use strict');
 
 const tpl_cartitemCard = document.createElement('template');

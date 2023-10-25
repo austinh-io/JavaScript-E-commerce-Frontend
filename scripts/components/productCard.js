@@ -8,13 +8,12 @@ import {
   formatCurrency,
   findItem,
   baseUrl,
-  catchProductList,
   catalogProducts,
 } from '/scripts/utilities/commerceUtilities.js';
 
 import { addToCart, cartItems } from '../utilities/cartUtilities.js';
 
-import { openCartMenu } from '../utilities/menus.js';
+import { handleOpenCartMenu } from '../utilities/menus.js';
 
 ('use strict');
 
@@ -656,7 +655,7 @@ class catalogProduct extends HTMLElement {
    */
   connectedCallback() {
     this.productButton.addEventListener('click', addToCart);
-    this.productButton.addEventListener('click', openCartMenu);
+    this.productButton.addEventListener('click', handleOpenCartMenu);
     this.productButton.addEventListener('click', this.updateCatalogItemButton);
 
     if (this.hasFieldset) {

@@ -56,52 +56,6 @@ function updateNavMenuOnScreenSizeChange() {
   else headerContainer.setAttribute('data-visible', 'false');
 }
 
-// --------- Cart ---------
-// const cartToggles = document.getElementsByClassName('cart-menu-toggle');
-let cartToggles = undefined;
-
-/**
- * Toggles the visibility of the cart menu and updates the aria-expanded attribute of the cart toggles accordingly.
- */
-export function handleOpenCartMenu() {
-  const _cartMenu = storeCartMenu.shadowRoot.querySelector('.cart-menu');
-  const visibility = _cartMenu.getAttribute('data-visible');
-
-  if (visibility === 'false') {
-    _cartMenu.setAttribute('data-visible', 'true');
-
-    for (let cartToggle of cartToggles)
-      cartToggle.setAttribute('aria-expanded', 'true');
-  }
-}
-
-export function handleCloseCartMenu(e) {
-  const _cartMenu = e.target.closest('#cart-menu');
-  const visibility = _cartMenu.getAttribute('data-visible');
-
-  if (visibility === 'true') {
-    _cartMenu.setAttribute('data-visible', 'false');
-
-    for (let cartToggle of cartToggles)
-      cartToggle.setAttribute('aria-expanded', 'false');
-  }
-}
-
-/**
- * Opens the cart menu by setting the `data-visible` attribute to `true` and
- * updating the `aria-expanded` attribute of all cart toggles to `true`.
- */
-export function openCartMenu() {
-  const visibility = storeCartMenu.getAttribute('data-visible');
-
-  if (visibility === 'false') {
-    storeCartMenu.setAttribute('data-visible', 'true');
-
-    for (let cartToggle of cartToggles)
-      cartToggle.setAttribute('aria-expanded', 'true');
-  }
-}
-
 // --------- Themes ---------
 let themeToggle = undefined;
 let themeIconDark = undefined;
@@ -173,6 +127,37 @@ function updateTheme() {
   if (localStorage.getItem('theme'))
     setColorTheme(localStorage.getItem('theme'));
   else setColorTheme(getColorThemePreference());
+}
+
+// --------- Cart ---------
+// const cartToggles = document.getElementsByClassName('cart-menu-toggle');
+let cartToggles = undefined;
+
+/**
+ * Toggles the visibility of the cart menu and updates the aria-expanded attribute of the cart toggles accordingly.
+ */
+export function handleOpenCartMenu() {
+  const _cartMenu = storeCartMenu.shadowRoot.querySelector('.cart-menu');
+  const visibility = _cartMenu.getAttribute('data-visible');
+
+  if (visibility === 'false') {
+    _cartMenu.setAttribute('data-visible', 'true');
+
+    for (let cartToggle of cartToggles)
+      cartToggle.setAttribute('aria-expanded', 'true');
+  }
+}
+
+export function handleCloseCartMenu(e) {
+  const _cartMenu = e.target.closest('#cart-menu');
+  const visibility = _cartMenu.getAttribute('data-visible');
+
+  if (visibility === 'true') {
+    _cartMenu.setAttribute('data-visible', 'false');
+
+    for (let cartToggle of cartToggles)
+      cartToggle.setAttribute('aria-expanded', 'false');
+  }
 }
 
 function initMenuVariables() {

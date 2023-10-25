@@ -1,23 +1,9 @@
 import {
   formatCurrency,
-  findItem,
   baseUrl,
-  catchProductList,
-  catalogProducts,
 } from '/scripts/utilities/commerceUtilities.js';
 
-import {
-  addToCart,
-  cartItems,
-  storeCartMenu,
-  removeFromCart,
-  subtractFromCart,
-  updateCatalogProductButton,
-  fillCartList,
-  getCartLocalStorage,
-} from '../utilities/cartUtilities.js';
-
-import { openCartMenu, handleCloseCartMenu } from '../utilities/menus.js';
+import { handleCloseCartMenu } from '../utilities/menus.js';
 
 ('use strict');
 

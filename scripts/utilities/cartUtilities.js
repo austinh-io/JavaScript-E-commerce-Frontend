@@ -147,8 +147,6 @@ export function fillCartList() {
 export function addToCart(event) {
   getCart();
 
-  console.log(event.target);
-
   let eventTarget = event.target.closest('.button-add');
   let { productid: productId, optionid: optionId } = eventTarget.dataset;
 
