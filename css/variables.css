@@ -173,6 +173,7 @@
   --color-aux-bg: #2e4264;
   --color-disabled: #90979c;
   --color-radio: #47be9c;
+  --color-shadow: #03070f73;
 }
 
 :root[data-theme='light'] {
@@ -190,4 +191,5 @@
   --color-aux-bg: rgb(236, 233, 218);
   --color-disabled: #9a9ea5;
   --color-radio: #1daf86;
+  --color-shadow: #2a394228;
 }

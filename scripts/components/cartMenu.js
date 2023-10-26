@@ -174,7 +174,7 @@ const tpl_storeCartCSS = `
       left: 0;
       width: 100vw;
       height: 100vh;
-      background-color: black;
+      background-color: var(--color-bg);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.2s ease-out;

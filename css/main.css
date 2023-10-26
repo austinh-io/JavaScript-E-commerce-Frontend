@@ -158,7 +158,7 @@ div.nav-logo-container svg {
 }
 
 .menu-shadow[data-visible='true'] {
-  box-shadow: -5px 0px 20px 5px rgba(0, 0, 0, 0.8);
+  box-shadow: -5px 0px 20px 5px var(--color-shadow);
 }
 
 @media (max-width: 768px) {
