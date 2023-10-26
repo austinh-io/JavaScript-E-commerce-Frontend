@@ -238,4 +238,33 @@ function initMenus() {
   initThemeMenu();
 }
 
+let lastScrollTop = 0;
+let cumulativeDelta = 0;
+const delta = 100;
+
+function navScrollBehavior() {
+  const navHeaderHeightValue = '4'; //taken from the variables.css file
+  const navHeaderHeightUnit = 'rem'; //taken from the variables.css file
+
+  const currentScrollTop = window.scrollY;
+  const scrollDifference = currentScrollTop - lastScrollTop;
+
+  const direction = scrollDifference > 0 ? 1 : -1;
+
+  if (direction === (cumulativeDelta > 0 ? 1 : -1)) {
+    cumulativeDelta += scrollDifference;
+  } else {
+    cumulativeDelta = scrollDifference;
+  }
+
+  if (direction === 1 && cumulativeDelta > delta) {
+    navHeader.style.top = -navHeaderHeightValue + navHeaderHeightUnit;
+  } else if (direction === -1 && -cumulativeDelta > delta) {
+    navHeader.style.top = '0';
+  }
+
+  lastScrollTop = currentScrollTop;
+}
+
 document.addEventListener('DOMContentLoaded', initMenus);
+window.addEventListener('scroll', navScrollBehavior);

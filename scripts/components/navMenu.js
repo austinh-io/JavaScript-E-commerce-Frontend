@@ -44,17 +44,22 @@ const tpl_navMenuCSS = `
     /* ----- Header ----- */
 
     .header-container {
-      z-index: 900;
-
-      position: fixed;
-
       display: flex;
       align-items: center;
+
+      position: fixed;
+      top: 0;
+      left: 0;
+
       width: 100%;
       height: var(--header-height);
 
       background-color: var(--color-bg-trans);
       backdrop-filter: blur(20px);
+      
+      z-index: 900;
+
+      transition: top 0.3s ease-out;
     }
 
     .header-container .container {
