@@ -143,6 +143,7 @@ let cartToggles = undefined;
  */
 export function handleOpenCartMenu() {
   const _cartMenu = storeCartMenu.shadowRoot.querySelector('.cart-menu');
+  const _navMenu = navMenu.shadowRoot.querySelector('.header-container');
   const visibility = _cartMenu.getAttribute('data-visible');
   const overlay = storeCartMenu.shadowRoot.querySelector('.overlay');
 
@@ -151,6 +152,8 @@ export function handleOpenCartMenu() {
     overlay.style.opacity = '0.8';
     overlay.style.pointerEvents = 'auto';
     docBody.style.overflow = 'hidden';
+    docBody.classList.add('lock-width');
+    _navMenu.classList.add('lock-width');
 
     for (let cartToggle of cartToggles)
       cartToggle.setAttribute('aria-expanded', 'true');
@@ -159,6 +162,7 @@ export function handleOpenCartMenu() {
 
 export function handleCloseCartMenu() {
   const _cartMenu = storeCartMenu.shadowRoot.querySelector('.cart-menu');
+  const _navMenu = navMenu.shadowRoot.querySelector('.header-container');
   const visibility = _cartMenu.getAttribute('data-visible');
   const overlay = storeCartMenu.shadowRoot.querySelector('.overlay');
 
@@ -167,6 +171,8 @@ export function handleCloseCartMenu() {
     overlay.style.opacity = '0';
     overlay.style.pointerEvents = 'none';
     docBody.style.overflow = 'auto';
+    docBody.classList.remove('lock-width');
+    _navMenu.classList.remove('lock-width');
 
     for (let cartToggle of cartToggles)
       cartToggle.setAttribute('aria-expanded', 'false');

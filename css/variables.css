@@ -156,6 +156,7 @@
   --store-logo-size: 2rem;
   --icon-size: 1.4rem;
   --header-height: 4rem;
+  --scrollbar-width: 0.4rem;
 }
 
 :root[data-theme='dark'] {
