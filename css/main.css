@@ -103,14 +103,12 @@ footer.container {
   background-color: var(--color-fg-alt);
 }
 
-.lock-width {
+.lock-width-chromium {
   padding-right: var(--scrollbar-width);
 }
 
-@supports (scrollbar-gutter: stable both-edges) {
-  .lock-width {
-    scrollbar-gutter: stable both-edges;
-  }
+.lock-width-firefox {
+  scrollbar-gutter: stable both-edges;
 }
 
 /* ------- Universal ------- */

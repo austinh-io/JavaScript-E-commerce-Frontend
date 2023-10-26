@@ -3,7 +3,6 @@ import { storeCartMenu } from '../utilities/cartUtilities.js';
 ('use strict');
 
 const docBody = document.querySelector('body');
-
 const navMenu = document.querySelector('nav-menu');
 
 // ---------- Filter Menu ---------- //
@@ -137,23 +136,29 @@ function updateTheme() {
 // --------- Cart ---------
 // const cartToggles = document.getElementsByClassName('cart-menu-toggle');
 let cartToggles = undefined;
+let cartMenu = undefined;
+let navHeader = undefined;
+let visibility = undefined;
+let overlay = undefined;
 
 /**
  * Toggles the visibility of the cart menu and updates the aria-expanded attribute of the cart toggles accordingly.
  */
 export function handleOpenCartMenu() {
-  const _cartMenu = storeCartMenu.shadowRoot.querySelector('.cart-menu');
-  const _navMenu = navMenu.shadowRoot.querySelector('.header-container');
-  const visibility = _cartMenu.getAttribute('data-visible');
-  const overlay = storeCartMenu.shadowRoot.querySelector('.overlay');
-
   if (visibility === 'false') {
-    _cartMenu.setAttribute('data-visible', 'true');
+    cartMenu.setAttribute('data-visible', 'true');
+    visibility = cartMenu.getAttribute('data-visible');
     overlay.style.opacity = '0.8';
     overlay.style.pointerEvents = 'auto';
     docBody.style.overflow = 'hidden';
-    docBody.classList.add('lock-width');
-    _navMenu.classList.add('lock-width');
+
+    if (isBrowserChromium()) {
+      docBody.classList.add('lock-width-chromium');
+      navHeader.classList.add('lock-width-chromium');
+    } else {
+      docBody.classList.add('lock-width-firefox');
+      navHeader.classList.add('lock-width-firefox');
+    }
 
     for (let cartToggle of cartToggles)
       cartToggle.setAttribute('aria-expanded', 'true');
@@ -161,54 +166,76 @@ export function handleOpenCartMenu() {
 }
 
 export function handleCloseCartMenu() {
-  const _cartMenu = storeCartMenu.shadowRoot.querySelector('.cart-menu');
-  const _navMenu = navMenu.shadowRoot.querySelector('.header-container');
-  const visibility = _cartMenu.getAttribute('data-visible');
-  const overlay = storeCartMenu.shadowRoot.querySelector('.overlay');
-
   if (visibility === 'true') {
-    _cartMenu.setAttribute('data-visible', 'false');
+    cartMenu.setAttribute('data-visible', 'false');
+    visibility = cartMenu.getAttribute('data-visible');
     overlay.style.opacity = '0';
     overlay.style.pointerEvents = 'none';
     docBody.style.overflow = 'auto';
-    docBody.classList.remove('lock-width');
-    _navMenu.classList.remove('lock-width');
+
+    if (isBrowserChromium()) {
+      docBody.classList.remove('lock-width-chromium');
+      navHeader.classList.remove('lock-width-chromium');
+    } else {
+      docBody.classList.remove('lock-width-firefox');
+      navHeader.classList.remove('lock-width-firefox');
+    }
 
     for (let cartToggle of cartToggles)
       cartToggle.setAttribute('aria-expanded', 'false');
   }
 }
 
-function initMenuVariables() {
-  const navMenuShadowRoot = navMenu.shadowRoot;
+function isBrowserChromium() {
+  const isFirefox = typeof InstallTrigger !== 'undefined';
+  const isChromium = !!window.chrome;
 
-  //------- Nav Menu -------//
-  headerContainer = navMenuShadowRoot.querySelector('.header-container');
-  navToggle = navMenuShadowRoot.querySelector('.nav-menu-toggle');
+  if (isChromium) {
+    return true;
+  } else if (isFirefox) {
+    return false;
+  }
+}
+
+function initNavMenu() {
+  headerContainer = navMenu.shadowRoot.querySelector('.header-container');
+  navToggle = navMenu.shadowRoot.querySelector('.nav-menu-toggle');
 
   if (navToggle) {
     navToggle.addEventListener('click', handleNavMenu);
     mediaQuery.addEventListener('change', updateNavMenuOnScreenSizeChange);
     addEventListener('load', updateNavMenuOnScreenSizeChange);
   }
+}
 
-  //------- Cart Menu -------//
-  cartToggles = navMenuShadowRoot.querySelectorAll('.cart-menu-toggle');
+function initCartMenu() {
+  cartMenu = storeCartMenu.shadowRoot.querySelector('.cart-menu');
+  navHeader = navMenu.shadowRoot.querySelector('.header-container');
+  visibility = cartMenu.getAttribute('data-visible');
+  overlay = storeCartMenu.shadowRoot.querySelector('.overlay');
+  cartToggles = navMenu.shadowRoot.querySelectorAll('.cart-menu-toggle');
 
   for (let cartToggle of cartToggles) {
     if (cartToggle) {
       cartToggle.addEventListener('click', handleOpenCartMenu);
     }
   }
+}
 
-  //------- Theme Menu -------//
-  themeToggle = navMenuShadowRoot.getElementById('theme-switch');
-  themeIconDark = navMenuShadowRoot.querySelector('.theme-toggle-icon-dark');
-  themeIconLight = navMenuShadowRoot.querySelector('.theme-toggle-icon-light');
+function initThemeMenu() {
+  themeToggle = navMenu.shadowRoot.getElementById('theme-switch');
+  themeIconDark = navMenu.shadowRoot.querySelector('.theme-toggle-icon-dark');
+  themeIconLight = navMenu.shadowRoot.querySelector('.theme-toggle-icon-light');
 
   themeToggle.addEventListener('click', handleThemeMenu);
 
   updateTheme();
 }
 
-document.addEventListener('DOMContentLoaded', initMenuVariables);
+function initMenus() {
+  initNavMenu();
+  initCartMenu();
+  initThemeMenu();
+}
+
+document.addEventListener('DOMContentLoaded', initMenus);
