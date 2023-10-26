@@ -65,6 +65,12 @@
     <script
       defer
       type="module"
+      src="scripts/components/themeToggle.js"
+    ></script>
+
+    <script
+      defer
+      type="module"
       src="scripts/components/navMenu.js"
     ></script>
 
@@ -276,8 +282,17 @@
 
     <div class="footer-container">
       <footer class="wrapper">
-        <div class="footer-body">Footer</div>
-        <div class="footer-copyright">Copyright Info</div>
+        <div class="footer-content">
+          <div class="footer-row footer-row-1">
+            <theme-toggle></theme-toggle>
+            <div>
+              <span class="theme-toggle-label">Theme</span> <span>Theme</span>
+            </div>
+          </div>
+          <div class="footer-row footer-row-2">
+            <div class="footer-copyright">©2023 Austin Hagel</div>
+          </div>
+        </div>
       </footer>
     </div>
   </body>

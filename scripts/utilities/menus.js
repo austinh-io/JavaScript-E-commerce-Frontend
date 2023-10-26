@@ -58,7 +58,10 @@ function updateNavMenuOnScreenSizeChange() {
 }
 
 // --------- Themes ---------
-let themeToggle = undefined;
+const themeToggle = document.querySelector('theme-toggle');
+const themeLabel = document.querySelector('.theme-toggle-label');
+
+let themeToggleSwitch = undefined;
 let themeIconDark = undefined;
 let themeIconLight = undefined;
 
@@ -77,22 +80,27 @@ function setThemeLocalStorage(theme) {
 function setColorTheme(theme) {
   switch (theme) {
     case 'dark':
-      themeToggle.checked = false;
+      themeToggleSwitch.checked = false;
       themeIconDark.classList.add('active-theme');
       themeIconLight.classList.remove('active-theme');
       document.documentElement.setAttribute('data-theme', 'dark');
+      themeLabel.textContent = 'Dark';
       break;
     case 'light':
-      themeToggle.checked = true;
+      themeToggleSwitch.checked = true;
       themeIconDark.classList.remove('active-theme');
       themeIconLight.classList.add('active-theme');
       document.documentElement.setAttribute('data-theme', 'light');
+      themeLabel.textContent = 'Light';
+
       break;
     default:
-      themeToggle.checked = true;
+      themeToggleSwitch.checked = true;
       themeIconDark.classList.remove('active-theme');
       themeIconLight.classList.add('active-theme');
       document.documentElement.setAttribute('data-theme', 'light');
+      themeLabel.textContent = 'Light';
+
       break;
   }
   setThemeLocalStorage(theme);
@@ -131,6 +139,21 @@ function updateTheme() {
   if (localStorage.getItem('theme'))
     setColorTheme(localStorage.getItem('theme'));
   else setColorTheme(getColorThemePreference());
+}
+
+function initThemeMenu() {
+  themeToggleSwitch = themeToggle.shadowRoot.getElementById('theme-switch');
+
+  themeIconDark = themeToggle.shadowRoot.querySelector(
+    '.theme-toggle-icon-dark'
+  );
+  themeIconLight = themeToggle.shadowRoot.querySelector(
+    '.theme-toggle-icon-light'
+  );
+
+  themeToggleSwitch.addEventListener('click', handleThemeMenu);
+
+  updateTheme();
 }
 
 // --------- Cart ---------
@@ -220,16 +243,6 @@ function initCartMenu() {
       cartToggle.addEventListener('click', handleOpenCartMenu);
     }
   }
-}
-
-function initThemeMenu() {
-  themeToggle = navMenu.shadowRoot.getElementById('theme-switch');
-  themeIconDark = navMenu.shadowRoot.querySelector('.theme-toggle-icon-dark');
-  themeIconLight = navMenu.shadowRoot.querySelector('.theme-toggle-icon-light');
-
-  themeToggle.addEventListener('click', handleThemeMenu);
-
-  updateTheme();
 }
 
 function initMenus() {
