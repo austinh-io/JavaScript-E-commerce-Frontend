@@ -41,6 +41,8 @@ const tpl_storeCartCSS = `
     
       background-color: var(--color-bg-trans);
       backdrop-filter: blur(50px);
+
+      z-index: 1;
     }
     
     .cart-menu-header {
@@ -164,6 +166,19 @@ const tpl_storeCartCSS = `
     ::-webkit-scrollbar-thumb {
       background-color: var(--color-accent);
     }
+
+    /* ------- Overlay -------*/
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: black;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease-out;
+    }
 </style>
 `;
 
@@ -201,6 +216,8 @@ ${tpl_storeCartCSS}
       </a>
     </div>
   </div>
+
+  <div class="overlay"></div>
 `;
 
 class storeCart extends HTMLElement {
@@ -216,6 +233,7 @@ class storeCart extends HTMLElement {
 
     this.cartItems = shadow.querySelector('.cart-items');
     this.subtotalLabel = shadow.querySelector('.total-cost-value');
+    this.overlay = shadow.querySelector('.overlay');
   }
 
   addCartItem = (cartItem) => {
@@ -235,6 +253,7 @@ class storeCart extends HTMLElement {
 
   connectedCallback() {
     this.cartMenuCloseButton.addEventListener('click', handleCloseCartMenu);
+    this.overlay.addEventListener('click', handleCloseCartMenu);
 
     const cartItemsSlot = this.shadowRoot.querySelector('.cart-items slot');
 

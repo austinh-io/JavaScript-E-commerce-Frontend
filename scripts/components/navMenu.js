@@ -115,14 +115,15 @@ const tpl_navMenuCSS = `
       justify-content: center;
     
       background-color: var(--color-font);
-      outline: 0.15rem solid var(--color-font);
+      outline: 0.1rem solid var(--color-font);
+      padding: 0.1rem;
       color: var(--color-fg);
       font-family: var(--font-body);
       font-weight: 600;
       font-size: 0.9rem;
     
-      width: 0.8rem;
-      height: 0.8rem;
+      width: 1rem;
+      height: 1rem;
     
       border-radius: 50%;
     }

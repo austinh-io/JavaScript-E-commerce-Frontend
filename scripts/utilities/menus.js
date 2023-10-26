@@ -2,6 +2,8 @@ import { storeCartMenu } from '../utilities/cartUtilities.js';
 
 ('use strict');
 
+const docBody = document.querySelector('body');
+
 const navMenu = document.querySelector('nav-menu');
 
 // ---------- Filter Menu ---------- //
@@ -142,21 +144,29 @@ let cartToggles = undefined;
 export function handleOpenCartMenu() {
   const _cartMenu = storeCartMenu.shadowRoot.querySelector('.cart-menu');
   const visibility = _cartMenu.getAttribute('data-visible');
+  const overlay = storeCartMenu.shadowRoot.querySelector('.overlay');
 
   if (visibility === 'false') {
     _cartMenu.setAttribute('data-visible', 'true');
+    overlay.style.opacity = '0.8';
+    overlay.style.pointerEvents = 'auto';
+    docBody.style.overflow = 'hidden';
 
     for (let cartToggle of cartToggles)
       cartToggle.setAttribute('aria-expanded', 'true');
   }
 }
 
-export function handleCloseCartMenu(e) {
-  const _cartMenu = e.target.closest('#cart-menu');
+export function handleCloseCartMenu() {
+  const _cartMenu = storeCartMenu.shadowRoot.querySelector('.cart-menu');
   const visibility = _cartMenu.getAttribute('data-visible');
+  const overlay = storeCartMenu.shadowRoot.querySelector('.overlay');
 
   if (visibility === 'true') {
     _cartMenu.setAttribute('data-visible', 'false');
+    overlay.style.opacity = '0';
+    overlay.style.pointerEvents = 'none';
+    docBody.style.overflow = 'auto';
 
     for (let cartToggle of cartToggles)
       cartToggle.setAttribute('aria-expanded', 'false');
