@@ -55,6 +55,12 @@ export function updateCart() {
     setCartLocalStorage();
     updateCartItemsButtons();
   }
+
+  if (cartItems.length <= 0) {
+    storeCartMenu.disableCheckoutButton();
+  } else {
+    storeCartMenu.enableCheckoutButton();
+  }
 }
 
 /**

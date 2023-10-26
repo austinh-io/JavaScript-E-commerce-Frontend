@@ -114,11 +114,6 @@ const tpl_storeCartCSS = `
     }
     
     a.btn-checkout {
-      text-decoration: none;
-    }
-    
-    button.btn-checkout,
-    a.btn-checkout {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -134,23 +129,36 @@ const tpl_storeCartCSS = `
       background-color: var(--color-font);
       color: var(--color-fg);
     }
+
+    a.btn-checkout svg {
+      stroke: var(--color-fg);
+      margin-left: 0.6rem;
+    }
     
-    button.btn-checkout:hover,
     a.btn-checkout:hover {
       background-color: var(--color-fg);
       color: var(--color-font);
       outline: 5px solid var(--color-accent);
-
-      .checkout-icon svg {
-        stroke: var(--color-font);
-      }
     }
-    
-    .checkout-icon svg {
-      font-weight: 700;
-      font-size: 1.4rem;
-      margin-left: 0.6rem;
-      stroke: var(--color-fg);
+
+    a.btn-checkout:hover svg {
+      stroke: var(--color-font);
+    }
+
+    a.btn-checkout.disabled {
+      background-color: var(--color-disabled);
+      color: var(--color-disabled-text);
+      cursor: default;
+    }
+
+    a.btn-checkout.disabled svg {
+      stroke: var(--color-disabled-text);
+    }
+
+    a.btn-checkout.disabled:hover {
+      background-color: var(--color-disabled);
+      color: var(--color-disabled-text);
+      outline: none;
     }
 
     /* ------- Scrollbar -------*/
@@ -211,8 +219,10 @@ ${tpl_storeCartCSS}
         class="btn-checkout no-hover-effect "
         href="checkout.html"
       >
-        Checkout
-        <j-symbol class="checkout-icon" name="shopping-bag-check"></j-symbol>
+        <span class="btn-checkout-label">Checkout</span>
+        <span class="btn-checkout-icon">
+          <j-symbol class="checkout-icon" name="shopping-bag-check"></j-symbol>
+        </span>        
       </a>
     </div>
   </div>
@@ -234,6 +244,9 @@ class storeCart extends HTMLElement {
     this.cartItems = shadow.querySelector('.cart-items');
     this.subtotalLabel = shadow.querySelector('.total-cost-value');
     this.overlay = shadow.querySelector('.overlay');
+    this.checkoutButton = shadow.querySelector('.btn-checkout');
+    this.checkoutButtonLabel = shadow.querySelector('.btn-checkout-label');
+    this.checkoutButtonIcon = shadow.querySelector('.btn-checkout-icon');
   }
 
   addCartItem = (cartItem) => {
@@ -250,6 +263,32 @@ class storeCart extends HTMLElement {
   updateSubtotal = (subTotal) => {
     this.subtotalLabel.textContent = formatCurrency(subTotal);
   };
+
+  preventClick(event) {
+    event.preventDefault();
+  }
+
+  disableCheckoutButton() {
+    console.log('disable CheckoutButton');
+
+    console.log(this.checkoutButton);
+
+    this.checkoutButton.classList.add('disabled');
+    this.checkoutButtonLabel.textContent = 'Cart is Empty';
+    this.checkoutButtonIcon.innerHTML =
+      '<j-symbol name="shopping-bag-issue"></j-symbol>';
+    this.checkoutButton.addEventListener('click', this.preventClick);
+  }
+
+  enableCheckoutButton() {
+    console.log('enable CheckoutButton');
+
+    this.checkoutButton.classList.remove('disabled');
+    this.checkoutButtonLabel.textContent = 'Checkout';
+    this.checkoutButtonIcon.innerHTML =
+      '<j-symbol name="shopping-bag-check"></j-symbol>';
+    this.checkoutButton.removeEventListener('click', this.preventClick);
+  }
 
   connectedCallback() {
     this.cartMenuCloseButton.addEventListener('click', handleCloseCartMenu);
