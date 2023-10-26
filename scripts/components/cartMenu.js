@@ -15,7 +15,7 @@ const tpl_storeCart = document.createElement('template');
  */
 const tpl_storeCartCSS = `
 <style>
-    @import url(${baseUrl}/css/shared.css);
+    @import url(${baseUrl}/css/main.css);
 
     :host {
       /*Uncomment the height below if you want all cards to be the same height, as they currently
@@ -25,7 +25,7 @@ const tpl_storeCartCSS = `
       /*height: 100%;*/
       /*width: 100%;*/
 
-      z-index: 900;
+      z-index: 910;
     }
 
     .cart-menu {

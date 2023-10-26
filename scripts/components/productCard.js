@@ -25,7 +25,7 @@ const tpl_catalogProductCard = document.createElement('template');
  */
 const tpl_catalogProductCSS = `
 <style>
-    @import url(${baseUrl}/css/shared.css);
+    @import url(${baseUrl}/css/main.css);
 
     @media (max-width: 768px) {
       div.product {
@@ -53,7 +53,6 @@ const tpl_catalogProductCSS = `
       width: 100%;
       max-width: 30rem;
 
-      overflow: hidden;
       border-radius: 3pt;
     }
 
@@ -274,16 +273,19 @@ const tpl_catalogProductCSS = `
       border-radius: 2pt;
       width: 200px;
 
-      transition: background-color 0.2s ease-out;
+      outline: 0 solid rgba(0, 0, 0, 0);
+
+
+      transition: all 0.2s ease-out;
     }
 
     .select:hover {
       cursor: pointer;
-      background-color: var(--color-accent);
+      outline: 3px solid var(--color-accent);
     }
 
     .select:focus {
-      background-color: var(--color-accent);
+      outline: 3px solid var(--color-accent);
     }
 
     .select-arrow svg {

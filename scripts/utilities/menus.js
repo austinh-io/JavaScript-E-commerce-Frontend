@@ -76,16 +76,19 @@ function setThemeLocalStorage(theme) {
 function setColorTheme(theme) {
   switch (theme) {
     case 'dark':
+      themeToggle.checked = false;
       themeIconDark.classList.add('active-theme');
       themeIconLight.classList.remove('active-theme');
       document.documentElement.setAttribute('data-theme', 'dark');
       break;
     case 'light':
+      themeToggle.checked = true;
       themeIconDark.classList.remove('active-theme');
       themeIconLight.classList.add('active-theme');
       document.documentElement.setAttribute('data-theme', 'light');
       break;
     default:
+      themeToggle.checked = true;
       themeIconDark.classList.remove('active-theme');
       themeIconLight.classList.add('active-theme');
       document.documentElement.setAttribute('data-theme', 'light');

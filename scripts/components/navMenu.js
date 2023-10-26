@@ -20,7 +20,7 @@ const tpl_navMenu = document.createElement('template');
  */
 const tpl_navMenuCSS = `
   <style>
-    @import url(${baseUrl}/css/shared.css);
+    @import url(${baseUrl}/css/main.css);
 
     :host {
       /*Uncomment the height below if you want all cards to be the same height, as they currently
@@ -93,7 +93,7 @@ const tpl_navMenuCSS = `
 
     .cart-menu-toggle:hover .cart-icon-counter{
       background-color: var(--color-accent);
-      border-color: var(--color-accent);
+      outline-color: var(--color-accent);
       color: var(--color-font);
     }
 
@@ -107,15 +107,15 @@ const tpl_navMenuCSS = `
     
     .cart-icon-counter {
       position: absolute;
-      bottom: 0;
-      right: -4px;
+      bottom: 2px;
+      right: -2px;
     
       display: flex;
       align-items: center;
       justify-content: center;
     
       background-color: var(--color-font);
-      border: 4px solid var(--color-font);
+      outline: 0.15rem solid var(--color-font);
       color: var(--color-fg);
       font-family: var(--font-body);
       font-weight: 600;
@@ -124,7 +124,7 @@ const tpl_navMenuCSS = `
       width: 0.8rem;
       height: 0.8rem;
     
-      border-radius: 100pt;
+      border-radius: 50%;
     }
     
     /* -- Logo/Business Name -- */

@@ -21,7 +21,7 @@ const tpl_cartitemCard = document.createElement('template');
  */
 const tpl_cartItemCardCSS = `
 <style>
-    @import url(${baseUrl}/css/shared.css);
+    @import url(${baseUrl}/css/main.css);
 
     :host {
       /*Uncomment the height below if you want all cards to be the same height, as they currently
