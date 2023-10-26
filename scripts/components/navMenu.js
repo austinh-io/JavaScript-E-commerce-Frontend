@@ -71,7 +71,7 @@ const tpl_navMenuCSS = `
       position: relative;
       display: flex;
       align-items: center;
-      gap: 1.2rem;
+      gap: 2rem;
     }
     
     .cart-menu-toggle {
@@ -134,8 +134,6 @@ const tpl_navMenuCSS = `
       display: flex;
       align-items: center;
       justify-content: center;
-    
-      margin-right: auto;
     
       cursor: pointer;
     }
