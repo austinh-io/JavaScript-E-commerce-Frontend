@@ -111,24 +111,23 @@ const tpl_navMenuCSS = `
     }
     
     .cart-icon-counter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       position: absolute;
       bottom: 2px;
       right: -2px;
     
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    
       background-color: var(--color-font);
-      outline: 0.1rem solid var(--color-font);
-      padding: 0.1rem;
+      padding: 2px;
       color: var(--color-fg);
       font-family: var(--font-body);
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     
-      width: 1rem;
-      height: 1rem;
+      width: 1.1rem;
+      height: 1.1rem;
     
       border-radius: 50%;
     }
@@ -212,7 +211,7 @@ tpl_navMenu.innerHTML = `
           >
             <div class="cart-icon-container">
               <j-symbol name="shopping-bag"></j-symbol>
-              <span class="cart-icon-counter hidden"></span>
+              <div class="cart-icon-counter hidden"></div>
             </div>
           </button>
         </div>

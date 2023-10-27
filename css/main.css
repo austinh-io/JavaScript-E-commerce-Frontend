@@ -80,6 +80,22 @@ a.no-hover-effect:hover::after {
   width: 0;
 }
 
+svg {
+  stroke-width: 2;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+main .wrapper {
+  width: 100%;
+}
+
 /* ------- Scrollbar -------*/
 
 ::-webkit-scrollbar {
@@ -113,9 +129,7 @@ a.no-hover-effect:hover::after {
   max-width: 1920px;
 }
 
-svg {
-  stroke-width: 2;
-}
+
 
 div.nav-logo-container svg {
   stroke-width: 0;

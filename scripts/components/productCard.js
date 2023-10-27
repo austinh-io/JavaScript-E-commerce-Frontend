@@ -56,13 +56,15 @@ const tpl_catalogProductCSS = `
       border-radius: 3pt;
     }
 
-    .product-image-container {
+    a.product-image-container {
       overflow: hidden;
       aspect-ratio: 5/3;
       height: 100%;
       width: 100%;
 
       border-radius: 3pt;
+
+      padding: 0;
 
       background-repeat: no-repeat;
       display: block;
@@ -640,6 +642,9 @@ class catalogProduct extends HTMLElement {
       '.product-image-container'
     );
     const productImage = targetElement.querySelector('.product-image');
+    const productImageSource = targetElement.querySelector(
+      '#product-image-source'
+    );
     const productTitle = targetElement.querySelector('.product-title a');
     const productPrice = targetElement.querySelector('.product-price-value');
     const productButton = targetElement.querySelector('.button-product');
@@ -662,6 +667,7 @@ class catalogProduct extends HTMLElement {
     let productUrl = `productPage.html?productid=${targetProduct.productId}&optionid=${targetProductOption.optionId}`;
 
     productImage.src = `${baseUrl}/assets/images/productImages/small/${targetProductOption.imageName}_small.webp `;
+    productImageSource.srcset = `${baseUrl}/assets/images/productImages/small/${targetProductOption.imageName}_small.webp `;
     productTitle.setAttribute('href', productUrl);
     productPrice.textContent = formatCurrency(targetProductOption.price);
     productButton.dataset.productid = productId;
