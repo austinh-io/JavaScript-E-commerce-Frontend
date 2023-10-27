@@ -54,6 +54,7 @@ async function initializePage() {
   addToCartButton.setAttribute('data-productid', productId);
   addToCartButton.setAttribute('data-optionid', optionId);
 
+  document.title = `${product.title} | ${product.brand}`;
   productTitleElement.innerText = product.title;
   productBrandElement.innerText = product.brand;
   productDescriptionElement.innerText = product.description;
