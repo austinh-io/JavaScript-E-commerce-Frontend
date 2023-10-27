@@ -187,6 +187,30 @@ const tpl_storeCartCSS = `
       pointer-events: none;
       transition: opacity 0.2s ease-out;
     }
+
+    .empty-cart-message {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      gap: 2rem;
+
+      font-size: 2rem;
+      color: var(--color-disabled-text);
+
+      height: 100%;
+      width: 100%;
+
+      cursor: default;
+    }
+
+    .empty-cart-message svg {
+      stroke: var(--color-disabled-text);
+      width: 6rem;
+      height: 6rem;
+      stroke-width: 0.08rem;
+    }
 </style>
 `;
 
@@ -207,6 +231,12 @@ ${tpl_storeCartCSS}
     <div class="cart-items">
       <!-- Cart Items -->
       <slot></slot>
+
+      <div class="empty-cart-message">
+        <div><j-symbol name="info-empty"></j-symbol></div>
+        <div>Your cart is empty.</div>        
+      </div>
+
     </div>
     <div class="cart-display-footer">
       <div class="subtotal-container">
@@ -242,11 +272,13 @@ class storeCart extends HTMLElement {
     );
 
     this.cartItems = shadow.querySelector('.cart-items');
+    this.subtotalContainer = shadow.querySelector('.subtotal-container');
     this.subtotalLabel = shadow.querySelector('.total-cost-value');
     this.overlay = shadow.querySelector('.overlay');
     this.checkoutButton = shadow.querySelector('.btn-checkout');
     this.checkoutButtonLabel = shadow.querySelector('.btn-checkout-label');
     this.checkoutButtonIcon = shadow.querySelector('.btn-checkout-icon');
+    this.emptyMessage = shadow.querySelector('.empty-cart-message');
   }
 
   addCartItem = (cartItem) => {
@@ -264,30 +296,27 @@ class storeCart extends HTMLElement {
     this.subtotalLabel.textContent = formatCurrency(subTotal);
   };
 
-  preventClick(event) {
+  preventDefault(event) {
     event.preventDefault();
   }
 
   disableCheckoutButton() {
-    console.log('disable CheckoutButton');
-
-    console.log(this.checkoutButton);
-
-    this.checkoutButton.classList.add('disabled');
-    this.checkoutButtonLabel.textContent = 'Cart is Empty';
-    this.checkoutButtonIcon.innerHTML =
-      '<j-symbol name="shopping-bag-issue"></j-symbol>';
-    this.checkoutButton.addEventListener('click', this.preventClick);
+    this.checkoutButtonLabel.textContent = 'Close';
+    this.checkoutButtonIcon.innerHTML = '';
+    this.checkoutButton.addEventListener('click', handleCloseCartMenu);
+    this.checkoutButton.addEventListener('click', this.preventDefault);
+    this.emptyMessage.classList.remove('hidden');
+    this.subtotalContainer.classList.add('hidden');
   }
 
   enableCheckoutButton() {
-    console.log('enable CheckoutButton');
-
-    this.checkoutButton.classList.remove('disabled');
     this.checkoutButtonLabel.textContent = 'Checkout';
     this.checkoutButtonIcon.innerHTML =
       '<j-symbol name="shopping-bag-check"></j-symbol>';
-    this.checkoutButton.removeEventListener('click', this.preventClick);
+    this.checkoutButton.removeEventListener('click', this.preventDefault);
+    this.checkoutButton.removeEventListener('click', handleCloseCartMenu);
+    this.emptyMessage.classList.add('hidden');
+    this.subtotalContainer.classList.remove('hidden');
   }
 
   connectedCallback() {

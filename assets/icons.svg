@@ -144,5 +144,9 @@
 
   <symbol id="nav-arrow-left" viewBox="0 0 24 24">    
    <path stroke-linecap="round" stroke-linejoin="round" d="m15 6-6 6 6 6"></path>
-  </symbol>  
+  </symbol>
+
+  <symbol id="info-empty" viewBox="0 0 24 24">    
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 11.5v5M12 7.51l.01-.011M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z"></path>
+  </symbol>
 </svg>
