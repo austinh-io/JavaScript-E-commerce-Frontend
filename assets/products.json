@@ -9,39 +9,57 @@
     "options": [
       {
         "optionId": 0,
-        "optionStyle": "White",
-        "optionSize": "S",
         "price": 34.95,
         "inStock": 10,
         "imageName": "item0-0",
-        "optionVisual": {
-          "type": "image",
-          "value": "option_bg_02"
-        },
         "attributes": [
           {
             "name": "Color",
+            "type": "radio",
             "value": "White",
-            "type": "radio"
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
           },
           {
             "name": "Size",
-            "value": "Small",
-            "type": "select"
+            "type": "select",
+            "value": "Small"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
           }
         ]
       },
       {
         "optionId": 1,
-        "optionStyle": "White",
-        "optionSize": "M",
         "price": 34.95,
         "inStock": 0,
         "imageName": "item0-0",
-        "optionVisual": {
-          "type": "image",
-          "value": "option_bg_02"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "White",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Medium"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 2,
@@ -50,118 +68,270 @@
         "price": 34.95,
         "inStock": 9,
         "imageName": "item0-0",
-        "optionVisual": {
-          "type": "image",
-          "value": "option_bg_02"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "White",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Large"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
-        "optionId": 21,
-        "optionStyle": "White",
-        "optionSize": "XL",
+        "optionId": 57,
         "price": 84.95,
         "inStock": 9,
         "imageName": "item0-0",
-        "optionVisual": {
-          "type": "image",
-          "value": "option_bg_02"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "White",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Extra Large"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 3,
-        "optionStyle": "Black",
-        "optionSize": "XS",
         "price": 44.95,
         "inStock": 4,
         "imageName": "item1-0",
-        "optionVisual": {
-          "type": "image",
-          "value": "option_bg_07"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Black",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_07"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Extra Small"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 4,
-        "optionStyle": "Black",
-        "optionSize": "S",
         "price": 34.95,
         "inStock": 1,
         "imageName": "item1-0",
-        "optionVisual": {
-          "type": "image",
-          "value": "option_bg_07"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Black",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_07"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Small"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 6,
-        "optionStyle": "Red",
-        "optionSize": "S",
         "price": 34.95,
         "inStock": 10,
         "imageName": "item2-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#da627d"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Red",
+            "radioVisual": {
+              "type": "color",
+              "value": "#da627d"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Small"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 7,
-        "optionStyle": "Red",
-        "optionSize": "M",
         "price": 34.95,
         "inStock": 10,
         "imageName": "item2-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#da627d"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Red",
+            "radioVisual": {
+              "type": "color",
+              "value": "#da627d"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Medium"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 8,
-        "optionStyle": "Red",
-        "optionSize": "L",
         "price": 34.95,
         "inStock": 10,
         "imageName": "item2-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#da627d"
-        }
+        "attributes": [
+          {
+            "name": "Red",
+            "type": "radio",
+            "value": "White",
+            "radioVisual": {
+              "type": "color",
+              "value": "#da627d"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Large"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 9,
-        "optionStyle": "Blue",
-        "optionSize": "S",
         "price": 34.95,
         "inStock": 10,
         "imageName": "item3-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#9a348e"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Blue",
+            "radioVisual": {
+              "type": "color",
+              "value": "#9a348e"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Small"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 10,
-        "optionStyle": "Blue",
-        "optionSize": "M",
         "price": 34.95,
         "inStock": 10,
         "imageName": "item3-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#9a348e"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Blue",
+            "radioVisual": {
+              "type": "color",
+              "value": "#9a348e"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Medium"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 11,
-        "optionStyle": "Blue",
-        "optionSize": "L",
         "price": 34.95,
         "inStock": 10,
         "imageName": "item3-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#9a348e"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Blue",
+            "radioVisual": {
+              "type": "color",
+              "value": "#9a348e"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Large"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       }
     ]
   },
@@ -175,159 +345,354 @@
     "options": [
       {
         "optionId": 1000,
-        "optionStyle": "White",
-        "optionSize": "XS",
         "price": 24.95,
         "inStock": 10,
         "imageName": "item20-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#ffbe0b"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "White",
+            "radioVisual": {
+              "type": "color",
+              "value": "#ffbe0b"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Extra Small"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 0,
-        "optionStyle": "White",
-        "optionSize": "S",
         "price": 24.95,
         "inStock": 10,
         "imageName": "item20-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#ffbe0b"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "White",
+            "radioVisual": {
+              "type": "color",
+              "value": "#ffbe0b"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Small"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 1,
-        "optionStyle": "White",
-        "optionSize": "M",
         "price": 24.95,
         "inStock": 10,
         "imageName": "item20-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#ffbe0b"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "White",
+            "radioVisual": {
+              "type": "color",
+              "value": "#ffbe0b"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Medium"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 2,
-        "optionStyle": "White",
-        "optionSize": "L",
         "price": 24.95,
         "inStock": 10,
         "imageName": "item20-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#ffbe0b"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "White",
+            "radioVisual": {
+              "type": "color",
+              "value": "#ffbe0b"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Large"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 3,
-        "optionStyle": "Black",
-        "optionSize": "S",
         "price": 24.95,
         "inStock": 10,
         "imageName": "item5-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#ff006e"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Black",
+            "radioVisual": {
+              "type": "color",
+              "value": "#ff006e"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Small"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 4,
-        "optionStyle": "Black",
-        "optionSize": "M",
         "price": 24.95,
         "inStock": 10,
         "imageName": "item5-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#ff006e"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Black",
+            "radioVisual": {
+              "type": "color",
+              "value": "#ff006e"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Medium"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 5,
-        "optionStyle": "Black",
-        "optionSize": "L",
         "price": 24.95,
         "inStock": 10,
         "imageName": "item5-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#ff006e"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Black",
+            "radioVisual": {
+              "type": "color",
+              "value": "#ff006e"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Large"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 6,
-        "optionStyle": "Red",
-        "optionSize": "S",
         "price": 24.95,
         "inStock": 10,
         "imageName": "item6-0",
-        "optionVisual": {
-          "type": "image",
-          "value": "option_bg_06"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Red",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_06"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Small"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 7,
-        "optionStyle": "Red",
-        "optionSize": "M",
         "price": 24.95,
         "inStock": 10,
         "imageName": "item6-0",
-        "optionVisual": {
-          "type": "image",
-          "value": "option_bg_06"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Red",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_06"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Medium"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 8,
-        "optionStyle": "Red",
-        "optionSize": "L",
         "price": 24.95,
         "inStock": 10,
         "imageName": "item6-0",
-        "optionVisual": {
-          "type": "image",
-          "value": "option_bg_06"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Red",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_06"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Large"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 9,
-        "optionStyle": "Blue",
-        "optionSize": "S",
         "price": 24.95,
         "inStock": 10,
         "imageName": "item7-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#3a86ff"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Blue",
+            "radioVisual": {
+              "type": "color",
+              "value": "#3a86ff"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Small"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 10,
-        "optionStyle": "Blue",
-        "optionSize": "M",
         "price": 24.95,
         "inStock": 10,
         "imageName": "item7-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#3a86ff"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Blue",
+            "radioVisual": {
+              "type": "color",
+              "value": "#3a86ff"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Medium"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 11,
-        "optionStyle": "Blue",
-        "optionSize": "L",
         "price": 24.95,
         "inStock": 10,
         "imageName": "item7-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#3a86ff"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Blue",
+            "radioVisual": {
+              "type": "color",
+              "value": "#3a86ff"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Large"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       }
     ]
   },
@@ -341,87 +706,192 @@
     "options": [
       {
         "optionId": 0,
-        "optionStyle": "White",
-        "optionSize": "S",
         "price": 24.95,
         "inStock": 0,
         "imageName": "item8-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#2a9d8f"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "White",
+            "radioVisual": {
+              "type": "color",
+              "value": "#2a9d8f"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Small"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 2,
-        "optionStyle": "White",
-        "optionSize": "L",
         "price": 24.95,
         "inStock": 10,
         "imageName": "item8-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#2a9d8f"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "White",
+            "radioVisual": {
+              "type": "color",
+              "value": "#2a9d8f"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Large"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 6,
-        "optionStyle": "Red",
-        "optionSize": "S",
         "price": 24.95,
         "inStock": 2,
         "imageName": "item9-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#e9c46a"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Red",
+            "radioVisual": {
+              "type": "color",
+              "value": "#e9c46a"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Small"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 7,
-        "optionStyle": "Red",
-        "optionSize": "M",
         "price": 24.95,
         "inStock": 10,
         "imageName": "item9-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#e9c46a"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Red",
+            "radioVisual": {
+              "type": "color",
+              "value": "#e9c46a"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Medium"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 8,
-        "optionStyle": "Velvet",
-        "optionSize": "XS",
         "price": 24.95,
         "inStock": 10,
         "imageName": "item14-0",
-        "optionVisual": {
-          "type": "image",
-          "value": "option_bg_01"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Velvet",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_01"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Extra Small"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 9,
-        "optionStyle": "Velvet",
-        "optionSize": "S",
         "price": 24.95,
         "inStock": 10,
         "imageName": "item14-0",
-        "optionVisual": {
-          "type": "image",
-          "value": "option_bg_01"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Velvet",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_01"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Small"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 10,
-        "optionStyle": "Velvet",
-        "optionSize": "M",
         "price": 24.95,
         "inStock": 10,
         "imageName": "item14-0",
-        "optionVisual": {
-          "type": "image",
-          "value": "option_bg_01"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "Velvet",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_01"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Medium"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       }
     ]
   },
@@ -435,27 +905,61 @@
     "options": [
       {
         "optionId": 0,
-        "optionStyle": "White",
-        "optionSize": "S",
         "price": 24.95,
         "inStock": 0,
         "imageName": "item10-0",
-        "optionVisual": {
+        "radioVisual": {
           "type": "color",
           "value": "#f9dbbd"
-        }
+        },
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "White",
+            "radioVisual": {
+              "type": "color",
+              "value": "#f9dbbd"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Small"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 2,
-        "optionStyle": "White",
-        "optionSize": "L",
         "price": 24.95,
         "inStock": 10,
         "imageName": "item11-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#f9dbbd"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "White",
+            "radioVisual": {
+              "type": "color",
+              "value": "#f9dbbd"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "Large"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       }
     ]
   },
@@ -469,27 +973,47 @@
     "options": [
       {
         "optionId": 0,
-        "optionStyle": "White",
-        "optionSize": "",
         "price": 4.95,
         "inStock": 0,
         "imageName": "item16-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#00f5d4"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "White",
+            "radioVisual": {
+              "type": "color",
+              "value": "#00f5d4"
+            }
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       },
       {
         "optionId": 2,
-        "optionStyle": "White",
-        "optionSize": "",
         "price": 27.95,
         "inStock": 10,
         "imageName": "item17-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#aeb8fe"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "White",
+            "radioVisual": {
+              "type": "color",
+              "value": "#aeb8fe"
+            }
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       }
     ]
   },
@@ -503,15 +1027,30 @@
     "options": [
       {
         "optionId": 0,
-        "optionStyle": "White",
-        "optionSize": "onesize",
         "price": 24.95,
         "inStock": 0,
         "imageName": "item19-0",
-        "optionVisual": {
-          "type": "color",
-          "value": "#00f5d4"
-        }
+        "attributes": [
+          {
+            "name": "Color",
+            "type": "radio",
+            "value": "White",
+            "radioVisual": {
+              "type": "color",
+              "value": "#00f5d4"
+            }
+          },
+          {
+            "name": "Size",
+            "type": "select",
+            "value": "One Size"
+          },
+          {
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       }
     ]
   }
