@@ -14,6 +14,8 @@ import {
 import { initializeProducts } from './catalog.js';
 ('use strict');
 
+import { handleOpenCartMenu } from '../utilities/menus.js';
+
 const productTitleElement = document.querySelector('.product-title');
 const productBrandElement = document.querySelector('.product-brand');
 const productDescriptionElement = document.querySelector(
@@ -61,6 +63,7 @@ async function initializePage() {
   productImageElement.src = `${baseUrl}/assets/images/productImages/small/${productOption.imageName}_small.webp`;
 
   addToCartButton.addEventListener('click', addToCart);
+  addToCartButton.addEventListener('click', handleOpenCartMenu);
   updateProductPageButton();
 }
 
