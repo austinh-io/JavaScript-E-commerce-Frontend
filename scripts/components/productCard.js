@@ -1,9 +1,3 @@
-/**
- * This module defines the template for a product card component, which displays information about a product
- * including its image, brand, title, description, and price. It also includes a button to add the product to the cart,
- * and allows the user to select options such as size and color. The component is designed to be used in an ecommerce site.
- * @module productCard
- */
 import {
   formatCurrency,
   findItem,
@@ -19,10 +13,6 @@ import { handleOpenCartMenu } from '../utilities/menus.js';
 
 const tpl_catalogProductCard = document.createElement('template');
 
-/**
- * CSS template string for the product card component.
- * @type {string}
- */
 const tpl_catalogProductCSS = `
 <style>
     @import url(${baseUrl}/css/main.css);
@@ -351,13 +341,6 @@ ${tpl_catalogProductCSS}
     </div>
 `;
 
-/**
- * Generates HTML for a single option field for a product card.
- *
- * @param {Object} product - The product object.
- * @param {Object} option - The option object.
- * @returns {string} - The HTML for the option field.
- */
 function cardOptionField(product, option) {
   let inputBackground = '';
   if (option.optionVisual.type == 'color') {
@@ -393,13 +376,6 @@ function cardOptionField(product, option) {
     `;
 }
 
-/**
- * Returns an array of product options that match the specified option's visual value.
- *
- * @param {Object} product - The product object to search for options in.
- * @param {Object} option - The option object to match visual values with.
- * @returns {Array} An array of product options that match the specified option's visual value.
- */
 function getOptionStyleSizes(product, option) {
   let optionStyleSizes = [];
 
@@ -414,25 +390,12 @@ function getOptionStyleSizes(product, option) {
   return optionStyleSizes;
 }
 
-/**
- * Generates an HTML option element for a product card's size selection dropdown.
- * @param {Object} option - The product size option object.
- * @param {string} option.optionSize - The size of the product option.
- * @param {number} option.optionId - The ID of the product option.
- * @returns {string} - The HTML option element as a string.
- */
 function cardOptionSelection(option) {
   return `
     <option value="${option.optionSize}" data-optionid=${option.optionId}>${option.optionSize}</option>
     `;
 }
 
-/**
- * Generates HTML for a group of product options, such as sizes or colors, in a select element.
- * @param {Object} product - The product object containing the option data.
- * @param {string} option - The name of the option to generate the select element for.
- * @returns {string} The HTML string for the select element.
- */
 function cardOptionSelectionGroup(product, option) {
   let optionSelections = '';
   const optionStyleSizes = getOptionStyleSizes(product, option);
@@ -461,12 +424,6 @@ function cardOptionSelectionGroup(product, option) {
     `;
 }
 
-/**
- * Returns an array of unique product options based on their style.
- *
- * @param {Object} product - The product object containing options.
- * @returns {Array} An array of unique product options based on their style.
- */
 function getUniqueOptionStyles(product) {
   const uniqueOptions = product.options.reduce((acc, option) => {
     const key = `${option.optionVisual.type}-${option.optionVisual.value}`;
@@ -479,13 +436,6 @@ function getUniqueOptionStyles(product) {
   return Object.values(uniqueOptions);
 }
 
-/**
- * Returns the HTML fieldset element containing the product options for a given product.
- *
- * @param {Array} productOptions - An array of product options.
- * @param {Object} product - The product object.
- * @returns {string} - The HTML fieldset element containing the product options.
- */
 function getProductFieldset(productOptions, product) {
   let cardOptionsFieldset = undefined;
 
@@ -511,11 +461,6 @@ function getProductFieldset(productOptions, product) {
   return cardOptionsFieldset;
 }
 
-/**
- * A custom element that represents a product card in the catalog.
- * @class
- * @extends HTMLElement
- */
 class catalogProduct extends HTMLElement {
   constructor() {
     super();
@@ -594,12 +539,6 @@ class catalogProduct extends HTMLElement {
     }
   }
 
-  /**
-   * Updates the text and disabled state of the "Add to Cart" button for a product card based on whether the item is already in the cart.
-   * @function
-   * @memberof ProductCard
-   * @returns {void}
-   */
   updateCatalogItemButton = () => {
     let productButton = undefined;
 
@@ -630,11 +569,6 @@ class catalogProduct extends HTMLElement {
     productButton.textContent = 'Item in Cart';
   };
 
-  /**
-   * Handles the change event for a product option select element.
-   * Updates the product image, title, price, button, and option set based on the selected option.
-   * @function
-   */
   handleProductOptionChange() {
     const targetElement = this.closest('.product');
 
@@ -702,11 +636,6 @@ class catalogProduct extends HTMLElement {
     }
   }
 
-  /**
-   * Called when the element is inserted into a document, including into a shadow tree.
-   * Attaches event listeners to the product button and product options.
-   * Updates the catalog item button.
-   */
   connectedCallback() {
     this.productButton.addEventListener('click', addToCart);
     this.productButton.addEventListener('click', handleOpenCartMenu);

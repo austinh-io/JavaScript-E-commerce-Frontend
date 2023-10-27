@@ -1,39 +1,19 @@
 import {
   catalogProducts,
   findItem,
-  formatCurrency,
 } from '/scripts/utilities/commerceUtilities.js';
 
 ('use strict');
 
-let catalogProductsButtons = undefined;
 export const storeCartMenu = document.querySelector('store-cart');
 export const navMenu = document.querySelector('nav-menu');
-// const cartIconCounters = document.getElementsByClassName('cart-icon-counter');
 
 export let cartItems = new Array();
 
-/**
- * Returns an array of catalog product buttons.
- *
- * @returns {Array} An array of catalog product buttons.
- */
-export function getCatalogProductButtons() {
-  return catalogProductsButtons;
-}
-
-/**
- * Sets the cart items to the provided array of items.
- * @param {Array} newItems - The new array of cart items.
- */
 export function setCartItems(newItems) {
   cartItems = newItems;
 }
 
-/**
- * Represents an item in the shopping cart.
- * @class
- */
 export class cartItem {
   constructor(id, productId, option, count, totalPrice, title) {
     this.id = id;
@@ -45,15 +25,13 @@ export class cartItem {
   }
 }
 
-/**
- * Updates the cart by updating the cart items count, cart subtotal, cart local storage, and cart items buttons.
- */
 export function updateCart() {
   if (cartItems) {
     updateCartItemsCount();
     updateCartSubtotal();
     setCartLocalStorage();
     updateCartItemsButtons();
+    updateProductPageButton();
   }
 
   if (cartItems.length <= 0) {
@@ -63,11 +41,30 @@ export function updateCart() {
   }
 }
 
-/**
- * Updates the event listeners for the cart item buttons.
- * @function
- * @returns {void}
- */
+export function updateProductPageButton() {
+  const productPageAddToCartButton = document.querySelector('.button-add');
+
+  if (productPageAddToCartButton) {
+    const productId = productPageAddToCartButton.dataset.productid;
+    const optionId = productPageAddToCartButton.dataset.optionid;
+    if (findItem(cartItems, productId, optionId)) {
+      disableCatalogItemButton(productPageAddToCartButton);
+    } else {
+      enableCatalogItemButton(productPageAddToCartButton);
+    }
+  }
+}
+
+function enableCatalogItemButton(productButton) {
+  productButton.disabled = false;
+  productButton.textContent = 'Add to Cart';
+}
+
+function disableCatalogItemButton(productButton) {
+  productButton.disabled = true;
+  productButton.textContent = 'Item in Cart';
+}
+
 export function updateCartItemsButtons() {
   let removeButtons = document.querySelectorAll('.button-cart.button-remove');
   let subtractButtons = document.querySelectorAll(
@@ -84,25 +81,16 @@ export function updateCartItemsButtons() {
   addButtons.forEach((button) => button.addEventListener('click', addToCart));
 }
 
-/**
- * Updates the cart items count and displays it in the cart icon.
- */
 export function updateCartItemsCount() {
   let totalItems = cartItems.reduce((sum, cur) => sum + cur.count, 0);
   navMenu.updateCartIconCounter(totalItems);
 }
 
-/**
- * Updates the cart subtotal by calculating the total cost of all items in the cart and displaying it on the page.
- */
 export function updateCartSubtotal() {
   let totalCost = cartItems.reduce((sum, cur) => sum + cur.totalPrice, 0);
   storeCartMenu.updateSubtotal(totalCost);
 }
 
-/**
- * Retrieves the cart items from local storage, or initializes an empty cart if none exists.
- */
 export function getCart() {
   if (!cartItems || !localStorage.getItem('localCart')) {
     cartItems = new Array();
@@ -112,30 +100,16 @@ export function getCart() {
   }
 }
 
-/**
- * Sets the cart items in local storage as a JSON string.
- * @function
- * @name setCartLocalStorage
- * @returns {void}
- */
 export function setCartLocalStorage() {
   localStorage.setItem('localCart', JSON.stringify(cartItems));
 }
 
-/**
- * Retrieves cart items from local storage and updates the cart.
- */
 export function getCartLocalStorage() {
   let localCartItems = localStorage.getItem('localCart');
   setCartItems(JSON.parse(localCartItems));
   updateCart();
 }
 
-/**
- * Fills the cart items list with the items in the cart.
- * @function
- * @returns {void}
- */
 export function fillCartList() {
   if (!cartItems) {
     getCart();
@@ -146,14 +120,11 @@ export function fillCartList() {
   updateCartItemsButtons();
 }
 
-/**
- * Adds a product to the cart.
- * @param {Event} event - The event object.
- */
 export function addToCart(event) {
   getCart();
 
   let eventTarget = event.target.closest('.button-add');
+
   let { productid: productId, optionid: optionId } = eventTarget.dataset;
 
   if (!productId) {
@@ -192,11 +163,6 @@ export function addToCart(event) {
   updateCart();
 }
 
-/**
- * Subtracts one item from the cart for the given product and option IDs.
- * If the item count becomes zero, it removes the item from the cart.
- * @param {Event} event - The click event that triggered the function.
- */
 export function subtractFromCart(event) {
   let targetButton = event.target.closest('.button-cart.button-subtract');
 
@@ -214,18 +180,9 @@ export function subtractFromCart(event) {
     }
   }
 
-  updateCart(); //Note: this function can be redundant since it is also called in removeFromCart() sometimes.
-  //If updateCart() begins to affect performance, then I should find a way to only call this only once as opposed to twice
-  //Or only update the UI elements that are necessary
-
-  //Double note: idk if the above is still valid, but I'm leaving it in for now
-  //A lot has changed since I moved towards a component and module based approach
+  updateCart();
 }
 
-/**
- * Updates the button of a catalog product with the given product ID.
- * @param {string} productId - The ID of the product to update the button for.
- */
 export function updateCatalogProductButton(productId) {
   const catalogProduct = document.querySelector(
     `catalog-product[productid="${productId}"]`
@@ -236,11 +193,6 @@ export function updateCatalogProductButton(productId) {
   }
 }
 
-/**
- * Removes a product from the cart and updates the cart UI.
- * @param {Event} event - The event object that triggered the function call.
- * @returns {void}
- */
 export function removeFromCart(event) {
   let productId = undefined;
   let optionId = undefined;

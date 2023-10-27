@@ -3,9 +3,13 @@ import {
   formatCurrency,
   catchProductList,
   catalogProducts,
+  baseUrl,
 } from '/scripts/utilities/commerceUtilities.js';
 
-import { baseUrl } from '../utilities/commerceUtilities.js';
+import {
+  addToCart,
+  updateProductPageButton,
+} from '../utilities/cartUtilities.js';
 
 import { initializeProducts } from './catalog.js';
 ('use strict');
@@ -16,9 +20,10 @@ const productDescriptionElement = document.querySelector(
   '.product-description'
 );
 const productSizeElement = document.querySelector('.product-size');
-const productStyleElement = document.querySelector('.product-style');
+const productStyleElement = document.querySelector('.selected-style');
 const productPriceElement = document.querySelector('.product-price');
 const productImageElement = document.querySelector('.product-image');
+const addToCartButton = document.querySelector('.btn-add-to-cart');
 
 function initProductImageLayout() {
   const imageOptionsContainer = document.querySelector(
@@ -44,6 +49,9 @@ async function initializePage() {
 
   const productOption = product.options.find((i) => i.optionId == optionId);
 
+  addToCartButton.setAttribute('data-productid', productId);
+  addToCartButton.setAttribute('data-optionid', optionId);
+
   productTitleElement.innerText = product.title;
   productBrandElement.innerText = product.brand;
   productDescriptionElement.innerText = product.description;
@@ -51,6 +59,9 @@ async function initializePage() {
   productStyleElement.innerText = productOption.optionStyle;
   productPriceElement.innerText = productOption.price;
   productImageElement.src = `${baseUrl}/assets/images/productImages/small/${productOption.imageName}_small.webp`;
+
+  addToCartButton.addEventListener('click', addToCart);
+  updateProductPageButton();
 }
 
 document.addEventListener('DOMContentLoaded', initializePage);
