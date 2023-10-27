@@ -1,0 +1,107 @@
+@import url(variables.css);
+
+body,
+html {
+  height: 100%;
+}
+
+.main-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin-inline: auto;
+}
+
+main .wrapper {
+  width: 100%;
+}
+
+.product-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  height: 100%;
+  width: 100%;
+}
+
+.product-image-container {
+  position: relative;
+  max-width: 100%;
+}
+
+.product-image {
+  height: auto;
+  max-width: 100%;
+  border-radius: 3pt;
+}
+
+.product-image-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
+.few-options {
+  justify-content: center;
+}
+
+.image-option {
+  flex: 0 1 auto;
+  aspect-ratio: 1;
+  max-height: 80px;
+  min-width: 50px;
+  background-color: rgba(158, 183, 230, 0.37);
+
+  transition: background-color 0.2s ease-in-out;
+}
+
+.image-option:hover {
+  cursor: pointer;
+  background-color: rgba(158, 183, 230, 0.616);
+}
+
+.product-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+  width: 38rem;
+
+  height: 100%;
+}
+
+.product-brand {
+  text-transform: uppercase;
+  font-weight: 100;
+  letter-spacing: 0.2ch;
+  font-size: 1.2rem;
+}
+
+.product-title {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.1ch;
+}
+
+.product-description {
+  margin-bottom: auto;
+}
+
+.product-price {
+  margin-block: auto;
+  font-weight: 500;
+  font-size: 1.2rem;
+}

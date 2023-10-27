@@ -5,6 +5,8 @@ import {
   catalogProducts,
 } from '/scripts/utilities/commerceUtilities.js';
 
+import { baseUrl } from '../utilities/commerceUtilities.js';
+
 import { initializeProducts } from './catalog.js';
 ('use strict');
 
@@ -18,19 +20,19 @@ const productStyleElement = document.querySelector('.product-style');
 const productPriceElement = document.querySelector('.product-price');
 const productImageElement = document.querySelector('.product-image');
 
-const baseUrl = '';
+function initProductImageLayout() {
+  const imageOptionsContainer = document.querySelector(
+    '.product-image-options'
+  );
+  const imageOptions = document.querySelectorAll('.image-option');
 
-/**
- * Fetches the product list from the server and stores it in the `products` array.
- * @returns {Promise<void>} A Promise that resolves when the product list has been fetched and stored.
- */
+  if (imageOptions.length < 5)
+    imageOptionsContainer.classList.add('few-options');
+}
 
-/**
- * Initializes the product page by fetching the product list, retrieving the product and option IDs from the URL, and updating the page with the product information.
- * @returns {Promise<void>}
- */
 async function initializePage() {
   await initializeProducts();
+  initProductImageLayout();
 
   const productId = new URLSearchParams(window.location.search).get(
     'productid'
