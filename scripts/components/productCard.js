@@ -326,7 +326,9 @@ ${tpl_catalogProductCSS}
           </div> 
 
           <div class="product-options-container"></div>
+
   
+          <selection-list></selection-list>
           <div class="product-price">
             <span class="product-price-value"></span>
           </div>

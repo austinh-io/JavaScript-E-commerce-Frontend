@@ -8,7 +8,7 @@
     "categories": ["T-Shirts", "Tops", "Womens"],
     "options": [
       {
-        "optionId": 69,
+        "optionId": 0,
         "optionStyle": "White",
         "optionSize": "S",
         "price": 34.95,
@@ -17,7 +17,19 @@
         "optionVisual": {
           "type": "image",
           "value": "option_bg_02"
-        }
+        },
+        "attributes": [
+          {
+            "name": "Color",
+            "value": "White",
+            "type": "radio"
+          },
+          {
+            "name": "Size",
+            "value": "Small",
+            "type": "select"
+          }
+        ]
       },
       {
         "optionId": 1,
