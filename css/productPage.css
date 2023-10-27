@@ -28,7 +28,7 @@ main .wrapper {
 .product-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 4rem;
   height: 100%;
   width: 100%;
@@ -59,9 +59,12 @@ main .wrapper {
 .image-option {
   flex: 0 1 auto;
   aspect-ratio: 1;
-  max-height: 80px;
+  max-height: 150px;
   min-width: 50px;
   background-color: rgba(158, 183, 230, 0.37);
+
+  border-radius: 3pt;
+  border: 1px solid var(--color-fg-trans);
 
   transition: background-color 0.2s ease-in-out;
 }
@@ -77,7 +80,6 @@ main .wrapper {
   align-items: flex-start;
   justify-content: center;
   gap: 1rem;
-  width: 38rem;
 
   height: 100%;
 }
@@ -98,6 +100,7 @@ main .wrapper {
 
 .product-description {
   margin-bottom: 2rem;
+  max-width: 75ch;
 }
 
 .product-price {
@@ -133,11 +136,12 @@ main .wrapper {
 
 .btn-add-to-cart-container {
   width: 100%;
+  max-width: 26rem;
   margin-top: auto;
 }
 
 .btn-add-to-cart {
-  padding-inline: 2rem;
+  padding-inline: 1.6rem;
   padding-block: 1.6rem;
   width: 100%;
 

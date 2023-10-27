@@ -179,6 +179,7 @@
   --color-bg: #0c1821;
   --color-bg-trans: #0c1821d8;
   --color-fg: #1e2836;
+  --color-fg-trans: #bac6d85d;
   --color-fg-alt: #667183;
   --color-font: #eaefff;
   --color-font-secondary: #ccd5d7;
@@ -198,6 +199,7 @@
   --color-bg: #e8eef1;
   --color-bg-trans: #e5f3ffbe;
   --color-fg: #fafcfd;
+  --color-fg-trans: #1e2c3f25;
   --color-fg-alt: #b6c1d1;
   --color-font: #282e33;
   --color-font-secondary: #626a6f;
