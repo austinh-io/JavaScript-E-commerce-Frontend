@@ -10,8 +10,8 @@
       {
         "optionId": 0,
         "price": 34.95,
-        "inStock": 10,
-        "imageName": "item0-0",
+        "quantity": 10,
+        "imageSet": ["item0-0"],
         "attributes": [
           {
             "name": "Color",
@@ -37,8 +37,8 @@
       {
         "optionId": 1,
         "price": 34.95,
-        "inStock": 0,
-        "imageName": "item0-0",
+        "quantity": 0,
+        "imageSet": ["item0-0"],
         "attributes": [
           {
             "name": "Color",
@@ -66,8 +66,8 @@
         "optionStyle": "White",
         "optionSize": "L",
         "price": 34.95,
-        "inStock": 9,
-        "imageName": "item0-0",
+        "quantity": 9,
+        "imageSet": ["item0-0"],
         "attributes": [
           {
             "name": "Color",
@@ -93,8 +93,8 @@
       {
         "optionId": 57,
         "price": 84.95,
-        "inStock": 9,
-        "imageName": "item0-0",
+        "quantity": 9,
+        "imageSet": ["item0-0"],
         "attributes": [
           {
             "name": "Color",
@@ -120,8 +120,8 @@
       {
         "optionId": 3,
         "price": 44.95,
-        "inStock": 4,
-        "imageName": "item1-0",
+        "quantity": 4,
+        "imageSet": ["item1-0"],
         "attributes": [
           {
             "name": "Color",
@@ -147,8 +147,8 @@
       {
         "optionId": 4,
         "price": 34.95,
-        "inStock": 1,
-        "imageName": "item1-0",
+        "quantity": 1,
+        "imageSet": ["item1-0"],
         "attributes": [
           {
             "name": "Color",
@@ -174,8 +174,8 @@
       {
         "optionId": 6,
         "price": 34.95,
-        "inStock": 10,
-        "imageName": "item2-0",
+        "quantity": 10,
+        "imageSet": ["item2-0"],
         "attributes": [
           {
             "name": "Color",
@@ -201,8 +201,8 @@
       {
         "optionId": 7,
         "price": 34.95,
-        "inStock": 10,
-        "imageName": "item2-0",
+        "quantity": 10,
+        "imageSet": ["item2-0"],
         "attributes": [
           {
             "name": "Color",
@@ -228,8 +228,8 @@
       {
         "optionId": 8,
         "price": 34.95,
-        "inStock": 10,
-        "imageName": "item2-0",
+        "quantity": 10,
+        "imageSet": ["item2-0"],
         "attributes": [
           {
             "name": "Red",
@@ -255,8 +255,8 @@
       {
         "optionId": 9,
         "price": 34.95,
-        "inStock": 10,
-        "imageName": "item3-0",
+        "quantity": 10,
+        "imageSet": ["item3-0"],
         "attributes": [
           {
             "name": "Color",
@@ -282,8 +282,8 @@
       {
         "optionId": 10,
         "price": 34.95,
-        "inStock": 10,
-        "imageName": "item3-0",
+        "quantity": 10,
+        "imageSet": ["item3-0"],
         "attributes": [
           {
             "name": "Color",
@@ -309,8 +309,8 @@
       {
         "optionId": 11,
         "price": 34.95,
-        "inStock": 10,
-        "imageName": "item3-0",
+        "quantity": 10,
+        "imageSet": ["item3-0"],
         "attributes": [
           {
             "name": "Color",
@@ -346,8 +346,8 @@
       {
         "optionId": 1000,
         "price": 24.95,
-        "inStock": 10,
-        "imageName": "item20-0",
+        "quantity": 10,
+        "imageSet": ["item20-0"],
         "attributes": [
           {
             "name": "Color",
@@ -373,8 +373,8 @@
       {
         "optionId": 0,
         "price": 24.95,
-        "inStock": 10,
-        "imageName": "item20-0",
+        "quantity": 10,
+        "imageSet": ["item20-1"],
         "attributes": [
           {
             "name": "Color",
@@ -400,8 +400,8 @@
       {
         "optionId": 1,
         "price": 24.95,
-        "inStock": 10,
-        "imageName": "item20-0",
+        "quantity": 10,
+        "imageSet": ["item20-2"],
         "attributes": [
           {
             "name": "Color",
@@ -427,8 +427,8 @@
       {
         "optionId": 2,
         "price": 24.95,
-        "inStock": 10,
-        "imageName": "item20-0",
+        "quantity": 10,
+        "imageSet": ["item20-3"],
         "attributes": [
           {
             "name": "Color",
@@ -454,8 +454,8 @@
       {
         "optionId": 3,
         "price": 24.95,
-        "inStock": 10,
-        "imageName": "item5-0",
+        "quantity": 10,
+        "imageSet": ["item5-0"],
         "attributes": [
           {
             "name": "Color",
@@ -481,8 +481,8 @@
       {
         "optionId": 4,
         "price": 24.95,
-        "inStock": 10,
-        "imageName": "item5-0",
+        "quantity": 10,
+        "imageSet": ["item5-0"],
         "attributes": [
           {
             "name": "Color",
@@ -508,8 +508,8 @@
       {
         "optionId": 5,
         "price": 24.95,
-        "inStock": 10,
-        "imageName": "item5-0",
+        "quantity": 10,
+        "imageSet": ["item5-0"],
         "attributes": [
           {
             "name": "Color",
@@ -535,8 +535,8 @@
       {
         "optionId": 6,
         "price": 24.95,
-        "inStock": 10,
-        "imageName": "item6-0",
+        "quantity": 10,
+        "imageSet": ["item6-0"],
         "attributes": [
           {
             "name": "Color",
@@ -562,8 +562,8 @@
       {
         "optionId": 7,
         "price": 24.95,
-        "inStock": 10,
-        "imageName": "item6-0",
+        "quantity": 10,
+        "imageSet": ["item6-0"],
         "attributes": [
           {
             "name": "Color",
@@ -589,8 +589,8 @@
       {
         "optionId": 8,
         "price": 24.95,
-        "inStock": 10,
-        "imageName": "item6-0",
+        "quantity": 10,
+        "imageSet": ["item6-0"],
         "attributes": [
           {
             "name": "Color",
@@ -616,8 +616,8 @@
       {
         "optionId": 9,
         "price": 24.95,
-        "inStock": 10,
-        "imageName": "item7-0",
+        "quantity": 10,
+        "imageSet": ["item7-0"],
         "attributes": [
           {
             "name": "Color",
@@ -643,8 +643,8 @@
       {
         "optionId": 10,
         "price": 24.95,
-        "inStock": 10,
-        "imageName": "item7-0",
+        "quantity": 10,
+        "imageSet": ["item7-0"],
         "attributes": [
           {
             "name": "Color",
@@ -670,8 +670,8 @@
       {
         "optionId": 11,
         "price": 24.95,
-        "inStock": 10,
-        "imageName": "item7-0",
+        "quantity": 10,
+        "imageSet": ["item7-0"],
         "attributes": [
           {
             "name": "Color",
@@ -707,8 +707,8 @@
       {
         "optionId": 0,
         "price": 24.95,
-        "inStock": 0,
-        "imageName": "item8-0",
+        "quantity": 0,
+        "imageSet": ["item8-0"],
         "attributes": [
           {
             "name": "Color",
@@ -734,8 +734,8 @@
       {
         "optionId": 2,
         "price": 24.95,
-        "inStock": 10,
-        "imageName": "item8-0",
+        "quantity": 10,
+        "imageSet": ["item8-0"],
         "attributes": [
           {
             "name": "Color",
@@ -761,8 +761,8 @@
       {
         "optionId": 6,
         "price": 24.95,
-        "inStock": 2,
-        "imageName": "item9-0",
+        "quantity": 2,
+        "imageSet": ["item9-0"],
         "attributes": [
           {
             "name": "Color",
@@ -788,8 +788,8 @@
       {
         "optionId": 7,
         "price": 24.95,
-        "inStock": 10,
-        "imageName": "item9-0",
+        "quantity": 10,
+        "imageSet": ["item9-0"],
         "attributes": [
           {
             "name": "Color",
@@ -815,8 +815,8 @@
       {
         "optionId": 8,
         "price": 24.95,
-        "inStock": 10,
-        "imageName": "item14-0",
+        "quantity": 10,
+        "imageSet": ["item14-2"],
         "attributes": [
           {
             "name": "Color",
@@ -842,8 +842,8 @@
       {
         "optionId": 9,
         "price": 24.95,
-        "inStock": 10,
-        "imageName": "item14-0",
+        "quantity": 10,
+        "imageSet": ["item14-1"],
         "attributes": [
           {
             "name": "Color",
@@ -869,8 +869,8 @@
       {
         "optionId": 10,
         "price": 24.95,
-        "inStock": 10,
-        "imageName": "item14-0",
+        "quantity": 10,
+        "imageSet": ["item14-0"],
         "attributes": [
           {
             "name": "Color",
@@ -906,8 +906,8 @@
       {
         "optionId": 0,
         "price": 24.95,
-        "inStock": 0,
-        "imageName": "item10-0",
+        "quantity": 0,
+        "imageSet": ["item10-0"],
         "radioVisual": {
           "type": "color",
           "value": "#f9dbbd"
@@ -937,8 +937,8 @@
       {
         "optionId": 2,
         "price": 24.95,
-        "inStock": 10,
-        "imageName": "item11-0",
+        "quantity": 10,
+        "imageSet": ["item11-0"],
         "attributes": [
           {
             "name": "Color",
@@ -974,8 +974,8 @@
       {
         "optionId": 0,
         "price": 4.95,
-        "inStock": 0,
-        "imageName": "item16-0",
+        "quantity": 0,
+        "imageSet": ["item16-0"],
         "attributes": [
           {
             "name": "Color",
@@ -996,8 +996,8 @@
       {
         "optionId": 2,
         "price": 27.95,
-        "inStock": 10,
-        "imageName": "item17-0",
+        "quantity": 10,
+        "imageSet": ["item17-"],
         "attributes": [
           {
             "name": "Color",
@@ -1028,8 +1028,8 @@
       {
         "optionId": 0,
         "price": 24.95,
-        "inStock": 0,
-        "imageName": "item19-0",
+        "quantity": 0,
+        "imageSet": ["item19-0"],
         "attributes": [
           {
             "name": "Color",
