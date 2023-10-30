@@ -32,6 +32,20 @@ class productOptionSet extends HTMLElement {
     shadow.append(clone);
 
     this.productId = this.getAttribute('productId');
+
+    //TODO
+    //1. Have this component figure out each unique attribute (by its name) of the product, and make a fieldset for each
+    // a. it will use the tpl_selectionList or tpl_radioFieldset based on if the attribute type is radio or select
+    //2. Each fieldset component will figure out the unique values for its type of attribute of the product
+    //3. Make a radio button/select option for each unique option of that same attribute type
+
+    /* Example:
+    Product A has 3 attributes: Color, Size, and Material
+    Color and Material are radio buttons, Size is a select dropdown
+
+    There are 3 colors, 4 sizes, and 2 materials
+    Therefore, it will generate a radio fieldset of 3 radio buttons, another radio fieldset of 2 radio buttons, and a select dropdown of 4 options
+    */
   }
 
   getProductAttributes() {
