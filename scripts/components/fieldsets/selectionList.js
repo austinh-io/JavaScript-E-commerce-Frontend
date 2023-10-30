@@ -107,6 +107,10 @@ function cardOptionSelectionGroup(product, option) {
     `;
 }
 
+let tpl_selectionOption = `
+  <option value="option-a">Option A</option>
+`;
+
 tpl_selectionList.innerHTML = `
 ${tpl_selectionListCSS}
 
@@ -119,9 +123,10 @@ ${tpl_selectionListCSS}
     id="product-size-select-test1"
     data-productId="test1"
   >
-    <option value="option-a">Option A</option>
-    <option value="option-b">Option B</option>
-    <option value="option-c">Option C</option>
+    ${tpl_selectionOption}
+    ${tpl_selectionOption}
+    ${tpl_selectionOption}
+    ${tpl_selectionOption}
   </select>
   <j-symbol name="nav-arrow-down" class="select-arrow"></j-symbol>
 </div>

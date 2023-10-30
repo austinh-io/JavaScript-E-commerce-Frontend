@@ -8,18 +8,12 @@ const tpl_radioFieldsetCSS = `
 <style>
     @import url(${baseUrl}/css/main.css);
 
-    .select-wrapper {
-      position: relative;
-      display: inline-block;
-    }
-
     fieldset.product-fieldset {
       display: flex;
       align-items: center;
       justify-content: start;
 
       gap: 1rem;
-      margin-block: 1rem;
 
       padding-inline: 0;
 
@@ -61,8 +55,6 @@ const tpl_radioFieldsetCSS = `
     .product-fieldset input[type='radio']#dark {
       --radio-color: rgb(23, 28, 32);
     }
-
-
 </style>
 `;
 
@@ -114,60 +106,35 @@ function cardOptionSelectionGroup(product, option) {
     `;
 }
 
+let tpl_radioOption = `
+<div>
+  <input
+    type="radio"
+    id="option-test1"
+    name="options-item-test1"
+    value="option-test1"
+    data-productId="test1"
+    data-optionid="test1"
+  />
+
+  <label for="option-test1" class="hidden">
+    test
+  </label>
+</div>
+`;
+
 tpl_radioFieldset.innerHTML = `
 ${tpl_radioFieldsetCSS}
 
 <label for="product-size-select-test1" class="hidden">Size</label>
   
-<div class="select-wrapper">
   <fieldset class="product-fieldset">
-    <legend class="hidden">Variant</legend>
+    <legend class="hidden">Options</legend>
   
-    <div>
-      <input
-        type="radio"
-        id="option-test1"
-        name="options-item-test1"
-        value="option-test1"
-        data-productId="test1"
-        data-optionid="test1"
-      />
-
-      <label for="option-test1" class="hidden">
-        test
-      </label>
-    </div>
-
-    <div>
-    <input
-      type="radio"
-      id="option-test1"
-      name="options-item-test1"
-      value="option-test1"
-      data-productId="test1"
-      data-optionid="test1"
-    />
-
-    <label for="option-test1" class="hidden">
-      test
-    </label>
-  </div>
-
-  <div>
-    <input
-      type="radio"
-      id="option-test1"
-      name="options-item-test1"
-      value="option-test1"
-      data-productId="test1"
-      data-optionid="test1"
-    />
-
-    <label for="option-test1" class="hidden">
-      test
-    </label>
-  </div>
-  
+    ${tpl_radioOption}
+    ${tpl_radioOption}
+    ${tpl_radioOption}
+    
   </fieldset>
 </div>
 `;

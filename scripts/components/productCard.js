@@ -195,112 +195,8 @@ const tpl_catalogProductCSS = `
       background-color: var(--color-disabled);
     }
 
-    /* ----- Fieldset ----- */
-
-    .product-options-container {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    fieldset.product-fieldset {
-      display: flex;
-      align-items: center;
-      justify-content: start;
-
-      gap: 1rem;
+    product-option-set {
       margin-block: 1rem;
-
-      padding-inline: 0;
-
-      border: 0;
-    }
-
-    .product-fieldset input[type='radio'] {
-      appearance: none;
-      width: 1.4rem;
-      height: 1.4rem;
-      outline-offset: 1px;
-      border-radius: 50%;
-      cursor: pointer;
-      border: 1px solid var(--color-font);
-
-      transition: all 0.1s ease-out;
-    }
-
-    .product-fieldset input[type='radio']:hover {
-      outline: 3px solid var(--color-accent, currentColor);
-      border: none;
-    }
-
-    .product-fieldset input[type='radio']:checked {
-      outline: 3px solid var(--color-font, currentColor);
-      border: none;
-    }
-
-    .product-fieldset input[type='radio']:checked:hover {
-      outline: 3px solid var(--color-font, currentColor);
-      cursor: default;
-      border: none;
-    }
-
-    .product-fieldset input[type='radio']#light {
-      --radio-color: rgb(223, 232, 238);
-    }
-
-    .product-fieldset input[type='radio']#dark {
-      --radio-color: rgb(23, 28, 32);
-    }
-
-    /* ----- Select ----- */
-    
-    .select-wrapper {
-      position: relative;
-      display: inline-block;
-    }
-
-    .select {
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      color: var(--color-font);
-      background-color: var(--color-fg);
-      padding-right: 0.8rem;
-      outline: none;
-      border: none;
-      border-radius: 2pt;
-      width: 200px;
-
-      outline: 0 solid rgba(0, 0, 0, 0);
-
-
-      transition: all 0.2s ease-out;
-    }
-
-    .select:hover {
-      cursor: pointer;
-      outline: 3px solid var(--color-accent);
-    }
-
-    .select:focus {
-      outline: 3px solid var(--color-accent);
-    }
-
-    .select-arrow svg {
-      position: absolute;
-      top: 50%;
-      right: 10px;
-      transform: translateY(-50%);
-      pointer-events: none;
-      width: 1.4rem;
-      height: 1.4rem;
-    }
-
-    .product-size-selection {
-      font-size: 1.2rem;
-      width: 5.2rem;
-      max-width: 20rem;
-      padding: 0.6rem;      
     }
 
 </style>
@@ -332,9 +228,6 @@ ${tpl_catalogProductCSS}
           </div> 
 
           <div class="product-options-container">
-            <selection-list></selection-list>
-            <selection-list></selection-list>
-            <radio-fieldset></radio-fieldset>
           </div>
 
           <div class="product-price">
@@ -351,126 +244,6 @@ ${tpl_catalogProductCSS}
     </div>
 `;
 
-// function cardOptionField(product, option) {
-//   let inputBackground = '';
-//   if (option.optionVisual.type == 'color') {
-//     inputBackground = `background-color: ${option.optionVisual.value};`;
-//   } else if (option.optionVisual.type == 'image') {
-//     inputBackground = `
-//         background-image: url(${baseUrl}/assets/images/productImages/${option.optionVisual.value}.jpg);
-//         background-position: center;
-//         background-size: cover;
-//       `;
-//   }
-
-//   return `
-//     <div>
-//       <input
-//         type="radio"
-//         id="option-${product.productId}-${option.optionId}"
-//         name="options-item-${product.productId}"
-//         value="option-${option.optionId}"
-//         data-productId="${product.productId}"
-//         data-optionid="${option.optionId}"
-//         ${product.options.indexOf(option) == 0 ? 'checked' : ''}
-//         style="
-//           ${inputBackground};
-//         "
-//       />
-//       <label
-//         for="option-${product.productId}-${option.optionId}"
-//         class="hidden"
-//         >${option.optionStyle}</label
-//       >
-//     </div>
-//     `;
-// }
-
-// function getOptionStyleSizes(product, option) {
-//   let optionStyleSizes = [];
-
-//   for (let options of product.options) {
-//     if (
-//       options.optionVisual.value == option.optionVisual.value &&
-//       options.optionVisual.value == option.optionVisual.value
-//     ) {
-//       optionStyleSizes.push(options);
-//     }
-//   }
-//   return optionStyleSizes;
-// }
-
-// function cardOptionSelection(option) {
-//   return `
-//     <option value="${option.optionSize}" data-optionid=${option.optionId}>${option.optionSize}</option>
-//     `;
-// }
-
-// function cardOptionSelectionGroup(product, option) {
-//   let optionSelections = '';
-//   const optionStyleSizes = getOptionStyleSizes(product, option);
-//   for (let optionSize of optionStyleSizes) {
-//     optionSelections += cardOptionSelection(optionSize);
-//   }
-
-//   if (optionStyleSizes.length <= 1) {
-//     return '';
-//   } else
-//     return `
-//     <label for="product-size-select-${product.productId}" class="hidden">Size</label>
-  
-//     <div class="select-wrapper">
-//       <select
-//         class="product-size-selection select"
-//         name="sizes"
-//         id="product-size-select-${product.productId}"
-//         data-productId=${product.productId}
-//       >
-//         ${optionSelections}
-//       </select>
-//       <j-symbol name="nav-arrow-down" class="select-arrow"></j-symbol>
-//     </div>
-
-//     `;
-// }
-
-// function getUniqueOptionStyles(product) {
-//   const uniqueOptions = product.options.reduce((acc, option) => {
-//     const key = `${option.optionVisual.type}-${option.optionVisual.value}`;
-//     if (!acc[key]) {
-//       acc[key] = option;
-//     }
-//     return acc;
-//   }, {});
-
-//   return Object.values(uniqueOptions);
-// }
-
-// function getProductFieldset(productOptions, product) {
-//   let cardOptionsFieldset = undefined;
-
-//   if (productOptions.length <= 1) {
-//     cardOptionsFieldset = '';
-//   } else {
-//     let cardProductOptions = '';
-
-//     for (let option of productOptions) {
-//       cardProductOptions += cardOptionField(product, option);
-//     }
-
-//     cardOptionsFieldset = `
-//       <fieldset class="product-fieldset">
-//         <legend class="hidden">Variant</legend>
-  
-//         ${cardProductOptions}
-  
-//       </fieldset>
-//       `;
-//   }
-
-//   return cardOptionsFieldset;
-// }
-
 class catalogProduct extends HTMLElement {
   constructor() {
     super();
@@ -481,18 +254,6 @@ class catalogProduct extends HTMLElement {
     this.productId = this.getAttribute('productId');
 
     const product = catalogProducts.find((i) => i.productId == this.productId);
-
-    // const cardOptionsSelections = cardOptionSelectionGroup(
-    //   product,
-    //   product.options[0]
-    // );
-
-    // const uniqueOptionsByStyle = getUniqueOptionStyles(product);
-
-    // const cardOptionsFieldset = getProductFieldset(
-    //   uniqueOptionsByStyle,
-    //   product
-    // );
 
     const productPageUrl = `productPage.html?productid=${product.productId}&optionid=${product.options[0].optionId}`;
 
@@ -529,24 +290,11 @@ class catalogProduct extends HTMLElement {
     this.productOptionsContainer = shadow.querySelector(
       '.product-options-container'
     );
-    // this.productOptionsContainer.innerHTML =
-    //   cardOptionsFieldset + cardOptionsSelections;
 
-    this.hasFieldset = shadow.querySelector('.product-fieldset') ? true : false;
-    if (this.hasFieldset) {
-      this.productFieldset = shadow.querySelector('.product-fieldset');
-      this.productFieldsetInputs =
-        this.productFieldset.getElementsByTagName('input');
-    }
-
-    this.hasSelectGroup = shadow.querySelector('.product-size-selection')
-      ? true
-      : false;
-    if (this.hasSelectGroup) {
-      this.productSelectGroup = shadow.querySelector('.product-size-selection');
-      this.productSelectOptions =
-        this.productSelectGroup.getElementsByTagName('option');
-    }
+    this.productOptionsContainer.insertAdjacentHTML(
+      'afterbegin',
+      `<product-option-set productid="${this.productId}"></product-option-set>`
+    );
   }
 
   updateCatalogItemButton = () => {
@@ -647,6 +395,8 @@ class catalogProduct extends HTMLElement {
   }
 
   connectedCallback() {
+    this.productOptionsContainer.setAttribute('productid', this.productId);
+
     this.productButton.addEventListener('click', addToCart);
     this.productButton.addEventListener('click', handleOpenCartMenu);
     this.productButton.addEventListener('click', this.updateCatalogItemButton);
