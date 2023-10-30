@@ -197,6 +197,12 @@ const tpl_catalogProductCSS = `
 
     /* ----- Fieldset ----- */
 
+    .product-options-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
     fieldset.product-fieldset {
       display: flex;
       align-items: center;
@@ -325,9 +331,12 @@ ${tpl_catalogProductCSS}
             <p></p>          
           </div> 
 
-          <div class="product-options-container"></div>
-  
-          <selection-list></selection-list>
+          <div class="product-options-container">
+            <selection-list></selection-list>
+            <selection-list></selection-list>
+            <radio-fieldset></radio-fieldset>
+          </div>
+
           <div class="product-price">
             <span class="product-price-value"></span>
           </div>
