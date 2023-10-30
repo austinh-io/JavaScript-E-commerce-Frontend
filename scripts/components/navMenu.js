@@ -191,7 +191,7 @@ tpl_navMenu.innerHTML = `
       <ul class="nav-menu">
         <a
           class="nav-site-logo"
-          href="index.html"
+          href="/"
         >
           <div class="nav-logo-container">
             <j-symbol name="store-logo"></j-symbol>
