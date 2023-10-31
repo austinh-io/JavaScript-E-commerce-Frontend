@@ -96,9 +96,9 @@ function createAttributeSelectors(product) {
     ) {
       html += `<div class="select-wrapper">`;
       html += `<label for="${name}">${name}</label>`;
-      html += `<select id="${name}" class="option-selection select">`;
+      html += `<select id="${name}" name="${name}" class="option-selection select">`;
       attributes[name].values.forEach((value) => {
-        html += `<option value="${value}">${value}</option>`;
+        html += `<option value="${value}" >${value}</option>`;
       });
       html += `</select>`;
       html += `<j-symbol name="nav-arrow-down" class="select-arrow"></j-symbol>`;
@@ -108,10 +108,6 @@ function createAttributeSelectors(product) {
 
   return html;
 }
-
-let tpl_selectionOption = `
-  <option value="option-a">Option A</option>
-`;
 
 tpl_selectionList.innerHTML = `
 ${tpl_selectionListCSS}
@@ -142,6 +138,23 @@ class selectionList extends HTMLElement {
     let html = createAttributeSelectors(product);
 
     this.optionSelectionsContainer.innerHTML = html;
+
+    let dropDownItems = this.shadowRoot.querySelectorAll('select');
+
+    dropDownItems.forEach((dropDownItem) => {
+      dropDownItem.addEventListener('click', function (event) {
+        let attributeSelectedEvent = new CustomEvent('attributeSelected', {
+          detail: {
+            name: this.name,
+            value: this.value,
+          },
+          bubbles: true,
+        });
+        this.dispatchEvent(attributeSelectedEvent);
+        console.log(this.name);
+        console.log(this.value);
+      });
+    });
   }
 }
 

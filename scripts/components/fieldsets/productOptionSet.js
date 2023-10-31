@@ -23,11 +23,7 @@ const tpl_productOptionSetCSS = `
     :host {
       display: flex;
       flex-direction: column;
-    }
-
-    
-
-    
+    }    
 </style>
 `;
 
@@ -39,6 +35,7 @@ class productOptionSet extends HTMLElement {
     shadow.append(clone);
 
     this.productId = this.getAttribute('productid');
+    this.initOptions();
   }
 
   initOptions = () => {
@@ -49,7 +46,7 @@ class productOptionSet extends HTMLElement {
   };
 
   connectedCallback() {
-    this.initOptions();
+    // this.initOptions();
   }
 }
 

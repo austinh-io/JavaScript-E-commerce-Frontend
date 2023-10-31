@@ -101,6 +101,7 @@ legend {
   font-size: 0.9rem;
   font-weight: 200;
   margin-bottom: 0.2rem;
+  text-transform: lowercase;
 }
 
 /* ------- Scrollbar -------*/

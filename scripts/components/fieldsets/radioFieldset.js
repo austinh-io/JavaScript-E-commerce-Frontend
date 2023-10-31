@@ -128,6 +128,23 @@ class radioFieldset extends HTMLElement {
     );
     let html = createAttributeSelectors(product);
     this.optionFieldsetContainer.innerHTML = html;
+
+    let radioButtons = this.shadowRoot.querySelectorAll('input[type="radio"]');
+
+    radioButtons.forEach((radioButton) => {
+      radioButton.addEventListener('click', function (event) {
+        let attributeSelectedEvent = new CustomEvent('attributeSelected', {
+          detail: {
+            name: this.name,
+            value: this.value,
+          },
+          bubbles: true,
+        });
+        this.dispatchEvent(attributeSelectedEvent);
+        console.log(this.name);
+        console.log(this.value);
+      });
+    });
   }
 }
 
