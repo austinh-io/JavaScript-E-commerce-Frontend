@@ -195,9 +195,6 @@ const tpl_catalogProductCSS = `
       background-color: var(--color-disabled);
     }
 
-    product-option-set {
-      margin-block: 1rem;
-    }
 
 </style>
 `;

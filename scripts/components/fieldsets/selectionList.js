@@ -11,16 +11,22 @@ const tpl_selectionListCSS = `
 <style>
     @import url(${baseUrl}/css/main.css);
 
+    .option-selections-container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .select-wrapper:last-child {
+      margin-right: 0;
+
+    }
+
     .select-wrapper {
       position: relative;
       display: inline-block;
-    }
-
-    .option-selections-container {
-      display: flex;
-      flex-direction: column;
-      max-width: 12rem;
-      gap: 1rem;
+      max-width: 10rem;
+      margin-right: 1rem;
     }
 
     .option-selection {

@@ -23,8 +23,11 @@ const tpl_productOptionSetCSS = `
     :host {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
     }
+
+    
+
+    
 </style>
 `;
 

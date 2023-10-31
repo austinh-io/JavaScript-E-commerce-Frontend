@@ -11,16 +11,29 @@ const tpl_radioFieldsetCSS = `
 <style>
     @import url(${baseUrl}/css/main.css);
 
+    .option-fieldset-container {
+      display: flex;
+    }
+
     fieldset.option-fieldset {
       display: flex;
       align-items: center;
       justify-content: start;
+      flex-wrap: wrap;
 
-      gap: 1rem;
+      gap: 0.6rem;
 
       padding-inline: 0;
 
       border: 0;
+    }
+
+    .option-fieldset {
+      margin-right: 2.6rem;
+    }
+
+    .option-fieldset:last-child {
+      margin-right: 0;
     }
 
     .option-fieldset input[type='radio'] {

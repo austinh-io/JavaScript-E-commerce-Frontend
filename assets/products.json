@@ -24,6 +24,16 @@
             }
           },
           {
+            "attributeId": 3,
+            "name": "Material",
+            "type": "radio",
+            "value": "Cotton",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
+          },
+          {
             "attributeId": 1,
             "name": "Size",
             "type": "select",
@@ -48,6 +58,16 @@
             "name": "Color",
             "type": "radio",
             "value": "White",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
+          },
+          {
+            "attributeId": 3,
+            "name": "Material",
+            "type": "radio",
+            "value": "Silk",
             "radioVisual": {
               "type": "image",
               "value": "option_bg_02"
@@ -1000,6 +1020,30 @@
             "value": "Crew Neck"
           }
         ]
+      },
+      {
+        "optionId": 2,
+        "price": 27.95,
+        "quantity": 10,
+        "imageSet": ["item17-"],
+        "attributes": [
+          {
+            "attributeId": 0,
+            "name": "Color",
+            "type": "radio",
+            "value": "Orange",
+            "radioVisual": {
+              "type": "Color",
+              "value": "#ec4567"
+            }
+          },
+          {
+            "attributeId": 1,
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
       }
     ]
   },
@@ -1038,6 +1082,306 @@
             "name": "Style",
             "type": "select",
             "value": "Crew Neck"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "productId": 6,
+    "brand": "Placeholder of Ipsum",
+    "title": "Super Flexible Pants",
+    "description": "Eu lobortis elementum nibh tellus molestie nunc non blandit. Mauris augue neque gravida in fermentum. Magna fermentum iaculis eu non diam phasellus vestibulum lorem.",
+    "dateReleased": "2023-01-21",
+    "categories": ["T-Shirts", "Tops", "Mens"],
+    "options": [
+      {
+        "optionId": 3,
+        "price": 24.95,
+        "quantity": 10,
+        "imageSet": ["item5-0"],
+        "attributes": [
+          {
+            "attributeId": 0,
+            "name": "Color",
+            "type": "radio",
+            "value": "Black",
+            "radioVisual": {
+              "type": "Color",
+              "value": "#ff006e"
+            }
+          },
+          {
+            "attributeId": 3,
+            "name": "Material",
+            "type": "radio",
+            "value": "Cotton",
+            "radioVisual": {
+              "type": "Color",
+              "value": "#ff006e"
+            }
+          },
+          {
+            "attributeId": 1,
+            "name": "Size",
+            "type": "select",
+            "value": "Small"
+          },
+          {
+            "attributeId": 2,
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
+      },
+      {
+        "optionId": 4,
+        "price": 24.95,
+        "quantity": 10,
+        "imageSet": ["item5-0"],
+        "attributes": [
+          {
+            "attributeId": 0,
+            "name": "Color",
+            "type": "radio",
+            "value": "Black",
+            "radioVisual": {
+              "type": "Color",
+              "value": "#ff006e"
+            }
+          },
+          {
+            "attributeId": 3,
+            "name": "Material",
+            "type": "radio",
+            "value": "Silk",
+            "radioVisual": {
+              "type": "Color",
+              "value": "#ff006e"
+            }
+          },
+          {
+            "attributeId": 1,
+            "name": "Size",
+            "type": "select",
+            "value": "Medium"
+          },
+          {
+            "attributeId": 2,
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
+      },
+      {
+        "optionId": 5,
+        "price": 24.95,
+        "quantity": 10,
+        "imageSet": ["item5-0"],
+        "attributes": [
+          {
+            "attributeId": 0,
+            "name": "Color",
+            "type": "radio",
+            "value": "Black",
+            "radioVisual": {
+              "type": "Color",
+              "value": "#ff006e"
+            }
+          },
+          {
+            "attributeId": 1,
+            "name": "Size",
+            "type": "select",
+            "value": "Large"
+          },
+          {
+            "attributeId": 2,
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
+      },
+      {
+        "optionId": 6,
+        "price": 24.95,
+        "quantity": 10,
+        "imageSet": ["item6-0"],
+        "attributes": [
+          {
+            "attributeId": 0,
+            "name": "Color",
+            "type": "radio",
+            "value": "Red",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_06"
+            }
+          },
+          {
+            "attributeId": 1,
+            "name": "Size",
+            "type": "select",
+            "value": "Small"
+          },
+          {
+            "attributeId": 2,
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
+      },
+      {
+        "optionId": 7,
+        "price": 24.95,
+        "quantity": 10,
+        "imageSet": ["item6-0"],
+        "attributes": [
+          {
+            "attributeId": 0,
+            "name": "Color",
+            "type": "radio",
+            "value": "Red",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_06"
+            }
+          },
+          {
+            "attributeId": 1,
+            "name": "Size",
+            "type": "select",
+            "value": "Medium"
+          },
+          {
+            "attributeId": 2,
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
+      },
+      {
+        "optionId": 8,
+        "price": 24.95,
+        "quantity": 10,
+        "imageSet": ["item6-0"],
+        "attributes": [
+          {
+            "attributeId": 0,
+            "name": "Color",
+            "type": "radio",
+            "value": "Red",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_06"
+            }
+          },
+          {
+            "attributeId": 1,
+            "name": "Size",
+            "type": "select",
+            "value": "Large"
+          },
+          {
+            "attributeId": 2,
+            "name": "Style",
+            "type": "select",
+            "value": "Crew Neck"
+          }
+        ]
+      },
+      {
+        "optionId": 9,
+        "price": 24.95,
+        "quantity": 10,
+        "imageSet": ["item7-0"],
+        "attributes": [
+          {
+            "attributeId": 0,
+            "name": "Color",
+            "type": "radio",
+            "value": "Black",
+            "radioVisual": {
+              "type": "Color",
+              "value": "#3a86ff"
+            }
+          },
+          {
+            "attributeId": 1,
+            "name": "Size",
+            "type": "select",
+            "value": "Small"
+          },
+          {
+            "attributeId": 2,
+            "name": "Style",
+            "type": "select",
+            "value": "V Neck"
+          }
+        ]
+      },
+      {
+        "optionId": 10,
+        "price": 24.95,
+        "quantity": 10,
+        "imageSet": ["item7-0"],
+        "attributes": [
+          {
+            "attributeId": 0,
+            "name": "Color",
+            "type": "radio",
+            "value": "Black",
+            "radioVisual": {
+              "type": "Color",
+              "value": "#3a86ff"
+            }
+          },
+          {
+            "attributeId": 1,
+            "name": "Size",
+            "type": "select",
+            "value": "Medium"
+          },
+          {
+            "attributeId": 2,
+            "name": "Style",
+            "type": "select",
+            "value": "V Neck"
+          }
+        ]
+      },
+      {
+        "optionId": 11,
+        "price": 24.95,
+        "quantity": 10,
+        "imageSet": ["item7-0"],
+        "attributes": [
+          {
+            "attributeId": 0,
+            "name": "Color",
+            "type": "radio",
+            "value": "Black",
+            "radioVisual": {
+              "type": "Color",
+              "value": "#3a86ff"
+            }
+          },
+          {
+            "attributeId": 1,
+            "name": "Size",
+            "type": "select",
+            "value": "Large"
+          },
+          {
+            "attributeId": 2,
+            "name": "Style",
+            "type": "select",
+            "value": "V Neck"
           }
         ]
       }
