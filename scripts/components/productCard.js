@@ -328,6 +328,7 @@ class catalogProduct extends HTMLElement {
   };
 
   handleProductOptionChange() {
+    console.log('handle product option change');
     const targetElement = this.closest('.product');
 
     const productImageContainer = targetElement.querySelector(
@@ -367,31 +368,31 @@ class catalogProduct extends HTMLElement {
     productImageContainer.style = `background-image: url(${baseUrl}/assets/images/productImages/smaller_alt/${targetProductOption.imageName}_smaller_alt.jpg);`;
     productImageContainer.setAttribute('href', productUrl);
 
-    let cardOptionsSelections = cardOptionSelectionGroup(
-      targetProduct,
-      targetProductOption
-    );
+    // let cardOptionsSelections = cardOptionSelectionGroup(
+    //   targetProduct,
+    //   targetProductOption
+    // );
 
-    let productOptionSet = undefined;
-    let productOptionSetOptions = undefined;
+    // let productOptionSet = undefined;
+    // let productOptionSetOptions = undefined;
 
-    const hasSelectGroup = targetElement.querySelector(
-      '.product-size-selection'
-    )
-      ? true
-      : false;
+    // const hasSelectGroup = targetElement.querySelector(
+    //   '.product-size-selection'
+    // )
+    //   ? true
+    //   : false;
 
-    if (hasSelectGroup) {
-      productOptionSet = targetElement.querySelector('.product-size-selection');
-      productOptionSetOptions = productOptionSet.getElementsByTagName('option');
-    }
+    // if (hasSelectGroup) {
+    //   productOptionSet = targetElement.querySelector('.product-size-selection');
+    //   productOptionSetOptions = productOptionSet.getElementsByTagName('option');
+    // }
 
-    if (
-      !(this.classList[0] == 'product-size-selection') &&
-      cardOptionsSelections
-    ) {
-      productOptionSet.innerHTML = cardOptionsSelections;
-    }
+    // if (
+    //   !(this.classList[0] == 'product-size-selection') &&
+    //   cardOptionsSelections
+    // ) {
+    //   productOptionSet.innerHTML = cardOptionsSelections;
+    // }
   }
 
   connectedCallback() {
@@ -401,23 +402,23 @@ class catalogProduct extends HTMLElement {
     this.productButton.addEventListener('click', handleOpenCartMenu);
     this.productButton.addEventListener('click', this.updateCatalogItemButton);
 
-    if (this.hasFieldset) {
-      for (let input of this.productFieldsetInputs) {
-        input.addEventListener('change', this.handleProductOptionChange);
-        input.addEventListener('change', this.updateCatalogItemButton);
-      }
-    }
+    // if (this.hasFieldset) {
+    //   for (let input of this.productFieldsetInputs) {
+    //     input.addEventListener('change', this.handleProductOptionChange);
+    //     input.addEventListener('change', this.updateCatalogItemButton);
+    //   }
+    // }
 
-    if (this.hasSelectGroup) {
-      this.productSelectGroup.addEventListener(
-        'change',
-        this.handleProductOptionChange
-      );
-      this.productSelectGroup.addEventListener(
-        'change',
-        this.updateCatalogItemButton
-      );
-    }
+    // if (this.hasSelectGroup) {
+    //   this.productSelectGroup.addEventListener(
+    //     'change',
+    //     this.handleProductOptionChange
+    //   );
+    //   this.productSelectGroup.addEventListener(
+    //     'change',
+    //     this.updateCatalogItemButton
+    //   );
+    // }
 
     this.updateCatalogItemButton();
   }

@@ -1,4 +1,7 @@
-import { baseUrl } from '/scripts/utilities/commerceUtilities.js';
+import {
+  baseUrl,
+  catalogProducts,
+} from '/scripts/utilities/commerceUtilities.js';
 
 ('use strict');
 
@@ -13,7 +16,14 @@ const tpl_selectionListCSS = `
       display: inline-block;
     }
 
-    .product-size-selection {
+    .option-selections-container {
+      display: flex;
+      flex-direction: column;
+      max-width: 12rem;
+      gap: 1rem;
+    }
+
+    .option-selection {
       font-size: 1.2rem;
       padding: 0.6rem;      
     }
@@ -28,7 +38,7 @@ const tpl_selectionListCSS = `
       outline: none;
       border: none;
       border-radius: 2pt;
-      width: 8rem;
+      width: 100%;
 
       outline: 0 solid rgba(0, 0, 0, 0);
 
@@ -49,7 +59,6 @@ const tpl_selectionListCSS = `
       position: absolute;
       top: 50%;
       right: 10px;
-      transform: translateY(-50%);
       pointer-events: none;
       width: 1.4rem;
       height: 1.4rem;
@@ -59,52 +68,36 @@ const tpl_selectionListCSS = `
 </style>
 `;
 
-function getOptionStyleSizes(product, option) {
-  let optionStyleSizes = [];
+function createAttributeSelectors(product) {
+  let html = '';
+  let attributes = {};
 
-  for (let options of product.options) {
-    if (
-      options.optionVisual.value == option.optionVisual.value &&
-      options.optionVisual.value == option.optionVisual.value
-    ) {
-      optionStyleSizes.push(options);
+  // Gather all unique attributes
+  product.options.forEach((option) => {
+    option.attributes.forEach((attr) => {
+      if (!attributes[attr.name]) {
+        attributes[attr.name] = { type: attr.type, values: new Set() };
+      }
+      attributes[attr.name].values.add(attr.value);
+    });
+  });
+
+  // Create HTML for each attribute
+  for (let name in attributes) {
+    if (attributes[name].type === 'select') {
+      html += `<div class="select-wrapper">`;
+      html += `<label for="${name}">${name}</label>`;
+      html += `<select id="${name}" class="option-selection select">`;
+      attributes[name].values.forEach((value) => {
+        html += `<option value="${value}">${value}</option>`;
+      });
+      html += `</select>`;
+      html += `<j-symbol name="nav-arrow-down" class="select-arrow"></j-symbol>`;
+      html += `</div>`;
     }
   }
-  return optionStyleSizes;
-}
 
-function cardOptionSelection(option) {
-  return `
-    <option value="${option.optionSize}" data-optionid=${option.optionId}>${option.optionSize}</option>
-    `;
-}
-
-function cardOptionSelectionGroup(product, option) {
-  let optionSelections = '';
-  const optionStyleSizes = getOptionStyleSizes(product, option);
-  for (let optionSize of optionStyleSizes) {
-    optionSelections += cardOptionSelection(optionSize);
-  }
-
-  if (optionStyleSizes.length <= 1) {
-    return '';
-  } else
-    return `
-    <label for="product-size-select-${product.productId}" class="hidden">Size</label>
-  
-    <div class="select-wrapper">
-      <select
-        class="product-size-selection select"
-        name="sizes"
-        id="product-size-select-${product.productId}"
-        data-productId=${product.productId}
-      >
-        ${optionSelections}
-      </select>
-      <j-symbol name="nav-arrow-down" class="select-arrow"></j-symbol>
-    </div>
-
-    `;
+  return html;
 }
 
 let tpl_selectionOption = `
@@ -114,21 +107,8 @@ let tpl_selectionOption = `
 tpl_selectionList.innerHTML = `
 ${tpl_selectionListCSS}
 
-<label for="product-size-select-test1" class="hidden">Size</label>
-  
-<div class="select-wrapper">
-  <select
-    class="product-size-selection select"
-    name="sizes"
-    id="product-size-select-test1"
-    data-productId="test1"
-  >
-    ${tpl_selectionOption}
-    ${tpl_selectionOption}
-    ${tpl_selectionOption}
-    ${tpl_selectionOption}
-  </select>
-  <j-symbol name="nav-arrow-down" class="select-arrow"></j-symbol>
+<div class="option-selections-container">
+
 </div>
 `;
 
@@ -138,9 +118,22 @@ class selectionList extends HTMLElement {
     const shadow = this.attachShadow({ mode: 'open' });
     const clone = tpl_selectionList.content.cloneNode(true);
     shadow.append(clone);
+
+    this.productId = this.getAttribute('productid');
+
+    this.optionSelectionsContainer = this.shadowRoot.querySelector(
+      '.option-selections-container'
+    );
   }
 
-  connectedCallback() {}
+  connectedCallback() {
+    let product = catalogProducts.find(
+      (product) => product.productId == this.productId
+    );
+    let html = createAttributeSelectors(product);
+
+    this.optionSelectionsContainer.innerHTML = html;
+  }
 }
 
 window.customElements.define('selection-list', selectionList);
