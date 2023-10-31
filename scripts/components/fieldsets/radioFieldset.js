@@ -61,71 +61,6 @@ const tpl_radioFieldsetCSS = `
 </style>
 `;
 
-// function getOptionStyleSizes(product, option) {
-//   let optionStyleSizes = [];
-
-//   for (let options of product.options) {
-//     if (
-//       options.optionVisual.value == option.optionVisual.value &&
-//       options.optionVisual.value == option.optionVisual.value
-//     ) {
-//       optionStyleSizes.push(options);
-//     }
-//   }
-//   return optionStyleSizes;
-// }
-
-// function cardOptionSelection(option) {
-//   return `
-//     <option value="${option.optionSize}" data-optionid=${option.optionId}>${option.optionSize}</option>
-//     `;
-// }
-
-// function cardOptionSelectionGroup(product, option) {
-//   let optionSelections = '';
-//   const optionStyleSizes = getOptionStyleSizes(product, option);
-//   for (let optionSize of optionStyleSizes) {
-//     optionSelections += cardOptionSelection(optionSize);
-//   }
-
-//   if (optionStyleSizes.length <= 1) {
-//     return '';
-//   } else
-//     return `
-//     <label for="product-size-select-${product.productId}" class="hidden">Size</label>
-
-//     <div class="select-wrapper">
-//       <select
-//         class="product-size-selection select"
-//         name="sizes"
-//         id="product-size-select-${product.productId}"
-//         data-productId=${product.productId}
-//       >
-//         ${optionSelections}
-//       </select>
-//       <j-symbol name="nav-arrow-down" class="select-arrow"></j-symbol>
-//     </div>
-
-//     `;
-// }
-
-// let tpl_radioOption = `
-// <div>
-//   <input
-//     type="radio"
-//     id="option-test1"
-//     name="options-item-test1"
-//     value="option-test1"
-//     data-productId="test1"
-//     data-optionid="test1"
-//   />
-
-//   <label for="option-test1" class="hidden">
-//     test
-//   </label>
-// </div>
-// `;
-
 function createAttributeSelectors(product) {
   let html = '';
   let attributes = {};
@@ -142,7 +77,7 @@ function createAttributeSelectors(product) {
 
   // Create HTML for each attribute
   for (let name in attributes) {
-    if (attributes[name].type == 'radio') {
+    if (attributes[name].type == 'radio' && attributes[name].values.size > 1) {
       html += `<fieldset class="option-fieldset"><legend>${name}</legend>`;
       attributes[name].values.forEach((value) => {
         html += `<input type="radio" id="${value}" name="${name}" value="${value}">
@@ -172,22 +107,13 @@ class radioFieldset extends HTMLElement {
     this.optionFieldsetContainer = this.shadowRoot.querySelector(
       '.option-fieldset-container'
     );
-    // this.optionFieldsetLabel = this.shadowRoot.querySelector(
-    //   '.option-fieldset-label'
-    // );
-    // this.optionFieldsetLabel.htmlFor = `option-fieldset-product-${this.productId}`;
   }
 
   connectedCallback() {
-    // console.log(this.productId);
-
-    // console.log('Radio Choices:');
-    // console.log(this.shadowRoot.parentNode());
     let product = catalogProducts.find(
       (product) => product.productId == this.productId
     );
     let html = createAttributeSelectors(product);
-    // console.log(html);
     this.optionFieldsetContainer.innerHTML = html;
   }
 }

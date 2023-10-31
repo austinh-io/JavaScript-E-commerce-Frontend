@@ -84,7 +84,10 @@ function createAttributeSelectors(product) {
 
   // Create HTML for each attribute
   for (let name in attributes) {
-    if (attributes[name].type === 'select') {
+    if (
+      attributes[name].type === 'select' &&
+      attributes[name].values.size > 1
+    ) {
       html += `<div class="select-wrapper">`;
       html += `<label for="${name}">${name}</label>`;
       html += `<select id="${name}" class="option-selection select">`;

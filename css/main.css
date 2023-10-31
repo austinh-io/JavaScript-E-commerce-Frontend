@@ -96,6 +96,13 @@ main .wrapper {
   width: 100%;
 }
 
+label,
+legend {
+  font-size: 0.9rem;
+  font-weight: 200;
+  margin-bottom: 0.2rem;
+}
+
 /* ------- Scrollbar -------*/
 
 ::-webkit-scrollbar {
@@ -128,8 +135,6 @@ main .wrapper {
   padding-inline: 2%;
   max-width: 1920px;
 }
-
-
 
 div.nav-logo-container svg {
   stroke-width: 0;

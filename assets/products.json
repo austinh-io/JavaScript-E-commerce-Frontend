@@ -380,126 +380,6 @@
     "categories": ["T-Shirts", "Tops", "Mens"],
     "options": [
       {
-        "optionId": 1000,
-        "price": 24.95,
-        "quantity": 10,
-        "imageSet": ["item20-0"],
-        "attributes": [
-          {
-            "attributeId": 0,
-            "name": "Color",
-            "type": "radio",
-            "value": "White",
-            "radioVisual": {
-              "type": "Color",
-              "value": "#ffbe0b"
-            }
-          },
-          {
-            "attributeId": 1,
-            "name": "Size",
-            "type": "select",
-            "value": "Extra Small"
-          },
-          {
-            "attributeId": 2,
-            "name": "Style",
-            "type": "select",
-            "value": "Crew Neck"
-          }
-        ]
-      },
-      {
-        "optionId": 0,
-        "price": 24.95,
-        "quantity": 10,
-        "imageSet": ["item20-1"],
-        "attributes": [
-          {
-            "attributeId": 0,
-            "name": "Color",
-            "type": "radio",
-            "value": "White",
-            "radioVisual": {
-              "type": "Color",
-              "value": "#ffbe0b"
-            }
-          },
-          {
-            "attributeId": 1,
-            "name": "Size",
-            "type": "select",
-            "value": "Small"
-          },
-          {
-            "attributeId": 2,
-            "name": "Style",
-            "type": "select",
-            "value": "Crew Neck"
-          }
-        ]
-      },
-      {
-        "optionId": 1,
-        "price": 24.95,
-        "quantity": 10,
-        "imageSet": ["item20-2"],
-        "attributes": [
-          {
-            "attributeId": 0,
-            "name": "Color",
-            "type": "radio",
-            "value": "White",
-            "radioVisual": {
-              "type": "Color",
-              "value": "#ffbe0b"
-            }
-          },
-          {
-            "attributeId": 1,
-            "name": "Size",
-            "type": "select",
-            "value": "Medium"
-          },
-          {
-            "attributeId": 2,
-            "name": "Style",
-            "type": "select",
-            "value": "Crew Neck"
-          }
-        ]
-      },
-      {
-        "optionId": 2,
-        "price": 24.95,
-        "quantity": 10,
-        "imageSet": ["item20-3"],
-        "attributes": [
-          {
-            "attributeId": 0,
-            "name": "Color",
-            "type": "radio",
-            "value": "White",
-            "radioVisual": {
-              "type": "Color",
-              "value": "#ffbe0b"
-            }
-          },
-          {
-            "attributeId": 1,
-            "name": "Size",
-            "type": "select",
-            "value": "Large"
-          },
-          {
-            "attributeId": 2,
-            "name": "Style",
-            "type": "select",
-            "value": "Crew Neck"
-          }
-        ]
-      },
-      {
         "optionId": 3,
         "price": 24.95,
         "quantity": 10,
@@ -689,7 +569,7 @@
             "attributeId": 0,
             "name": "Color",
             "type": "radio",
-            "value": "Blue",
+            "value": "Black",
             "radioVisual": {
               "type": "Color",
               "value": "#3a86ff"
@@ -705,7 +585,7 @@
             "attributeId": 2,
             "name": "Style",
             "type": "select",
-            "value": "Crew Neck"
+            "value": "V Neck"
           }
         ]
       },
@@ -719,7 +599,7 @@
             "attributeId": 0,
             "name": "Color",
             "type": "radio",
-            "value": "Blue",
+            "value": "Black",
             "radioVisual": {
               "type": "Color",
               "value": "#3a86ff"
@@ -735,7 +615,7 @@
             "attributeId": 2,
             "name": "Style",
             "type": "select",
-            "value": "Crew Neck"
+            "value": "V Neck"
           }
         ]
       },
@@ -749,7 +629,7 @@
             "attributeId": 0,
             "name": "Color",
             "type": "radio",
-            "value": "Blue",
+            "value": "Black",
             "radioVisual": {
               "type": "Color",
               "value": "#3a86ff"
@@ -765,7 +645,7 @@
             "attributeId": 2,
             "name": "Style",
             "type": "select",
-            "value": "Crew Neck"
+            "value": "V Neck"
           }
         ]
       }
