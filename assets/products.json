@@ -106,6 +106,16 @@
             }
           },
           {
+            "attributeId": 3,
+            "name": "material",
+            "type": "radio",
+            "value": "cotton",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
+          },
+          {
             "attributeId": 1,
             "name": "size",
             "type": "select",
@@ -130,6 +140,16 @@
             "name": "color",
             "type": "radio",
             "value": "white",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
+          },
+          {
+            "attributeId": 3,
+            "name": "material",
+            "type": "radio",
+            "value": "cotton",
             "radioVisual": {
               "type": "image",
               "value": "option_bg_02"
@@ -166,6 +186,16 @@
             }
           },
           {
+            "attributeId": 3,
+            "name": "material",
+            "type": "radio",
+            "value": "cotton",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
+          },
+          {
             "attributeId": 1,
             "name": "size",
             "type": "select",
@@ -193,6 +223,16 @@
             "radioVisual": {
               "type": "image",
               "value": "option_bg_07"
+            }
+          },
+          {
+            "attributeId": 3,
+            "name": "material",
+            "type": "radio",
+            "value": "cotton",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
             }
           },
           {
@@ -226,6 +266,16 @@
             }
           },
           {
+            "attributeId": 3,
+            "name": "material",
+            "type": "radio",
+            "value": "cotton",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
+          },
+          {
             "attributeId": 1,
             "name": "size",
             "type": "select",
@@ -253,6 +303,16 @@
             "radioVisual": {
               "type": "color",
               "value": "#da627d"
+            }
+          },
+          {
+            "attributeId": 3,
+            "name": "material",
+            "type": "radio",
+            "value": "cotton",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
             }
           },
           {
@@ -286,6 +346,16 @@
             }
           },
           {
+            "attributeId": 3,
+            "name": "material",
+            "type": "radio",
+            "value": "cotton",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
+          },
+          {
             "attributeId": 1,
             "name": "size",
             "type": "select",
@@ -309,10 +379,20 @@
             "attributeId": 0,
             "name": "color",
             "type": "radio",
-            "value": "Blue",
+            "value": "blue",
             "radioVisual": {
               "type": "color",
               "value": "#9a348e"
+            }
+          },
+          {
+            "attributeId": 3,
+            "name": "material",
+            "type": "radio",
+            "value": "cotton",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
             }
           },
           {
@@ -339,10 +419,20 @@
             "attributeId": 0,
             "name": "color",
             "type": "radio",
-            "value": "Blue",
+            "value": "blue",
             "radioVisual": {
               "type": "color",
               "value": "#9a348e"
+            }
+          },
+          {
+            "attributeId": 3,
+            "name": "material",
+            "type": "radio",
+            "value": "cotton",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
             }
           },
           {
@@ -369,10 +459,20 @@
             "attributeId": 0,
             "name": "color",
             "type": "radio",
-            "value": "Blue",
+            "value": "blue",
             "radioVisual": {
               "type": "color",
               "value": "#9a348e"
+            }
+          },
+          {
+            "attributeId": 3,
+            "name": "material",
+            "type": "radio",
+            "value": "cotton",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
             }
           },
           {
@@ -1202,6 +1302,16 @@
             "name": "style",
             "type": "select",
             "value": "crew neck"
+          },
+          {
+            "attributeId": 3,
+            "name": "material",
+            "type": "radio",
+            "value": "cotton",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
           }
         ]
       },
@@ -1232,6 +1342,16 @@
             "name": "style",
             "type": "select",
             "value": "crew neck"
+          },
+          {
+            "attributeId": 3,
+            "name": "material",
+            "type": "radio",
+            "value": "cotton",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
           }
         ]
       },
@@ -1262,6 +1382,16 @@
             "name": "style",
             "type": "select",
             "value": "crew neck"
+          },
+          {
+            "attributeId": 3,
+            "name": "material",
+            "type": "radio",
+            "value": "cotton",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
           }
         ]
       },
@@ -1292,6 +1422,16 @@
             "name": "style",
             "type": "select",
             "value": "crew neck"
+          },
+          {
+            "attributeId": 3,
+            "name": "material",
+            "type": "radio",
+            "value": "cotton",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
           }
         ]
       },
@@ -1322,6 +1462,16 @@
             "name": "style",
             "type": "select",
             "value": "v neck"
+          },
+          {
+            "attributeId": 3,
+            "name": "material",
+            "type": "radio",
+            "value": "cotton",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
           }
         ]
       },
@@ -1352,6 +1502,16 @@
             "name": "style",
             "type": "select",
             "value": "v neck"
+          },
+          {
+            "attributeId": 3,
+            "name": "material",
+            "type": "radio",
+            "value": "cotton",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
           }
         ]
       },
@@ -1382,6 +1542,16 @@
             "name": "style",
             "type": "select",
             "value": "v neck"
+          },
+          {
+            "attributeId": 3,
+            "name": "material",
+            "type": "radio",
+            "value": "cotton",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
           }
         ]
       }

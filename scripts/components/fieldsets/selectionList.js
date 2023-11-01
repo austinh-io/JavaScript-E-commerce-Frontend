@@ -89,7 +89,7 @@ function createAttributeSelectors(product) {
   });
 
   // Create HTML for each attribute
-  for (let name in attributes) {
+  Object.keys(attributes).forEach((name) => {
     if (
       attributes[name].type === 'select' &&
       attributes[name].values.size > 1
@@ -104,7 +104,7 @@ function createAttributeSelectors(product) {
       html += `<j-symbol name="nav-arrow-down" class="select-arrow"></j-symbol>`;
       html += `</div>`;
     }
-  }
+  });
 
   return html;
 }
@@ -126,33 +126,49 @@ class selectionList extends HTMLElement {
 
     this.productId = this.getAttribute('productid');
 
+    this.product = catalogProducts.find(
+      (product) => product.productId == this.productId
+    );
+
     this.optionSelectionsContainer = this.shadowRoot.querySelector(
       '.option-selections-container'
     );
   }
 
-  connectedCallback() {
-    let product = catalogProducts.find(
-      (product) => product.productId == this.productId
-    );
-    let html = createAttributeSelectors(product);
+  setAvailableOptions(availableAttributes, attributes) {
+    // console.log('Selection List: This attributes');
+    // console.log(attributes);
 
+    // Update attribute selectors
+    for (let name in attributes) {
+      let selector = this.shadowRoot.querySelector(`#${name}`);
+      for (let option of selector.options) {
+        if (availableAttributes[name].has(option.value)) {
+          option.disabled = false;
+        } else {
+          option.disabled = true;
+        }
+      }
+    }
+  }
+
+  connectedCallback() {
+    let html = createAttributeSelectors(this.product);
     this.optionSelectionsContainer.innerHTML = html;
 
     let dropDownItems = this.shadowRoot.querySelectorAll('select');
 
     dropDownItems.forEach((dropDownItem) => {
       dropDownItem.addEventListener('click', function (event) {
-        let attributeSelectedEvent = new CustomEvent('attributeSelected', {
+        let attributeSelectedEvent = new CustomEvent('attribute-selected', {
           detail: {
             name: this.name,
             value: this.value,
           },
           bubbles: true,
+          composed: true,
         });
         this.dispatchEvent(attributeSelectedEvent);
-        console.log(this.name);
-        console.log(this.value);
       });
     });
   }

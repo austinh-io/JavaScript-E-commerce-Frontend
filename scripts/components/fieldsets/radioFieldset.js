@@ -120,29 +120,59 @@ class radioFieldset extends HTMLElement {
     this.optionFieldsetContainer = this.shadowRoot.querySelector(
       '.option-fieldset-container'
     );
+    this.product = catalogProducts.find(
+      (product) => product.productId == this.productId
+    );
+  }
+
+  setAvailableOptions(availableAttributes) {
+    // Update attribute selectors
+    for (let name in this.attributes) {
+      let selector = this.shadowRoot.querySelector(`#${name}`);
+      for (let option of selector.options) {
+        if (availableAttributes[name].has(option.value)) {
+          option.disabled = false;
+        } else {
+          option.disabled = true;
+        }
+      }
+    }
   }
 
   connectedCallback() {
-    let product = catalogProducts.find(
-      (product) => product.productId == this.productId
-    );
-    let html = createAttributeSelectors(product);
+    let html = createAttributeSelectors(this.product);
     this.optionFieldsetContainer.innerHTML = html;
 
-    let radioButtons = this.shadowRoot.querySelectorAll('input[type="radio"]');
+    let optionFieldsets = Array.from(
+      this.shadowRoot.querySelectorAll('fieldset.option-fieldset')
+    );
+    let radioButtons = Array.from(
+      this.shadowRoot.querySelectorAll('input[type="radio"]')
+    );
+
+    for (let optionFieldset of optionFieldsets) {
+      let _radioButtons = Array.from(
+        optionFieldset.querySelectorAll('input[type="radio"]')
+      );
+      for (let _radioButton of _radioButtons) {
+        if (_radioButtons.indexOf(_radioButton) == 0) {
+          _radioButton.checked = true;
+        }
+      }
+    }
 
     radioButtons.forEach((radioButton) => {
       radioButton.addEventListener('click', function (event) {
-        let attributeSelectedEvent = new CustomEvent('attributeSelected', {
+        let attributeSelectedEvent = new CustomEvent('attribute-selected', {
           detail: {
             name: this.name,
             value: this.value,
           },
           bubbles: true,
+          composed: true,
         });
         this.dispatchEvent(attributeSelectedEvent);
-        console.log(this.name);
-        console.log(this.value);
+        console.log('Radio Fieldset Attribute Selected');
       });
     });
   }

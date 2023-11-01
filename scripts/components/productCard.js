@@ -241,6 +241,28 @@ ${tpl_catalogProductCSS}
     </div>
 `;
 
+// function findOptionByAttributes(product, attributes) {
+//   return product.options.find((option) =>
+//     attributes.every((attr) =>
+//       option.attributes.some(
+//         (optionAttr) =>
+//           optionAttr.name === attr.name && optionAttr.value === attr.value
+//       )
+//     )
+//   );
+// }
+
+function findOptionByAttributes(product, attributes) {
+  return product.options.find((option) =>
+    Object.entries(attributes).every(([attrName, attrValue]) =>
+      option.attributes.some(
+        (optionAttr) =>
+          optionAttr.name === attrName && optionAttr.value === attrValue
+      )
+    )
+  );
+}
+
 class catalogProduct extends HTMLElement {
   constructor() {
     super();
@@ -292,6 +314,9 @@ class catalogProduct extends HTMLElement {
       'afterbegin',
       `<product-option-set productid="${this.productId}"></product-option-set>`
     );
+
+    this.selectedOption = product.options[0];
+    this.selectedAttributes = {};
   }
 
   updateCatalogItemButton = () => {
@@ -399,23 +424,28 @@ class catalogProduct extends HTMLElement {
     this.productButton.addEventListener('click', handleOpenCartMenu);
     this.productButton.addEventListener('click', this.updateCatalogItemButton);
 
-    // if (this.hasFieldset) {
-    //   for (let input of this.productFieldsetInputs) {
-    //     input.addEventListener('change', this.handleProductOptionChange);
-    //     input.addEventListener('change', this.updateCatalogItemButton);
-    //   }
-    // }
+    let product = catalogProducts.find((i) => i.productId == this.productId);
+    let productButton = this.productButton;
 
-    // if (this.hasSelectGroup) {
-    //   this.productSelectGroup.addEventListener(
-    //     'change',
-    //     this.handleProductOptionChange
-    //   );
-    //   this.productSelectGroup.addEventListener(
-    //     'change',
-    //     this.updateCatalogItemButton
-    //   );
-    // }
+    this.productOptionsContainer.addEventListener(
+      'attributes-collected',
+      function (event) {
+        console.log('Product Card: Event Detail');
+        console.log(event.detail);
+        this.selectedOption = findOptionByAttributes(product, event.detail);
+
+        productButton.dataset.optionid = this.selectedOption.optionId;
+        // this.productImageSource.srcset = `${baseUrl}assets/images/productImages/small/${this.selectedOption.imageSet[0]}_small.webp`;
+        // this.productPrice.textContent = formatCurrency(
+        //   this.selectedOption.price
+        // );
+
+        // console.log('THE SELECTED OPTION!');
+        // console.log(this.selectedOption);
+
+        // this.productOptionsContainer.setSelectedOption(this.selectedOption);
+      }
+    );
 
     this.updateCatalogItemButton();
   }
