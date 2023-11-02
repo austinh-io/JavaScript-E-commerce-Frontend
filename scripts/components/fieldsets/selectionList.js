@@ -135,18 +135,23 @@ class selectionList extends HTMLElement {
     );
   }
 
-  setAvailableOptions(availableAttributes, attributes) {
-    // console.log('Selection List: This attributes');
-    // console.log(attributes);
-
+  setAvailableOptions(availableAttributes, selectedOption) {
     // Update attribute selectors
-    for (let name in attributes) {
-      let selector = this.shadowRoot.querySelector(`#${name}`);
-      for (let option of selector.options) {
-        if (availableAttributes[name].has(option.value)) {
-          option.disabled = false;
-        } else {
-          option.disabled = true;
+    for (let attribute of selectedOption.attributes) {
+      let selector;
+      if (attribute.type === 'select') {
+        selector = this.shadowRoot.querySelector(
+          `select[name="${attribute.name}"]`
+        );
+      }
+      if (selector && availableAttributes) {
+        for (let i = 0; i < selector.options.length; i++) {
+          let option = selector.options[i];
+          if (availableAttributes[attribute.name].has(option.value)) {
+            option.disabled = false;
+          } else {
+            option.disabled = true;
+          }
         }
       }
     }
@@ -171,6 +176,8 @@ class selectionList extends HTMLElement {
         this.dispatchEvent(attributeSelectedEvent);
       });
     });
+
+    let mySelector = this.shadowRoot.querySelector(`select[name="size"]`);
   }
 }
 

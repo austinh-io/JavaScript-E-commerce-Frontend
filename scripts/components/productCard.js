@@ -430,8 +430,6 @@ class catalogProduct extends HTMLElement {
     this.productOptionsContainer.addEventListener(
       'attributes-collected',
       function (event) {
-        console.log('Product Card: Event Detail');
-        console.log(event.detail);
         this.selectedOption = findOptionByAttributes(product, event.detail);
 
         productButton.dataset.optionid = this.selectedOption.optionId;

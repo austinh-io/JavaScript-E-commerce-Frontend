@@ -45,11 +45,14 @@ const tpl_radioFieldsetCSS = `
       cursor: pointer;
       border: 1px solid var(--color-font);
 
+      outline: 3px solid rgba(0, 0, 0, 0);
+
+
       transition: all 0.1s ease-out;
     }
 
     .option-fieldset input[type='radio']:hover {
-      outline: 3px solid var(--color-accent, currentColor);
+      outline: 3px solid var(--color-accent);
       border: none;
     }
 
@@ -62,6 +65,16 @@ const tpl_radioFieldsetCSS = `
       outline: 3px solid var(--color-font, currentColor);
       cursor: default;
       border: none;
+    }
+
+    .option-fieldset input[type='radio']:disabled {
+      border: 1px solid green;
+    }
+
+    .option-fieldset input[type='radio']:disabled:hover {
+      cursor: default;
+      outline: none;
+
     }
 
     .option-fieldset input[type='radio']#light {
@@ -125,15 +138,30 @@ class radioFieldset extends HTMLElement {
     );
   }
 
-  setAvailableOptions(availableAttributes) {
+  setAvailableOptions(availableAttributes, selectedOption) {
     // Update attribute selectors
-    for (let name in this.attributes) {
-      let selector = this.shadowRoot.querySelector(`#${name}`);
-      for (let option of selector.options) {
-        if (availableAttributes[name].has(option.value)) {
-          option.disabled = false;
-        } else {
-          option.disabled = true;
+    for (let attribute of selectedOption.attributes) {
+      if (attribute.type === 'radio') {
+        let fieldsets = Array.from(
+          this.shadowRoot.querySelectorAll('.option-fieldset')
+        );
+        let fieldset = fieldsets.find(
+          (fs) => fs.querySelector('legend').textContent === attribute.name
+        );
+        if (fieldset) {
+          let radioButtons = Array.from(
+            fieldset.querySelectorAll('input[type="radio"]')
+          );
+          for (let radioButton of radioButtons) {
+            if (
+              availableAttributes &&
+              availableAttributes[attribute.name].has(radioButton.value)
+            ) {
+              radioButton.disabled = false;
+            } else {
+              radioButton.disabled = true;
+            }
+          }
         }
       }
     }
@@ -175,6 +203,8 @@ class radioFieldset extends HTMLElement {
         console.log('Radio Fieldset Attribute Selected');
       });
     });
+
+    let selector = this.shadowRoot.querySelector(`#color`);
   }
 }
 

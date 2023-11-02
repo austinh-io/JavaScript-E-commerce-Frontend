@@ -78,6 +78,10 @@ class productOptionSet extends HTMLElement {
     console.log(this.option);
   }
 
+  getSelectedOption = () => {
+    return this.option;
+  };
+
   initOptions = () => {
     let optionSetContent =
       tpl_radioFieldset(this.productId) + tpl_selectionList(this.productId);
@@ -87,7 +91,7 @@ class productOptionSet extends HTMLElement {
     this.radioFieldset = this.shadowRoot.querySelector('radio-fieldset');
   };
 
-  updateAvailableOptions = (selectedAttributes) => {
+  updateAvailableOptions = (selectedAttributes, option) => {
     // console.log('Product Option Set: Update Available Options');
     let availableAttributes = {};
 
@@ -99,9 +103,6 @@ class productOptionSet extends HTMLElement {
         }
       });
     });
-
-    // console.log('Product Option Set: This available attributes');
-    // console.log(availableAttributes[name]);
 
     // Find available attributes
     this.product.options.forEach((_option) => {
@@ -130,6 +131,20 @@ class productOptionSet extends HTMLElement {
 
     let product = catalogProducts.find((i) => i.productId == this.productId);
 
+    this.updateAvailableOptions(
+      this.selectedAttributes,
+      this.getSelectedOption()
+    );
+
+    this.selectionList.setAvailableOptions(
+      this.availableAttributes,
+      this.getSelectedOption()
+    );
+    this.radioFieldset.setAvailableOptions(
+      this.availableAttributes,
+      this.getSelectedOption()
+    );
+
     this.addEventListener('attribute-selected', (event) => {
       this.selectedAttributes[event.detail.name] = event.detail.value;
 
@@ -140,19 +155,24 @@ class productOptionSet extends HTMLElement {
       });
       this.dispatchEvent(attributesSelectedEvent);
 
-      console.log('Option Set Attributes Collected');
-      console.log('Collected Attributes:');
-      console.log(this.selectedAttributes);
-
       this.selectedOption = findOptionByAttributes(
         product,
         this.selectedAttributes
       );
 
-      this.updateAvailableOptions(this.selectedAttributes, this.option);
+      this.updateAvailableOptions(
+        this.selectedAttributes,
+        this.getSelectedOption()
+      );
 
-      this.selectionList.setAvailableOptions(this.availableAttributes);
-      this.radioFieldset.setAvailableOptions(this.availableAttributes);
+      this.selectionList.setAvailableOptions(
+        this.availableAttributes,
+        this.getSelectedOption()
+      );
+      this.radioFieldset.setAvailableOptions(
+        this.availableAttributes,
+        this.getSelectedOption()
+      );
     });
 
     // this.addEventListener('attribute-selected', (event) => {
