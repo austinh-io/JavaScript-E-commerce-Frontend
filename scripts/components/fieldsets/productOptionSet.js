@@ -130,20 +130,15 @@ class productOptionSet extends HTMLElement {
     this.initOptions();
 
     let product = catalogProducts.find((i) => i.productId == this.productId);
+    let initSelectedOption = product.options[0];
 
-    this.updateAvailableOptions(
-      this.selectedAttributes,
-      this.getSelectedOption()
-    );
+    // console.log('this.getSelectedOption()');
+    // console.log(initSelectedOption);
 
-    this.selectionList.setAvailableOptions(
-      this.availableAttributes,
-      this.getSelectedOption()
-    );
-    this.radioFieldset.setAvailableOptions(
-      this.availableAttributes,
-      this.getSelectedOption()
-    );
+    // this.updateAvailableOptions(this.selectedAttributes, initSelectedOption);
+
+    this.selectionList.setAvailableOptions(initSelectedOption);
+    this.radioFieldset.setAvailableOptions(initSelectedOption);
 
     this.addEventListener('attribute-selected', (event) => {
       this.selectedAttributes[event.detail.name] = event.detail.value;
@@ -160,19 +155,13 @@ class productOptionSet extends HTMLElement {
         this.selectedAttributes
       );
 
-      this.updateAvailableOptions(
-        this.selectedAttributes,
-        this.getSelectedOption()
-      );
+      // this.updateAvailableOptions(
+      //   this.selectedAttributes,
+      //   this.getSelectedOption()
+      // );
 
-      this.selectionList.setAvailableOptions(
-        this.availableAttributes,
-        this.getSelectedOption()
-      );
-      this.radioFieldset.setAvailableOptions(
-        this.availableAttributes,
-        this.getSelectedOption()
-      );
+      this.selectionList.setAvailableOptions(this.getSelectedOption());
+      this.radioFieldset.setAvailableOptions(this.getSelectedOption());
     });
 
     // this.addEventListener('attribute-selected', (event) => {

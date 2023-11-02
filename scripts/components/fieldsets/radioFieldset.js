@@ -116,6 +116,32 @@ function createAttributeSelectors(product) {
   return html;
 }
 
+function calculateAvailableAttributes(selectedOption, product) {
+  let availableAttributes = {};
+
+  console.log('----------Product Options-------');
+  for (let option of product.options) {
+    console.log('---Option Attributes---');
+    console.log(option.attributes);
+    for (let attribute of option.attributes) {
+      console.log('-Option Attribute-');
+      console.log(attribute);
+      if (
+        selectedOption.attributes.some(
+          (a) => a.name === attribute.name && a.value === attribute.value
+        )
+      ) {
+        if (!availableAttributes[attribute.name]) {
+          availableAttributes[attribute.name] = new Set();
+        }
+        availableAttributes[attribute.name].add(attribute.value);
+      }
+    }
+  }
+
+  return availableAttributes;
+}
+
 tpl_radioFieldset.innerHTML = `
 ${tpl_radioFieldsetCSS}
 <div class="option-fieldset-container">
@@ -138,7 +164,23 @@ class radioFieldset extends HTMLElement {
     );
   }
 
-  setAvailableOptions(availableAttributes, selectedOption) {
+  setAvailableOptions(selectedOption) {
+    // console.log('Radio Fieldset: Set Available Options');
+    // console.log('selectedOption');
+    // console.log(selectedOption);
+
+    // Calculate availableAttributes based on selectedOption and product
+    let availableAttributes = calculateAvailableAttributes(
+      selectedOption,
+      this.product
+    );
+
+    console.log('Selected Option');
+    console.log(selectedOption);
+
+    console.log('Available Attributes');
+    console.log(availableAttributes);
+
     // Update attribute selectors
     for (let attribute of selectedOption.attributes) {
       if (attribute.type === 'radio') {
@@ -153,10 +195,7 @@ class radioFieldset extends HTMLElement {
             fieldset.querySelectorAll('input[type="radio"]')
           );
           for (let radioButton of radioButtons) {
-            if (
-              availableAttributes &&
-              availableAttributes[attribute.name].has(radioButton.value)
-            ) {
+            if (availableAttributes[attribute.name].has(radioButton.value)) {
               radioButton.disabled = false;
             } else {
               radioButton.disabled = true;
