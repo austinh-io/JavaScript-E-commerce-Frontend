@@ -922,7 +922,7 @@
         "optionId": 8,
         "price": 24.95,
         "quantity": 10,
-        "imageSet": ["item14-2"],
+        "imageSet": ["item14-1"],
         "attributes": [
           {
             "name": "color",
@@ -1099,7 +1099,7 @@
         "optionId": 2,
         "price": 27.95,
         "quantity": 10,
-        "imageSet": ["item17-"],
+        "imageSet": ["item17-0"],
         "attributes": [
           {
             "name": "color",
@@ -1121,7 +1121,7 @@
         "optionId": 2,
         "price": 27.95,
         "quantity": 10,
-        "imageSet": ["item17-"],
+        "imageSet": ["item17-0"],
         "attributes": [
           {
             "name": "color",
