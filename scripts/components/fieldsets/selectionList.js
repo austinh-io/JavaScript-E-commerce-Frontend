@@ -241,8 +241,6 @@ class selectionList extends HTMLElement {
         this.dispatchEvent(attributeSelectedEvent);
       });
     });
-
-    let mySelector = this.shadowRoot.querySelector(`select[name="size"]`);
   }
 }
 

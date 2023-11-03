@@ -80,6 +80,10 @@ a.no-hover-effect:hover::after {
   width: 0;
 }
 
+title {
+  color: red;
+}
+
 svg {
   stroke-width: 2;
 }

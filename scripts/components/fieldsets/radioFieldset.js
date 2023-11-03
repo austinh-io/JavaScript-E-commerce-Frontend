@@ -43,7 +43,7 @@ const tpl_radioFieldsetCSS = `
       outline-offset: 1px;
       border-radius: 50%;
       cursor: pointer;
-      border: 1px solid var(--color-font);
+      border: 2px solid var(--color-font);
 
       outline: 3px solid rgba(0, 0, 0, 0);
 
@@ -68,12 +68,12 @@ const tpl_radioFieldsetCSS = `
     }
 
     .option-fieldset input[type='radio']:disabled {
-      border: 1px solid green;
+      border: 1px solid var(--color-disabled);
     }
 
     .option-fieldset input[type='radio']:disabled:hover {
       cursor: default;
-      outline: none;
+      outline: 3px solid rgba(0, 0, 0, 0);
 
     }
 
@@ -87,6 +87,17 @@ const tpl_radioFieldsetCSS = `
 </style>
 `;
 
+function findOptionByAttributes(product, attributes) {
+  return product.options.find((option) =>
+    Object.entries(attributes).every(([attrName, attrValue]) =>
+      option.attributes.some(
+        (optionAttr) =>
+          optionAttr.name === attrName && optionAttr.value === attrValue
+      )
+    )
+  );
+}
+
 function createAttributeSelectors(product) {
   let html = '';
   let attributes = {};
@@ -95,20 +106,34 @@ function createAttributeSelectors(product) {
   product.options.forEach((option) => {
     option.attributes.forEach((attr) => {
       if (!attributes[attr.name]) {
-        attributes[attr.name] = { type: attr.type, values: new Set() };
+        attributes[attr.name] = { type: attr.type, values: {} };
       }
-      attributes[attr.name].values.add(attr.value);
+      attributes[attr.name].values[attr.value] = attr.radioVisual;
     });
   });
 
   // Create HTML for each attribute
   for (let name in attributes) {
-    if (attributes[name].type == 'radio' && attributes[name].values.size > 1) {
+    if (
+      attributes[name].type == 'radio' &&
+      Object.keys(attributes[name].values).length > 1
+    ) {
       html += `<fieldset class="option-fieldset"><legend>${name}</legend>`;
-      attributes[name].values.forEach((value) => {
-        html += `<input type="radio" id="${value}" name="${name}" value="${value}" title="${value}">
-                   <label for="${value}" class="hidden">${value}</label>`;
-      });
+      for (let value in attributes[name].values) {
+        let radioVisual = attributes[name].values[value];
+        let backgroundStyle = '';
+
+        if (radioVisual) {
+          if (radioVisual.type === 'image') {
+            backgroundStyle = `background-image: url('${baseUrl}/assets/images/productImages/${radioVisual.value}.jpg');`;
+          } else if (radioVisual.type === 'color') {
+            backgroundStyle = `background-color: ${radioVisual.value};`;
+          }
+        }
+
+        html += `<input type="radio" id="${value}" name="${name}" value="${value}" title="${value}" style="${backgroundStyle}">
+                     <label for="${value}" class="hidden">${value}</label>`;
+      }
       html += `</fieldset>`;
     }
   }
@@ -194,15 +219,10 @@ class radioFieldset extends HTMLElement {
   }
 
   setAvailableOptions(selectedOption) {
-    console.log('radioFieldset: Set available options');
-    // console.log(selectedOption);
     let availableAttributes = calculateAvailableAttributes(
       selectedOption,
       this.product
     );
-
-    console.log('availableAttributes');
-    console.log(availableAttributes);
 
     let optionFieldsets = Array.from(
       this.shadowRoot.querySelectorAll('fieldset.option-fieldset')
@@ -266,8 +286,6 @@ class radioFieldset extends HTMLElement {
         // console.log('Radio Fieldset Attribute Selected');
       });
     });
-
-    let selector = this.shadowRoot.querySelector(`#color`);
   }
 }
 
