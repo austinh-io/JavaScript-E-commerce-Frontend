@@ -13,7 +13,7 @@ JSymbol is more flexible than what I was using before, which was just using an i
 
 ## Product Data Structure Guidelines
 
-This section is more for myself, as the way I have my product data strucutred it needs to follow certain rules to work correctly, and I don't believe there is a way to enforce this right now, as every product is currently manually added to the JSON file.
+This section is more for myself, as the way I have my product data structured it needs to follow certain rules to work correctly, and I don't believe there is a way to enforce this right now, as every product is currently manually added to the JSON file.
 
 1. Products are "containers" for Options
 2. Options are unique items, categorized by similar traits defined by the Product.
