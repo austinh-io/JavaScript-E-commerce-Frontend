@@ -59,17 +59,6 @@ class productOptionSet extends HTMLElement {
     this.radioFieldset = undefined;
   }
 
-  setSelectedOption(option) {
-    console.log('Product Option Set: Selected Option');
-
-    this.option = option;
-    console.log(this.option);
-  }
-
-  getSelectedOption = () => {
-    return this.option;
-  };
-
   initOptions = () => {
     let optionSetContent =
       tpl_radioFieldset(this.productId) + tpl_selectionList(this.productId);

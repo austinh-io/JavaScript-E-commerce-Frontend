@@ -349,27 +349,8 @@ class catalogProduct extends HTMLElement {
     productButton.textContent = 'Item in Cart';
   };
 
-  handleProductOptionChange() {
-    console.log('handle product option change');
-    const targetElement = this.closest('.product');
-
-    const productImageContainer = targetElement.querySelector(
-      '.product-image-container'
-    );
-    const productImage = targetElement.querySelector('.product-image');
-    const productImageSource = targetElement.querySelector(
-      '#product-image-source'
-    );
-    const productTitle = targetElement.querySelector('.product-title a');
-    const productPrice = targetElement.querySelector('.product-price-value');
-    const productButton = targetElement.querySelector('.button-product');
-
-    let productId = this.dataset.productid;
-    let optionId = this.dataset.optionid;
-
-    if (!optionId) {
-      optionId = this.options[this.selectedIndex].dataset.optionid;
-    }
+  handleProductOptionChange = (optionId) => {
+    let productId = this.getAttribute('productid');
 
     let targetProduct = catalogProducts.find(
       (product) => product.productId == productId
@@ -381,41 +362,15 @@ class catalogProduct extends HTMLElement {
 
     let productUrl = `productPage.html?productid=${targetProduct.productId}&optionid=${targetProductOption.optionId}`;
 
-    productImage.src = `${baseUrl}/assets/images/productImages/small/${targetProductOption.imageName}_small.webp `;
-    productImageSource.srcset = `${baseUrl}/assets/images/productImages/small/${targetProductOption.imageName}_small.webp `;
-    productTitle.setAttribute('href', productUrl);
-    productPrice.textContent = formatCurrency(targetProductOption.price);
-    productButton.dataset.productid = productId;
-    productButton.dataset.optionid = optionId;
-    productImageContainer.style = `background-image: url(${baseUrl}/assets/images/productImages/smaller_alt/${targetProductOption.imageName}_smaller_alt.jpg);`;
-    productImageContainer.setAttribute('href', productUrl);
-
-    // let cardOptionsSelections = cardOptionSelectionGroup(
-    //   targetProduct,
-    //   targetProductOption
-    // );
-
-    // let productOptionSet = undefined;
-    // let productOptionSetOptions = undefined;
-
-    // const hasSelectGroup = targetElement.querySelector(
-    //   '.product-size-selection'
-    // )
-    //   ? true
-    //   : false;
-
-    // if (hasSelectGroup) {
-    //   productOptionSet = targetElement.querySelector('.product-size-selection');
-    //   productOptionSetOptions = productOptionSet.getElementsByTagName('option');
-    // }
-
-    // if (
-    //   !(this.classList[0] == 'product-size-selection') &&
-    //   cardOptionsSelections
-    // ) {
-    //   productOptionSet.innerHTML = cardOptionsSelections;
-    // }
-  }
+    this.productImage.src = `${baseUrl}/assets/images/productImages/small/${targetProductOption.imageSet[0]}_small.webp `;
+    this.productImageSource.srcset = `${baseUrl}/assets/images/productImages/small/${targetProductOption.imageSet[0]}_small.webp `;
+    this.productTitle.setAttribute('href', productUrl);
+    this.productPrice.textContent = formatCurrency(targetProductOption.price);
+    this.productButton.dataset.productid = productId;
+    this.productButton.dataset.optionid = optionId;
+    this.productImageContainer.style = `background-image: url(${baseUrl}/assets/images/productImages/smaller_alt/${targetProductOption.imageSet[0]}_smaller_alt.jpg);`;
+    this.productImageContainer.setAttribute('href', productUrl);
+  };
 
   connectedCallback() {
     this.productOptionsContainer.setAttribute('productid', this.productId);
@@ -429,19 +384,12 @@ class catalogProduct extends HTMLElement {
 
     this.productOptionsContainer.addEventListener(
       'attributes-collected',
-      function (event) {
+      (event) => {
         this.selectedOption = findOptionByAttributes(product, event.detail);
 
         productButton.dataset.optionid = this.selectedOption.optionId;
-        // this.productImageSource.srcset = `${baseUrl}assets/images/productImages/small/${this.selectedOption.imageSet[0]}_small.webp`;
-        // this.productPrice.textContent = formatCurrency(
-        //   this.selectedOption.price
-        // );
-
-        // console.log('THE SELECTED OPTION!');
-        // console.log(this.selectedOption);
-
-        // this.productOptionsContainer.setSelectedOption(this.selectedOption);
+        this.handleProductOptionChange(this.selectedOption.optionId);
+        this.updateCatalogItemButton();
       }
     );
 
