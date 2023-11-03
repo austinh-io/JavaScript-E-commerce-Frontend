@@ -46,9 +46,10 @@ const tpl_radioFieldsetCSS = `
       border: 2px solid var(--color-font);
 
       outline: 3px solid rgba(0, 0, 0, 0);
+      opacity: 1;
 
 
-      transition: all 0.1s ease-out;
+      transition: outline 0.2s ease-out, opacity 0.1s ease-out;
     }
 
     .option-fieldset input[type='radio']:hover {
@@ -69,6 +70,7 @@ const tpl_radioFieldsetCSS = `
 
     .option-fieldset input[type='radio']:disabled {
       border: 1px solid var(--color-disabled);
+      opacity: 0.5;
     }
 
     .option-fieldset input[type='radio']:disabled:hover {

@@ -18,8 +18,8 @@
             "type": "radio",
             "value": "white",
             "radioVisual": {
-              "type": "image",
-              "value": "option_bg_02"
+              "type": "color",
+              "value": "#eaefff"
             }
           },
           {
@@ -54,8 +54,8 @@
             "type": "radio",
             "value": "blurple",
             "radioVisual": {
-              "type": "image",
-              "value": "option_bg_02"
+              "type": "color",
+              "value": "#6F00FF"
             }
           },
           {
@@ -90,8 +90,8 @@
             "type": "radio",
             "value": "blurple",
             "radioVisual": {
-              "type": "image",
-              "value": "option_bg_02"
+              "type": "color",
+              "value": "#6F00FF"
             }
           },
           {
@@ -126,8 +126,8 @@
             "type": "radio",
             "value": "white",
             "radioVisual": {
-              "type": "image",
-              "value": "option_bg_02"
+              "type": "color",
+              "value": "#eaefff"
             }
           },
           {
@@ -160,10 +160,10 @@
           {
             "name": "color",
             "type": "radio",
-            "value": "black",
+            "value": "graphite",
             "radioVisual": {
               "type": "image",
-              "value": "option_bg_02"
+              "value": "option_bg_09"
             }
           },
           {
@@ -198,8 +198,8 @@
             "type": "radio",
             "value": "white",
             "radioVisual": {
-              "type": "image",
-              "value": "option_bg_02"
+              "type": "color",
+              "value": "#eaefff"
             }
           },
           {
@@ -234,8 +234,8 @@
             "type": "radio",
             "value": "white",
             "radioVisual": {
-              "type": "image",
-              "value": "option_bg_02"
+              "type": "color",
+              "value": "#eaefff"
             }
           },
           {
@@ -270,8 +270,8 @@
             "type": "radio",
             "value": "white",
             "radioVisual": {
-              "type": "image",
-              "value": "option_bg_02"
+              "type": "color",
+              "value": "#eaefff"
             }
           },
           {
@@ -304,10 +304,10 @@
           {
             "name": "color",
             "type": "radio",
-            "value": "black",
+            "value": "graphite",
             "radioVisual": {
               "type": "image",
-              "value": "option_bg_07"
+              "value": "option_bg_09"
             }
           },
           {
@@ -340,10 +340,10 @@
           {
             "name": "color",
             "type": "radio",
-            "value": "black",
+            "value": "graphite",
             "radioVisual": {
               "type": "image",
-              "value": "option_bg_07"
+              "value": "option_bg_09"
             }
           },
           {
@@ -451,7 +451,7 @@
             "value": "white",
             "radioVisual": {
               "type": "color",
-              "value": "#da627d"
+              "value": "#eaefff"
             }
           },
           {
@@ -487,7 +487,7 @@
             "value": "blue",
             "radioVisual": {
               "type": "color",
-              "value": "#9a348e"
+              "value": "#318CE7"
             }
           },
           {
@@ -523,7 +523,7 @@
             "value": "blue",
             "radioVisual": {
               "type": "color",
-              "value": "#9a348e"
+              "value": "#318CE7"
             }
           },
           {
@@ -822,7 +822,7 @@
             "value": "white",
             "radioVisual": {
               "type": "color",
-              "value": "#2a9d8f"
+              "value": "#eaefff"
             }
           },
           {
@@ -849,7 +849,7 @@
             "value": "white",
             "radioVisual": {
               "type": "color",
-              "value": "#2a9d8f"
+              "value": "#eaefff"
             }
           },
           {
@@ -1014,10 +1014,6 @@
         "price": 24.95,
         "quantity": 0,
         "imageSet": ["item10-0"],
-        "radioVisual": {
-          "type": "color",
-          "value": "#f9dbbd"
-        },
         "attributes": [
           {
             "name": "color",
@@ -1025,7 +1021,7 @@
             "value": "white",
             "radioVisual": {
               "type": "color",
-              "value": "#f9dbbd"
+              "value": "#eaefff"
             }
           },
           {
@@ -1052,7 +1048,7 @@
             "value": "white",
             "radioVisual": {
               "type": "color",
-              "value": "#f9dbbd"
+              "value": "#eaefff"
             }
           },
           {
@@ -1089,7 +1085,7 @@
             "value": "white",
             "radioVisual": {
               "type": "color",
-              "value": "#00f5d4"
+              "value": "#eaefff"
             }
           },
           {
@@ -1111,7 +1107,7 @@
             "value": "white",
             "radioVisual": {
               "type": "color",
-              "value": "#aeb8fe"
+              "value": "#eaefff"
             }
           },
           {
@@ -1165,7 +1161,7 @@
             "value": "white",
             "radioVisual": {
               "type": "color",
-              "value": "#00f5d4"
+              "value": "#eaefff"
             }
           },
           {
