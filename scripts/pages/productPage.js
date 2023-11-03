@@ -61,7 +61,7 @@ async function initializePage() {
   productSizeElement.innerText = productOption.optionSize;
   productStyleElement.innerText = productOption.optionStyle;
   productPriceElement.innerText = productOption.price;
-  productImageElement.src = `${baseUrl}/assets/images/productImages/small/${productOption.imageName}_small.webp`;
+  productImageElement.src = `${baseUrl}/assets/images/productImages/small/${productOption.imageSet[0]}_small.webp`;
 
   addToCartButton.addEventListener('click', addToCart);
   addToCartButton.addEventListener('click', handleOpenCartMenu);
