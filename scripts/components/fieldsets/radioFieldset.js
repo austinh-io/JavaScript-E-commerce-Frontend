@@ -194,7 +194,7 @@ class radioFieldset extends HTMLElement {
   }
 
   setAvailableOptions(selectedOption) {
-    // console.log('radioFieldset: Set available options');
+    console.log('radioFieldset: Set available options');
     // console.log(selectedOption);
     let availableAttributes = calculateAvailableAttributes(
       selectedOption,

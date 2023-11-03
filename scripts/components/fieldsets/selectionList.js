@@ -109,6 +109,61 @@ function createAttributeSelectors(product) {
   return html;
 }
 
+function calculateAvailableAttributes(selectedOption, product) {
+  const productOptions = product.options;
+  const currentOption = selectedOption;
+
+  let currentState = currentOption.attributes.reduce((state, attribute) => {
+    state[attribute.name] = attribute.value;
+    return state;
+  }, {});
+
+  // Define a helper function to check compatibility
+  const isOptionCompatible = (
+    option,
+    attributeNameToCheck,
+    currentAttributes
+  ) => {
+    return currentAttributes.every(({ name, value }) => {
+      // Skip the attribute if it's the one we're checking compatibility for
+      if (name === attributeNameToCheck) return true;
+
+      // Check if the option has an attribute with the same name and value as the current attribute
+      const attribute = option.attributes.find((attr) => attr.name === name);
+      return attribute && attribute.value === value;
+    });
+  };
+
+  // Convert currentState to an array of attributes
+  const currentAttributes = Object.keys(currentState).map((name) => ({
+    name,
+    value: currentState[name],
+  }));
+
+  // Dynamically create the structure for validAttributes based on current attributes
+  let validAttributes = currentAttributes.reduce((acc, attr) => {
+    acc[attr.name] = [];
+    return acc;
+  }, {});
+
+  // Go through each attribute in the currentState and populate validAttributes
+  for (const attributeName in validAttributes) {
+    productOptions.forEach((option) => {
+      option.attributes.forEach((attribute) => {
+        if (
+          attribute.name === attributeName &&
+          !validAttributes[attributeName].includes(attribute.value) &&
+          isOptionCompatible(option, attributeName, currentAttributes)
+        ) {
+          validAttributes[attributeName].push(attribute.value);
+        }
+      });
+    });
+  }
+
+  return validAttributes;
+}
+
 tpl_selectionList.innerHTML = `
 ${tpl_selectionListCSS}
 
@@ -135,26 +190,36 @@ class selectionList extends HTMLElement {
     );
   }
 
-  setAvailableOptions(availableAttributes, selectedOption) {
-    // Update attribute selectors
-    // for (let attribute of selectedOption.attributes) {
-    //   let selector;
-    //   if (attribute.type === 'select') {
-    //     selector = this.shadowRoot.querySelector(
-    //       `select[name="${attribute.name}"]`
-    //     );
-    //   }
-    //   if (selector && availableAttributes) {
-    //     for (let i = 0; i < selector.options.length; i++) {
-    //       let option = selector.options[i];
-    //       if (availableAttributes[attribute.name].has(option.value)) {
-    //         option.disabled = false;
-    //       } else {
-    //         option.disabled = true;
-    //       }
-    //     }
-    //   }
-    // }
+  setAvailableOptions(selectedOption) {
+    let availableAttributes = calculateAvailableAttributes(
+      selectedOption,
+      this.product
+    );
+
+    let selectDropdowns = Array.from(
+      this.shadowRoot.querySelectorAll('select.option-selection')
+    );
+
+    for (let selectDropdown of selectDropdowns) {
+      let name = selectDropdown.getAttribute('name');
+      let options = Array.from(selectDropdown.options);
+
+      for (let option of options) {
+        let value = option.getAttribute('value');
+
+        if (
+          availableAttributes[name] &&
+          availableAttributes[name].includes(value)
+        ) {
+          option.disabled = false;
+        } else {
+          option.disabled = true;
+          if (option.selected) {
+            selectDropdown.value = ''; // deselect the option if it's currently selected
+          }
+        }
+      }
+    }
   }
 
   connectedCallback() {
