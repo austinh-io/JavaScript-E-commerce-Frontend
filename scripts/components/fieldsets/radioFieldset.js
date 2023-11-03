@@ -117,57 +117,13 @@ function createAttributeSelectors(product) {
 }
 
 function calculateAvailableAttributes(selectedOption, product) {
-  // let availableAttributes = new Array();
-  // console.log('Selected Attributes');
-  // console.log(selectedOption.attributes);
-
-  // console.log('All Attributes');
-  // for (let selectedOptionAttribute of selectedOption.attributes) {
-  //   console.log('---------SELECTED OPTION ATTRIBUTE---------');
-  //   console.log(selectedOptionAttribute);
-  //   for (let option of product.options) {
-  //     console.log('-----OPTION-----');
-  //     console.log(option);
-  //     if (option !== selectedOption) {
-  //       for (let attribute of option.attributes) {
-  //         console.log('---ATTRIBUTE---');
-  //         console.log(attribute);
-  //         if (attribute.name !== selectedOptionAttribute.name) {
-  //           // if (option.attributes.some((att) => att === attribute)) {
-  //           //   availableAttributes.push(attribute);
-  //           // }
-  //           console.log(
-  //             option.attributes.some((att) => att === selectedOptionAttribute)
-  //           );
-  //           if (
-  //             option.attributes.some((att) => att === selectedOptionAttribute)
-  //           ) {
-  //             console.log(
-  //               '-option.attributes.some((att) => att === selectedOption)-'
-  //             );
-  //             console.log(attribute);
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-
-  // console.log('availableAttributes');
-  // console.log(availableAttributes);
-  // return availableAttributes;
-
   const productOptions = product.options;
   const currentOption = selectedOption;
-  // const currentState = currentOption.attributes;
 
   let currentState = currentOption.attributes.reduce((state, attribute) => {
     state[attribute.name] = attribute.value;
     return state;
   }, {});
-
-  console.log('currentState');
-  console.log(currentState);
 
   // Define a helper function to check compatibility
   const isOptionCompatible = (
@@ -212,10 +168,7 @@ function calculateAvailableAttributes(selectedOption, product) {
     });
   }
 
-  let availableOptions = validAttributes;
-
-  console.log('availableOptions');
-  console.log(availableOptions);
+  return validAttributes;
 }
 
 tpl_radioFieldset.innerHTML = `
@@ -241,45 +194,40 @@ class radioFieldset extends HTMLElement {
   }
 
   setAvailableOptions(selectedOption) {
-    // console.log('Radio Fieldset: Set Available Options');
-    // console.log('selectedOption');
+    // console.log('radioFieldset: Set available options');
     // console.log(selectedOption);
-
-    // Calculate availableAttributes based on selectedOption and product
     let availableAttributes = calculateAvailableAttributes(
       selectedOption,
       this.product
     );
 
-    // console.log('Selected Option');
-    // console.log(selectedOption);
+    console.log('availableAttributes');
+    console.log(availableAttributes);
 
-    // console.log('Available Attributes');
-    // console.log(availableAttributes);
+    let optionFieldsets = Array.from(
+      this.shadowRoot.querySelectorAll('fieldset.option-fieldset')
+    );
 
-    // Update attribute selectors
-    // for (let attribute of selectedOption.attributes) {
-    //   if (attribute.type === 'radio') {
-    //     let fieldsets = Array.from(
-    //       this.shadowRoot.querySelectorAll('.option-fieldset')
-    //     );
-    //     let fieldset = fieldsets.find(
-    //       (fs) => fs.querySelector('legend').textContent === attribute.name
-    //     );
-    //     if (fieldset) {
-    //       let radioButtons = Array.from(
-    //         fieldset.querySelectorAll('input[type="radio"]')
-    //       );
-    //       for (let radioButton of radioButtons) {
-    //         if (availableAttributes[attribute.name].has(radioButton.value)) {
-    //           radioButton.disabled = false;
-    //         } else {
-    //           radioButton.disabled = true;
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
+    for (let optionFieldset of optionFieldsets) {
+      let radioButtons = Array.from(
+        optionFieldset.querySelectorAll('input[type="radio"]')
+      );
+
+      for (let radioButton of radioButtons) {
+        let name = radioButton.getAttribute('name');
+        let value = radioButton.getAttribute('value');
+
+        if (
+          availableAttributes[name] &&
+          availableAttributes[name].includes(value)
+        ) {
+          radioButton.disabled = false;
+        } else {
+          radioButton.disabled = true;
+          radioButton.checked = false;
+        }
+      }
+    }
   }
 
   connectedCallback() {
@@ -315,7 +263,7 @@ class radioFieldset extends HTMLElement {
           composed: true,
         });
         this.dispatchEvent(attributeSelectedEvent);
-        console.log('Radio Fieldset Attribute Selected');
+        // console.log('Radio Fieldset Attribute Selected');
       });
     });
 

@@ -30,18 +30,6 @@ const tpl_productOptionSetCSS = `
 </style>
 `;
 
-function matchesSelectedAttributes(option, selectedAttributes) {
-  for (let attr of option.attributes) {
-    if (
-      selectedAttributes[attr.name] &&
-      selectedAttributes[attr.name] !== attr.value
-    ) {
-      return false;
-    }
-  }
-  return true;
-}
-
 function findOptionByAttributes(product, attributes) {
   return product.options.find((option) =>
     Object.entries(attributes).every(([attrName, attrValue]) =>
@@ -91,51 +79,11 @@ class productOptionSet extends HTMLElement {
     this.radioFieldset = this.shadowRoot.querySelector('radio-fieldset');
   };
 
-  updateAvailableOptions = (selectedAttributes, option) => {
-    // console.log('Product Option Set: Update Available Options');
-    let availableAttributes = {};
-
-    // Initialize availableAttributes with empty sets
-    this.product.options.forEach((option) => {
-      option.attributes.forEach((attr) => {
-        if (!availableAttributes[attr.name]) {
-          availableAttributes[attr.name] = new Set();
-        }
-      });
-    });
-
-    // Find available attributes
-    this.product.options.forEach((_option) => {
-      if (matchesSelectedAttributes(_option, this.selectedAttributes)) {
-        for (let attr of _option.attributes) {
-          availableAttributes[attr.name].add(attr.value);
-        }
-      }
-    });
-
-    // Update attribute selectors
-    for (let name in this.product.attributes) {
-      let selector = this.shadowRoot.querySelector(`#${name}`);
-      for (let option of selector.options) {
-        if (availableAttributes[name].has(option.value)) {
-          option.disabled = false;
-        } else {
-          option.disabled = true;
-        }
-      }
-    }
-  };
-
   connectedCallback() {
     this.initOptions();
 
     let product = catalogProducts.find((i) => i.productId == this.productId);
     let initSelectedOption = product.options[0];
-
-    // console.log('this.getSelectedOption()');
-    // console.log(initSelectedOption);
-
-    // this.updateAvailableOptions(this.selectedAttributes, initSelectedOption);
 
     this.selectionList.setAvailableOptions(initSelectedOption);
     this.radioFieldset.setAvailableOptions(initSelectedOption);
@@ -155,36 +103,10 @@ class productOptionSet extends HTMLElement {
         this.selectedAttributes
       );
 
-      // this.updateAvailableOptions(
-      //   this.selectedAttributes,
-      //   this.getSelectedOption()
-      // );
-
-      this.selectionList.setAvailableOptions(this.getSelectedOption());
-      this.radioFieldset.setAvailableOptions(this.getSelectedOption());
+      this.selectionList.setAvailableOptions(this.selectedOption);
+      this.radioFieldset.setAvailableOptions(this.selectedOption);
     });
-
-    // this.addEventListener('attribute-selected', (event) => {
-    //   this.selectionList.updateAvailableOptions(this.selectedAttributes);
-    //   this.radioFieldset.updateAvailableOptions(this.selectedAttributes);
-    // });
-
-    // console.log(this);
   }
-
-  // handleAttributeSelection() {
-  //   return function (event) {
-  //     this.selectedAttributes[event.detail.name] = event.detail.value;
-
-  //     let attributesSelectedEvent = new CustomEvent('attributes-collected', {
-  //       detail: this.selectedAttributes,
-  //       bubbles: true,
-  //       composed: true,
-  //     });
-  //     this.dispatchEvent(attributesSelectedEvent);
-  //     console.log('Option Set Attributes Collected');
-  //   };
-  // }
 }
 
 window.customElements.define('product-option-set', productOptionSet);

@@ -152,6 +152,42 @@
         ]
       },
       {
+        "optionId": 1,
+        "price": 34.95,
+        "quantity": 0,
+        "imageSet": ["item0-0"],
+        "attributes": [
+          {
+            "name": "color",
+            "type": "radio",
+            "value": "black",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
+          },
+          {
+            "name": "material",
+            "type": "radio",
+            "value": "silk",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
+          },
+          {
+            "name": "size",
+            "type": "select",
+            "value": "small"
+          },
+          {
+            "name": "style",
+            "type": "select",
+            "value": "crew neck"
+          }
+        ]
+      },
+      {
         "optionId": 70,
         "price": 34.95,
         "quantity": 0,
