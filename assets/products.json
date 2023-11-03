@@ -44,6 +44,78 @@
         ]
       },
       {
+        "optionId": 9002,
+        "price": 34.95,
+        "quantity": 10,
+        "imageSet": ["item0-0"],
+        "attributes": [
+          {
+            "name": "color",
+            "type": "radio",
+            "value": "blurple",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
+          },
+          {
+            "name": "material",
+            "type": "radio",
+            "value": "cotton",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
+          },
+          {
+            "name": "size",
+            "type": "select",
+            "value": "small"
+          },
+          {
+            "name": "style",
+            "type": "select",
+            "value": "crew neck"
+          }
+        ]
+      },
+      {
+        "optionId": 9002,
+        "price": 34.95,
+        "quantity": 10,
+        "imageSet": ["item0-0"],
+        "attributes": [
+          {
+            "name": "color",
+            "type": "radio",
+            "value": "blurple",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
+          },
+          {
+            "name": "material",
+            "type": "radio",
+            "value": "cotton",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
+          },
+          {
+            "name": "size",
+            "type": "select",
+            "value": "small"
+          },
+          {
+            "name": "style",
+            "type": "select",
+            "value": "crew neck"
+          }
+        ]
+      },
+      {
         "optionId": 1,
         "price": 34.95,
         "quantity": 0,
@@ -80,9 +152,43 @@
         ]
       },
       {
+        "optionId": 70,
+        "price": 34.95,
+        "quantity": 0,
+        "imageSet": ["item0-0"],
+        "attributes": [
+          {
+            "name": "color",
+            "type": "radio",
+            "value": "white",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
+          },
+          {
+            "name": "material",
+            "type": "radio",
+            "value": "cotton",
+            "radioVisual": {
+              "type": "image",
+              "value": "option_bg_02"
+            }
+          },
+          {
+            "name": "size",
+            "type": "select",
+            "value": "medium"
+          },
+          {
+            "name": "style",
+            "type": "select",
+            "value": "crew neck"
+          }
+        ]
+      },
+      {
         "optionId": 2,
-        "optionStyle": "white",
-        "optionSize": "L",
         "price": 34.95,
         "quantity": 9,
         "imageSet": ["item0-0"],

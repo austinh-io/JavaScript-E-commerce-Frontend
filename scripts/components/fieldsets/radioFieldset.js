@@ -117,40 +117,105 @@ function createAttributeSelectors(product) {
 }
 
 function calculateAvailableAttributes(selectedOption, product) {
-  let compatibleAttributes = new Set();
+  // let availableAttributes = new Array();
+  // console.log('Selected Attributes');
+  // console.log(selectedOption.attributes);
 
-  // Loop over each option in the product
-  for (let option of product.options) {
-    // Check if all attributes of the selected option are present in the current option
-    if (
-      selectedOption.attributes.every((attribute) =>
-        option.attributes.some(
-          (a) => a.name === attribute.name && a.value === attribute.value
-        )
-      )
-    ) {
-      // If they are, add all attributes of the current option to compatibleAttributes
-      for (let attribute of option.attributes) {
-        let { radioVisual, ...attributeWithoutRadioVisual } = attribute;
-        // Convert attribute to a string with name, type and value
-        let attributeString = `${attributeWithoutRadioVisual.name}:${attributeWithoutRadioVisual.type}:${attributeWithoutRadioVisual.value}`;
-        compatibleAttributes.add(attributeString);
-      }
-    }
+  // console.log('All Attributes');
+  // for (let selectedOptionAttribute of selectedOption.attributes) {
+  //   console.log('---------SELECTED OPTION ATTRIBUTE---------');
+  //   console.log(selectedOptionAttribute);
+  //   for (let option of product.options) {
+  //     console.log('-----OPTION-----');
+  //     console.log(option);
+  //     if (option !== selectedOption) {
+  //       for (let attribute of option.attributes) {
+  //         console.log('---ATTRIBUTE---');
+  //         console.log(attribute);
+  //         if (attribute.name !== selectedOptionAttribute.name) {
+  //           // if (option.attributes.some((att) => att === attribute)) {
+  //           //   availableAttributes.push(attribute);
+  //           // }
+  //           console.log(
+  //             option.attributes.some((att) => att === selectedOptionAttribute)
+  //           );
+  //           if (
+  //             option.attributes.some((att) => att === selectedOptionAttribute)
+  //           ) {
+  //             console.log(
+  //               '-option.attributes.some((att) => att === selectedOption)-'
+  //             );
+  //             console.log(attribute);
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+
+  // console.log('availableAttributes');
+  // console.log(availableAttributes);
+  // return availableAttributes;
+
+  const productOptions = product.options;
+  const currentOption = selectedOption;
+  // const currentState = currentOption.attributes;
+
+  let currentState = currentOption.attributes.reduce((state, attribute) => {
+    state[attribute.name] = attribute.value;
+    return state;
+  }, {});
+
+  console.log('currentState');
+  console.log(currentState);
+
+  // Define a helper function to check compatibility
+  const isOptionCompatible = (
+    option,
+    attributeNameToCheck,
+    currentAttributes
+  ) => {
+    return currentAttributes.every(({ name, value }) => {
+      // Skip the attribute if it's the one we're checking compatibility for
+      if (name === attributeNameToCheck) return true;
+
+      // Check if the option has an attribute with the same name and value as the current attribute
+      const attribute = option.attributes.find((attr) => attr.name === name);
+      return attribute && attribute.value === value;
+    });
+  };
+
+  // Convert currentState to an array of attributes
+  const currentAttributes = Object.keys(currentState).map((name) => ({
+    name,
+    value: currentState[name],
+  }));
+
+  // Dynamically create the structure for validAttributes based on current attributes
+  let validAttributes = currentAttributes.reduce((acc, attr) => {
+    acc[attr.name] = [];
+    return acc;
+  }, {});
+
+  // Go through each attribute in the currentState and populate validAttributes
+  for (const attributeName in validAttributes) {
+    productOptions.forEach((option) => {
+      option.attributes.forEach((attribute) => {
+        if (
+          attribute.name === attributeName &&
+          !validAttributes[attributeName].includes(attribute.value) &&
+          isOptionCompatible(option, attributeName, currentAttributes)
+        ) {
+          validAttributes[attributeName].push(attribute.value);
+        }
+      });
+    });
   }
 
-  // Convert compatibleAttributes back to an array of objects
-  compatibleAttributes = Array.from(compatibleAttributes).map(
-    (attributeString) => {
-      let [name, type, value] = attributeString.split(':');
-      return { name, type, value };
-    }
-  );
+  let availableOptions = validAttributes;
 
-  console.log('Compatible Attributes');
-  console.log(compatibleAttributes);
-
-  return compatibleAttributes;
+  console.log('availableOptions');
+  console.log(availableOptions);
 }
 
 tpl_radioFieldset.innerHTML = `
@@ -193,28 +258,28 @@ class radioFieldset extends HTMLElement {
     // console.log(availableAttributes);
 
     // Update attribute selectors
-    for (let attribute of selectedOption.attributes) {
-      if (attribute.type === 'radio') {
-        let fieldsets = Array.from(
-          this.shadowRoot.querySelectorAll('.option-fieldset')
-        );
-        let fieldset = fieldsets.find(
-          (fs) => fs.querySelector('legend').textContent === attribute.name
-        );
-        if (fieldset) {
-          let radioButtons = Array.from(
-            fieldset.querySelectorAll('input[type="radio"]')
-          );
-          for (let radioButton of radioButtons) {
-            if (availableAttributes[attribute.name].has(radioButton.value)) {
-              radioButton.disabled = false;
-            } else {
-              radioButton.disabled = true;
-            }
-          }
-        }
-      }
-    }
+    // for (let attribute of selectedOption.attributes) {
+    //   if (attribute.type === 'radio') {
+    //     let fieldsets = Array.from(
+    //       this.shadowRoot.querySelectorAll('.option-fieldset')
+    //     );
+    //     let fieldset = fieldsets.find(
+    //       (fs) => fs.querySelector('legend').textContent === attribute.name
+    //     );
+    //     if (fieldset) {
+    //       let radioButtons = Array.from(
+    //         fieldset.querySelectorAll('input[type="radio"]')
+    //       );
+    //       for (let radioButton of radioButtons) {
+    //         if (availableAttributes[attribute.name].has(radioButton.value)) {
+    //           radioButton.disabled = false;
+    //         } else {
+    //           radioButton.disabled = true;
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
   }
 
   connectedCallback() {
