@@ -106,7 +106,7 @@ function createAttributeSelectors(product) {
     if (attributes[name].type == 'radio' && attributes[name].values.size > 1) {
       html += `<fieldset class="option-fieldset"><legend>${name}</legend>`;
       attributes[name].values.forEach((value) => {
-        html += `<input type="radio" id="${value}" name="${name}" value="${value}">
+        html += `<input type="radio" id="${value}" name="${name}" value="${value}" title="${value}">
                    <label for="${value}" class="hidden">${value}</label>`;
       });
       html += `</fieldset>`;
@@ -117,29 +117,40 @@ function createAttributeSelectors(product) {
 }
 
 function calculateAvailableAttributes(selectedOption, product) {
-  let availableAttributes = {};
+  let compatibleAttributes = new Set();
 
-  console.log('----------Product Options-------');
+  // Loop over each option in the product
   for (let option of product.options) {
-    console.log('---Option Attributes---');
-    console.log(option.attributes);
-    for (let attribute of option.attributes) {
-      console.log('-Option Attribute-');
-      console.log(attribute);
-      if (
-        selectedOption.attributes.some(
+    // Check if all attributes of the selected option are present in the current option
+    if (
+      selectedOption.attributes.every((attribute) =>
+        option.attributes.some(
           (a) => a.name === attribute.name && a.value === attribute.value
         )
-      ) {
-        if (!availableAttributes[attribute.name]) {
-          availableAttributes[attribute.name] = new Set();
-        }
-        availableAttributes[attribute.name].add(attribute.value);
+      )
+    ) {
+      // If they are, add all attributes of the current option to compatibleAttributes
+      for (let attribute of option.attributes) {
+        let { radioVisual, ...attributeWithoutRadioVisual } = attribute;
+        // Convert attribute to a string with name, type and value
+        let attributeString = `${attributeWithoutRadioVisual.name}:${attributeWithoutRadioVisual.type}:${attributeWithoutRadioVisual.value}`;
+        compatibleAttributes.add(attributeString);
       }
     }
   }
 
-  return availableAttributes;
+  // Convert compatibleAttributes back to an array of objects
+  compatibleAttributes = Array.from(compatibleAttributes).map(
+    (attributeString) => {
+      let [name, type, value] = attributeString.split(':');
+      return { name, type, value };
+    }
+  );
+
+  console.log('Compatible Attributes');
+  console.log(compatibleAttributes);
+
+  return compatibleAttributes;
 }
 
 tpl_radioFieldset.innerHTML = `
@@ -175,11 +186,11 @@ class radioFieldset extends HTMLElement {
       this.product
     );
 
-    console.log('Selected Option');
-    console.log(selectedOption);
+    // console.log('Selected Option');
+    // console.log(selectedOption);
 
-    console.log('Available Attributes');
-    console.log(availableAttributes);
+    // console.log('Available Attributes');
+    // console.log(availableAttributes);
 
     // Update attribute selectors
     for (let attribute of selectedOption.attributes) {

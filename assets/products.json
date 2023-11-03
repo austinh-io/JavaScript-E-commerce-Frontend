@@ -14,7 +14,6 @@
         "imageSet": ["item0-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "white",
@@ -24,7 +23,6 @@
             }
           },
           {
-            "attributeId": 3,
             "name": "material",
             "type": "radio",
             "value": "cotton",
@@ -34,13 +32,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "small"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -54,7 +50,6 @@
         "imageSet": ["item0-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "white",
@@ -64,7 +59,6 @@
             }
           },
           {
-            "attributeId": 3,
             "name": "material",
             "type": "radio",
             "value": "silk",
@@ -74,13 +68,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
-            "value": "medium"
+            "value": "small"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -96,7 +88,6 @@
         "imageSet": ["item0-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "white",
@@ -106,7 +97,6 @@
             }
           },
           {
-            "attributeId": 3,
             "name": "material",
             "type": "radio",
             "value": "cotton",
@@ -116,13 +106,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "large"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -136,7 +124,6 @@
         "imageSet": ["item0-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "white",
@@ -146,7 +133,6 @@
             }
           },
           {
-            "attributeId": 3,
             "name": "material",
             "type": "radio",
             "value": "cotton",
@@ -156,13 +142,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "extra large"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -176,7 +160,6 @@
         "imageSet": ["item1-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "black",
@@ -186,7 +169,6 @@
             }
           },
           {
-            "attributeId": 3,
             "name": "material",
             "type": "radio",
             "value": "cotton",
@@ -196,13 +178,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "extra small"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -216,7 +196,6 @@
         "imageSet": ["item1-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "black",
@@ -226,7 +205,6 @@
             }
           },
           {
-            "attributeId": 3,
             "name": "material",
             "type": "radio",
             "value": "cotton",
@@ -236,13 +214,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "small"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -256,7 +232,6 @@
         "imageSet": ["item2-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "red",
@@ -266,7 +241,6 @@
             }
           },
           {
-            "attributeId": 3,
             "name": "material",
             "type": "radio",
             "value": "cotton",
@@ -276,13 +250,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "small"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -296,7 +268,6 @@
         "imageSet": ["item2-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "red",
@@ -306,7 +277,6 @@
             }
           },
           {
-            "attributeId": 3,
             "name": "material",
             "type": "radio",
             "value": "cotton",
@@ -316,13 +286,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "medium"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -336,7 +304,6 @@
         "imageSet": ["item2-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "white",
@@ -346,7 +313,6 @@
             }
           },
           {
-            "attributeId": 3,
             "name": "material",
             "type": "radio",
             "value": "cotton",
@@ -356,53 +322,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "large"
           },
           {
-            "attributeId": 2,
-            "name": "style",
-            "type": "select",
-            "value": "crew neck"
-          }
-        ]
-      },
-      {
-        "optionId": 9,
-        "price": 34.95,
-        "quantity": 10,
-        "imageSet": ["item3-0"],
-        "attributes": [
-          {
-            "attributeId": 0,
-            "name": "color",
-            "type": "radio",
-            "value": "blue",
-            "radioVisual": {
-              "type": "color",
-              "value": "#9a348e"
-            }
-          },
-          {
-            "attributeId": 3,
-            "name": "material",
-            "type": "radio",
-            "value": "cotton",
-            "radioVisual": {
-              "type": "image",
-              "value": "option_bg_02"
-            }
-          },
-          {
-            "attributeId": 1,
-            "name": "size",
-            "type": "select",
-            "value": "small"
-          },
-          {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -416,7 +340,6 @@
         "imageSet": ["item3-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "blue",
@@ -426,7 +349,6 @@
             }
           },
           {
-            "attributeId": 3,
             "name": "material",
             "type": "radio",
             "value": "cotton",
@@ -436,13 +358,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "medium"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -456,7 +376,6 @@
         "imageSet": ["item3-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "blue",
@@ -466,7 +385,6 @@
             }
           },
           {
-            "attributeId": 3,
             "name": "material",
             "type": "radio",
             "value": "cotton",
@@ -476,13 +394,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "large"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -506,7 +422,6 @@
         "imageSet": ["item5-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "black",
@@ -516,13 +431,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "small"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -536,7 +449,6 @@
         "imageSet": ["item5-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "black",
@@ -546,13 +458,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "medium"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -566,7 +476,6 @@
         "imageSet": ["item5-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "black",
@@ -576,13 +485,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "large"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -596,7 +503,6 @@
         "imageSet": ["item6-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "red",
@@ -606,13 +512,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "small"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -626,7 +530,6 @@
         "imageSet": ["item6-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "red",
@@ -636,13 +539,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "medium"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -656,7 +557,6 @@
         "imageSet": ["item6-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "red",
@@ -666,13 +566,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "large"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -686,7 +584,6 @@
         "imageSet": ["item7-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "black",
@@ -696,13 +593,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "small"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "v neck"
@@ -716,7 +611,6 @@
         "imageSet": ["item7-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "black",
@@ -726,13 +620,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "medium"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "v neck"
@@ -746,7 +638,6 @@
         "imageSet": ["item7-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "black",
@@ -756,13 +647,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "large"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "v neck"
@@ -786,7 +675,6 @@
         "imageSet": ["item8-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "white",
@@ -796,13 +684,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "small"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -816,7 +702,6 @@
         "imageSet": ["item8-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "white",
@@ -826,13 +711,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "large"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -846,7 +729,6 @@
         "imageSet": ["item9-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "red",
@@ -856,13 +738,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "small"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -876,7 +756,6 @@
         "imageSet": ["item9-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "red",
@@ -886,13 +765,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "medium"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -906,7 +783,6 @@
         "imageSet": ["item14-2"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "velvet",
@@ -916,13 +792,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "extra small"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -936,7 +810,6 @@
         "imageSet": ["item14-1"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "velvet",
@@ -946,13 +819,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "small"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -966,7 +837,6 @@
         "imageSet": ["item14-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "velvet",
@@ -976,13 +846,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "medium"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -1010,7 +878,6 @@
         },
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "white",
@@ -1020,13 +887,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "small"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -1040,7 +905,6 @@
         "imageSet": ["item11-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "white",
@@ -1050,13 +914,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "large"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -1080,7 +942,6 @@
         "imageSet": ["item16-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "white",
@@ -1090,7 +951,6 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -1104,7 +964,6 @@
         "imageSet": ["item17-"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "white",
@@ -1114,7 +973,6 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -1128,7 +986,6 @@
         "imageSet": ["item17-"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "orange",
@@ -1138,7 +995,6 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -1162,7 +1018,6 @@
         "imageSet": ["item19-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "white",
@@ -1172,13 +1027,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "One size"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -1202,7 +1055,6 @@
         "imageSet": ["item5-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "black",
@@ -1212,7 +1064,6 @@
             }
           },
           {
-            "attributeId": 3,
             "name": "material",
             "type": "radio",
             "value": "cotton",
@@ -1222,13 +1073,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "small"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -1242,7 +1091,6 @@
         "imageSet": ["item5-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "black",
@@ -1252,7 +1100,6 @@
             }
           },
           {
-            "attributeId": 3,
             "name": "material",
             "type": "radio",
             "value": "silk",
@@ -1262,13 +1109,11 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "medium"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
@@ -1282,7 +1127,6 @@
         "imageSet": ["item5-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "black",
@@ -1292,19 +1136,16 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "large"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
           },
           {
-            "attributeId": 3,
             "name": "material",
             "type": "radio",
             "value": "cotton",
@@ -1322,7 +1163,6 @@
         "imageSet": ["item6-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "red",
@@ -1332,19 +1172,16 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "small"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
           },
           {
-            "attributeId": 3,
             "name": "material",
             "type": "radio",
             "value": "cotton",
@@ -1362,7 +1199,6 @@
         "imageSet": ["item6-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "red",
@@ -1372,19 +1208,16 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "medium"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
           },
           {
-            "attributeId": 3,
             "name": "material",
             "type": "radio",
             "value": "cotton",
@@ -1402,7 +1235,6 @@
         "imageSet": ["item6-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "red",
@@ -1412,19 +1244,16 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "large"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "crew neck"
           },
           {
-            "attributeId": 3,
             "name": "material",
             "type": "radio",
             "value": "cotton",
@@ -1442,7 +1271,6 @@
         "imageSet": ["item7-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "black",
@@ -1452,19 +1280,16 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "small"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "v neck"
           },
           {
-            "attributeId": 3,
             "name": "material",
             "type": "radio",
             "value": "cotton",
@@ -1482,7 +1307,6 @@
         "imageSet": ["item7-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "black",
@@ -1492,19 +1316,16 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "medium"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "v neck"
           },
           {
-            "attributeId": 3,
             "name": "material",
             "type": "radio",
             "value": "cotton",
@@ -1522,7 +1343,6 @@
         "imageSet": ["item7-0"],
         "attributes": [
           {
-            "attributeId": 0,
             "name": "color",
             "type": "radio",
             "value": "black",
@@ -1532,19 +1352,16 @@
             }
           },
           {
-            "attributeId": 1,
             "name": "size",
             "type": "select",
             "value": "large"
           },
           {
-            "attributeId": 2,
             "name": "style",
             "type": "select",
             "value": "v neck"
           },
           {
-            "attributeId": 3,
             "name": "material",
             "type": "radio",
             "value": "cotton",
