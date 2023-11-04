@@ -54,7 +54,7 @@ const tpl_cartItemCardCSS = `
       font-weight: 600;
     }
     
-    .cart-item-option-label {
+    .cart-item-option-label, .cart-item-style-label {
       text-transform: capitalize;
       font-weight: 300;
     }
@@ -247,10 +247,10 @@ class cartItem extends HTMLElement {
     this.titleLabel.textContent = cartItem.title;
 
     this.styleLabel = shadow.querySelector('.cart-item-style-label');
-    this.styleLabel.textContent = `Style: ${cartItem.option.optionStyle}`;
+    this.styleLabel.textContent = `${cartItem.option.attributes[0].name}: ${cartItem.option.attributes[0].value}`;
 
     this.optionLabel = shadow.querySelector('.cart-item-option-label');
-    this.optionLabel.textContent = `Size: ${cartItem.option.optionSize}`;
+    this.optionLabel.textContent = `${cartItem.option.attributes[2].name}: ${cartItem.option.attributes[2].value}`;
 
     this.addButton = shadow.querySelector('.button-cart.button-add');
     this.addButton.dataset.productid = this.productId;
