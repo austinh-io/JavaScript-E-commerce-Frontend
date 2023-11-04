@@ -246,11 +246,13 @@ class cartItem extends HTMLElement {
     this.titleLabel = shadow.querySelector('.cart-item-title');
     this.titleLabel.textContent = cartItem.title;
 
+    //TODO: This is a hacky way to do this. I need to refactor the way I'm setting the labels for attributes
     this.styleLabel = shadow.querySelector('.cart-item-style-label');
     this.styleLabel.textContent = `${cartItem.option.attributes[0].name}: ${cartItem.option.attributes[0].value}`;
 
+    //TODO: This is a hacky way to do this. I need to refactor the way I'm setting the labels for attributes
     this.optionLabel = shadow.querySelector('.cart-item-option-label');
-    this.optionLabel.textContent = `${cartItem.option.attributes[2].name}: ${cartItem.option.attributes[2].value}`;
+    this.optionLabel.textContent = `${cartItem.option.attributes[1].name}: ${cartItem.option.attributes[1].value}`;
 
     this.addButton = shadow.querySelector('.button-cart.button-add');
     this.addButton.dataset.productid = this.productId;
