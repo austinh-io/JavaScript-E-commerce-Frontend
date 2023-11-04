@@ -58,8 +58,10 @@ async function initializePage() {
   productTitleElement.innerText = product.title;
   productBrandElement.innerText = product.brand;
   productDescriptionElement.innerText = product.description;
-  productSizeElement.innerText = productOption.optionSize;
-  productStyleElement.innerText = productOption.optionStyle;
+
+  //TODO: Below is just a temp fix, find a better way to get every attribute and value
+  productSizeElement.innerText = productOption.attributes[0].value;
+  productStyleElement.innerText = productOption.attributes[1].value;
   productPriceElement.innerText = productOption.price;
   productImageElement.src = `${baseUrl}/assets/images/productImages/small/${productOption.imageSet[0]}_small.webp`;
 
