@@ -29,17 +29,42 @@ function handleFilterMenu() {
 let headerContainer = undefined;
 let navToggleOpen = undefined;
 let navToggleClose = undefined;
+let navOverlay = undefined;
 
 const mediaQuery = window.matchMedia('(min-width: 768px)');
 
-function handleNavMenu() {
+export function handleNavMenu() {
   const visibility = headerContainer.getAttribute('data-visible');
   if (visibility === 'false') {
     headerContainer.setAttribute('data-visible', 'true');
     navToggleOpen.setAttribute('aria-expanded', 'true');
+
+    navOverlay.style.opacity = '0.8';
+    navOverlay.style.pointerEvents = 'auto';
+    docBody.style.overflow = 'hidden';
+
+    if (isBrowserChromium()) {
+      docBody.classList.add('lock-width-chromium');
+      navHeader.classList.add('lock-width-chromium');
+    } else {
+      docBody.classList.add('lock-width-firefox');
+      navHeader.classList.add('lock-width-firefox');
+    }
   } else {
     headerContainer.setAttribute('data-visible', 'false');
     navToggleOpen.setAttribute('aria-expanded', 'false');
+
+    navOverlay.style.opacity = '0';
+    navOverlay.style.pointerEvents = 'none';
+    docBody.style.overflow = 'auto';
+
+    if (isBrowserChromium()) {
+      docBody.classList.remove('lock-width-chromium');
+      navHeader.classList.remove('lock-width-chromium');
+    } else {
+      docBody.classList.remove('lock-width-firefox');
+      navHeader.classList.remove('lock-width-firefox');
+    }
   }
 }
 
@@ -136,14 +161,14 @@ let cartToggles = undefined;
 let cartMenu = undefined;
 let navHeader = undefined;
 let visibility = undefined;
-let overlay = undefined;
+let cartOverlay = undefined;
 
 export function handleOpenCartMenu() {
   if (visibility === 'false') {
     cartMenu.setAttribute('data-visible', 'true');
     visibility = cartMenu.getAttribute('data-visible');
-    overlay.style.opacity = '0.8';
-    overlay.style.pointerEvents = 'auto';
+    cartOverlay.style.opacity = '0.8';
+    cartOverlay.style.pointerEvents = 'auto';
     docBody.style.overflow = 'hidden';
 
     if (isBrowserChromium()) {
@@ -163,8 +188,8 @@ export function handleCloseCartMenu() {
   if (visibility === 'true') {
     cartMenu.setAttribute('data-visible', 'false');
     visibility = cartMenu.getAttribute('data-visible');
-    overlay.style.opacity = '0';
-    overlay.style.pointerEvents = 'none';
+    cartOverlay.style.opacity = '0';
+    cartOverlay.style.pointerEvents = 'none';
     docBody.style.overflow = 'auto';
 
     if (isBrowserChromium()) {
@@ -195,6 +220,7 @@ function initNavMenu() {
   headerContainer = navMenu.shadowRoot.querySelector('.header-container');
   navToggleOpen = navMenu.shadowRoot.querySelector('.nav-toggle-open-button');
   navToggleClose = navMenu.shadowRoot.querySelector('.nav-menu-close-button');
+  navOverlay = navMenu.shadowRoot.querySelector('.overlay');
 
   if (navToggleOpen) {
     navToggleOpen.addEventListener('click', handleNavMenu);
@@ -211,7 +237,7 @@ function initCartMenu() {
   cartMenu = storeCartMenu.shadowRoot.querySelector('.cart-menu');
   navHeader = navMenu.shadowRoot.querySelector('.header-container');
   visibility = cartMenu.getAttribute('data-visible');
-  overlay = storeCartMenu.shadowRoot.querySelector('.overlay');
+  cartOverlay = storeCartMenu.shadowRoot.querySelector('.overlay');
   cartToggles = navMenu.shadowRoot.querySelectorAll('.cart-menu-toggle');
 
   for (let cartToggle of cartToggles) {

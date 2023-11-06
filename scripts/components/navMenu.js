@@ -1,12 +1,8 @@
 import { baseUrl } from '/scripts/utilities/commerceUtilities.js';
 
+import { handleNavMenu } from '../utilities/menus.js';
+
 import {
-  addToCart,
-  cartItems,
-  storeCartMenu,
-  removeFromCart,
-  subtractFromCart,
-  updateCatalogProductButton,
   fillCartList,
   getCartLocalStorage,
 } from '../utilities/cartUtilities.js';
@@ -147,6 +143,20 @@ const tpl_navMenuMobileCSS = `
     border-radius: 5pt;
     background-color: var(--color-fg);
     color: var(--color-font);
+  }
+
+  /* ------- Overlay -------*/
+  div.overlay {
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-bg);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-out;
   }
 }
 `;
@@ -320,6 +330,10 @@ const tpl_navMenuCSS = `
     .nav-toggle-container {
       display: none;
     }
+
+    .overlay {
+      display: none;
+    }
   </style>
 `;
 
@@ -370,7 +384,7 @@ tpl_navMenu.innerHTML = `
       </ul>
     </nav>
   </div>
-  
+  <div class="overlay"></div>  
 `;
 
 class navMenu extends HTMLElement {
@@ -381,6 +395,8 @@ class navMenu extends HTMLElement {
     shadow.append(clone);
 
     this.cartIconCounter = shadow.querySelector('.cart-icon-counter');
+    this.navOverlay = shadow.querySelector('.overlay');
+    this.navOverlay.addEventListener('click', handleNavMenu);
   }
 
   updateCartIconCounter = (count) => {
