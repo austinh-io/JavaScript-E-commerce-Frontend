@@ -38,7 +38,7 @@ const tpl_navMenuMobileCSS = `
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
 
     height: 100%;
     width: 100%;
@@ -59,9 +59,13 @@ const tpl_navMenuMobileCSS = `
   }
 
   ul.nav-menu li {
+    width: 100%;
+  }
+
+  ul.nav-menu a, button.cart-menu-toggle {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
 
     background-color: var(--color-fg);
     border-radius: 5pt;
