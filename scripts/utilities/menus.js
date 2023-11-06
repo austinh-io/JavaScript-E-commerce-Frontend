@@ -63,7 +63,6 @@ function closeNavOverlay() {
 }
 
 export function handleNavMenu() {
-  console.log(navVisibility);
   if (navVisibility === 'false') {
     headerContainer.setAttribute('data-visible', 'true');
     navToggleOpen.setAttribute('aria-expanded', 'true');
