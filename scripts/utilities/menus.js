@@ -29,32 +29,25 @@ function handleFilterMenu() {
 let headerContainer = undefined;
 let navToggle = undefined;
 
-const mediaQuery = window.matchMedia('(min-width: 768px)');
+// const mediaQuery = window.matchMedia('(min-width: 768px)');
 
 /**
  * Toggles the visibility of the navigation menu.
  */
 function handleNavMenu() {
-  const visibility = headerContainer.getAttribute('data-visible');
-
-  if (visibility === 'false') {
-    headerContainer.setAttribute('data-visible', 'true');
-    // navToggle.setAttribute('aria-expanded', 'true');
-  } else {
-    headerContainer.setAttribute('data-visible', 'false');
-    // navToggle.setAttribute('aria-expanded', 'false');
-  }
+  // const visibility = headerContainer.getAttribute('data-visible');
+  // if (visibility === 'false') {
+  //   headerContainer.setAttribute('data-visible', 'true');
+  //   // navToggle.setAttribute('aria-expanded', 'true');
+  // } else {
+  //   headerContainer.setAttribute('data-visible', 'false');
+  //   // navToggle.setAttribute('aria-expanded', 'false');
+  // }
 }
 
-/**
- * Updates the visibility of the navigation menu based on the screen size.
- * @function
- * @name updateNavMenuOnScreenSizeChange
- * @returns {void}
- */
 function updateNavMenuOnScreenSizeChange() {
-  if (mediaQuery.matches) headerContainer.setAttribute('data-visible', 'true');
-  else headerContainer.setAttribute('data-visible', 'false');
+  // if (mediaQuery.matches) headerContainer.setAttribute('data-visible', 'true');
+  // else headerContainer.setAttribute('data-visible', 'false');
 }
 
 // --------- Themes ---------
@@ -65,18 +58,10 @@ let themeToggleSwitch = undefined;
 let themeIconDark = undefined;
 let themeIconLight = undefined;
 
-/**
- * Sets the selected theme in local storage.
- * @param {string} theme - The theme to be set in local storage.
- */
 function setThemeLocalStorage(theme) {
   localStorage.setItem('theme', theme);
 }
 
-/**
- * Sets the color theme of the website based on the given theme parameter.
- * @param {string} theme - The color theme to set. Can be 'dark' or 'light'.
- */
 function setColorTheme(theme) {
   switch (theme) {
     case 'dark':
@@ -106,10 +91,6 @@ function setColorTheme(theme) {
   setThemeLocalStorage(theme);
 }
 
-/**
- * Returns the user's preferred color theme based on their device settings.
- * @returns {string} The preferred color theme ('dark' or 'light').
- */
 function getColorThemePreference() {
   if (window.matchMedia) {
     if (window.matchMedia('(prefers-color-scheme: dark').matches) return 'dark';
@@ -117,12 +98,6 @@ function getColorThemePreference() {
   } else return 'light';
 }
 
-/**
- * Toggles between light and dark color themes based on the current theme.
- * @function
- * @name handleThemeMenu
- * @returns {void}
- */
 function handleThemeMenu() {
   if (document.documentElement.getAttribute('data-theme') == 'dark') {
     setColorTheme('light');
@@ -131,10 +106,6 @@ function handleThemeMenu() {
   }
 }
 
-/**
- * Updates the color theme of the website based on the user's preference or stored value in local storage.
- * If no preference is found, it sets the color theme to the default value.
- */
 function updateTheme() {
   if (localStorage.getItem('theme'))
     setColorTheme(localStorage.getItem('theme'));
@@ -164,9 +135,6 @@ let navHeader = undefined;
 let visibility = undefined;
 let overlay = undefined;
 
-/**
- * Toggles the visibility of the cart menu and updates the aria-expanded attribute of the cart toggles accordingly.
- */
 export function handleOpenCartMenu() {
   if (visibility === 'false') {
     cartMenu.setAttribute('data-visible', 'true');

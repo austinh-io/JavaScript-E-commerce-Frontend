@@ -14,10 +14,76 @@ import {
 
 const tpl_navMenu = document.createElement('template');
 
-/**
- * CSS template string for the product card component.
- * @type {string}
- */
+const tpl_navMenuMobileCSS = `
+@media screen and (max-width: 768px) {
+  .nav-container.wrapper {
+    padding-inline: 0.8rem;
+    width: 100%;
+  }
+
+  div.header-container {
+    height: 100vh;
+    width: 85vw;
+  }
+
+  .nav-container {
+    height: 100%;
+  }
+
+  nav > ul.nav-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+
+    height: 100%;
+    width: 100%;
+  }
+
+  .nav-site-logo, div.nav-logo-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.8rem;
+  }
+
+  ul.nav-menu li:first-child {
+    margin-bottom: auto;
+    margin-top: 2rem;
+
+    width: 100%;
+  }
+
+  ul.nav-menu li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    background-color: var(--color-fg);
+    border-radius: 5pt;
+    
+    padding: 0.4rem 0.8rem;
+    height: 3.8rem;
+    
+    width: 100%;
+  }
+
+  div.nav-logo-text {
+    position: relative;
+    top: 0.1rem;
+    font-size: 1.4rem;
+  }
+
+  .nav-site-logo svg {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  li.nav-buttons-container {
+    margin-bottom: 2rem;
+  }
+}
+`;
 const tpl_navMenuCSS = `
   <style>
     @import url(${baseUrl}/css/main.css);
@@ -30,6 +96,8 @@ const tpl_navMenuCSS = `
       /*height: 100%;*/
       /*width: 100%;*/
     }
+
+    ${tpl_navMenuMobileCSS}
 
     ul {
       list-style: none;
@@ -171,7 +239,7 @@ const tpl_navMenuCSS = `
       letter-spacing: 0.2ch;
     }
     
-    .nav-buttons-container {
+    li.nav-buttons-container {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -185,36 +253,38 @@ tpl_navMenu.innerHTML = `
   ${tpl_navMenuCSS}
   <div
     class="header-container menu-horizontal-from-left-mobile"
-    data-visible="false"
+    data-visible="true"
   >
     <nav class="nav-container wrapper">
       <ul class="nav-menu">
-        <a
-          class="nav-site-logo"
-          href="/"
-        >
-          <div class="nav-logo-container">
-            <j-symbol name="store-logo"></j-symbol>
-          </div>
-          <div class="nav-logo-text">Lorem Ipsum</div>
-        </a>
+        <li>
+            <a
+                class="nav-site-logo"
+                href="/"
+              >
+              <div class="nav-logo-container">
+                <j-symbol name="store-logo"></j-symbol>
+              </div>
+              <div class="nav-logo-text">Lorem Ipsum</div>
+            </a>
+        </li>       
 
         <li><a>Page 1</a></li>
         <li><a>Page 2</a></li>
         <li><a>Page 3</a></li>
 
-        <div class="nav-buttons-container">
-          <button
-            class="cart-menu-toggle cart-menu-toggle-open"
-            aria-controls="cart-menu"
-            aria-expanded="false"
-          >
-            <div class="cart-icon-container">
-              <j-symbol name="shopping-bag"></j-symbol>
-              <div class="cart-icon-counter hidden"></div>
-            </div>
-          </button>
-        </div>
+        <li class="nav-buttons-container">
+            <button
+              class="cart-menu-toggle cart-menu-toggle-open"
+              aria-controls="cart-menu"
+              aria-expanded="false"
+            >
+              <div class="cart-icon-container">
+                <j-symbol name="shopping-bag"></j-symbol>
+                <div class="cart-icon-counter hidden"></div>
+              </div>
+            </button>
+        </li>        
       </ul>
     </nav>
   </div>
