@@ -12,11 +12,11 @@ const tpl_storeCart = document.createElement('template');
 const tpl_storeCartMobileCSS = `
 @media screen and (max-width: 768px) {
   :host {
-    width: 100vw;
+    width: 85vw;
   }
 
   div#cart-menu {
-    width: 100vw;
+    width: 85vw;
   }
 
   div.empty-cart-message {

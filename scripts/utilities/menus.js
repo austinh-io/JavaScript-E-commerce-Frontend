@@ -27,27 +27,30 @@ function handleFilterMenu() {
 
 /********* Navigation *********/
 let headerContainer = undefined;
-let navToggle = undefined;
+let navToggleOpen = undefined;
+let navToggleClose = undefined;
 
-// const mediaQuery = window.matchMedia('(min-width: 768px)');
+const mediaQuery = window.matchMedia('(min-width: 768px)');
 
-/**
- * Toggles the visibility of the navigation menu.
- */
 function handleNavMenu() {
-  // const visibility = headerContainer.getAttribute('data-visible');
-  // if (visibility === 'false') {
-  //   headerContainer.setAttribute('data-visible', 'true');
-  //   // navToggle.setAttribute('aria-expanded', 'true');
-  // } else {
-  //   headerContainer.setAttribute('data-visible', 'false');
-  //   // navToggle.setAttribute('aria-expanded', 'false');
-  // }
+  const visibility = headerContainer.getAttribute('data-visible');
+  if (visibility === 'false') {
+    headerContainer.setAttribute('data-visible', 'true');
+    // navToggle.setAttribute('aria-expanded', 'true');
+  } else {
+    headerContainer.setAttribute('data-visible', 'false');
+    // navToggle.setAttribute('aria-expanded', 'false');
+  }
 }
 
 function updateNavMenuOnScreenSizeChange() {
-  // if (mediaQuery.matches) headerContainer.setAttribute('data-visible', 'true');
-  // else headerContainer.setAttribute('data-visible', 'false');
+  if (mediaQuery.matches) {
+    headerContainer.setAttribute('data-visible', 'true');
+    navToggleClose.setAttribute('data-visible', 'true');
+  } else {
+    headerContainer.setAttribute('data-visible', 'false');
+    navToggleClose.setAttribute('data-visible', 'false');
+  }
 }
 
 // --------- Themes ---------
@@ -190,10 +193,11 @@ function isBrowserChromium() {
 
 function initNavMenu() {
   headerContainer = navMenu.shadowRoot.querySelector('.header-container');
-  navToggle = navMenu.shadowRoot.querySelector('.nav-menu-toggle');
+  navToggleOpen = navMenu.shadowRoot.querySelector('.nav-menu-toggle');
+  navToggleClose = navMenu.shadowRoot.querySelector('.nav-menu-close-button');
 
-  if (navToggle) {
-    navToggle.addEventListener('click', handleNavMenu);
+  if (navToggleOpen) {
+    navToggleOpen.addEventListener('click', handleNavMenu);
     mediaQuery.addEventListener('change', updateNavMenuOnScreenSizeChange);
     addEventListener('load', updateNavMenuOnScreenSizeChange);
   }

@@ -16,18 +16,24 @@ const tpl_navMenu = document.createElement('template');
 
 const tpl_navMenuMobileCSS = `
 @media screen and (max-width: 768px) {
+
+  :host {
+    position: fixed;
+    z-index: 800;
+    right: 0;
+  }
+
   .nav-container.wrapper {
     padding-inline: 0.8rem;
     width: 100%;
   }
 
   div.header-container {
-    position: fixed;
-    right: 0;
-
+    display: flex;
+    flex-direction: column;
+    position: relative;
     height: 100svh;
-    width: 85vw;
-
+    max-width: 85vw;
   }
 
   .nav-container {
@@ -89,6 +95,37 @@ const tpl_navMenuMobileCSS = `
 
   li.nav-buttons-container {
     margin-bottom: 2rem;
+  }
+
+  div.nav-menu-close-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    background-color: var(--color-fg);
+  }
+
+  .nav-menu-close-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--color-font);
+    color: var(--color-warning);
+    border: none;
+
+    height: 3.6rem;
+    width: 3.6rem;
+
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .nav-menu-label {
+    margin-left: 1rem;
+    font-size: 1.8rem;
   }
 }
 `;
@@ -254,6 +291,10 @@ const tpl_navMenuCSS = `
       margin-left: auto;
       gap: 1rem;
     }
+
+    .nav-menu-close-container {
+      display: none;
+    }
   </style>
 `;
 
@@ -263,6 +304,10 @@ tpl_navMenu.innerHTML = `
     class="header-container menu-horizontal-from-right-mobile"
     data-visible="true"
   >
+  <div class="nav-menu-close-container">
+    <div class="nav-menu-label">Menu</div>
+    <button class="nav-menu-close-button">Close</button>
+  </div>
     <nav class="nav-container wrapper">
       <ul class="nav-menu">
         <li>
