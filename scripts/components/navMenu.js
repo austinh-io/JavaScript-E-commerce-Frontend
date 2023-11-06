@@ -22,8 +22,12 @@ const tpl_navMenuMobileCSS = `
   }
 
   div.header-container {
-    height: 100vh;
+    position: fixed;
+    right: 0;
+
+    height: 100svh;
     width: 85vw;
+
   }
 
   .nav-container {
@@ -252,7 +256,7 @@ const tpl_navMenuCSS = `
 tpl_navMenu.innerHTML = `
   ${tpl_navMenuCSS}
   <div
-    class="header-container menu-horizontal-from-left-mobile"
+    class="header-container menu-horizontal-from-right-mobile"
     data-visible="true"
   >
     <nav class="nav-container wrapper">

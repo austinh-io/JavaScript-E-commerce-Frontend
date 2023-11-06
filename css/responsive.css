@@ -11,99 +11,6 @@
     margin: 2vw;
   }
 
-  /******* Nav *******/
-
-  header.header-container {
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-    z-index: 700;
-  }
-
-  .nav-container {
-    height: 100%;
-  }
-
-  .nav-menu {
-    flex-direction: column;
-    justify-content: start;
-    height: 100%;
-  }
-
-  .nav-site-logo {
-    margin-top: 4rem;
-    margin-bottom: 15rem;
-    margin-right: 0;
-  }
-
-  .nav-container ul {
-    align-items: end;
-  }
-
-  .nav-buttons-container {
-    margin-top: auto;
-  }
-
-  .cart-menu-toggle {
-    /* display: none; */
-  }
-
-  .mobile-nav {
-    position: fixed;
-    display: block;
-    width: 100vw;
-
-    background-color: var(--color-bg-trans);
-    backdrop-filter: blur(10px);
-
-    z-index: 800;
-  }
-
-  .mobile-nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-  }
-
-  .mobile-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background-color: var(--color-fg);
-    color: var(--color-font);
-
-    border: none;
-    border-radius: 3pt;
-    padding: 0.2rem;
-
-    width: 2rem;
-    height: 2rem;
-  }
-
-  .nav-menu-toggle-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-right: auto;
-  }
-
-  span.cart-icon-counter {
-    right: 12px;
-    bottom: 0;
-  }
-
-  .cart-menu {
-    position: fixed;
-    right: 0;
-    top: 0;
-
-    max-width: 100vw;
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-  }
-
   /******* Main ********/
 
   h1 {
@@ -140,7 +47,7 @@
   }
 
   /******* Cart Items ******/
-  .cart-item-container .button-cart {
+  /* .cart-item-container .button-cart {
     margin: 0;
   }
 
@@ -150,5 +57,5 @@
 
   div.cart-item-option-label {
     font-size: 0.8rem;
-  }
+  } */
 }

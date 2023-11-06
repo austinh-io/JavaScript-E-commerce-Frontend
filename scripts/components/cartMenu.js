@@ -9,13 +9,28 @@ import { handleCloseCartMenu } from '../utilities/menus.js';
 
 const tpl_storeCart = document.createElement('template');
 
-/**
- * CSS template string for the product card component.
- * @type {string}
- */
+const tpl_storeCartMobileCSS = `
+@media screen and (max-width: 768px) {
+  :host {
+    width: 100vw;
+  }
+
+  div#cart-menu {
+    width: 100vw;
+  }
+
+  div.empty-cart-message {
+    text-align: center;
+    font-size: 1.6rem;
+  }
+}
+`;
+
 const tpl_storeCartCSS = `
 <style>
     @import url(${baseUrl}/css/main.css);
+
+    ${tpl_storeCartMobileCSS}
 
     :host {
       /*Uncomment the height below if you want all cards to be the same height, as they currently
