@@ -36,10 +36,10 @@ function handleNavMenu() {
   const visibility = headerContainer.getAttribute('data-visible');
   if (visibility === 'false') {
     headerContainer.setAttribute('data-visible', 'true');
-    // navToggle.setAttribute('aria-expanded', 'true');
+    navToggleOpen.setAttribute('aria-expanded', 'true');
   } else {
     headerContainer.setAttribute('data-visible', 'false');
-    // navToggle.setAttribute('aria-expanded', 'false');
+    navToggleOpen.setAttribute('aria-expanded', 'false');
   }
 }
 
@@ -193,13 +193,17 @@ function isBrowserChromium() {
 
 function initNavMenu() {
   headerContainer = navMenu.shadowRoot.querySelector('.header-container');
-  navToggleOpen = navMenu.shadowRoot.querySelector('.nav-menu-toggle');
+  navToggleOpen = navMenu.shadowRoot.querySelector('.nav-toggle-open-button');
   navToggleClose = navMenu.shadowRoot.querySelector('.nav-menu-close-button');
 
   if (navToggleOpen) {
     navToggleOpen.addEventListener('click', handleNavMenu);
     mediaQuery.addEventListener('change', updateNavMenuOnScreenSizeChange);
     addEventListener('load', updateNavMenuOnScreenSizeChange);
+  }
+
+  if (navToggleClose) {
+    navToggleClose.addEventListener('click', handleNavMenu);
   }
 }
 
@@ -236,19 +240,23 @@ function navScrollBehavior() {
 
   const direction = scrollDifference > 0 ? 1 : -1;
 
-  if (direction === (cumulativeDelta > 0 ? 1 : -1)) {
-    cumulativeDelta += scrollDifference;
-  } else {
-    cumulativeDelta = scrollDifference;
-  }
+  if (mediaQuery.matches) {
+    if (direction === (cumulativeDelta > 0 ? 1 : -1)) {
+      cumulativeDelta += scrollDifference;
+    } else {
+      cumulativeDelta = scrollDifference;
+    }
 
-  if (direction === 1 && cumulativeDelta > delta) {
-    navHeader.style.top = -navHeaderHeightValue + navHeaderHeightUnit;
-  } else if (direction === -1 && -cumulativeDelta > delta) {
+    if (direction === 1 && cumulativeDelta > delta) {
+      navHeader.style.top = -navHeaderHeightValue + navHeaderHeightUnit;
+    } else if (direction === -1 && -cumulativeDelta > delta) {
+      navHeader.style.top = '0';
+    }
+
+    lastScrollTop = currentScrollTop;
+  } else {
     navHeader.style.top = '0';
   }
-
-  lastScrollTop = currentScrollTop;
 }
 
 document.addEventListener('DOMContentLoaded', initMenus);

@@ -127,6 +127,27 @@ const tpl_navMenuMobileCSS = `
     margin-left: 1rem;
     font-size: 1.8rem;
   }
+
+  div.nav-toggle-container {
+    display: flex;
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin: 1rem;
+  }
+
+  .nav-toggle-open-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem;
+    height: 3.6rem;
+    width: 3.6rem;
+    border: none;
+    border-radius: 5pt;
+    background-color: var(--color-fg);
+    color: var(--color-font);
+  }
 }
 `;
 const tpl_navMenuCSS = `
@@ -295,14 +316,22 @@ const tpl_navMenuCSS = `
     .nav-menu-close-container {
       display: none;
     }
+
+    .nav-toggle-container {
+      display: none;
+    }
   </style>
 `;
 
 tpl_navMenu.innerHTML = `
   ${tpl_navMenuCSS}
+  <div class="nav-toggle-container">
+    <button class="nav-toggle-open-button">Menu</button>
+  </div>
+
   <div
-    class="header-container menu-horizontal-from-right-mobile"
-    data-visible="true"
+    class="header-container menu-horizontal"
+    data-visible="false"
   >
   <div class="nav-menu-close-container">
     <div class="nav-menu-label">Menu</div>
