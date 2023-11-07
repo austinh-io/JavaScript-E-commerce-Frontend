@@ -32,7 +32,7 @@ let navToggleClose = undefined;
 let navOverlay = undefined;
 let navVisibility = undefined;
 
-const mediaQuery = window.matchMedia('(min-width: 768px)');
+const mediaQuery = window.matchMedia('(min-width: 769px)');
 
 function openNavOverlay() {
   navOverlay.style.opacity = '0.8';

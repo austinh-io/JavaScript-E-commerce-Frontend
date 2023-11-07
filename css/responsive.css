@@ -43,7 +43,17 @@
 
   div.searchbar-container {
     max-width: 100%;
-    display: none;
+    margin-left: 1rem;
+  }
+
+  j-symbol.searchbar-icon svg.icon {
+    height: 1.4rem;
+    width: 1.4rem;
+    padding: 1px;
+  }
+
+  j-symbol.searchbar-icon {
+    padding: 0.4rem;
   }
 
   /******* Cart Items ******/

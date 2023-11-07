@@ -15,13 +15,54 @@ import {
 
 const tpl_cartitemCard = document.createElement('template');
 
-/**
- * CSS template string for the product card component.
- * @type {string}
- */
+const tpl_cartitemCardMobileCSS = `
+@media screen and (max-width: 768px) {
+  div.cart-item-title {
+    font-size: 0.8rem;
+  }
+
+  div.cart-item-style-label {
+    font-size: 0.8rem;
+  }
+
+  div.cart-item-option-label {
+    font-size: 0.8rem;
+  }
+
+  div.cart-items-button-container {
+    gap: 0.1rem;
+  }
+
+  button.button-cart {
+    margin: 0.1rem;
+  }
+
+  div.cart-item-count {
+    font-size: 0.8rem;
+  }
+
+  j-symbol.button-cart-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  span.cart-item-price-value {
+    font-size: 0.8rem;
+  }
+
+  .button-cart .button-remove svg{
+    height: 1rem;
+    width: 1rem;
+  }
+
+}
+`;
+
 const tpl_cartItemCardCSS = `
 <style>
     @import url(${baseUrl}/css/main.css);
+
+    ${tpl_cartitemCardMobileCSS}
 
     :host {
       /*Uncomment the height below if you want all cards to be the same height, as they currently

@@ -17,6 +17,7 @@ const tpl_navMenuMobileCSS = `
     position: fixed;
     z-index: 800;
     right: 0;
+    max-width: 85vw;
   }
 
   .nav-container.wrapper {
@@ -81,7 +82,7 @@ const tpl_navMenuMobileCSS = `
   div.nav-logo-text {
     position: relative;
     top: 0.1rem;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 
   .nav-site-logo svg {
@@ -111,12 +112,16 @@ const tpl_navMenuMobileCSS = `
     color: var(--color-warning);
     border: none;
 
-    height: 3.6rem;
-    width: 3.6rem;
+    height: 3rem;
+    width: 3rem;
 
     cursor: pointer;
     font-weight: 700;
     text-transform: uppercase;
+  }
+
+  .nav-menu-close-button svg {
+    stroke: var(--color-warning);
   }
 
   .nav-menu-label {
@@ -137,8 +142,8 @@ const tpl_navMenuMobileCSS = `
     align-items: center;
     justify-content: center;
     padding: 0.4rem;
-    height: 3.6rem;
-    width: 3.6rem;
+    height: 3rem;
+    width: 3rem;
     border: none;
     border-radius: 5pt;
     background-color: var(--color-fg);
@@ -160,6 +165,7 @@ const tpl_navMenuMobileCSS = `
   }
 }
 `;
+
 const tpl_navMenuCSS = `
   <style>
     @import url(${baseUrl}/css/main.css);
@@ -340,7 +346,9 @@ const tpl_navMenuCSS = `
 tpl_navMenu.innerHTML = `
   ${tpl_navMenuCSS}
   <div class="nav-toggle-container">
-    <button class="nav-toggle-open-button">Menu</button>
+    <button class="nav-toggle-open-button">
+      <j-symbol name="menu"></j-symbol>
+    </button>
   </div>
 
   <div
@@ -349,7 +357,9 @@ tpl_navMenu.innerHTML = `
   >
   <div class="nav-menu-close-container">
     <div class="nav-menu-label">Menu</div>
-    <button class="nav-menu-close-button">Close</button>
+    <button class="nav-menu-close-button">
+      <j-symbol name="cancel"></j-symbol>
+    </button>
   </div>
     <nav class="nav-container wrapper">
       <ul class="nav-menu">
