@@ -229,7 +229,7 @@ function isBrowserChromium() {
 }
 
 function initNavMenu() {
-  headerContainer = navMenu.shadowRoot.querySelector('.header-container');
+  headerContainer = navMenu.shadowRoot.querySelector('.nav-menu-container');
   navToggleOpen = navMenu.shadowRoot.querySelector('.nav-toggle-open-button');
   navToggleClose = navMenu.shadowRoot.querySelector('.nav-menu-close-button');
   navOverlay = navMenu.shadowRoot.querySelector('.overlay');
@@ -248,7 +248,7 @@ function initNavMenu() {
 
 function initCartMenu() {
   cartMenu = storeCartMenu.shadowRoot.querySelector('.cart-menu');
-  navHeader = navMenu.shadowRoot.querySelector('.header-container');
+  navHeader = navMenu.shadowRoot.querySelector('.nav-menu-container');
   visibility = cartMenu.getAttribute('data-visible');
   cartOverlay = storeCartMenu.shadowRoot.querySelector('.overlay');
   cartToggles = navMenu.shadowRoot.querySelectorAll('.cart-menu-toggle');

@@ -13,24 +13,20 @@ const tpl_navMenu = document.createElement('template');
 const tpl_navMenuMobileCSS = `
 @media screen and (max-width: 768px) {
 
-  :host {
-    position: fixed;
-    z-index: 800;
-    right: 0;
-    max-width: 85vw;
-  }
-
   .nav-container.wrapper {
     padding-inline: 0.8rem;
     width: 100%;
   }
 
-  div.header-container {
+  div.nav-menu-container {
+    position: fixed;
+    right: 0;
+
     display: flex;
     flex-direction: column;
-    position: relative;
+    
     height: 100svh;
-    max-width: 85vw;
+    width: 85vw;
   }
 
   .nav-container {
@@ -44,7 +40,6 @@ const tpl_navMenuMobileCSS = `
     align-items: center;
 
     height: 100%;
-    width: 100%;
   }
 
   .nav-site-logo, div.nav-logo-text {
@@ -171,12 +166,7 @@ const tpl_navMenuCSS = `
     @import url(${baseUrl}/css/main.css);
 
     :host {
-      /*Uncomment the height below if you want all cards to be the same height, as they currently
-      can be shorter or taller if they have more or less options. Right now the image will grow as the
-      card grows, so if that bothers you then turn this on.*/
-
-      /*height: 100%;*/
-      /*width: 100%;*/
+      z-index: 100;
     }
 
     ${tpl_navMenuMobileCSS}
@@ -193,13 +183,13 @@ const tpl_navMenuCSS = `
 
     /* ----- Header ----- */
 
-    .header-container {
+    .nav-menu-container {
       display: flex;
       align-items: center;
 
       position: fixed;
       top: 0;
-      left: 0;
+      right: 0;
 
       width: 100%;
       height: var(--header-height);
@@ -212,7 +202,7 @@ const tpl_navMenuCSS = `
       transition: top 0.3s ease-out;
     }
 
-    .header-container .container {
+    .nav-menu-container .container {
       width: 100%;
     }
 
@@ -352,49 +342,47 @@ tpl_navMenu.innerHTML = `
   </div>
 
   <div
-    class="header-container menu-horizontal"
-    data-visible="false"
-  >
-  <div class="nav-menu-close-container">
-    <div class="nav-menu-label">Menu</div>
-    <button class="nav-menu-close-button">
-      <j-symbol name="cancel"></j-symbol>
-    </button>
-  </div>
+    class="nav-menu-container menu-horizontal menu-shadow"
+    data-visible="false">
+
+    <div class="nav-menu-close-container">
+      <div class="nav-menu-label">Menu</div>
+      <button class="nav-menu-close-button">
+        <j-symbol name="cancel"></j-symbol>
+      </button>
+    </div>
+
     <nav class="nav-container wrapper">
       <ul class="nav-menu">
         <li>
-            <a
-                class="nav-site-logo"
-                href="/"
-              >
+            <a class="nav-site-logo" href="/">
               <div class="nav-logo-container">
                 <j-symbol name="store-logo"></j-symbol>
               </div>
               <div class="nav-logo-text">Lorem Ipsum</div>
             </a>
-        </li>       
+        </li>
 
         <li><a>Page 1</a></li>
         <li><a>Page 2</a></li>
         <li><a>Page 3</a></li>
 
         <li class="nav-buttons-container">
-            <button
-              class="cart-menu-toggle cart-menu-toggle-open"
-              aria-controls="cart-menu"
-              aria-expanded="false"
-            >
-              <div class="cart-icon-container">
-                <j-symbol name="shopping-bag"></j-symbol>
-                <div class="cart-icon-counter hidden"></div>
-              </div>
-            </button>
-        </li>        
+          <button
+            class="cart-menu-toggle cart-menu-toggle-open"
+            aria-controls="cart-menu"
+            aria-expanded="false">
+            <div class="cart-icon-container">
+              <j-symbol name="shopping-bag"></j-symbol>
+              <div class="cart-icon-counter hidden"></div>
+            </div>
+          </button>
+        </li>
       </ul>
     </nav>
   </div>
-  <div class="overlay"></div>  
+
+  <div class="overlay"></div>
 `;
 
 class navMenu extends HTMLElement {

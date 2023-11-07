@@ -2,7 +2,7 @@
 
 body,
 html {
-  height: 100%;
+  min-height: 100svh;
 }
 
 .main-container {
@@ -183,4 +183,21 @@ main .wrapper {
 
 .in-stock-label {
   font-size: 0.8rem;
+}
+
+@media screen and (max-width: 768px) {
+  .product-container {
+    flex-direction: column;
+    margin-top: 6rem;
+  }
+
+  .product-info-container {
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .product-image-options {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
 }

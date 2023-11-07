@@ -11,9 +11,6 @@ const tpl_storeCart = document.createElement('template');
 
 const tpl_storeCartMobileCSS = `
 @media screen and (max-width: 768px) {
-  :host {
-    width: 85vw;
-  }
 
   div#cart-menu {
     width: 85vw;
@@ -33,13 +30,6 @@ const tpl_storeCartCSS = `
     ${tpl_storeCartMobileCSS}
 
     :host {
-      /*Uncomment the height below if you want all cards to be the same height, as they currently
-      can be shorter or taller if they have more or less options. Right now the image will grow as the
-      card grows, so if that bothers you then turn this on.*/
-
-      /*height: 100%;*/
-      /*width: 100%;*/
-
       z-index: 910;
     }
 
