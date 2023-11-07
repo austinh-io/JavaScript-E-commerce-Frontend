@@ -1,22 +1,16 @@
 import {
   catchProductList,
   catalogProducts,
-} from '../utilities/commerceUtilities.js';
+} from '/scripts/utilities/commerceUtilities.js';
 import {
   fillCartList,
   getCartLocalStorage,
   cartItems,
-} from '../utilities/cartUtilities.js';
+} from '/scripts/utilities/cartUtilities.js';
 ('use strict');
 
 let productsList = undefined;
 
-/**
- * Initializes the products list by inserting catalog-product elements for each product in the catalog.
- * @async
- * @function initializeProducts
- * @returns {Promise<void>}
- */
 async function initializeCatalog() {
   productsList = document.querySelector('.products-list');
 

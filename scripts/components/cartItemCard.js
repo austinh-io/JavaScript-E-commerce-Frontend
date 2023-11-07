@@ -9,7 +9,7 @@ import {
   cartItems,
   removeFromCart,
   subtractFromCart,
-} from '../utilities/cartUtilities.js';
+} from '/scripts/utilities/cartUtilities.js';
 
 ('use strict');
 

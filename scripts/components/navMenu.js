@@ -1,11 +1,11 @@
 import { baseUrl } from '/scripts/utilities/commerceUtilities.js';
 
-import { handleNavMenu } from '../utilities/menus.js';
+import { handleNavMenu } from '/scripts/utilities/menus.js';
 
 import {
   fillCartList,
   getCartLocalStorage,
-} from '../utilities/cartUtilities.js';
+} from '/scripts/utilities/cartUtilities.js';
 ('use strict');
 
 const tpl_navMenu = document.createElement('template');

@@ -1,6 +1,6 @@
 'use strict';
 
-const baseUrlLive = 'simple-ecommerce';
+const baseUrlLive = '/simple-ecom';
 const baseUrlLocal = '';
 export const baseUrl = baseUrlLocal;
 export let catalogProducts = new Array();

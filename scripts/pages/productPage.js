@@ -9,12 +9,12 @@ import {
 import {
   addToCart,
   updateProductPageButton,
-} from '../utilities/cartUtilities.js';
+} from '/scripts/utilities/cartUtilities.js';
 
-import { initializeProducts } from './catalog.js';
+import { initializeProducts } from '/scripts/pages/catalog.js';
 ('use strict');
 
-import { handleOpenCartMenu } from '../utilities/menus.js';
+import { handleOpenCartMenu } from '/scripts/utilities/menus.js';
 
 const productTitleElement = document.querySelector('.product-title');
 const productBrandElement = document.querySelector('.product-brand');

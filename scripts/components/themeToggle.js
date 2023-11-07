@@ -3,10 +3,6 @@ import { baseUrl } from '/scripts/utilities/commerceUtilities.js';
 
 const tpl_themeToggle = document.createElement('template');
 
-/**
- * CSS template string for the product card component.
- * @type {string}
- */
 const tpl_themeToggleCSS = `
 <style>
     @import url(${baseUrl}/css/main.css);

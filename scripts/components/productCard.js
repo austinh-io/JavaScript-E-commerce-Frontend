@@ -5,9 +5,9 @@ import {
   catalogProducts,
 } from '/scripts/utilities/commerceUtilities.js';
 
-import { addToCart, cartItems } from '../utilities/cartUtilities.js';
+import { addToCart, cartItems } from '/scripts/utilities/cartUtilities.js';
 
-import { handleOpenCartMenu } from '../utilities/menus.js';
+import { handleOpenCartMenu } from '/scripts/utilities/menus.js';
 
 ('use strict');
 

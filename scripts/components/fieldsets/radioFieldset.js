@@ -285,7 +285,6 @@ class radioFieldset extends HTMLElement {
           composed: true,
         });
         this.dispatchEvent(attributeSelectedEvent);
-        // console.log('Radio Fieldset Attribute Selected');
       });
     });
   }

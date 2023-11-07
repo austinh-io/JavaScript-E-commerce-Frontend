@@ -3,7 +3,7 @@ import {
   catalogProducts,
 } from '/scripts/utilities/commerceUtilities.js';
 import { initializeProducts } from '/scripts/pages/catalog.js';
-import { cartItems } from '../utilities/cartUtilities.js';
+import { cartItems } from '/scripts/utilities/cartUtilities.js';
 
 ('use strict');
 
@@ -21,7 +21,7 @@ const cartItemTemplate = function (item) {
               <img
                 src="/assets/images/productImages/small/${
                   item.option.imageSet[0]
-                }_small.webp/"
+                }_small.webp"
                 class="cart-item-image"
               />
             </div>

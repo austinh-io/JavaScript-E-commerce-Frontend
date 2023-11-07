@@ -1,4 +1,4 @@
-import { storeCartMenu } from '../utilities/cartUtilities.js';
+import { storeCartMenu } from '/scripts/utilities/cartUtilities.js';
 
 ('use strict');
 
