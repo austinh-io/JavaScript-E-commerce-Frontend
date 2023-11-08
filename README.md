@@ -1,6 +1,8 @@
 # Simple Ecommerce Frontend
 This is a total overhaul and remake of a class project I did in 2021, which you can see [here](https://github.com/gmni-dev/Simple-Ecommerce-Frontend-2021). At this point it has surpassed the functionality of the original, however I am still working towards full functionality and improving the design of the site.
 
+Some of you may see the irony in me calling this "simple" when it has more behavior included than what you might except for a simple ecommerce site with just a usable cart system. I described it as simple because it uses no libraries or frameworks. Just vanilla JS and its built-in APIs.
+
 ## Features
 
 ### Currently implemented features:
@@ -27,8 +29,6 @@ This is a total overhaul and remake of a class project I did in 2021, which you 
 - Product filtering
 - Promo code discounts
 - Sorting catalog by price, name, brand, sale, and more
-
-Some of you may see the irony in me calling this "simple" when it has more behavior included than what you might except for a simple ecommerce site with just a usable cart system. I described it as simple because it uses no libraries or frameworks. Just vanilla JS and its built-in APIs.
 
 ## No Images or Video?
 No assets have been uploaded to the repository. This is because a lot of them are licensed, and I don't have permission to distribute them. I'm afraid that including them in my repository may count as redistributing without permission. So if you try this project for yourself, you won't have any images or video. The site should still function perfectly fine without those files. I did keep fonts and icons included.
