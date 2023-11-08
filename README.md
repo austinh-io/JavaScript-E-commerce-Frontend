@@ -1,7 +1,10 @@
 # Simple Ecommerce Frontend
-This is a total overhaul and remake of a class project I did in 2021, which you can see [here](https://github.com/gmni-dev/Simple-Ecommerce-Frontend-2021). At this point it has surpassed the functionality of the original, however I am still working towards full functionality and improving the design of the site.
 
-Some of you may see the irony in me calling this "simple" when it has more behavior included than what you might except for a simple ecommerce site with just a usable cart system. I described it as simple because it uses no libraries or frameworks. Just vanilla JS and its built-in APIs.
+This is a mockup of an ecommerce site, done purely in JS, CSS, and HTML. Since this is only a front end project, I have a mockup set of data in a JSON file, and a lot of behavior that would typically be handled by a server is coded just as plain JavaScript that runs on the client.
+
+It has a basic home page, catalog for browsing products, a product page, and a checkout page.
+
+My first attempt at this was as a class project in 2021 (which you can see [here](https://github.com/gmni-dev/Simple-Ecommerce-Frontend-2021)). I wasn't happy with how it turned out, so this is a total remake of that older project. Another part of this inspiration was when I had to make an ecommerce site in both React and Angular as part of another college course, however I was disapointed with how I made those, too. Part of me feels as though I didn't know enough basic JavaScript to really understand a framework or library yet, so my main goal for this project was to get myself familar enough that I would be more comfortable working in a framework or library.
 
 ## Features
 
