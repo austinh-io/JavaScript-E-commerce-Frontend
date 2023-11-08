@@ -9,6 +9,8 @@ Some of you may see the irony in me calling this "simple" when it has more behav
 - Programatic generating of products in catalog from data in JSON file
 - Adding and removing items to/from your cart
 - Adding/removing specific options to/from cart
+- Cart keeps total count of items, total cost of each item, and subtotal of cart
+- Cart persists between sessions
 - Selections of variety of options of a product (color, size, material, etc.)
 - Dynamic generation of selections based on data defined in JSON file
 - Dark/Light mode themes and toggle 
