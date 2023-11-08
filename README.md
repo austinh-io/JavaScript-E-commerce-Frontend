@@ -21,7 +21,7 @@ Some of you may see the irony in me calling this "simple" when it has more behav
   - Product page
   - Navigation menu
   - Cart menu
-- Liberal usage of web components. Not actually sure if this is a feature, but it was interesting to learn how to implement and utilize.
+- Demonstrates use of web components and interaction between the DOM, shadow DOM, and other web components
 - Very basic implementation of lazy-loading for images
 
 ### Planned features:
