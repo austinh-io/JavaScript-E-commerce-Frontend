@@ -19,6 +19,7 @@ Some of you may see the irony in me calling this "simple" when it has more behav
   - Product page
   - Navigation menu
   - Cart menu
+- Liberal usage of web components. Not actually sure if this is a feature, but it was interesting to learn how to implement and utilize.
 
 ### Planned features:
 - Carousel for product images
