@@ -6,7 +6,7 @@ It has a basic home page, catalog for browsing products, a product page, and a c
 
 My first attempt at this was as a class project in 2021 (which you can see [here](https://github.com/gmni-dev/Simple-Ecommerce-Frontend-2021)). I wasn't happy with how it turned out, so this is a total remake of that older project. Another part of this inspiration was when I had to make an ecommerce site in both React and Angular as part of another college course, however I was disapointed with how I made those, too. Part of me feels as though I didn't know enough basic JavaScript to really understand a framework or library yet, so my main goal for this project was to get myself familar enough that I would be more comfortable working in a framework or library.
 
-[Demo](https://projects.gmni.dev/simple-ecom/)
+<a href="[http://example.com/](https://projects.gmni.dev/simple-ecom/)" target="_blank">Demo</a>
 
 ## Features
 
