@@ -8,7 +8,7 @@ Some of you may see the irony in me calling this "simple" when it has more behav
 ### Currently implemented features:
 - Programatic generating of products in catalog from data in JSON file
 - Adding and removing items to/from your cart
-- Adding/removing spefificly selected options to/from cart
+- Adding/removing specific options to/from cart
 - Selections of variety of options of a product (color, size, material, etc.)
 - Dynamic generation of selections based on data defined in JSON file
 - Dark/Light mode themes and toggle 
