@@ -1,7 +1,9 @@
 # Simple Ecommerce Frontend
 This is a total overhaul and remake of a class project I did in 2021, which you can see [here](https://github.com/gmni-dev/Simple-Ecommerce-Frontend-2021). At this point it has surpassed the functionality of the original, however I am still working towards full functionality and improving the design of the site.
 
-Currently implemented features:
+## Features
+
+### Currently implemented features:
 - Programatic generating of products in catalog from data in JSON file
 - Adding and removing items to/from your cart
 - Adding/removing spefificly selected options to/from cart
@@ -16,7 +18,7 @@ Currently implemented features:
   - Navigation menu
   - Cart menu
 
-Planned features:
+### Planned features:
 - Carousel for product images
 - Finished checkout page
 - Mockup checkout system
