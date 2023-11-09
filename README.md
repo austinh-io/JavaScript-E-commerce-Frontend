@@ -2,13 +2,14 @@
 
 > An ecommerce site frontend done only in JS, CSS, and HTML.
 
+<a href="https://projects.gmni.dev/simple-ecom/" target="_blank">Demo</a>
+
 Since this is only a front end project, I have a mockup set of data in a JSON file, and a lot of behavior that would typically be handled by a server is coded just as plain JavaScript that runs on the client.
 
 It has a basic home page, catalog for browsing products, a product page, and a checkout page.
 
 My first attempt at this was as a class project in 2021 (which you can see [here](https://github.com/gmni-dev/Simple-Ecommerce-Frontend-2021)). I wasn't happy with how it turned out, so this is a total remake of that older project. Another part of this inspiration was when I had to make an ecommerce site in both React and Angular as part of another college course, however I was disapointed with how I made those, too. Part of me feels as though I didn't know enough basic JavaScript to really understand a framework or library yet, so my main goal for this project was to get myself familar enough that I would be more comfortable working in a framework or library.
 
-<a href="https://projects.gmni.dev/simple-ecom/" target="_blank">Demo</a>
 
 ## Features
 
