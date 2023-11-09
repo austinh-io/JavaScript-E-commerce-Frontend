@@ -1,6 +1,8 @@
 # Simple Ecommerce Frontend
 
-This is a mockup of an ecommerce site, done purely in JS, CSS, and HTML. Since this is only a front end project, I have a mockup set of data in a JSON file, and a lot of behavior that would typically be handled by a server is coded just as plain JavaScript that runs on the client.
+> A mockup of an ecommerce site, done purely in JS, CSS, and HTML.
+
+Since this is only a front end project, I have a mockup set of data in a JSON file, and a lot of behavior that would typically be handled by a server is coded just as plain JavaScript that runs on the client.
 
 It has a basic home page, catalog for browsing products, a product page, and a checkout page.
 
