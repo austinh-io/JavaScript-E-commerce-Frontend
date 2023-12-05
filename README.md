@@ -1,15 +1,56 @@
 # Simple Ecommerce Frontend
-This is a total overhaul and remake of a class project I did in 2021, which you can see [here](https://github.com/gmni-dev/Simple-Ecommerce-Frontend-2021). At this point it has surpassed the functionality of the original, however I am still working towards full functionality and improving the design of the site.
 
-I'm sure some of you may see the irony in me calling this "simple" when it has more behavior included than what you might except for a simple cart system, however I refer to it as simple because it is using no libraries or frameworks, and it is simplistic in that sense.
+> An ecommerce site frontend done only in JS, CSS, and HTML.
 
-## No Images or Video
-I have not uploaded any of the assets to the repository. This is because a lot of them are stock, and I don't have permission to bundle them, and I'm afraid that may count as redistributing without permission. So if you try this project for yourself, you won't have any images or video. The site should still function perfectly fine without those files. I did keep fonts and icons included.
+<a href="https://projects.gmni.dev/simple-ecom/" target="_blank">Demo</a>
 
-## Custom Icons with JSymbol
-I utilize a custom built system for icons, too. I called it "JSymbol". I haven't made any of the icons myself, however. I am using icons from [Iconoir](https://iconoir.com) for now.
+Since this is only a front end project, I have a mockup set of data in a JSON file, and a lot of behavior that would typically be handled by a server is coded just as plain JavaScript that runs on the client.
 
-JSymbol is more flexible than what I was using before, which was just using an icon font library from Google Material Icons. I don't know if this performs any better or worse than a typical icon font library. The name probably isn't very original, but I did manage to snag jsymbol.com in case I ever make something bigger from it. I think the name works well though, as it's a system for symbols/icons to use in JS.
+It has a basic home page, catalog for browsing products, a product page, and a checkout page.
+
+My first attempt at this was as a class project in 2021 (which you can see [here](https://github.com/gmni-dev/Simple-Ecommerce-Frontend-2021)). I wasn't happy with how it turned out, so this is a total remake of that older project. Another part of this inspiration was when I had to make an ecommerce site in both React and Angular as part of another college course, however I was disapointed with how I made those, too. Part of me feels as though I didn't know enough basic JavaScript to really understand a framework or library yet, so my main goal for this project was to get myself familar enough that I would be more comfortable working in a framework or library.
+
+
+## Features
+
+### Currently implemented features:
+- Programatic generating of products in catalog from data in JSON file
+- Adding and removing items to/from your cart
+- Adding/removing specific options to/from cart
+- Cart keeps total count of items, total cost of each item, and subtotal of cart
+- Cart persists between sessions
+- Selections of variety of options of a product (color, size, material, etc.)
+- Dynamic generation of selections based on data defined in JSON file
+- Dark/Light mode themes and toggle 
+- Prefered light/dark mode theme detection
+- Product page that shows selected product based on URL parameters
+- Responsive design implemented for the following:
+  - Catalog page
+  - Product page
+  - Navigation menu
+  - Cart menu
+- Demonstrates use of web components and interaction between the DOM, shadow DOM, and other web components
+- Very basic implementation of lazy-loading for images
+
+### Planned features:
+- Carousel for product images
+- Finished checkout page
+- Mockup checkout system
+- Unqiue price change events (on sale, clearance, etc.)
+- More pages (About Us, Categories, etc.)
+- Product filtering
+- Promo code discounts
+- Sorting catalog by price, name, brand, sale, and more
+
+## No Images or Video?
+No assets have been uploaded to the repository. This is because a lot of them are licensed, and I don't have permission to distribute them. I'm afraid that including them in my repository may count as redistributing without permission. So if you try this project for yourself, you won't have any images or video. The site should still function perfectly fine without those files. I did keep fonts and icons included.
+
+Custom images and assets are planned for the future, so stay tuned for when that happens.
+
+## Custom Icon System called JSymbol
+I built a custom system for icons called JSymbol. I haven't made any of the icons myself though, right now they are from [Iconoir](https://iconoir.com).
+
+This may not be more effect than something like Google Material Icons or Fontawesome, but it was interesting to learn and build. I haven't tested if this performs any better or worse than a typical icon font library. The name probably isn't very original either, but I did manage to snag jsymbol.com in case I ever make something bigger from it. I think the name works well though, as it's a system for symbols/icons to use in JS.
 
 ## Product Data Structure Guidelines
 
