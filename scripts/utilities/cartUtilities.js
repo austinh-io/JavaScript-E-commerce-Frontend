@@ -32,12 +32,12 @@ export function updateCart() {
     setCartLocalStorage();
     updateCartItemsButtons();
     updateProductPageButton();
-  }
 
-  if (cartItems.length <= 0) {
-    storeCartMenu.disableCheckoutButton();
-  } else {
-    storeCartMenu.enableCheckoutButton();
+    if (cartItems.length <= 0) {
+      storeCartMenu.disableCheckoutButton();
+    } else {
+      storeCartMenu.enableCheckoutButton();
+    }
   }
 }
 

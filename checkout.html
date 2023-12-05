@@ -12,6 +12,12 @@
       contents="light dark"
     />
 
+    <link
+      rel="shortcut icon"
+      href="/assets/favicon/favicon.ico"
+      type="image/x-icon"
+    />
+
     <title>Checkout</title>
 
     <link rel="stylesheet" href="/css/responsive.css" media="screen and
@@ -22,11 +28,10 @@
       href="/css/main.css"
     />
 
-    <script
-      defer
-      type="module"
-      src="/scripts/utilities/menus.js"
-    ></script>
+    <link
+      rel="stylesheet"
+      href="/css/checkout.css"
+    />
 
     <script
       defer
@@ -37,13 +42,13 @@
     <script
       defer
       type="module"
-      src="/scripts/components/jsymbol.js"
+      src="/scripts/components/cartMenu.js"
     ></script>
 
     <script
       defer
       type="module"
-      src="/scripts/components/cartMenu.js"
+      src="/scripts/components/jsymbol.js"
     ></script>
 
     <script
@@ -56,6 +61,12 @@
       defer
       type="module"
       src="/scripts/components/themeToggle.js"
+    ></script>
+
+    <script
+      defer
+      type="module"
+      src="/scripts/utilities/menus.js"
     ></script>
 
     <script
@@ -90,23 +101,19 @@
       </div>
     </nav>
 
-    <header>
-      <nav-menu></nav-menu>
-    </header>
+    <nav-menu></nav-menu>
 
     <store-cart> </store-cart>
 
-    <main
-      class="wrapper"
-      style="margin-block: 10rem"
-    >
-      <h1>Welcome to Checkout!</h1>
-      <p>This is your cart:</p>
-      <div
-        class="checkout-cart-items"
-        style="max-width: 30rem"
-      ></div>
-    </main>
+    <div class="main-container">
+      <main>
+        <div class="wrapper">
+          <h1>Welcome to Checkout!</h1>
+          <p>This is your cart:</p>
+          <div class="checkout-cart-items"></div>
+        </div>
+      </main>
+    </div>
 
     <div class="footer-container">
       <footer class="wrapper">

@@ -39,6 +39,10 @@ function openNavOverlay() {
   navOverlay.style.pointerEvents = 'auto';
   docBody.style.overflow = 'hidden';
 
+  //Todo: below doesn't work right now. This is because of how I have both the navigation and cart menu setup.
+  //When both of these open/close, one will activate and then the other will disable the first one, causing
+  //the site to undo the lock-width thing it set.
+  //I need to make it so that this is only enabled when any menu is open, and won't disable while any menu is open.
   if (isBrowserChromium()) {
     docBody.classList.add('lock-width-chromium');
     navHeader.classList.add('lock-width-chromium');
@@ -53,6 +57,7 @@ function closeNavOverlay() {
   navOverlay.style.pointerEvents = 'none';
   docBody.style.overflow = 'auto';
 
+  //TODO: same as in openNavOverlay()
   if (isBrowserChromium()) {
     docBody.classList.remove('lock-width-chromium');
     navHeader.classList.remove('lock-width-chromium');

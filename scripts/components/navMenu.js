@@ -13,6 +13,16 @@ const tpl_navMenu = document.createElement('template');
 const tpl_navMenuMobileCSS = `
 @media screen and (max-width: 768px) {
 
+  .menu-horizontal-mobile[data-visible='true'] {
+    transform: translateX(0%);
+    transition: transform var(--menu-transition-speed) ease-in;
+  }
+  
+  .menu-horizontal-mobile[data-visible='false'] {
+    transform: translateX(100%);
+    transition: transform var(--menu-transition-speed) ease-out;
+  }
+
   .nav-container.wrapper {
     padding-inline: 0.8rem;
     width: 100%;
@@ -342,7 +352,7 @@ tpl_navMenu.innerHTML = `
   </div>
 
   <div
-    class="nav-menu-container menu-horizontal menu-shadow"
+    class="nav-menu-container menu-horizontal-mobile menu-shadow"
     data-visible="false">
 
     <div class="nav-menu-close-container">
