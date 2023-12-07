@@ -274,7 +274,7 @@ class catalogProduct extends HTMLElement {
 
     const product = catalogProducts.find((i) => i.productId == this.productId);
 
-    const productPageUrl = `productPage.html?productid=${product.productId}&optionid=${product.options[0].optionId}`;
+    const productPageUrl = `/productPage?productid=${product.productId}&optionid=${product.options[0].optionId}`;
 
     this.productImageContainer = shadow.querySelector(
       '.product-image-container'
@@ -360,7 +360,7 @@ class catalogProduct extends HTMLElement {
       (productOption) => productOption.optionId == optionId
     );
 
-    let productUrl = `productPage.html?productid=${targetProduct.productId}&optionid=${targetProductOption.optionId}`;
+    let productUrl = `/productPage?productid=${targetProduct.productId}&optionid=${targetProductOption.optionId}`;
 
     this.productImage.src = `${baseUrl}/assets/images/productImages/small/${targetProductOption.imageSet[0]}_small.webp `;
     this.productImageSource.srcset = `${baseUrl}/assets/images/productImages/small/${targetProductOption.imageSet[0]}_small.webp `;

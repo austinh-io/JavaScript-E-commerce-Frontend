@@ -252,7 +252,7 @@ ${tpl_storeCartCSS}
       </div>
       <a
         class="btn-checkout no-hover-effect "
-        href="checkout.html"
+        href="/checkout/"
       >
         <span class="btn-checkout-label">Checkout</span>
         <span class="btn-checkout-icon">
