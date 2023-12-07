@@ -10,6 +10,8 @@ It has a basic home page, catalog for browsing products, a product page, and a c
 
 My first attempt at this was as a class project in 2021 (which you can see [here](https://github.com/gmni-dev/Simple-Ecommerce-Frontend-2021)). I wasn't happy with how it turned out, so this is a total remake of that older project. Another part of this inspiration was when I had to make an ecommerce site in both React and Angular as part of another college course, however I was disapointed with how I made those, too. Part of me feels as though I didn't know enough basic JavaScript to really understand a framework or library yet, so my main goal for this project was to get myself familar enough that I would be more comfortable working in a framework or library.
 
+> [!IMPORTANT]
+> At this point in time (2023-12-05) I have paused work on this project. Most of my intended functionality is there, but is incomplete for now. I still need to complete the checkout page and process, and product selections don't work how I want. I realize now, however, that the way I created this is making it hard to maintain, so at this point I want to move onto other projects and refine my skills more. After some time I will likely return to this and finish it up.
 
 ## Features
 
