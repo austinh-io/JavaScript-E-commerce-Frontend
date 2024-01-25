@@ -1,0 +1,32 @@
+a.btn,
+button.btn,
+example-button::part(example-button) {
+  border-radius: var(--radius-base);
+  padding: 0.6rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+
+  border: none;
+
+  transition: color 100ms ease-out, background-color 100ms ease-out;
+}
+
+a.btn-primary,
+button.btn-primary,
+example-button::part(example-button) {
+  background-color: var(--primary-500);
+  color: var(--on-primary);
+}
+
+a.btn:hover,
+button.btn:hover,
+example-button::part(example-button) {
+  cursor: pointer;
+  background-color: var(--primary-400);
+}
+
+button.btn:active,
+a.btn:active,
+example-button::part(example-button) {
+  background-color: var(--primary-600);
+}

@@ -4,7 +4,9 @@
   --radius-pill: 9999px;
 
   --radius-base: var(--radius-sharp);
-  --radius-container: var(--radius-pill);
+  --radius-container: var(--radius-sharp);
+  --radius-badge: var(var(--radius-pill));
+  --radius-chip: var(var(--radius-sharp));
 }
 
 @media (prefers-color-scheme: light) {
@@ -175,7 +177,7 @@
     --surface-800: #14162c;
     --surface-900: #111224;
 
-    --on-primary: #fff;
+    --on-primary: #000;
     --on-secondary: #fff;
     --on-tertiary: #fff;
     --on-success: #fff;
