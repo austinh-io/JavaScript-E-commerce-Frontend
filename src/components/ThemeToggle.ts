@@ -34,7 +34,7 @@ const TPL_ThemeToggle_css = /* CSS */ `
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--surface-200);
+    background-color: var(--color-surface-200);
     -webkit-transition: var(--transition);
     transition: var(--transition);
     border-radius: var(--radius-base);
@@ -54,7 +54,7 @@ const TPL_ThemeToggle_css = /* CSS */ `
   }
   
   input:checked + .slider {
-    background-color: var(--primary-500);
+    background-color: var(--color-primary-500);
   }
   
   input:checked + .slider:before {

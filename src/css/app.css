@@ -1,7 +1,7 @@
 @import url(variables.css);
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--theme-font-family-base);
   line-height: 1.5;
   font-weight: 400;
 
@@ -20,8 +20,8 @@ body {
   min-width: 320px;
   min-height: 100svh;
 
-  color: var(--surface-50);
-  background-color: var(--surface-500);
+  color: var(--color-surface-50);
+  background-color: var(--color-surface-500);
 }
 
 h1,
@@ -42,5 +42,5 @@ h6 {
 }
 
 box-icon {
-  fill: var(--primary-500);
+  fill: var(--color-primary-500);
 }

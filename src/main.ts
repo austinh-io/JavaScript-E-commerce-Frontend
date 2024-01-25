@@ -1,6 +1,11 @@
 import './css/app.css';
 import './css/global.css';
 import './components.ts';
+import { lightTheme, darkTheme } from './theme.ts';
+import {
+  applyThemeStylesheet,
+  generateStylesheet,
+} from './utils/themeGenerator.ts';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* HTML */ `
   <div>
@@ -25,3 +30,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* HTML */ `
     <theme-toggle></theme-toggle>
   </div>
 `;
+
+document.addEventListener('DOMContentLoaded', () => {
+  const themeStylesheet = generateStylesheet(lightTheme, darkTheme);
+  applyThemeStylesheet(themeStylesheet);
+});
