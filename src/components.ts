@@ -1,2 +1,4 @@
+import 'boxicons';
 import './components/ExampleButton.ts';
-import './components/exampleComponent.ts';
+import './components/ExampleComponent.ts';
+import './components/ThemeToggle.ts';

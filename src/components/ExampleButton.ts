@@ -34,7 +34,9 @@ TPL_ExampleButton.innerHTML = /* HTML */ `
   ${TPL_ExampleButton_CSS}
 
   <button>
-    <span>✅</span>
+    <span>
+      <box-icon name="home"></box-icon>
+    </span>
     <span>Complete</span>
   </button>
 `;

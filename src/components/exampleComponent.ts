@@ -6,6 +6,7 @@ const TPL_ExampleComponent_css = /* CSS */ `
         color: salmon;
         border: 2px solid cornflowerblue;
         border-radius: 5pt;
+        padding: 0.6rem;
     }
 </style>
 `;
