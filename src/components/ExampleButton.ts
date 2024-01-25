@@ -11,7 +11,7 @@ TPL_ExampleButton.innerHTML = /* HTML */ `
 
   <button
     class="btn btn-primary"
-    part="example-button">
+    part="btn btn-primary">
     <box-icon name="home"></box-icon>
     Complete
   </button>
