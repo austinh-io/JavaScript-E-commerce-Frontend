@@ -1,5 +1,5 @@
-import './app.css';
-import './global.css';
+import './css/app.css';
+import './css/global.css';
 import './components.ts';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* HTML */ `
