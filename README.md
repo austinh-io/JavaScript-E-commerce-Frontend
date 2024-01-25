@@ -1,6 +1,6 @@
-# Simple Ecommerce Frontend v2
+# Simple E-commerce Frontend v2
 
-> An ecommerce site frontend made only with TS and Vite
+> An e-commerce site frontend made only with TS and Vite
 
 I have completely redone this project from the ground up, this time using TypeScript and Vite.
 
@@ -11,3 +11,5 @@ Along with that, I wanted to go into this project with a blank slate, bringing a
 The mockup database was also something I did not like, and I feel as though I could have created a better mock-up server. This new attempt is also to fill that gap, as I want to learn PHP/Laravel later on and implement a real database to this site. I can't really predicate if I will ever really get into that or not, so for now I will be just doing a mockup with TypeScript or JavaScript.
 
 The project is beyond what most would probably consider to be "simple" at this point, but I am still calling it that due to not using any frameworks besides TypeScript and Vite.
+
+I have also decided to standardize the spelling of the project title, from ecommerce (no hyphen) to e-commerce (with hyphen).
