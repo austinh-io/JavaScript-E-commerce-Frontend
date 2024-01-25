@@ -3,7 +3,7 @@
   --radius-round: 12px;
   --radius-pill: 9999px;
 
-  --radius-base: var(--radius-pill);
+  --radius-base: var(--radius-sharp);
   --radius-container: var(--radius-pill);
 }
 

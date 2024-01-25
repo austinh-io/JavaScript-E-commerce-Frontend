@@ -3,7 +3,7 @@ const TPL_ThemeToggle = document.createElement('template');
 const TPL_ThemeToggle_css = /* CSS */ `
 <style>
 :host {
-    --toggle-width: 4.25rem;
+    --toggle-width: 3.75rem;
     --toggle-height: 2rem;
 
     --slider-size: 1.65rem;
