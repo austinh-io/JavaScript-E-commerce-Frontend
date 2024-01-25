@@ -27,8 +27,7 @@ button.btn,
 
 a.btn-primary > box-icon,
 button.btn-primary > box-icon,
-::part(btn-primary) {
-  /* fill: var(--on-primary); */
+::part(btn-primary-icon) {
   fill: red;
 }
 
@@ -56,8 +55,7 @@ a.btn-primary:active,
 
 a.btn-secondary > box-icon,
 button.btn-secondary > box-icon,
-::part(btn-secondary) {
-  /* fill: var(--on-primary); */
+::part(btn-secondary-icon) {
   fill: navy;
 }
 
@@ -85,8 +83,7 @@ a.btn-secondary:active,
 
 a.btn-tertiary > box-icon,
 button.btn-tertiary > box-icon,
-::part(btn-tertiary) {
-  /* fill: var(--on-primary); */
+::part(btn-tertiary-icon) {
   fill: yellow;
 }
 
