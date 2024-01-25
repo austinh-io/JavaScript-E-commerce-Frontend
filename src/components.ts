@@ -1,2 +1,2 @@
-import './components/ahButton.ts';
+import './components/ExampleButton.ts';
 import './components/exampleComponent.ts';

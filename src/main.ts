@@ -31,7 +31,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* HTML */ `
     <p class="read-the-docs">
       Click on the Vite and TypeScript logos to learn more
     </p>
-    <ah-button></ah-button>
+    <example-button></example-button>
     <example-component />
   </div>
 `;

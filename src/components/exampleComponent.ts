@@ -1,6 +1,6 @@
-const tpl_exampleComponent = document.createElement('template');
+const TPL_ExampleComponent = document.createElement('template');
 
-const tpl_exampleComponent_css = /* CSS */ `
+const TPL_ExampleComponent_css = /* CSS */ `
 <style>
     div {
         color: salmon;
@@ -10,8 +10,8 @@ const tpl_exampleComponent_css = /* CSS */ `
 </style>
 `;
 
-tpl_exampleComponent.innerHTML = /* HTML */ `
-  ${tpl_exampleComponent_css}
+TPL_ExampleComponent.innerHTML = /* HTML */ `
+  ${TPL_ExampleComponent_css}
 
   <div>
     <h3>Lorem Ipsum</h3>
@@ -19,17 +19,17 @@ tpl_exampleComponent.innerHTML = /* HTML */ `
   </div>
 `;
 
-class exampleComponent extends HTMLElement {
+class ExampleComponent extends HTMLElement {
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
-    const clone = tpl_exampleComponent.content.cloneNode(true);
+    const clone = TPL_ExampleComponent.content.cloneNode(true);
     shadow.append(clone);
   }
 
   connectedCallBack() {}
 }
 
-window.customElements.define('example-component', exampleComponent);
+window.customElements.define('example-component', ExampleComponent);
 
-export default exampleComponent;
+export default ExampleComponent;
