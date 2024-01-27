@@ -7,18 +7,13 @@ export function generateStylesheet(
   let stylesheet = ':root {\n';
 
   for (const [key, value] of Object.entries(lightTheme.properties)) {
-    stylesheet += `  ${key}: ${
-      key.startsWith('--color-') ? `rgb(${value})` : value
-    };\n`;
+    stylesheet += `  ${key}: ${value};\n`;
   }
-
   stylesheet += '}\n';
 
   stylesheet += '@media (prefers-color-scheme: dark) {\n  :root {\n';
   for (const [key, value] of Object.entries(darkTheme.properties)) {
-    stylesheet += `    ${key}: ${
-      key.startsWith('--color-') ? `rgb(${value})` : value
-    };\n`;
+    stylesheet += `    ${key}: ${value};\n`;
   }
   stylesheet += '  }\n}\n';
 
