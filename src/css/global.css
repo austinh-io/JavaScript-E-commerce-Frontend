@@ -13,7 +13,7 @@ button.btn,
   align-items: center;
   justify-content: center;
 
-  border-radius: var(--radius-base);
+  border-radius: var(--theme-rounded-base);
   padding: 0.8rem;
   font-size: 1.2rem;
   font-weight: 700;
@@ -35,7 +35,7 @@ a.btn-primary,
 button.btn-primary,
 ::part(btn-primary) {
   background-color: var(--color-primary-500);
-  color: var(--on-primary);
+  color: var(--color-on-primary);
 }
 
 a.btn-primary:hover,
@@ -63,7 +63,7 @@ a.btn-secondary,
 button.btn-secondary,
 ::part(btn-secondary) {
   background-color: var(--color-secondary-500);
-  color: var(--on-secondary);
+  color: var(--color-on-secondary);
 }
 
 a.btn-secondary:hover,
@@ -91,7 +91,7 @@ a.btn-tertiary,
 button.btn-tertiary,
 ::part(btn-tertiary) {
   background-color: var(--color-tertiary-500);
-  color: var(--on-tertiary);
+  color: var(--color-on-tertiary);
 }
 
 a.btn-tertiary:hover,

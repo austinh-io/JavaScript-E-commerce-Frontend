@@ -4,21 +4,21 @@ export const darkTheme: Theme = {
   name: 'dark-theme',
   properties: {
     // =~= Theme Properties =~=
-    '--theme-font-family-base': `Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
-    '--theme-font-family-heading': `Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
     '--theme-font-color-base': '0 0 0',
     '--theme-font-color-dark': '255 255 255',
-    '--theme-rounded-base': '4px',
-    '--theme-rounded-container': '24px',
+    '--theme-rounded-base': '9999px',
+    '--theme-rounded-container': '4px',
+    '--theme-rounded-chip': '4px',
+    '--theme-rounded-badge': '9999px',
     '--theme-border-base': '2px',
     // =~= Theme On-X Colors =~=
-    '--on-primary': '0 0 0',
-    '--on-secondary': '0 0 0',
-    '--on-tertiary': '0 0 0',
-    '--on-success': '0 0 0',
-    '--on-warning': '0 0 0',
-    '--on-error': '0 0 0',
-    '--on-surface': '255 255 255',
+    '--color-on-primary': '0 0 0',
+    '--color-on-secondary': '0 0 0',
+    '--color-on-tertiary': '0 0 0',
+    '--color-on-success': '0 0 0',
+    '--color-on-warning': '0 0 0',
+    '--color-on-error': '0 0 0',
+    '--color-on-surface': '255 255 255',
     // =~= Theme Colors  =~=
     // primary | #fec039
     '--color-primary-50': '255 246 225', // #fff6e1
@@ -104,12 +104,12 @@ export const lightTheme: Theme = {
   name: 'light-theme',
   properties: {
     // =~= Theme Properties =~=
-    '--theme-font-family-base': `Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
-    '--theme-font-family-heading': `Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
     '--theme-font-color-base': '0 0 0',
     '--theme-font-color-dark': '255 255 255',
-    '--theme-rounded-base': '4px',
-    '--theme-rounded-container': '24px',
+    '--theme-rounded-base': '9999px',
+    '--theme-rounded-container': '4px',
+    '--theme-rounded-chip': '4px',
+    '--theme-rounded-badge': '9999px',
     '--theme-border-base': '2px',
     // =~= Theme On-X Colors =~=
     '--on-primary': '0 0 0',

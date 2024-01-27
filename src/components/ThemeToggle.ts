@@ -3,10 +3,10 @@ const TPL_ThemeToggle = document.createElement('template');
 const TPL_ThemeToggle_css = /* CSS */ `
 <style>
 :host {
-    --toggle-width: 3.75rem;
-    --toggle-height: 2rem;
+    --toggle-width: 3.25rem;
+    --toggle-height: 1.75rem;
 
-    --slider-size: 1.65rem;
+    --slider-size: 1.5rem;
     --slider-offset-left: 0.2rem;
     --slider-offset-bottom: calc((var(--toggle-height) * 0.5) - (var(--slider-size) * 0.5));
     --slider-translate: calc(var(--toggle-width) - (var(--slider-size) + (var(--slider-offset-left) * 2)));
@@ -37,7 +37,7 @@ const TPL_ThemeToggle_css = /* CSS */ `
     background-color: var(--color-surface-200);
     -webkit-transition: var(--transition);
     transition: var(--transition);
-    border-radius: var(--radius-base);
+    border-radius: var(--theme-rounded-base);
   }
   
   .slider:before {
@@ -50,7 +50,7 @@ const TPL_ThemeToggle_css = /* CSS */ `
     background-color: white;
     -webkit-transition: var(--transition);
     transition: var(--transition);
-    border-radius: var(--radius-base);
+    border-radius: var(--theme-rounded-base);
   }
   
   input:checked + .slider {

@@ -1,7 +1,10 @@
-@import url(variables.css);
+@font-face {
+  font-family: 'Outfit';
+  src: url(../assets/fonts/Outfit/Outfit-VariableFont_wght.ttf);
+}
 
 :root {
-  font-family: var(--theme-font-family-base);
+  font-family: 'Outfit', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -39,8 +42,4 @@ h6 {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
-
-box-icon {
-  fill: var(--color-primary-500);
 }

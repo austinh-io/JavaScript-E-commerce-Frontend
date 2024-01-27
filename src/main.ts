@@ -7,6 +7,11 @@ import {
   generateStylesheet,
 } from './utils/themeGenerator.ts';
 
+document.addEventListener('DOMContentLoaded', () => {
+  const themeStylesheet = generateStylesheet(lightTheme, darkTheme);
+  applyThemeStylesheet(themeStylesheet);
+});
+
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* HTML */ `
   <div>
     <example-component></example-component>
@@ -25,13 +30,15 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* HTML */ `
           name="hot"></box-icon>
         Lorem Ipsum
       </button>
+
+      <button class="btn btn-primary">
+        <box-icon
+          type="solid"
+          name="color"></box-icon>
+        Lorem Ipsum
+      </button>
     </div>
 
     <theme-toggle></theme-toggle>
   </div>
 `;
-
-document.addEventListener('DOMContentLoaded', () => {
-  const themeStylesheet = generateStylesheet(lightTheme, darkTheme);
-  applyThemeStylesheet(themeStylesheet);
-});
