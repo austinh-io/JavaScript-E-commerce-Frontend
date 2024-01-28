@@ -1,8 +1,10 @@
+import { lightTheme } from '../theme';
+
 const TPL_ThemeToggle = document.createElement('template');
 
 const TPL_ThemeToggle_css = /* CSS */ `
 <style>
-:host {
+  :host {
     --toggle-width: 3.25rem;
     --toggle-height: 1.75rem;
 
@@ -12,16 +14,16 @@ const TPL_ThemeToggle_css = /* CSS */ `
     --slider-translate: calc(var(--toggle-width) - (var(--slider-size) + (var(--slider-offset-left) * 2)));
 
     --transition: 200ms ease;
-}
+  }
 
-.switch {
+  .toggle {
     position: relative;
     display: inline-block;
     width: var(--toggle-width);
     height: var(--toggle-height);
   }
   
-  .switch input { 
+  .toggle input { 
     opacity: 0;
     width: 0;
     height: 0;
@@ -68,11 +70,28 @@ const TPL_ThemeToggle_css = /* CSS */ `
 TPL_ThemeToggle.innerHTML = /* HTML */ `
   ${TPL_ThemeToggle_css}
 
-  <label class="switch">
-    <input type="checkbox" />
+  <label class="toggle">
+    <input
+      type="checkbox"
+      id="themeToggle" />
     <span class="slider"></span>
   </label>
 `;
+
+let darkMode: boolean = false;
+
+function prefersDarkMode(): boolean {
+  if (
+    !window.matchMedia ||
+    !window.matchMedia('(prefers-color-scheme: dark').matches
+  ) {
+    console.log('Does not prefer Dark Mode.');
+    return false;
+  } else {
+    console.log('Prefers Dark Mode.');
+    return true;
+  }
+}
 
 class ThemeToggle extends HTMLElement {
   constructor() {
@@ -82,7 +101,18 @@ class ThemeToggle extends HTMLElement {
     shadow.append(clone);
   }
 
-  connectedCallBack() {}
+  connectedCallback() {
+    const themeToggle: HTMLInputElement =
+      this.shadowRoot?.querySelector('#themeToggle')!;
+
+    themeToggle.addEventListener('change', this.toggleTheme.bind(this));
+    themeToggle.checked = prefersDarkMode();
+  }
+
+  toggleTheme(event: Event) {
+    const checkbox = event.target as HTMLInputElement;
+    darkMode = checkbox.checked;
+  }
 }
 
 window.customElements.define('theme-toggle', ThemeToggle);
