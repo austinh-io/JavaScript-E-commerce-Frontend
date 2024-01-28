@@ -3,8 +3,7 @@ const TPL_ExampleComponent = document.createElement('template');
 const TPL_ExampleComponent_css = /* CSS */ `
 <style>
     div {
-        color: salmon;
-        border: 2px solid cornflowerblue;
+        border: 2px solid var(--color-secondary-700);
         border-radius: 5pt;
         padding: 0.6rem;
     }

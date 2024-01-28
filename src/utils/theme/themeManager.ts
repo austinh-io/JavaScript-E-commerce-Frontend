@@ -1,7 +1,7 @@
 import { lightTheme, darkTheme } from './themeProperties.ts';
 import { applyThemeStylesheet, generateStylesheet } from './themeGenerator.ts';
 
-export function initTheme() {
+export function initTheme(): void {
   document.addEventListener('DOMContentLoaded', () => {
     const themeStylesheet = generateStylesheet(lightTheme, darkTheme);
     applyThemeStylesheet(themeStylesheet);
@@ -27,7 +27,7 @@ export function setTheme(): void {
 
 export const darkMode = {
   darkModeEnabled: false,
-  get enabled() {
+  get enabled(): boolean {
     return this.darkModeEnabled;
   },
   set enabled(isEnabled: boolean) {
