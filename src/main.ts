@@ -1,16 +1,9 @@
 import './css/app.css';
 import './css/global.css';
 import './components.ts';
-import { lightTheme, darkTheme } from './theme.ts';
-import {
-  applyThemeStylesheet,
-  generateStylesheet,
-} from './utils/themeGenerator.ts';
+import { initTheme } from './utils/theme/themeManager.ts';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const themeStylesheet = generateStylesheet(lightTheme, darkTheme);
-  applyThemeStylesheet(themeStylesheet);
-});
+initTheme();
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* HTML */ `
   <div>

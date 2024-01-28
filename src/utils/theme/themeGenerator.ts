@@ -1,4 +1,4 @@
-import { Theme } from '../types/theme';
+import { Theme } from '../../types/theme';
 
 export function generateStylesheet(
   lightTheme: Theme,
