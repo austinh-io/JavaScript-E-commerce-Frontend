@@ -1,5 +1,3 @@
-import { lightTheme } from '../theme';
-
 const TPL_ThemeToggle = document.createElement('template');
 
 const TPL_ThemeToggle_css = /* CSS */ `
