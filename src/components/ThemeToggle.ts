@@ -4,6 +4,24 @@ import {
   darkMode,
 } from '../utils/theme/themeManager';
 
+class ThemeToggleIcon {
+  private themeIcon: string;
+
+  constructor(isDarkMode: boolean) {
+    this.themeIcon = isDarkMode ? 'moon' : 'sun';
+  }
+
+  get icon(): string {
+    return this.themeIcon;
+  }
+
+  set icon(isDarkMode: boolean) {
+    this.themeIcon = isDarkMode ? 'moon' : 'sun';
+  }
+}
+
+let toggleIcon = new ThemeToggleIcon(darkMode.enabled);
+
 const TPL_ThemeToggle = document.createElement('template');
 
 const TPL_ThemeToggle_css = /* CSS */ `
@@ -16,6 +34,9 @@ const TPL_ThemeToggle_css = /* CSS */ `
     --slider-offset-left: 0.2rem;
     --slider-offset-bottom: calc((var(--toggle-height) * 0.5) - (var(--slider-size) * 0.5));
     --slider-translate: calc(var(--toggle-width) - (var(--slider-size) + (var(--slider-offset-left) * 2)));
+
+    --icon-size: calc(var(--slider-size) * 0.9);
+    --icon-offset: calc(var(--slider-offset-left) * 1.4);
 
     --transition: 200ms ease;
   }
@@ -36,36 +57,70 @@ const TPL_ThemeToggle_css = /* CSS */ `
   }
   
   .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--color-surface-600);
-    -webkit-transition: var(--transition);
-    transition: var(--transition);
-    border-radius: var(--theme-rounded-base);
-    outline: 2px solid var(--color-surface-700);
+    display: flex;
+    align-items: center;
 
+    position: absolute;
+
+    cursor: pointer;
+
+    inset: 0;
+
+    background-color: var(--color-surface-600);
+    outline: 2px solid var(--color-surface-700);
+    border-radius: var(--theme-rounded-base);
+
+    transition: var(--transition);
+  }
+
+  .icon {
+    position: absolute;
+    left: var(--icon-offset);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: var(--icon-size);
+    width: var(--icon-size);
+    fill: var(--theme-font-color-inverse);
+
+    z-index: 10;
+
+    transition: var(--transition);
+  }
+
+  .icon-disabled {
+    display: none;
+  }
+
+  input:checked + .slider .icon {
+    transform: translateX(var(--slider-translate));
+  }
+
+  box-icon {
+    width: 100%;
+    height: 100%;
   }
   
   .slider:before {
     position: absolute;
+
     content: "";
+
     height: var(--slider-size);
     width: var(--slider-size);
+    
     left: var(--slider-offset-left);
     bottom: var(--slider-offset-bottom);
+
     background-color: var(--theme-font-color-base);
-    -webkit-transition: var(--transition);
-    transition: var(--transition);
     border-radius: var(--theme-rounded-base);
+
+    transition: var(--transition);
   }
   
   input:checked + .slider:before {
-    -webkit-transform: translateX(var(--slider-translate));
-    -ms-transform: translateX(var(--slider-translate));
     transform: translateX(var(--slider-translate));
   }
 
@@ -86,7 +141,13 @@ TPL_ThemeToggle.innerHTML = /* HTML */ `
       <input
         type="checkbox"
         id="themeToggle" />
-      <span class="slider"></span>
+      <span class="slider">
+        <div class="icon">
+          <box-icon
+            type="solid"
+            name=""></box-icon>
+        </div>
+      </span>
     </label>
     <span class="themeToggleLabel">Light</span>
   </div>
@@ -95,6 +156,7 @@ TPL_ThemeToggle.innerHTML = /* HTML */ `
 class ThemeToggle extends HTMLElement {
   private themeToggle: HTMLInputElement;
   private themeToggleLabel: HTMLElement;
+  private themeToggleIcon: HTMLElement;
 
   constructor() {
     super();
@@ -106,6 +168,10 @@ class ThemeToggle extends HTMLElement {
 
     this.themeToggleLabel =
       this.shadowRoot?.querySelector('.themeToggleLabel')!;
+
+    this.themeToggleIcon = this.shadowRoot?.querySelector('box-icon')!;
+
+    this.updateToggleIcon();
   }
 
   connectedCallback() {
@@ -123,10 +189,16 @@ class ThemeToggle extends HTMLElement {
     setTheme();
 
     this.updateToggleLabel(this.themeToggleLabel!);
+    this.updateToggleIcon();
   }
 
   updateToggleLabel(label: HTMLElement) {
     label.textContent = darkMode.enabled ? 'Dark' : 'Light';
+  }
+
+  updateToggleIcon() {
+    toggleIcon.icon = darkMode.enabled;
+    this.themeToggleIcon.setAttribute('name', toggleIcon.icon);
   }
 }
 

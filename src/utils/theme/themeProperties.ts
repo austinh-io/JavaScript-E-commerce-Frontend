@@ -5,7 +5,7 @@ export const darkTheme: Theme = {
   properties: {
     // =~= Theme Properties =~=
     '--theme-font-color-base': 'rgb(255 255 255)',
-    '--theme-font-color-dark': 'rgb(255 255 255)',
+    '--theme-font-color-inverse': 'rgb(0 0 0)',
     '--theme-rounded-base': '9999px',
     '--theme-rounded-container': '4px',
     '--theme-rounded-chip': '4px',
@@ -105,7 +105,7 @@ export const lightTheme: Theme = {
   properties: {
     // =~= Theme Properties =~=
     '--theme-font-color-base': 'rgb(0 0 0)',
-    '--theme-font-color-dark': 'rgb(0 0 0)',
+    '--theme-font-color-inverse': 'rgb(255 255 255)',
     '--theme-rounded-base': '9999px',
     '--theme-rounded-container': '4px',
     '--theme-rounded-chip': '4px',
@@ -118,7 +118,7 @@ export const lightTheme: Theme = {
     '--color-on-success': 'rgb(0 0 0)',
     '--color-on-warning': 'rgb(0 0 0)',
     '--color-on-error': 'rgb(0 0 0)',
-    '--color-on-surface': 'rgb(255 255 255)',
+    '--color-on-surface': 'rgb(0 0 0)',
     // =~= Theme Colors  =~=
     // primary | #fec039
     '--color-primary-50': 'rgb(255 246 225)', // #fff6e1
