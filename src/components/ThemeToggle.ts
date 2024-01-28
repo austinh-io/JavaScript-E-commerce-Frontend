@@ -19,12 +19,14 @@ const TPL_ThemeToggle_css = /* CSS */ `
     display: inline-block;
     width: var(--toggle-width);
     height: var(--toggle-height);
+
   }
   
   .toggle input { 
     opacity: 0;
     width: 0;
     height: 0;
+
   }
   
   .slider {
@@ -34,10 +36,12 @@ const TPL_ThemeToggle_css = /* CSS */ `
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--color-surface-200);
+    background-color: var(--color-surface-600);
     -webkit-transition: var(--transition);
     transition: var(--transition);
     border-radius: var(--theme-rounded-base);
+    outline: 2px solid var(--color-surface-700);
+
   }
   
   .slider:before {
@@ -47,14 +51,10 @@ const TPL_ThemeToggle_css = /* CSS */ `
     width: var(--slider-size);
     left: var(--slider-offset-left);
     bottom: var(--slider-offset-bottom);
-    background-color: white;
+    background-color: var(--theme-font-color-base);
     -webkit-transition: var(--transition);
     transition: var(--transition);
     border-radius: var(--theme-rounded-base);
-  }
-  
-  input:checked + .slider {
-    background-color: var(--color-primary-500);
   }
   
   input:checked + .slider:before {

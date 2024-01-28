@@ -4,7 +4,7 @@ export const darkTheme: Theme = {
   name: 'dark-theme',
   properties: {
     // =~= Theme Properties =~=
-    '--theme-font-color-base': 'rgb(0 0 0)',
+    '--theme-font-color-base': 'rgb(255 255 255)',
     '--theme-font-color-dark': 'rgb(255 255 255)',
     '--theme-rounded-base': '9999px',
     '--theme-rounded-container': '4px',
@@ -105,14 +105,14 @@ export const lightTheme: Theme = {
   properties: {
     // =~= Theme Properties =~=
     '--theme-font-color-base': 'rgb(0 0 0)',
-    '--theme-font-color-dark': 'rgb(255 255 255)',
+    '--theme-font-color-dark': 'rgb(0 0 0)',
     '--theme-rounded-base': '9999px',
     '--theme-rounded-container': '4px',
     '--theme-rounded-chip': '4px',
     '--theme-rounded-badge': '9999px',
     '--theme-border-base': '2px',
     // =~= Theme On-X Colors =~=
-    '--color-on-primary': 'rgb(255 255 255)',
+    '--color-on-primary': 'rgb(0 0 0)',
     '--color-on-secondary': 'rgb(0 0 0)',
     '--color-on-tertiary': 'rgb(0 0 0)',
     '--color-on-success': 'rgb(0 0 0)',
@@ -187,15 +187,15 @@ export const lightTheme: Theme = {
     '--color-error-800': 'rgb(153 40 53)', // #992835
     '--color-error-900': 'rgb(125 32 43)', // #7d202b
     // surface | #222449
-    '--color-surface-50': 'rgb(222 222 228)', // #dedee4
-    '--color-surface-100': 'rgb(211 211 219)', // #d3d3db
-    '--color-surface-200': 'rgb(200 200 210)', // #c8c8d2
-    '--color-surface-300': 'rgb(167 167 182)', // #a7a7b6
-    '--color-surface-400': 'rgb(100 102 128)', // #646680
-    '--color-surface-500': 'rgb(34 36 73)', // #222449
-    '--color-surface-600': 'rgb(31 32 66)', // #1f2042
-    '--color-surface-700': 'rgb(26 27 55)', // #1a1b37
-    '--color-surface-800': 'rgb(20 22 44)', // #14162c
-    '--color-surface-900': 'rgb(17 18 36)', // #111224
+    '--color-surface-50': 'rgb(253 253 254)', // #dedee4
+    '--color-surface-100': 'rgb(252 252 254)', // #d3d3db
+    '--color-surface-200': 'rgb(252 252 253)', // #c8c8d2
+    '--color-surface-300': 'rgb(249 249 252)', // #a7a7b6
+    '--color-surface-400': 'rgb(245 245 250)', // #646680
+    '--color-surface-500': 'rgb(241 241 248)', // #222449
+    '--color-surface-600': 'rgb(217 217 223)', // #1f2042
+    '--color-surface-700': 'rgb(217 217 223)', // #1a1b37
+    '--color-surface-800': 'rgb(118 118 122)', // #14162c
+    '--color-surface-900': 'rgb(118 118 122)', // #111224
   },
 };

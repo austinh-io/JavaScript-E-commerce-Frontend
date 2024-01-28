@@ -23,7 +23,7 @@ body {
   min-width: 320px;
   min-height: 100svh;
 
-  color: var(--color-surface-50);
+  color: var(--theme-font-color-base);
   background-color: var(--color-surface-500);
 }
 
