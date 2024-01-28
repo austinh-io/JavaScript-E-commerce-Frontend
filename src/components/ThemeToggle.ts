@@ -1,7 +1,7 @@
 import {
   prefersDarkMode,
   setTheme,
-  darkMode,
+  isDarkMode,
 } from '../utils/theme/themeManager';
 
 class ThemeToggleIcon {
@@ -20,7 +20,7 @@ class ThemeToggleIcon {
   }
 }
 
-let toggleIcon = new ThemeToggleIcon(darkMode.enabled);
+let toggleIcon = new ThemeToggleIcon(isDarkMode.enabled);
 
 const TPL_ThemeToggle = document.createElement('template');
 
@@ -184,7 +184,7 @@ class ThemeToggle extends HTMLElement {
 
   toggleTheme(event: Event) {
     const checkbox = event.target as HTMLInputElement;
-    darkMode.enabled = checkbox.checked;
+    isDarkMode.enabled = checkbox.checked;
 
     setTheme();
 
@@ -193,11 +193,11 @@ class ThemeToggle extends HTMLElement {
   }
 
   updateToggleLabel(label: HTMLElement) {
-    label.textContent = darkMode.enabled ? 'Dark' : 'Light';
+    label.textContent = isDarkMode.enabled ? 'Dark' : 'Light';
   }
 
   updateToggleIcon() {
-    toggleIcon.icon = darkMode.enabled;
+    toggleIcon.icon = isDarkMode.enabled;
     this.themeToggleIcon.setAttribute('name', toggleIcon.icon);
   }
 }

@@ -7,7 +7,7 @@ export function initTheme(): void {
     applyThemeStylesheet(themeStylesheet);
   });
 
-  darkMode.enabled = prefersDarkMode();
+  isDarkMode.enabled = prefersDarkMode();
   setTheme();
 }
 
@@ -21,11 +21,11 @@ export function prefersDarkMode(): boolean {
 export function setTheme(): void {
   document.documentElement.setAttribute(
     'data-theme',
-    darkMode.enabled ? 'dark' : 'light'
+    isDarkMode.enabled ? 'dark' : 'light'
   );
 }
 
-export const darkMode = {
+export const isDarkMode = {
   darkModeEnabled: false,
   get enabled(): boolean {
     return this.darkModeEnabled;
