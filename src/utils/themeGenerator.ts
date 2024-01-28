@@ -4,18 +4,18 @@ export function generateStylesheet(
   lightTheme: Theme,
   darkTheme: Theme
 ): string {
-  let stylesheet = ':root {\n';
+  let stylesheet = ":root[data-theme='light'] {\n";
 
   for (const [key, value] of Object.entries(lightTheme.properties)) {
-    stylesheet += `  ${key}: ${value};\n`;
+    stylesheet += `${key}: ${value};\n`;
   }
   stylesheet += '}\n';
 
-  stylesheet += '@media (prefers-color-scheme: dark) {\n  :root {\n';
+  stylesheet += ":root[data-theme='dark'] {\n";
   for (const [key, value] of Object.entries(darkTheme.properties)) {
-    stylesheet += `    ${key}: ${value};\n`;
+    stylesheet += `${key}: ${value};\n`;
   }
-  stylesheet += '  }\n}\n';
+  stylesheet += '}\n}\n';
 
   return stylesheet;
 }

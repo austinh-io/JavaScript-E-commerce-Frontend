@@ -64,54 +64,82 @@ const TPL_ThemeToggle_css = /* CSS */ `
     -ms-transform: translateX(var(--slider-translate));
     transform: translateX(var(--slider-translate));
   }
+
+  .themeToggleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+  }
 </style>
 `;
 
 TPL_ThemeToggle.innerHTML = /* HTML */ `
   ${TPL_ThemeToggle_css}
 
-  <label class="toggle">
-    <input
-      type="checkbox"
-      id="themeToggle" />
-    <span class="slider"></span>
-  </label>
+  <div class="themeToggleContainer">
+    <label class="toggle">
+      <input
+        type="checkbox"
+        id="themeToggle" />
+      <span class="slider"></span>
+    </label>
+    <span class="themeToggleLabel">Light</span>
+  </div>
 `;
 
-let darkMode: boolean = false;
+let darkMode: boolean;
 
 function prefersDarkMode(): boolean {
-  if (
-    !window.matchMedia ||
-    !window.matchMedia('(prefers-color-scheme: dark').matches
-  ) {
-    console.log('Does not prefer Dark Mode.');
-    return false;
-  } else {
-    console.log('Prefers Dark Mode.');
-    return true;
-  }
+  return !window.matchMedia ||
+    !window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? false
+    : true;
 }
 
 class ThemeToggle extends HTMLElement {
+  private themeToggle: HTMLInputElement;
+  private themeToggleLabel: HTMLElement;
+
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     const clone = TPL_ThemeToggle.content.cloneNode(true);
     shadow.append(clone);
+
+    this.themeToggle = this.shadowRoot?.querySelector('#themeToggle')!;
+
+    this.themeToggleLabel =
+      this.shadowRoot?.querySelector('.themeToggleLabel')!;
   }
 
   connectedCallback() {
-    const themeToggle: HTMLInputElement =
-      this.shadowRoot?.querySelector('#themeToggle')!;
+    this.themeToggle!.addEventListener('change', this.toggleTheme.bind(this));
+    this.themeToggle!.checked = prefersDarkMode();
+    darkMode = prefersDarkMode();
+    this.updateToggleLabel(this.themeToggleLabel!);
 
-    themeToggle.addEventListener('change', this.toggleTheme.bind(this));
-    themeToggle.checked = prefersDarkMode();
+    this.setTheme();
   }
 
   toggleTheme(event: Event) {
     const checkbox = event.target as HTMLInputElement;
     darkMode = checkbox.checked;
+
+    this.setTheme();
+
+    this.updateToggleLabel(this.themeToggleLabel!);
+  }
+
+  updateToggleLabel(label: HTMLElement) {
+    label.textContent = darkMode ? 'Dark' : 'Light';
+  }
+
+  setTheme() {
+    document.documentElement.setAttribute(
+      'data-theme',
+      darkMode ? 'dark' : 'light'
+    );
   }
 }
 

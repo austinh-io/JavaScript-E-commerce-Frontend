@@ -112,7 +112,7 @@ export const lightTheme: Theme = {
     '--theme-rounded-badge': '9999px',
     '--theme-border-base': '2px',
     // =~= Theme On-X Colors =~=
-    '--color-on-primary': 'rgb(0 0 0)',
+    '--color-on-primary': 'rgb(255 255 255)',
     '--color-on-secondary': 'rgb(0 0 0)',
     '--color-on-tertiary': 'rgb(0 0 0)',
     '--color-on-success': 'rgb(0 0 0)',
