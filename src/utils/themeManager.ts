@@ -62,7 +62,6 @@ export function updateLightMode(): void {
     isDarkMode.enabled ? 'dark' : 'light'
   );
   currentTheme.theme = isDarkMode.enabled ? darkMode : lightMode;
-  console.log(currentTheme.theme);
 }
 
 export function initLightMode(): void {

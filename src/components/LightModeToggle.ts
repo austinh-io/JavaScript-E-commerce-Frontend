@@ -2,6 +2,7 @@ import {
   userPreferredLightMode,
   updateLightMode,
   isDarkMode,
+  currentTheme,
 } from '../utils/themeManager';
 
 class LightModeToggleIcon {
@@ -83,7 +84,7 @@ const TPL_LightModeToggle_css = /* CSS */ `
 
     height: var(--icon-size);
     width: var(--icon-size);
-    fill: var(--theme-font-color-inverse);
+    /*fill: var(--theme-font-color-inverse);*/
 
     z-index: 10;
 
@@ -145,7 +146,9 @@ TPL_LightModeToggle.innerHTML = /* HTML */ `
         <div class="icon">
           <box-icon
             type="solid"
-            name=""></box-icon>
+            name=""
+            color="">
+          </box-icon>
         </div>
       </span>
     </label>
@@ -170,8 +173,6 @@ class LightModeToggle extends HTMLElement {
       this.shadowRoot?.querySelector('.themeToggleLabel')!;
 
     this._lightModeToggleIcon = this.shadowRoot?.querySelector('box-icon')!;
-
-    this.updateToggleIcon();
   }
 
   connectedCallback() {
@@ -181,6 +182,7 @@ class LightModeToggle extends HTMLElement {
     );
     this._lightModeToggle!.checked = userPreferredLightMode();
     this.updateToggleLabel(this._lightModeToggleLabel!);
+    this.updateToggleIcon();
   }
 
   toggleLightMode(event: Event) {
@@ -200,6 +202,10 @@ class LightModeToggle extends HTMLElement {
   updateToggleIcon() {
     toggleIcon.icon = isDarkMode.enabled;
     this._lightModeToggleIcon.setAttribute('name', toggleIcon.icon);
+    this._lightModeToggleIcon.setAttribute(
+      'color',
+      currentTheme.theme.properties['--theme-font-color-inverse']
+    );
   }
 }
 

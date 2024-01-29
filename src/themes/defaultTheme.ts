@@ -11,6 +11,7 @@ export const darkMode: Theme = {
     '--theme-rounded-chip': '4px',
     '--theme-rounded-badge': '9999px',
     '--theme-border-base': '2px',
+    '--color-test': 'rgb(100 250 100)',
     // =~= Theme On-X Colors =~=
     '--color-on-primary': 'rgb(0 0 0)',
     '--color-on-secondary': 'rgb(0 0 0)',
@@ -111,6 +112,8 @@ export const lightMode: Theme = {
     '--theme-rounded-chip': '4px',
     '--theme-rounded-badge': '9999px',
     '--theme-border-base': '2px',
+    '--color-test': 'rgb(250 100 100)',
+
     // =~= Theme On-X Colors =~=
     '--color-on-primary': 'rgb(0 0 0)',
     '--color-on-secondary': 'rgb(0 0 0)',

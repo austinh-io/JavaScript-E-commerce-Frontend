@@ -27,7 +27,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* HTML */ `
       <button class="btn btn-primary">
         <box-icon
           type="solid"
-          name="color"></box-icon>
+          name="color"
+          color="rgb(230 90 230)"></box-icon>
         Lorem Ipsum
       </button>
     </div>
