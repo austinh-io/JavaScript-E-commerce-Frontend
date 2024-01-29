@@ -1,37 +1,13 @@
 import { lightMode, darkMode } from '../themes/defaultTheme.ts';
 import { ThemeLightMode } from '../types/themeLightMode';
 
-export function initThemeMode(): void {
-  document.addEventListener('DOMContentLoaded', () => {
-    const themeStylesheet = createStylesheet(lightMode, darkMode);
-    applyStylesheet(themeStylesheet);
-  });
-
-  isDarkMode.enabled = prefersDarkMode();
-  setThemeMode();
-}
-
-export function prefersDarkMode(): boolean {
-  return !window.matchMedia ||
-    !window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? false
-    : true;
-}
-
-export function setThemeMode(): void {
-  document.documentElement.setAttribute(
-    'data-theme',
-    isDarkMode.enabled ? 'dark' : 'light'
-  );
-}
-
 export const isDarkMode = {
-  darkModeEnabled: false,
+  _enabled: false,
   get enabled(): boolean {
-    return this.darkModeEnabled;
+    return this._enabled;
   },
-  set enabled(isEnabled: boolean) {
-    this.darkModeEnabled = isEnabled;
+  set enabled(enable: boolean) {
+    this._enabled = enable;
   },
 };
 
@@ -59,4 +35,28 @@ export function applyStylesheet(stylesheet: string): void {
   const styleTag = document.createElement('style');
   styleTag.textContent = stylesheet;
   document.head.appendChild(styleTag);
+}
+
+export function userPreferredLightMode(): boolean {
+  return !window.matchMedia ||
+    !window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? false
+    : true;
+}
+
+export function updateLightMode(): void {
+  document.documentElement.setAttribute(
+    'data-theme',
+    isDarkMode.enabled ? 'dark' : 'light'
+  );
+}
+
+export function initLightMode(): void {
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeStylesheet = createStylesheet(lightMode, darkMode);
+    applyStylesheet(themeStylesheet);
+  });
+
+  isDarkMode.enabled = userPreferredLightMode();
+  updateLightMode();
 }

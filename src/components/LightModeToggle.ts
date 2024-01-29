@@ -1,6 +1,6 @@
 import {
-  prefersDarkMode,
-  setThemeMode,
+  userPreferredLightMode,
+  updateLightMode,
   isDarkMode,
 } from '../utils/themeManager';
 
@@ -179,17 +179,17 @@ class LightModeToggle extends HTMLElement {
       'change',
       this.toggleLightMode.bind(this)
     );
-    this._lightModeToggle!.checked = prefersDarkMode();
+    this._lightModeToggle!.checked = userPreferredLightMode();
     this.updateToggleLabel(this._lightModeToggleLabel!);
 
-    setThemeMode();
+    updateLightMode();
   }
 
   toggleLightMode(event: Event) {
     const checkbox = event.target as HTMLInputElement;
     isDarkMode.enabled = checkbox.checked;
 
-    setThemeMode();
+    updateLightMode();
 
     this.updateToggleLabel(this._lightModeToggleLabel!);
     this.updateToggleIcon();
@@ -205,6 +205,6 @@ class LightModeToggle extends HTMLElement {
   }
 }
 
-window.customElements.define('theme-mode-toggle', LightModeToggle);
+window.customElements.define('light-mode-toggle', LightModeToggle);
 
 export default LightModeToggle;

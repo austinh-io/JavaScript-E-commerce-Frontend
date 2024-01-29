@@ -1,9 +1,9 @@
 import './components.ts';
 import './css/main.css';
 import './css/global.css';
-import { initThemeMode } from './utils/themeManager.ts';
+import { initLightMode } from './utils/themeManager.ts';
 
-initThemeMode();
+initLightMode();
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* HTML */ `
   <div>
@@ -32,6 +32,6 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* HTML */ `
       </button>
     </div>
 
-    <theme-mode-toggle></theme-mode-toggle>
+    <light-mode-toggle></light-mode-toggle>
   </div>
 `;
