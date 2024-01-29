@@ -84,7 +84,6 @@ const TPL_LightModeToggle_css = /* CSS */ `
 
     height: var(--icon-size);
     width: var(--icon-size);
-    /*fill: var(--theme-font-color-inverse);*/
 
     z-index: 10;
 
