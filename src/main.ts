@@ -32,6 +32,6 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* HTML */ `
       </button>
     </div>
 
-    <theme-toggle></theme-toggle>
+    <theme-mode-toggle></theme-mode-toggle>
   </div>
 `;

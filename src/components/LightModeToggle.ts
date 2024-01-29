@@ -205,6 +205,6 @@ class LightModeToggle extends HTMLElement {
   }
 }
 
-window.customElements.define('theme-toggle', LightModeToggle);
+window.customElements.define('theme-mode-toggle', LightModeToggle);
 
 export default LightModeToggle;
