@@ -1,30 +1,30 @@
 import {
   prefersDarkMode,
-  setTheme,
+  setThemeMode,
   isDarkMode,
-} from '../utils/theme/themeManager';
+} from '../utils/themeManager';
 
-class ThemeToggleIcon {
-  private themeIcon: string;
+class LightModeToggleIcon {
+  private _icon: string;
 
   constructor(isDarkMode: boolean) {
-    this.themeIcon = isDarkMode ? 'moon' : 'sun';
+    this._icon = isDarkMode ? 'moon' : 'sun';
   }
 
   get icon(): string {
-    return this.themeIcon;
+    return this._icon;
   }
 
   set icon(isDarkMode: boolean) {
-    this.themeIcon = isDarkMode ? 'moon' : 'sun';
+    this._icon = isDarkMode ? 'moon' : 'sun';
   }
 }
 
-let toggleIcon = new ThemeToggleIcon(isDarkMode.enabled);
+let toggleIcon = new LightModeToggleIcon(isDarkMode.enabled);
 
-const TPL_ThemeToggle = document.createElement('template');
+const TPL_LightModeToggle = document.createElement('template');
 
-const TPL_ThemeToggle_css = /* CSS */ `
+const TPL_LightModeToggle_css = /* CSS */ `
 <style>
   :host {
     --toggle-width: 3.25rem;
@@ -133,8 +133,8 @@ const TPL_ThemeToggle_css = /* CSS */ `
 </style>
 `;
 
-TPL_ThemeToggle.innerHTML = /* HTML */ `
-  ${TPL_ThemeToggle_css}
+TPL_LightModeToggle.innerHTML = /* HTML */ `
+  ${TPL_LightModeToggle_css}
 
   <div class="themeToggleContainer">
     <label class="toggle">
@@ -153,42 +153,45 @@ TPL_ThemeToggle.innerHTML = /* HTML */ `
   </div>
 `;
 
-class ThemeToggle extends HTMLElement {
-  private themeToggle: HTMLInputElement;
-  private themeToggleLabel: HTMLElement;
-  private themeToggleIcon: HTMLElement;
+class LightModeToggle extends HTMLElement {
+  private _lightModeToggle: HTMLInputElement;
+  private _lightModeToggleLabel: HTMLElement;
+  private _lightModeToggleIcon: HTMLElement;
 
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
-    const clone = TPL_ThemeToggle.content.cloneNode(true);
+    const clone = TPL_LightModeToggle.content.cloneNode(true);
     shadow.append(clone);
 
-    this.themeToggle = this.shadowRoot?.querySelector('#themeToggle')!;
+    this._lightModeToggle = this.shadowRoot?.querySelector('#themeToggle')!;
 
-    this.themeToggleLabel =
+    this._lightModeToggleLabel =
       this.shadowRoot?.querySelector('.themeToggleLabel')!;
 
-    this.themeToggleIcon = this.shadowRoot?.querySelector('box-icon')!;
+    this._lightModeToggleIcon = this.shadowRoot?.querySelector('box-icon')!;
 
     this.updateToggleIcon();
   }
 
   connectedCallback() {
-    this.themeToggle!.addEventListener('change', this.toggleTheme.bind(this));
-    this.themeToggle!.checked = prefersDarkMode();
-    this.updateToggleLabel(this.themeToggleLabel!);
+    this._lightModeToggle!.addEventListener(
+      'change',
+      this.toggleLightMode.bind(this)
+    );
+    this._lightModeToggle!.checked = prefersDarkMode();
+    this.updateToggleLabel(this._lightModeToggleLabel!);
 
-    setTheme();
+    setThemeMode();
   }
 
-  toggleTheme(event: Event) {
+  toggleLightMode(event: Event) {
     const checkbox = event.target as HTMLInputElement;
     isDarkMode.enabled = checkbox.checked;
 
-    setTheme();
+    setThemeMode();
 
-    this.updateToggleLabel(this.themeToggleLabel!);
+    this.updateToggleLabel(this._lightModeToggleLabel!);
     this.updateToggleIcon();
   }
 
@@ -198,10 +201,10 @@ class ThemeToggle extends HTMLElement {
 
   updateToggleIcon() {
     toggleIcon.icon = isDarkMode.enabled;
-    this.themeToggleIcon.setAttribute('name', toggleIcon.icon);
+    this._lightModeToggleIcon.setAttribute('name', toggleIcon.icon);
   }
 }
 
-window.customElements.define('theme-toggle', ThemeToggle);
+window.customElements.define('theme-toggle', LightModeToggle);
 
-export default ThemeToggle;
+export default LightModeToggle;

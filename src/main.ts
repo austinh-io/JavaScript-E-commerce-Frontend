@@ -1,9 +1,9 @@
-import './css/app.css';
-import './css/global.css';
 import './components.ts';
-import { initTheme } from './utils/theme/themeManager.ts';
+import './css/main.css';
+import './css/global.css';
+import { initThemeMode } from './utils/themeManager.ts';
 
-initTheme();
+initThemeMode();
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* HTML */ `
   <div>

@@ -1,5 +1,5 @@
 import 'boxicons';
-import './utils/theme/themeProperties.ts';
+import './themes/defaultTheme.ts';
 import './components/ExampleButton.ts';
 import './components/ExampleComponent.ts';
-import './components/ThemeToggle.ts';
+import './components/LightModeToggle.ts';
