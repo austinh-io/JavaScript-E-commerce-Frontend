@@ -1,6 +1,6 @@
-import { ThemeLightMode } from '../types/themeLightMode';
+import { Theme } from '../types/Theme';
 
-export const darkMode: ThemeLightMode = {
+export const darkMode: Theme = {
   name: 'dark',
   properties: {
     // =~= Theme Properties =~=
@@ -100,7 +100,7 @@ export const darkMode: ThemeLightMode = {
   },
 };
 
-export const lightMode: ThemeLightMode = {
+export const lightMode: Theme = {
   name: 'light',
   properties: {
     // =~= Theme Properties =~=

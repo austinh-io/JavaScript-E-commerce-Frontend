@@ -181,8 +181,6 @@ class LightModeToggle extends HTMLElement {
     );
     this._lightModeToggle!.checked = userPreferredLightMode();
     this.updateToggleLabel(this._lightModeToggleLabel!);
-
-    updateLightMode();
   }
 
   toggleLightMode(event: Event) {

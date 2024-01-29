@@ -1,4 +1,4 @@
-export type ThemeLightMode = {
+export type Theme = {
   name: string;
   properties: {
     [key: string]: string;

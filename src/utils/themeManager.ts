@@ -1,5 +1,20 @@
 import { lightMode, darkMode } from '../themes/defaultTheme.ts';
-import { ThemeLightMode } from '../types/themeLightMode';
+import { Theme } from '../types/Theme';
+
+class ActiveTheme {
+  private _theme: Theme;
+  constructor(theme: Theme) {
+    this._theme = theme;
+  }
+  get theme() {
+    return this._theme;
+  }
+  set theme(theme: Theme) {
+    this._theme = theme;
+  }
+}
+
+export const currentTheme = new ActiveTheme(lightMode);
 
 export const isDarkMode = {
   _enabled: false,
@@ -11,10 +26,7 @@ export const isDarkMode = {
   },
 };
 
-export function createStylesheet(
-  lightTheme: ThemeLightMode,
-  darkTheme: ThemeLightMode
-): string {
+export function createStylesheet(lightTheme: Theme, darkTheme: Theme): string {
   let stylesheet = ":root[data-theme='light'] {\n";
 
   for (const [key, value] of Object.entries(lightTheme.properties)) {
@@ -49,6 +61,8 @@ export function updateLightMode(): void {
     'data-theme',
     isDarkMode.enabled ? 'dark' : 'light'
   );
+  currentTheme.theme = isDarkMode.enabled ? darkMode : lightMode;
+  console.log(currentTheme.theme);
 }
 
 export function initLightMode(): void {
