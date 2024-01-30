@@ -13,9 +13,9 @@ export const darkMode: Theme = {
     '--theme-border-base': '2px',
     '--color-test': 'rgb(100 250 100)',
     // =~= Theme On-X Colors =~=
-    '--color-on-primary': 'rgb(220 100 0)',
-    '--color-on-secondary': 'rgb(100 0 200)',
-    '--color-on-tertiary': 'rgb(0 80 200)',
+    '--color-on-primary': 'rgb(0 0 0)',
+    '--color-on-secondary': 'rgb(0 0 0)',
+    '--color-on-tertiary': 'rgb(0 0 0)',
     '--color-on-success': 'rgb(0 0 0)',
     '--color-on-warning': 'rgb(0 0 0)',
     '--color-on-error': 'rgb(0 0 0)',
