@@ -7,9 +7,12 @@ import {
   initIconColorUpdateListener,
 } from './utils/themeManager.ts';
 
+const app = document.querySelector<HTMLDivElement>('#app');
+document.querySelector('body')!.classList.add('bg-gradient');
+
 initLightMode();
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* HTML */ `
+app!.innerHTML = /* HTML */ `
   <div>
     <example-component></example-component>
     <div class="btn-group">
@@ -46,6 +49,11 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* HTML */ `
     </div>
 
     <light-mode-toggle></light-mode-toggle>
+  </div>
+
+  <div>
+    <h2>Hello, world!</h2>
+    <p>lorem ipsum</p>
   </div>
 `;
 

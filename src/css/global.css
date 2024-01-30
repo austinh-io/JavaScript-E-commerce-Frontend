@@ -89,29 +89,56 @@ a.btn-tertiary:active,
   background-color: var(--color-tertiary-600);
 }
 
-:root[data-theme='light'] .gradient-bg {
-  background: hsla(0, 0%, 100%, 1);
+:root[data-theme='light'] .bg-gradient {
+  background: hsla(226, 100%, 95%, 1);
 
   background: linear-gradient(
     90deg,
-    hsla(0, 0%, 100%, 1) 0%,
-    hsla(225, 100%, 92%, 1) 60%,
-    hsla(226, 100%, 84%, 1) 100%
+    hsla(226, 100%, 95%, 1) 0%,
+    hsla(237, 100%, 96%, 1) 50%,
+    hsla(226, 100%, 88%, 1) 100%
   );
 
   background: -moz-linear-gradient(
     90deg,
-    hsla(0, 0%, 100%, 1) 0%,
-    hsla(225, 100%, 92%, 1) 60%,
-    hsla(226, 100%, 84%, 1) 100%
+    hsla(226, 100%, 95%, 1) 0%,
+    hsla(237, 100%, 96%, 1) 50%,
+    hsla(226, 100%, 88%, 1) 100%
   );
 
   background: -webkit-linear-gradient(
     90deg,
-    hsla(0, 0%, 100%, 1) 0%,
-    hsla(225, 100%, 92%, 1) 60%,
-    hsla(226, 100%, 84%, 1) 100%
+    hsla(226, 100%, 95%, 1) 0%,
+    hsla(237, 100%, 96%, 1) 50%,
+    hsla(226, 100%, 88%, 1) 100%
   );
 
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFFFFF", endColorstr="#D6E0FF", GradientType=1 );
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#E6ECFF", endColorstr="#EDEEFF", GradientType=1 );
+}
+
+:root[data-theme='dark'] .bg-gradient {
+  background: hsla(206, 47%, 9%, 1);
+
+  background: linear-gradient(
+    90deg,
+    hsla(206, 47%, 9%, 1) 0%,
+    hsla(216, 39%, 16%, 1) 50%,
+    hsla(218, 39%, 21%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(206, 47%, 9%, 1) 0%,
+    hsla(216, 39%, 16%, 1) 50%,
+    hsla(218, 39%, 21%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(206, 47%, 9%, 1) 0%,
+    hsla(216, 39%, 16%, 1) 50%,
+    hsla(218, 39%, 21%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#0C1821", endColorstr="#192639", GradientType=1 );
 }

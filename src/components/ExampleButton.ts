@@ -14,7 +14,10 @@ TPL_ExampleButton.innerHTML = /* HTML */ `
   <button
     class="btn btn-primary"
     part="btn btn-primary">
-    <box-icon name="home"></box-icon>
+    <box-icon
+      type="solid"
+      name="home"
+      color=""></box-icon>
     <slot></slot>
   </button>
 `;
@@ -33,6 +36,7 @@ class ExampleButton extends HTMLElement {
     document.addEventListener('themeChanged', () => {
       this.updateIconColor();
     });
+    this.updateIconColor();
   }
 
   updateIconColor() {
