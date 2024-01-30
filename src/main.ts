@@ -1,7 +1,13 @@
 import './components.ts';
 import './css/main.css';
 import './css/global.css';
-import { initLightMode, currentTheme } from './utils/themeManager.ts';
+import {
+  initLightMode,
+  currentTheme,
+  initIconColorUpdateListener,
+} from './utils/themeManager.ts';
+
+initLightMode();
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* HTML */ `
   <div>
@@ -43,4 +49,4 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* HTML */ `
   </div>
 `;
 
-initLightMode();
+initIconColorUpdateListener();

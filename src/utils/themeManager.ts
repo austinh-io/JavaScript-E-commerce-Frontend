@@ -80,11 +80,12 @@ export function initLightMode(): void {
 
   isDarkMode.enabled = userPreferredLightMode();
   updateLightMode();
+}
 
+export function initIconColorUpdateListener() {
   document.addEventListener('themeChanged', function () {
     updateDefaultIconsColor();
   });
-
   updateDefaultIconsColor();
 }
 
