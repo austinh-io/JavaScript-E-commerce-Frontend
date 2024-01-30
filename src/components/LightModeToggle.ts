@@ -74,6 +74,12 @@ const TPL_LightModeToggle_css = /* CSS */ `
     transition: var(--transition);
   }
 
+  .slider:hover, .toggle input:focus + .slider {
+    outline: 2px solid var(--color-primary-500);
+    
+  }
+  
+
   .icon {
     position: absolute;
     left: var(--icon-offset);
@@ -130,6 +136,9 @@ const TPL_LightModeToggle_css = /* CSS */ `
     justify-content: center;
     gap: 0.6rem;
   }
+
+
+
 </style>
 `;
 
