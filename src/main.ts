@@ -16,35 +16,41 @@ app!.innerHTML = /* HTML */ `
   <div>
     <example-component></example-component>
     <div class="btn-group">
-      <example-button>Home</example-button>
+      <primary-button>Home</primary-button>
       <button class="btn btn-secondary">
-        <box-icon
-          type="logo"
-          name="facebook-square"
-          color=${currentTheme.theme.properties[
-            '--color-on-secondary'
-          ]}></box-icon>
-        Facebook
+        <div class="btn-content">
+          <box-icon
+            type="logo"
+            name="facebook-square"
+            color=${currentTheme.theme.properties[
+              '--color-on-secondary'
+            ]}></box-icon>
+          Facebook
+        </div>
       </button>
 
       <button class="btn btn-tertiary">
-        <box-icon
-          type="solid"
-          name="hot"
-          color=${currentTheme.theme.properties[
-            '--color-on-tertiary'
-          ]}></box-icon>
-        Lorem Ipsum
+        <div class="btn-content">
+          <box-icon
+            type="solid"
+            name="hot"
+            color=${currentTheme.theme.properties[
+              '--color-on-tertiary'
+            ]}></box-icon>
+          Lorem Ipsum
+        </div>
       </button>
 
       <button class="btn btn-primary">
-        <box-icon
-          type="solid"
-          name="color"
-          color=${currentTheme.theme.properties[
-            '--color-on-primary'
-          ]}></box-icon>
-        Lorem Ipsum
+        <div class="btn-content">
+          <box-icon
+            type="solid"
+            name="color"
+            color=${currentTheme.theme.properties[
+              '--color-on-primary'
+            ]}></box-icon>
+          Lorem Ipsum
+        </div>
       </button>
     </div>
 

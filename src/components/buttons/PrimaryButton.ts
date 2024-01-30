@@ -1,34 +1,38 @@
-import { currentTheme } from '../utils/themeManager';
+import { currentTheme } from '../../utils/themeManager';
 
-const TPL_ExampleButton = document.createElement('template');
+const TPL_PrimaryButton = document.createElement('template');
 
-const TPL_ExampleButton_CSS = /* CSS */ `
+const TPL_PrimaryButton_CSS = /* CSS */ `
 <style>
 
 </style>
 `;
 
-TPL_ExampleButton.innerHTML = /* HTML */ `
-  ${TPL_ExampleButton_CSS}
+TPL_PrimaryButton.innerHTML = /* HTML */ `
+  ${TPL_PrimaryButton_CSS}
 
   <button
     class="btn btn-primary"
     part="btn btn-primary">
-    <box-icon
-      type="solid"
-      name="home"
-      color=""></box-icon>
-    <slot></slot>
+    <div
+      class="btn-content"
+      part="btn-content">
+      <box-icon
+        type="solid"
+        name="home"
+        color=""></box-icon>
+      <slot></slot>
+    </div>
   </button>
 `;
 
-class ExampleButton extends HTMLElement {
+class PrimaryButton extends HTMLElement {
   private _boxicon: HTMLElement;
 
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
-    const clone = TPL_ExampleButton.content.cloneNode(true);
+    const clone = TPL_PrimaryButton.content.cloneNode(true);
     shadow.append(clone);
     this._boxicon = shadow.querySelector('box-icon')!;
   }
@@ -46,4 +50,4 @@ class ExampleButton extends HTMLElement {
     );
   }
 }
-window.customElements.define('example-button', ExampleButton);
+window.customElements.define('primary-button', PrimaryButton);

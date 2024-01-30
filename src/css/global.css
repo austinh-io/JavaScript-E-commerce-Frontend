@@ -14,13 +14,24 @@ button.btn,
   justify-content: center;
 
   border-radius: var(--theme-rounded-base);
-  padding: 0.8rem;
+  padding-inline: 1rem;
+  padding-block: 0.6rem;
   font-size: 1.2rem;
   font-weight: 700;
 
   border: none;
 
   transition: color 100ms ease-out, background-color 100ms ease-out;
+}
+
+a > .btn-content,
+button > .btn-content,
+::part(btn-content) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-inline: 0.4rem;
 }
 
 /**** Primary ****/

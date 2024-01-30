@@ -14,8 +14,8 @@ export const darkMode: Theme = {
     '--color-test': 'rgb(100 250 100)',
     // =~= Theme On-X Colors =~=
     '--color-on-primary': 'rgb(255 255 255)',
-    '--color-on-secondary': 'rgb(255 255 255)',
-    '--color-on-tertiary': 'rgb(12 13 13)',
+    '--color-on-secondary': 'rgb(12 13 13)',
+    '--color-on-tertiary': 'rgb(255 255 255)',
     '--color-on-success': 'rgb(12 13 13)',
     '--color-on-warning': 'rgb(12 13 13)',
     '--color-on-error': 'rgb(12 13 13)',
@@ -116,7 +116,7 @@ export const lightMode: Theme = {
     // =~= Theme On-X Colors =~=
     '--color-on-primary': 'rgb(255 255 255)',
     '--color-on-secondary': 'rgb(255 255 255)',
-    '--color-on-tertiary': 'rgb(12 13 13)',
+    '--color-on-tertiary': 'rgb(255 255 255)',
     '--color-on-success': 'rgb(12 13 13)',
     '--color-on-warning': 'rgb(12 13 13)',
     '--color-on-error': 'rgb(12 13 13)',

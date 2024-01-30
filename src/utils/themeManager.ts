@@ -98,9 +98,15 @@ export function updateDefaultIconsColor() {
 }
 
 function setIconAttribute(iconToSet: Element) {
-  const parent = iconToSet.parentElement;
+  let parent: Element;
 
-  if (!parent) return;
+  if (!iconToSet.parentElement || !iconToSet.parentElement.parentElement) {
+    return;
+  } else if (!iconToSet.parentElement.parentElement) {
+    parent = iconToSet.parentElement;
+  } else {
+    parent = iconToSet.parentElement.parentElement;
+  }
 
   if (parent.classList.contains('btn-primary')) {
     iconToSet.setAttribute(
