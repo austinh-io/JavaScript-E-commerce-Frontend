@@ -1,26 +1,30 @@
 import './components.ts';
 import './css/main.css';
 import './css/global.css';
-import { initLightMode } from './utils/themeManager.ts';
-
-initLightMode();
+import { initLightMode, currentTheme } from './utils/themeManager.ts';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* HTML */ `
   <div>
     <example-component></example-component>
     <div class="btn-group">
-      <example-button></example-button>
+      <example-button>Home</example-button>
       <button class="btn btn-secondary">
         <box-icon
           type="logo"
-          name="facebook-square"></box-icon>
+          name="facebook-square"
+          color=${currentTheme.theme.properties[
+            '--color-on-secondary'
+          ]}></box-icon>
         Facebook
       </button>
 
       <button class="btn btn-tertiary">
         <box-icon
           type="solid"
-          name="hot"></box-icon>
+          name="hot"
+          color=${currentTheme.theme.properties[
+            '--color-on-tertiary'
+          ]}></box-icon>
         Lorem Ipsum
       </button>
 
@@ -28,7 +32,9 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* HTML */ `
         <box-icon
           type="solid"
           name="color"
-          color="rgb(230 90 230)"></box-icon>
+          color=${currentTheme.theme.properties[
+            '--color-on-primary'
+          ]}></box-icon>
         Lorem Ipsum
       </button>
     </div>
@@ -36,3 +42,5 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /* HTML */ `
     <light-mode-toggle></light-mode-toggle>
   </div>
 `;
+
+initLightMode();

@@ -25,12 +25,6 @@ button.btn,
 
 /**** Primary ****/
 
-a.btn-primary > box-icon,
-button.btn-primary > box-icon,
-::part(btn-primary-icon) {
-  fill: red;
-}
-
 a.btn-primary,
 button.btn-primary,
 ::part(btn-primary) {
@@ -53,12 +47,6 @@ a.btn-primary:active,
 
 /**** Secondary *****/
 
-a.btn-secondary > box-icon,
-button.btn-secondary > box-icon,
-::part(btn-secondary-icon) {
-  fill: navy;
-}
-
 a.btn-secondary,
 button.btn-secondary,
 ::part(btn-secondary) {
@@ -80,12 +68,6 @@ a.btn-secondary:active,
 }
 
 /**** Tertiary *****/
-
-a.btn-tertiary > box-icon,
-button.btn-tertiary > box-icon,
-::part(btn-tertiary-icon) {
-  fill: yellow;
-}
 
 a.btn-tertiary,
 button.btn-tertiary,

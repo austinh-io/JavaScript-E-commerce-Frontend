@@ -26,6 +26,12 @@ export const isDarkMode = {
   },
 };
 
+const themeChangeEvent = new CustomEvent('themeChanged', {
+  detail: {
+    newTheme: isDarkMode.enabled ? 'dark' : 'light',
+  },
+});
+
 export function createStylesheet(lightTheme: Theme, darkTheme: Theme): string {
   let stylesheet = ":root[data-theme='light'] {\n";
 
@@ -62,6 +68,8 @@ export function updateLightMode(): void {
     isDarkMode.enabled ? 'dark' : 'light'
   );
   currentTheme.theme = isDarkMode.enabled ? darkMode : lightMode;
+
+  document.dispatchEvent(themeChangeEvent);
 }
 
 export function initLightMode(): void {
@@ -72,4 +80,41 @@ export function initLightMode(): void {
 
   isDarkMode.enabled = userPreferredLightMode();
   updateLightMode();
+
+  document.addEventListener('themeChanged', function () {
+    updateDefaultIconsColor();
+  });
+
+  updateDefaultIconsColor();
+}
+
+export function updateDefaultIconsColor() {
+  const allBoxicons = document.querySelectorAll('box-icon');
+
+  allBoxicons.forEach((icon) => {
+    setIconAttribute(icon);
+  });
+}
+
+function setIconAttribute(iconToSet: Element) {
+  const parent = iconToSet.parentElement;
+
+  if (!parent) return;
+
+  if (parent.classList.contains('btn-primary')) {
+    iconToSet.setAttribute(
+      'color',
+      currentTheme.theme.properties['--color-on-primary']
+    );
+  } else if (parent.classList.contains('btn-secondary')) {
+    iconToSet.setAttribute(
+      'color',
+      currentTheme.theme.properties['--color-on-secondary']
+    );
+  } else if (parent.classList.contains('btn-tertiary')) {
+    iconToSet.setAttribute(
+      'color',
+      currentTheme.theme.properties['--color-on-tertiary']
+    );
+  }
 }
