@@ -88,3 +88,30 @@ a.btn-tertiary:active,
 ::part(btn-tertiary):active {
   background-color: var(--color-tertiary-600);
 }
+
+:root[data-theme='light'] .gradient-bg {
+  background: hsla(0, 0%, 100%, 1);
+
+  background: linear-gradient(
+    90deg,
+    hsla(0, 0%, 100%, 1) 0%,
+    hsla(225, 100%, 92%, 1) 60%,
+    hsla(226, 100%, 84%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(0, 0%, 100%, 1) 0%,
+    hsla(225, 100%, 92%, 1) 60%,
+    hsla(226, 100%, 84%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(0, 0%, 100%, 1) 0%,
+    hsla(225, 100%, 92%, 1) 60%,
+    hsla(226, 100%, 84%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFFFFF", endColorstr="#D6E0FF", GradientType=1 );
+}

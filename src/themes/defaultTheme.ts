@@ -5,7 +5,7 @@ export const darkMode: Theme = {
   properties: {
     // =~= Theme Properties =~=
     '--theme-font-color-base': 'rgb(255 255 255)',
-    '--theme-font-color-inverse': 'rgb(0 0 0)',
+    '--theme-font-color-inverse': 'rgb(12 13 13)',
     '--theme-rounded-base': '9999px',
     '--theme-rounded-container': '4px',
     '--theme-rounded-chip': '4px',
@@ -13,12 +13,12 @@ export const darkMode: Theme = {
     '--theme-border-base': '2px',
     '--color-test': 'rgb(100 250 100)',
     // =~= Theme On-X Colors =~=
-    '--color-on-primary': 'rgb(0 0 0)',
+    '--color-on-primary': 'rgb(12 13 13)',
     '--color-on-secondary': 'rgb(255 255 255)',
-    '--color-on-tertiary': 'rgb(0 0 0)',
-    '--color-on-success': 'rgb(0 0 0)',
-    '--color-on-warning': 'rgb(0 0 0)',
-    '--color-on-error': 'rgb(0 0 0)',
+    '--color-on-tertiary': 'rgb(12 13 13)',
+    '--color-on-success': 'rgb(12 13 13)',
+    '--color-on-warning': 'rgb(12 13 13)',
+    '--color-on-error': 'rgb(12 13 13)',
     '--color-on-surface': 'rgb(255 255 255)',
     // =~= Theme Colors  =~=
     // primary
@@ -93,7 +93,7 @@ export const darkMode: Theme = {
     '--color-surface-200': 'rgb(197 198 198)',
     '--color-surface-300': 'rgb(163 163 164)',
     '--color-surface-400': 'rgb(93 95 95)',
-    '--color-surface-500': 'rgb(24 26 27)',
+    '--color-surface-500': 'rgb(29 34 37)',
     '--color-surface-600': 'rgb(22 23 24)',
     '--color-surface-700': 'rgb(18 20 20)',
     '--color-surface-800': 'rgb(14 16 16)',
@@ -105,7 +105,7 @@ export const lightMode: Theme = {
   name: 'light',
   properties: {
     // =~= Theme Properties =~=
-    '--theme-font-color-base': 'rgb(0 0 0)',
+    '--theme-font-color-base': 'rgb(12 13 13)',
     '--theme-font-color-inverse': 'rgb(255 255 255)',
     '--theme-rounded-base': '9999px',
     '--theme-rounded-container': '4px',
@@ -114,12 +114,12 @@ export const lightMode: Theme = {
     '--theme-border-base': '2px',
     '--color-test': 'rgb(100 250 100)',
     // =~= Theme On-X Colors =~=
-    '--color-on-primary': 'rgb(0 0 0)',
+    '--color-on-primary': 'rgb(12 13 13)',
     '--color-on-secondary': 'rgb(255 255 255)',
-    '--color-on-tertiary': 'rgb(0 0 0)',
-    '--color-on-success': 'rgb(0 0 0)',
-    '--color-on-warning': 'rgb(0 0 0)',
-    '--color-on-error': 'rgb(0 0 0)',
+    '--color-on-tertiary': 'rgb(12 13 13)',
+    '--color-on-success': 'rgb(12 13 13)',
+    '--color-on-warning': 'rgb(12 13 13)',
+    '--color-on-error': 'rgb(12 13 13)',
     '--color-on-surface': 'rgb(255 255 255)',
     // =~= Theme Colors  =~=
     // primary
@@ -189,15 +189,15 @@ export const lightMode: Theme = {
     '--color-error-800': 'rgb(140 44 52)',
     '--color-error-900': 'rgb(114 36 43)',
     // surface
-    '--color-surface-50': 'rgb(220 221 221)',
-    '--color-surface-100': 'rgb(209 209 209)',
-    '--color-surface-200': 'rgb(197 198 198)',
-    '--color-surface-300': 'rgb(163 163 164)',
-    '--color-surface-400': 'rgb(93 95 95)',
+    '--color-surface-50': 'rgb(194 208 255)',
+    '--color-surface-100': 'rgb(214 224 255)',
+    '--color-surface-200': 'rgb(235 239 255)',
+    '--color-surface-300': 'rgb(255 255 255)',
+    '--color-surface-400': 'rgb(214, 224, 255)',
     '--color-surface-500': 'rgb(234 239 255)',
-    '--color-surface-600': 'rgb(22 23 24)',
-    '--color-surface-700': 'rgb(18 20 20)',
-    '--color-surface-800': 'rgb(14 16 16)',
-    '--color-surface-900': 'rgb(12 13 13)',
+    '--color-surface-600': 'rgb(214 224 255)',
+    '--color-surface-700': 'rgb(194 208 255)',
+    '--color-surface-800': 'rgb(173 192 255)',
+    '--color-surface-900': 'rgb(133 161 255)',
   },
 };
