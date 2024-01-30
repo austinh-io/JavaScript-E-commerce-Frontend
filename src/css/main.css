@@ -21,7 +21,7 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100svh;
+  height: 100svh;
 
   color: var(--theme-font-color-base);
   background-color: var(--color-surface-500);
@@ -38,7 +38,13 @@ h6 {
 }
 
 #app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   max-width: 1280px;
+  height: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;

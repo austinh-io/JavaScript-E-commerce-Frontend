@@ -32,12 +32,12 @@ const TPL_LightModeToggle_css = /* CSS */ `
     --toggle-height: 1.75rem;
 
     --slider-size: 1.5rem;
-    --slider-offset-left: 0.2rem;
+    --slider-offset-left: 0.16rem;
     --slider-offset-bottom: calc((var(--toggle-height) * 0.5) - (var(--slider-size) * 0.5));
     --slider-translate: calc(var(--toggle-width) - (var(--slider-size) + (var(--slider-offset-left) * 2)));
 
     --icon-size: calc(var(--slider-size) * 0.9);
-    --icon-offset: calc(var(--slider-offset-left) * 1.4);
+    --icon-offset: calc(var(--slider-offset-left) + 0.07rem);
 
     --transition: 200ms ease;
   }
