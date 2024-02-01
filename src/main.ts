@@ -53,7 +53,7 @@ app!.innerHTML = /* HTML */ `
       </button>
     </div>
 
-    <light-mode-toggle></light-mode-toggle>
+    <light-toggle></light-toggle>
   </div>
 
   <div>

@@ -4,5 +4,5 @@ import 'boxicons';
 import './themes/defaultTheme.ts';
 import './components/buttons/AppButton.ts';
 import './components/ExampleComponent.ts';
-import './components/LightModeToggle.ts';
+import './components/LightToggle.ts';
 import './components/NavBar.ts';

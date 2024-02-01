@@ -5,7 +5,7 @@ import {
   currentTheme,
 } from '../utils/themeManager';
 
-class LightModeToggleIcon {
+class LightToggleIcon {
   private _icon: string;
 
   constructor(isDarkMode: boolean) {
@@ -21,11 +21,11 @@ class LightModeToggleIcon {
   }
 }
 
-let toggleIcon = new LightModeToggleIcon(isDarkMode.enabled);
+let toggleIcon = new LightToggleIcon(isDarkMode.enabled);
 
-const TPL_LightModeToggle = document.createElement('template');
+const TPL_LightToggle = document.createElement('template');
 
-const TPL_LightModeToggle_css = /* CSS */ `
+const TPL_LightToggle_css = /* CSS */ `
 <style>
   :host {
     --toggle-width: 3.25rem;
@@ -130,7 +130,7 @@ const TPL_LightModeToggle_css = /* CSS */ `
     transform: translateX(var(--slider-translate));
   }
 
-  .themeToggleContainer {
+  .theme-toggle-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -142,14 +142,14 @@ const TPL_LightModeToggle_css = /* CSS */ `
 </style>
 `;
 
-TPL_LightModeToggle.innerHTML = /* HTML */ `
-  ${TPL_LightModeToggle_css}
+TPL_LightToggle.innerHTML = /* HTML */ `
+  ${TPL_LightToggle_css}
 
-  <div class="themeToggleContainer">
+  <div class="theme-toggle-container">
     <label class="toggle">
       <input
         type="checkbox"
-        id="themeToggle" />
+        id="light-toggle" />
       <span class="slider">
         <div class="icon">
           <box-icon
@@ -160,36 +160,32 @@ TPL_LightModeToggle.innerHTML = /* HTML */ `
         </div>
       </span>
     </label>
-    <span class="themeToggleLabel">Light</span>
+    <span class="toggle-label">Light</span>
   </div>
 `;
 
-class LightModeToggle extends HTMLElement {
-  private _lightModeToggle: HTMLInputElement;
-  private _lightModeToggleLabel: HTMLElement;
-  private _lightModeToggleIcon: HTMLElement;
+class LightToggle extends HTMLElement {
+  private _toggle: HTMLInputElement;
+  private _toggleLabel: HTMLElement;
+  private _toggleIcon: HTMLElement;
 
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
-    const clone = TPL_LightModeToggle.content.cloneNode(true);
+    const clone = TPL_LightToggle.content.cloneNode(true);
     shadow.append(clone);
 
-    this._lightModeToggle = this.shadowRoot?.querySelector('#themeToggle')!;
+    this._toggle = this.shadowRoot?.querySelector('#light-toggle')!;
 
-    this._lightModeToggleLabel =
-      this.shadowRoot?.querySelector('.themeToggleLabel')!;
+    this._toggleLabel = this.shadowRoot?.querySelector('.toggle-label')!;
 
-    this._lightModeToggleIcon = this.shadowRoot?.querySelector('box-icon')!;
+    this._toggleIcon = this.shadowRoot?.querySelector('box-icon')!;
   }
 
   connectedCallback() {
-    this._lightModeToggle!.addEventListener(
-      'change',
-      this.toggleLightMode.bind(this)
-    );
-    this._lightModeToggle!.checked = userPreferredLightMode();
-    this.updateToggleLabel(this._lightModeToggleLabel!);
+    this._toggle!.addEventListener('change', this.toggleLightMode.bind(this));
+    this._toggle!.checked = userPreferredLightMode();
+    this.updateToggleLabel(this._toggleLabel!);
     this.updateToggleIcon();
   }
 
@@ -199,7 +195,7 @@ class LightModeToggle extends HTMLElement {
 
     updateLightMode();
 
-    this.updateToggleLabel(this._lightModeToggleLabel!);
+    this.updateToggleLabel(this._toggleLabel!);
     this.updateToggleIcon();
   }
 
@@ -213,14 +209,14 @@ class LightModeToggle extends HTMLElement {
 
   updateToggleIcon() {
     toggleIcon.icon = isDarkMode.enabled;
-    this._lightModeToggleIcon.setAttribute('name', toggleIcon.icon);
-    this._lightModeToggleIcon.setAttribute(
+    this._toggleIcon.setAttribute('name', toggleIcon.icon);
+    this._toggleIcon.setAttribute(
       'color',
       currentTheme.theme.properties['--theme-font-color-inverse']
     );
   }
 }
 
-window.customElements.define('light-mode-toggle', LightModeToggle);
+window.customElements.define('light-toggle', LightToggle);
 
-export default LightModeToggle;
+export default LightToggle;
