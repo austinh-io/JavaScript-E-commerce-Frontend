@@ -5,7 +5,7 @@ import {
   currentTheme,
 } from '../utils/themeManager';
 
-class LightToggleIcon {
+class LightModeToggleIcon {
   private _icon: string;
 
   constructor(isDarkMode: boolean) {
@@ -21,7 +21,7 @@ class LightToggleIcon {
   }
 }
 
-let toggleIcon = new LightToggleIcon(isDarkMode.enabled);
+let toggleIcon = new LightModeToggleIcon(isDarkMode.enabled);
 
 const TPL_LightToggle = document.createElement('template');
 
@@ -175,11 +175,11 @@ class LightToggle extends HTMLElement {
     const clone = TPL_LightToggle.content.cloneNode(true);
     shadow.append(clone);
 
-    this._toggle = this.shadowRoot?.querySelector('#light-toggle')!;
+    this._toggle = this.shadowRoot!.querySelector('#light-toggle')!;
 
-    this._toggleLabel = this.shadowRoot?.querySelector('.toggle-label')!;
+    this._toggleLabel = this.shadowRoot!.querySelector('.toggle-label')!;
 
-    this._toggleIcon = this.shadowRoot?.querySelector('box-icon')!;
+    this._toggleIcon = this.shadowRoot!.querySelector('box-icon')!;
   }
 
   connectedCallback() {
