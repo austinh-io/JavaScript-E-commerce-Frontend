@@ -203,8 +203,12 @@ class LightModeToggle extends HTMLElement {
     this.updateToggleIcon();
   }
 
-  updateToggleLabel(label: HTMLElement) {
-    label.textContent = isDarkMode.enabled ? 'Dark' : 'Light';
+  updateToggleLabel(
+    label: HTMLElement,
+    darkText: string = 'Dark',
+    lightTest: string = 'Light'
+  ) {
+    label.textContent = isDarkMode.enabled ? darkText : lightTest;
   }
 
   updateToggleIcon() {

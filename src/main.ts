@@ -1,6 +1,4 @@
-import './components.ts';
-import './css/main.css';
-import './css/global.css';
+import './mainImports.ts';
 import {
   initLightMode,
   currentTheme,
@@ -13,10 +11,11 @@ document.querySelector('body')!.classList.add('bg-gradient');
 initLightMode();
 
 app!.innerHTML = /* HTML */ `
+  <nav-bar></nav-bar>
   <div>
     <example-component></example-component>
     <div class="btn-group">
-      <primary-button>Home</primary-button>
+      <app-button>Home</app-button>
       <button class="btn btn-secondary">
         <div class="btn-content">
           <box-icon
