@@ -47,14 +47,12 @@ const TPL_LightToggle_css = /* CSS */ `
     display: inline-block;
     width: var(--toggle-width);
     height: var(--toggle-height);
-
   }
   
   .toggle input { 
     opacity: 0;
     width: 0;
     height: 0;
-
   }
   
   .slider {
@@ -75,8 +73,7 @@ const TPL_LightToggle_css = /* CSS */ `
   }
 
   .slider:hover, .toggle input:focus + .slider {
-    outline: 2px solid var(--color-primary-500);
-    
+    outline: 2px solid var(--color-primary-500);    
   }
   
 
@@ -136,9 +133,6 @@ const TPL_LightToggle_css = /* CSS */ `
     justify-content: center;
     gap: 0.6rem;
   }
-
-
-
 </style>
 `;
 
