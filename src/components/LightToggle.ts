@@ -1,6 +1,5 @@
 import {
   userPreferredLightMode,
-  updateLightMode,
   isDarkMode,
   currentTheme,
 } from '../utils/themeManager';
@@ -170,8 +169,6 @@ class LightToggle extends HTMLElement {
   toggleLightMode(event: Event) {
     const checkbox = event.target as HTMLInputElement;
     isDarkMode.enabled = checkbox.checked;
-
-    updateLightMode();
 
     this.updateToggleLabel(this._toggleLabel!);
     this.updateToggleIcon();

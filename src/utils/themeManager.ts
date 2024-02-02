@@ -23,6 +23,7 @@ export const isDarkMode = {
   },
   set enabled(enable: boolean) {
     this._enabled = enable;
+    updateLightMode();
   },
 };
 
