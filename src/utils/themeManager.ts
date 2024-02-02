@@ -106,9 +106,9 @@ function setIconAttribute(iconToSet: Element) {
   if (!parent || !grandParent) {
     return;
   } else if (!grandParent) {
-    iconContainer = iconToSet.parentElement!;
+    iconContainer = parent;
   } else {
-    iconContainer = iconToSet.parentElement!.parentElement!;
+    iconContainer = grandParent;
   }
 
   if (iconContainer.classList.contains('btn-primary')) {
