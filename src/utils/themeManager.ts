@@ -99,27 +99,29 @@ export function updateDefaultIconsColor() {
 }
 
 function setIconAttribute(iconToSet: Element) {
-  let parent: Element;
+  let iconContainer: Element;
+  let parent: Element | null = iconToSet.parentElement!;
+  let grandParent: Element | null = iconToSet.parentElement!.parentElement!;
 
-  if (!iconToSet.parentElement || !iconToSet.parentElement.parentElement) {
+  if (!parent || !grandParent) {
     return;
-  } else if (!iconToSet.parentElement.parentElement) {
-    parent = iconToSet.parentElement;
+  } else if (!grandParent) {
+    iconContainer = iconToSet.parentElement!;
   } else {
-    parent = iconToSet.parentElement.parentElement;
+    iconContainer = iconToSet.parentElement!.parentElement!;
   }
 
-  if (parent.classList.contains('btn-primary')) {
+  if (iconContainer.classList.contains('btn-primary')) {
     iconToSet.setAttribute(
       'color',
       currentTheme.theme.properties['--color-on-primary']
     );
-  } else if (parent.classList.contains('btn-secondary')) {
+  } else if (iconContainer.classList.contains('btn-secondary')) {
     iconToSet.setAttribute(
       'color',
       currentTheme.theme.properties['--color-on-secondary']
     );
-  } else if (parent.classList.contains('btn-tertiary')) {
+  } else if (iconContainer.classList.contains('btn-tertiary')) {
     iconToSet.setAttribute(
       'color',
       currentTheme.theme.properties['--color-on-tertiary']
