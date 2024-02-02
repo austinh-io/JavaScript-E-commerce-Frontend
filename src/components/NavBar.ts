@@ -2,10 +2,17 @@ const TPL_NavBar = document.createElement('template');
 
 const TPL_NavBar_css = /* CSS */ `
 <style>
-    div {
-        border: 2px solid var(--color-secondary-700);
-        border-radius: 5pt;
-        padding: 0.6rem;
+    :host {
+      z-index: 900;
+    }
+    .main-nav-container {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      background-color: red;
+      opacity: 0.01;
+      width: 100vw;
+      height: 100vh;
     }
 </style>
 `;
@@ -13,7 +20,7 @@ const TPL_NavBar_css = /* CSS */ `
 TPL_NavBar.innerHTML = /* HTML */ `
   ${TPL_NavBar_css}
 
-  <div>
+  <div class="main-nav-container">
     <h3>Lorem Ipsum</h3>
     <p>An example component!</p>
   </div>
