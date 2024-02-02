@@ -188,7 +188,7 @@ class LightToggle extends HTMLElement {
   updateToggleIcon() {
     this._toggleIcon.setAttribute(
       'name',
-      this._toggleIconValues.get(isDarkMode.enabled)
+      this._toggleIconValues.get(isDarkMode.enabled)!
     );
     this._toggleIcon.setAttribute(
       'color',
