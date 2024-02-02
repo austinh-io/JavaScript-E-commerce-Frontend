@@ -5,11 +5,6 @@ import {
   currentTheme,
 } from '../utils/themeManager';
 
-const toggleIcon = new Map();
-
-toggleIcon.set(false, 'sun');
-toggleIcon.set(true, 'moon');
-
 const TPL_LightToggle = document.createElement('template');
 
 const TPL_LightToggle_css = /* CSS */ `
@@ -149,6 +144,7 @@ class LightToggle extends HTMLElement {
   private _toggle: HTMLInputElement;
   private _toggleLabel: HTMLElement;
   private _toggleIcon: HTMLElement;
+  private _toggleIconValues = new Map<boolean, string>();
 
   constructor() {
     super();
@@ -156,10 +152,11 @@ class LightToggle extends HTMLElement {
     const clone = TPL_LightToggle.content.cloneNode(true);
     shadow.append(clone);
 
+    this._toggleIconValues.set(false, 'sun');
+    this._toggleIconValues.set(true, 'moon');
+
     this._toggle = this.shadowRoot!.querySelector('#light-toggle')!;
-
     this._toggleLabel = this.shadowRoot!.querySelector('.toggle-label')!;
-
     this._toggleIcon = this.shadowRoot!.querySelector('box-icon')!;
   }
 
@@ -189,7 +186,10 @@ class LightToggle extends HTMLElement {
   }
 
   updateToggleIcon() {
-    this._toggleIcon.setAttribute('name', toggleIcon.get(isDarkMode.enabled));
+    this._toggleIcon.setAttribute(
+      'name',
+      this._toggleIconValues.get(isDarkMode.enabled)
+    );
     this._toggleIcon.setAttribute(
       'color',
       currentTheme.theme.properties['--theme-font-color-inverse']
