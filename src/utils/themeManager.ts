@@ -93,9 +93,9 @@ export function initIconColorUpdateListener() {
 export function updateDefaultIconsColor() {
   const allBoxicons = document.querySelectorAll('box-icon');
 
-  allBoxicons.forEach((icon) => {
+  for (const icon of allBoxicons) {
     setIconAttribute(icon);
-  });
+  }
 }
 
 function setIconAttribute(iconToSet: Element) {
