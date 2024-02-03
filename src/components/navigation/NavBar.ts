@@ -5,12 +5,14 @@ const TPL_NavBar_css = /* CSS */ `
     :host {
       z-index: 900;
     }
-    .overlay {
+    .nav {
       position: fixed;
-      left: 0;
+      right: 0;
       bottom: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 15rem;
+      height: 100svh;
+      background-color: black;
+      padding: 1rem;
     }
 </style>
 `;
@@ -18,14 +20,12 @@ const TPL_NavBar_css = /* CSS */ `
 TPL_NavBar.innerHTML = /* HTML */ `
   ${TPL_NavBar_css}
 
-  <div class="overlay">
+  <div class="nav">
     <h3>Navigation Component</h3>
   </div>
 `;
 
 class NavBar extends HTMLElement {
-  private _overlay: HTMLElement;
-
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
@@ -37,14 +37,6 @@ class NavBar extends HTMLElement {
 
   connectedCallback() {
     this.disableOverlayPointerEvents();
-  }
-
-  enableOverlayPointerEvents() {
-    this._overlay.style.pointerEvents = 'auto';
-  }
-
-  disableOverlayPointerEvents() {
-    this._overlay.style.pointerEvents = 'none';
   }
 }
 

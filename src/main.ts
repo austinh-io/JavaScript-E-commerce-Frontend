@@ -12,6 +12,7 @@ initLightMode();
 
 app!.innerHTML = /* HTML */ `
   <nav-bar></nav-bar>
+  <nav-overlay></nav-overlay>
   <div>
     <example-component></example-component>
     <div class="btn-group">
