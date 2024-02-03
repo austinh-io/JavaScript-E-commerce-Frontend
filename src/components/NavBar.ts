@@ -9,8 +9,6 @@ const TPL_NavBar_css = /* CSS */ `
       position: fixed;
       left: 0;
       bottom: 0;
-      background-color: red;
-      opacity: 0.01;
       width: 100vw;
       height: 100vh;
     }
@@ -21,8 +19,7 @@ TPL_NavBar.innerHTML = /* HTML */ `
   ${TPL_NavBar_css}
 
   <div class="main-nav-container">
-    <h3>Lorem Ipsum</h3>
-    <p>An example component!</p>
+    <h3>Navigation Component</h3>
   </div>
 `;
 

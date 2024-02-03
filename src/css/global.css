@@ -6,6 +6,18 @@
   margin-block: 1rem;
 }
 
+@media (max-width: 728px) {
+  .btn-group {
+    flex-direction: column;
+  }
+
+  a.btn,
+  button.btn,
+  ::part(btn) {
+    width: 100%;
+  }
+}
+
 a.btn,
 button.btn,
 ::part(btn) {
@@ -14,8 +26,10 @@ button.btn,
   justify-content: center;
 
   border-radius: var(--theme-rounded-base);
+
   padding-inline: 1rem;
   padding-block: 0.6rem;
+
   font-size: 1.2rem;
   font-weight: 700;
 

@@ -4,7 +4,11 @@ const TPL_AppButton = document.createElement('template');
 
 const TPL_AppButton_CSS = /* CSS */ `
 <style>
-
+  @media (max-width: 728px) {
+    :host {
+      width: 100%;
+    }
+  }
 </style>
 `;
 
