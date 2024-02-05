@@ -40,8 +40,9 @@ TPL_AppBar.innerHTML = /* HTML */ `
 `;
 
 class AppBar extends HTMLElement {
-  private _siteNav: Element;
   private _appBar: HTMLElement;
+  private _siteNav: Element;
+  private _sideDrawer: HTMLElement;
 
   constructor() {
     super();
@@ -50,9 +51,12 @@ class AppBar extends HTMLElement {
     shadow.append(clone);
 
     this._siteNav = document.createElement('site-nav');
+    this._sideDrawer = document.createElement('side-drawer');
+
     this._appBar = shadow.querySelector('.app-bar')!;
 
     this._appBar.append(this._siteNav);
+    this._appBar.append(this._sideDrawer);
   }
 
   connectedCallback() {}
