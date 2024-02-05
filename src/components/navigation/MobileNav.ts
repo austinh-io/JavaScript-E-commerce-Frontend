@@ -1,8 +1,8 @@
 import { currentTheme } from '../../utils/themeManager';
 
-const TPL_NavBar = document.createElement('template');
+const TPL_MobileNav = document.createElement('template');
 
-const TPL_NavBar_css = /* CSS */ `
+const TPL_MobileNav_css = /* CSS */ `
 <style>
     :host {
       z-index: 1010;
@@ -71,8 +71,8 @@ const TPL_NavBar_css = /* CSS */ `
 </style>
 `;
 
-TPL_NavBar.innerHTML = /* HTML */ `
-  ${TPL_NavBar_css}
+TPL_MobileNav.innerHTML = /* HTML */ `
+  ${TPL_MobileNav_css}
 
   <nav>
     <div class="wrapper">
@@ -99,13 +99,13 @@ TPL_NavBar.innerHTML = /* HTML */ `
   </nav>
 `;
 
-class NavBar extends HTMLElement {
+class MobileNav extends HTMLElement {
   private _boxicon: HTMLElement;
 
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
-    const clone = TPL_NavBar.content.cloneNode(true);
+    const clone = TPL_MobileNav.content.cloneNode(true);
     shadow.append(clone);
     this._boxicon = shadow.querySelector('box-icon')!;
   }
@@ -125,6 +125,6 @@ class NavBar extends HTMLElement {
   }
 }
 
-window.customElements.define('nav-bar', NavBar);
+window.customElements.define('mobile-nav', MobileNav);
 
-export default NavBar;
+export default MobileNav;
