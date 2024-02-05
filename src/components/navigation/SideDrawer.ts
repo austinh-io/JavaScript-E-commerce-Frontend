@@ -1,8 +1,8 @@
 import { currentTheme } from '../../utils/themeManager';
 
-const TPL_MobileNav = document.createElement('template');
+const TPL_SideDrawer = document.createElement('template');
 
-const TPL_MobileNav_css = /* CSS */ `
+const TPL_SideDrawer_css = /* CSS */ `
 <style>
     :host {
       z-index: 1010;
@@ -71,8 +71,8 @@ const TPL_MobileNav_css = /* CSS */ `
 </style>
 `;
 
-TPL_MobileNav.innerHTML = /* HTML */ `
-  ${TPL_MobileNav_css}
+TPL_SideDrawer.innerHTML = /* HTML */ `
+  ${TPL_SideDrawer_css}
 
   <nav>
     <div class="wrapper">
@@ -99,13 +99,13 @@ TPL_MobileNav.innerHTML = /* HTML */ `
   </nav>
 `;
 
-class MobileNav extends HTMLElement {
+class SideDrawer extends HTMLElement {
   private _boxicon: HTMLElement;
 
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
-    const clone = TPL_MobileNav.content.cloneNode(true);
+    const clone = TPL_SideDrawer.content.cloneNode(true);
     shadow.append(clone);
     this._boxicon = shadow.querySelector('box-icon')!;
   }
@@ -125,6 +125,6 @@ class MobileNav extends HTMLElement {
   }
 }
 
-window.customElements.define('mobile-nav', MobileNav);
+window.customElements.define('side-drawer', SideDrawer);
 
-export default MobileNav;
+export default SideDrawer;
