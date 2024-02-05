@@ -6,15 +6,36 @@ const TPL_AppDrawer_css = /* CSS */ `
       z-index: 1010;
       position: fixed;
 
-      top: 0;
+      bottom: 0;
       right: 0;
+
+      height: 100svh;
+      width: 24rem;
+
+      background: var(--color-surface-800);
+
+    }
+
+    h3 {
+      font-size: 2rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.1ch;
+
+      background: var(--color-surface-400);
+
       width: 100%;
+      
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .side-drawer {
-      width: 10rem;
-      height: 100svh;
-      background: red;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 </style>
 `;

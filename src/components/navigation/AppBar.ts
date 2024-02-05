@@ -36,7 +36,9 @@ const TPL_AppBar_css = /* CSS */ `
 
 TPL_AppBar.innerHTML = /* HTML */ `
   ${TPL_AppBar_css}
-  <div class="app-bar"></div>
+  <div class="app-bar">
+    <slot></slot>
+  </div>
 `;
 
 class AppBar extends HTMLElement {
@@ -55,7 +57,7 @@ class AppBar extends HTMLElement {
 
     this._appBar = shadow.querySelector('.app-bar')!;
 
-    this._appBar.append(this._siteNav);
+    // this._appBar.append(this._siteNav);
     // this._appBar.append(this._sideDrawer);
   }
 

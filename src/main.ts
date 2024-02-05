@@ -11,8 +11,10 @@ document.querySelector('body')!.classList.add('bg-gradient');
 initLightMode();
 
 app!.innerHTML = /* HTML */ `
-  <app-bar></app-bar>
-  <app-drawer></app-drawer>
+  <app-bar>
+    <site-nav></site-nav>
+  </app-bar>
+  <app-drawer> </app-drawer>
   <nav-overlay></nav-overlay>
   <div>
     <example-component></example-component>
