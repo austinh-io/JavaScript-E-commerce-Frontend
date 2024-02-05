@@ -12,6 +12,7 @@ initLightMode();
 
 app!.innerHTML = /* HTML */ `
   <app-bar></app-bar>
+  <app-drawer></app-drawer>
   <nav-overlay></nav-overlay>
   <div>
     <example-component></example-component>

@@ -1,4 +1,4 @@
 import './AppBar.ts';
-import './SideDrawer.ts';
+import './AppDrawer.ts';
 import './NavOverlay.ts';
 import './SiteNav.ts';
