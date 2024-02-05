@@ -27,7 +27,7 @@ class ExampleComponent extends HTMLElement {
     shadow.append(clone);
   }
 
-  connectedCallBack() {}
+  connectedCallback() {}
 }
 
 window.customElements.define('example-component', ExampleComponent);

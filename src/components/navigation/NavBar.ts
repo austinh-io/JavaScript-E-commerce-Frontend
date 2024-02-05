@@ -31,13 +31,9 @@ class NavBar extends HTMLElement {
     const shadow = this.attachShadow({ mode: 'open' });
     const clone = TPL_NavBar.content.cloneNode(true);
     shadow.append(clone);
-
-    this._overlay = shadow.querySelector('.overlay')!;
   }
 
-  connectedCallback() {
-    this.disableOverlayPointerEvents();
-  }
+  connectedCallback() {}
 }
 
 window.customElements.define('nav-bar', NavBar);
