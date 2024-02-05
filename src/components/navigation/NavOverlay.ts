@@ -3,7 +3,7 @@ const TPL_NavOverlay = document.createElement('template');
 const TPL_NavOverlay_css = /* CSS */ `
 <style>
     :host {
-      z-index: 900;
+      z-index: 1000;
     }
     .overlay {
       position: fixed;

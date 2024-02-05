@@ -3,16 +3,38 @@ const TPL_NavBar = document.createElement('template');
 const TPL_NavBar_css = /* CSS */ `
 <style>
     :host {
-      z-index: 900;
-    }
-    .nav {
+      z-index: 1010;
       position: fixed;
-      right: 0;
-      bottom: 0;
-      width: 15rem;
-      height: 100svh;
-      background-color: black;
+      inset: 0;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+
+      height: 1.4rem;
+
       padding: 1rem;
+
+      background-color: black;
+
+    }
+
+    ul {
+      display: flex;
+      gap: 1rem;
+
+      list-style: none;
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      margin-inline: auto;
+
+      width: 100%;
+      max-width: 1240px;
     }
 </style>
 `;
@@ -20,9 +42,22 @@ const TPL_NavBar_css = /* CSS */ `
 TPL_NavBar.innerHTML = /* HTML */ `
   ${TPL_NavBar_css}
 
-  <div class="nav">
-    <h3>Navigation Component</h3>
-  </div>
+  <nav>
+    <div class="wrapper">
+      <h3>Navigation Component</h3>
+      <ul>
+        <li>
+          <a href="#">Link 1</a>
+        </li>
+        <li>
+          <a href="#">Link 2</a>
+        </li>
+        <li>
+          <a href="#">Link 3</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 `;
 
 class NavBar extends HTMLElement {
