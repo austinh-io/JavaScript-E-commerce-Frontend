@@ -1,28 +1,16 @@
 import { currentTheme } from '../../utils/themeManager';
 
-const TPL_NavBar = document.createElement('template');
+const TPL_SiteNav = document.createElement('template');
 
-const TPL_NavBar_css = /* CSS */ `
+const TPL_SiteNav_css = /* CSS */ `
 <style>
     :host {
-      z-index: 1010;
-      position: fixed;
-
-      top: 0;
-      left: 0;
-      width: 100%;      
-
-      --nav-height: 1.4rem;
+      width: 100%;
+      margin-block: auto;
     }
     nav {
       display: flex;
       align-items: center;
-
-      height: var(--nav-height);
-
-      padding: 1rem;
-
-      background-color: var(--color-surface-900);
     }
 
     ul {
@@ -71,8 +59,8 @@ const TPL_NavBar_css = /* CSS */ `
 </style>
 `;
 
-TPL_NavBar.innerHTML = /* HTML */ `
-  ${TPL_NavBar_css}
+TPL_SiteNav.innerHTML = /* HTML */ `
+  ${TPL_SiteNav_css}
 
   <nav>
     <div class="wrapper">
@@ -99,13 +87,13 @@ TPL_NavBar.innerHTML = /* HTML */ `
   </nav>
 `;
 
-class NavBar extends HTMLElement {
+class SiteNav extends HTMLElement {
   private _boxicon: HTMLElement;
 
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
-    const clone = TPL_NavBar.content.cloneNode(true);
+    const clone = TPL_SiteNav.content.cloneNode(true);
     shadow.append(clone);
     this._boxicon = shadow.querySelector('box-icon')!;
   }
@@ -125,6 +113,6 @@ class NavBar extends HTMLElement {
   }
 }
 
-window.customElements.define('nav-bar', NavBar);
+window.customElements.define('site-nav', SiteNav);
 
-export default NavBar;
+export default SiteNav;

@@ -1,4 +1,4 @@
-import './mainImports.ts';
+import './imports.ts';
 import {
   initLightMode,
   currentTheme,
@@ -11,7 +11,7 @@ document.querySelector('body')!.classList.add('bg-gradient');
 initLightMode();
 
 app!.innerHTML = /* HTML */ `
-  <nav-bar></nav-bar>
+  <app-bar></app-bar>
   <nav-overlay></nav-overlay>
   <div>
     <example-component></example-component>

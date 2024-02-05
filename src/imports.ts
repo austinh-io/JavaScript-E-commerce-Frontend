@@ -5,5 +5,4 @@ import './themes/defaultTheme.ts';
 import './components/buttons/AppButton.ts';
 import './components/ExampleComponent.ts';
 import './components/LightToggle.ts';
-import './components/navigation/NavBar.ts';
-import './components/navigation/NavOverlay.ts';
+import './components/navigation';
