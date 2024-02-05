@@ -5,25 +5,39 @@ const TPL_NavBar_css = /* CSS */ `
     :host {
       z-index: 1010;
       position: fixed;
-      inset: 0;
+
+      top: 0;
+      left: 0;
+      width: 100%;      
+
+      --nav-height: 1.4rem;
     }
     nav {
       display: flex;
       align-items: center;
 
-      height: 1.4rem;
+      height: var(--nav-height);
 
       padding: 1rem;
 
-      background-color: black;
-
+      background-color: var(--color-surface-900);
     }
 
     ul {
       display: flex;
       gap: 1rem;
 
+
       list-style: none;
+    }
+
+    a {
+      color: var(--theme-font-color-base);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--color-primary-300);
     }
 
     .wrapper {

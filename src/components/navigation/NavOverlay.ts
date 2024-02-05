@@ -11,6 +11,19 @@ const TPL_NavOverlay_css = /* CSS */ `
       bottom: 0;
       width: 100vw;
       height: 100vh;
+
+      background-color: var(--color-surface-900);
+
+      opacity: 0.2;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h3 {
+      font-size: 12rem;
+      color: var(--color-primary-300);
     }
 </style>
 `;
@@ -19,7 +32,7 @@ TPL_NavOverlay.innerHTML = /* HTML */ `
   ${TPL_NavOverlay_css}
 
   <div class="overlay">
-    <h3>(Testing Label) Navigation Overlay</h3>
+    <h3>(Testing Label)<br />Navigation Overlay</h3>
   </div>
 `;
 
