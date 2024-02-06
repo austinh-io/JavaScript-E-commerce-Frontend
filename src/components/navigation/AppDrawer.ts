@@ -105,7 +105,7 @@ TPL_AppDrawer.innerHTML = /* HTML */ `
   </div>
 `;
 
-class AppDrawer extends HTMLElement {
+export class AppDrawer extends HTMLElement {
   private _exitIcon: HTMLElement;
   private _closeButton: HTMLElement;
 
