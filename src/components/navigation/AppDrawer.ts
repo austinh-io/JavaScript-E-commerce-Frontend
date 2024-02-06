@@ -15,7 +15,7 @@ const TPL_AppDrawer_css = /* CSS */ `
       width: 28rem;
       backdrop-filter: blur(16px);
 
-      transition: transform 250ms ease-out;
+      transition: transform 250ms ease-in-out;
     }
     
     :host::before {
@@ -92,8 +92,7 @@ TPL_AppDrawer.innerHTML = /* HTML */ `
     <div class="drawer-header">
       <button id="close-button">
         <box-icon
-          type="solid"
-          name="exit"
+          name="x"
           size="4.2rem"
           id="exit-icon"></box-icon>
       </button>
@@ -139,7 +138,7 @@ class AppDrawer extends HTMLElement {
   }
 
   openDrawer() {
-    this.style.transform = 'translateX(-100%)';
+    this.style.transform = 'translateX(0)';
   }
 }
 

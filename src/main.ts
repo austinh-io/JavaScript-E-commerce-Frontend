@@ -10,12 +10,15 @@ document.querySelector('body')!.classList.add('bg-gradient');
 
 initLightMode();
 
+const drawer = document.createElement('app-drawer');
+
+console.log(app);
+console.log(drawer);
+
 app!.innerHTML = /* HTML */ `
   <app-bar>
     <site-nav></site-nav>
   </app-bar>
-  <app-drawer> </app-drawer>
-  <drawer-overlay></drawer-overlay>
   <div>
     <example-component></example-component>
     <div class="btn-group">
@@ -117,6 +120,44 @@ app!.innerHTML = /* HTML */ `
     vestibulum mattis ullamcorper velit. Posuere lorem ipsum dolor sit. In
     cursus turpis massa tincidunt dui ut.
   </div>
+  <button id="open-drawer">Open</button>
 `;
+
+const isDrawerOpen = {
+  drawerState: true,
+  get state() {
+    return this.drawerState;
+  },
+  set state(stateToSet: boolean) {
+    this.drawerState = stateToSet;
+  },
+};
+
+const handleDrawer = (): void => {
+  isDrawerOpen.state = !isDrawerOpen.state;
+
+  if (isDrawerOpen.state) {
+    drawer.closeDrawer();
+    console.log('closing');
+  }
+
+  if (!isDrawerOpen.state) {
+    drawer.openDrawer();
+    console.log('opening');
+  }
+
+  console.log('Drawer open? ' + isDrawerOpen.state);
+};
+
+app!.append(drawer);
+
+document
+  .querySelector('#open-drawer')
+  ?.addEventListener('click', () => handleDrawer());
+
+// drawer.closeDrawer();
+
+// setInterval(drawer.closeDrawer(), 300);
+// setInterval(drawer.openDrawer(), 300);
 
 initIconColorUpdateListener();
