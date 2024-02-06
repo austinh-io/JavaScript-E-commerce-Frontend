@@ -14,6 +14,8 @@ const TPL_AppDrawer_css = /* CSS */ `
       height: 100svh;
       width: 28rem;
       backdrop-filter: blur(16px);
+
+      transition: transform 250ms ease-out;
     }
     
     :host::before {
@@ -106,12 +108,15 @@ TPL_AppDrawer.innerHTML = /* HTML */ `
 
 class AppDrawer extends HTMLElement {
   private _exitIcon: HTMLElement;
+  private _closeButton: HTMLElement;
+
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     const clone = TPL_AppDrawer.content.cloneNode(true);
     shadow.append(clone);
     this._exitIcon = shadow.querySelector('#exit-icon')!;
+    this._closeButton = shadow.querySelector('#close-button')!;
   }
 
   connectedCallback() {
@@ -119,6 +124,7 @@ class AppDrawer extends HTMLElement {
       this.updateIconColor();
     });
     this.updateIconColor();
+    this._closeButton.addEventListener('click', () => this.closeDrawer());
   }
 
   updateIconColor() {
@@ -126,6 +132,14 @@ class AppDrawer extends HTMLElement {
       'color',
       currentTheme.theme.properties['--color-error-500']
     );
+  }
+
+  closeDrawer() {
+    this.style.transform = 'translateX(100%)';
+  }
+
+  openDrawer() {
+    this.style.transform = 'translateX(-100%)';
   }
 }
 
