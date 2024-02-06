@@ -26,8 +26,8 @@ const TPL_AppDrawer_css = /* CSS */ `
       width: 100%;
       height: 100%;
       z-index: -1;
-      opacity: 0.8;
-      background: var(--color-surface-600);
+      opacity: 0.6;
+      background: var(--color-surface-700);
     }
 
     h3 {
@@ -59,7 +59,7 @@ const TPL_AppDrawer_css = /* CSS */ `
       width: 100%;
       height: 4.2rem;
 
-      background: var(--color-surface-400);
+      background: var(--color-surface-500);
     }
 
     #close-button {
@@ -76,10 +76,15 @@ const TPL_AppDrawer_css = /* CSS */ `
       height: 100%;
 
       background: var(--color-surface-500);
+      transition: background 100ms ease-out;
     }
 
     #close-button:hover {
       cursor: pointer;
+      background: var(--color-surface-400);
+    }
+
+    #close-button:active {
       background: var(--color-surface-600);
     }
 </style>
@@ -97,11 +102,11 @@ TPL_AppDrawer.innerHTML = /* HTML */ `
           id="exit-icon"></box-icon>
       </button>
 
-      <h3>Side Drawer</h3>
+      <h3 slot="drawer-title">Drawer</h3>
     </div>
-    <div class="drawer-content">
-      <slot name="drawer-content"></slot>
-    </div>
+    <div
+      class="drawer-content"
+      slot="drawer-content"></div>
   </div>
 `;
 
