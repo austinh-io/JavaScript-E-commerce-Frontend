@@ -1,3 +1,7 @@
+let overlayOpacity: number;
+const overlayOpacityEnabledValue = 0.8;
+const overlayOpacityDisabledValue = 0;
+
 const TPL_DrawerOverlay = document.createElement('template');
 
 const TPL_DrawerOverlay_css = /* CSS */ `
@@ -5,25 +9,23 @@ const TPL_DrawerOverlay_css = /* CSS */ `
     :host {
       z-index: 1000;
     }
+
     .overlay {
       position: fixed;
       left: 0;
       bottom: 0;
-      width: 100vw;
-      height: 100vh;
-
-      background-color: var(--color-surface-900);
-
-      opacity: 0.2;
 
       display: flex;
       align-items: center;
       justify-content: center;
-    }
 
-    h3 {
-      font-size: 12rem;
-      color: var(--color-primary-300);
+      width: 100vw;
+      height: 100vh;
+
+      background-color: var(--color-surface-900);
+      backdrop-filter: blur(12px);
+
+      opacity: 0.8;
     }
 </style>
 `;
@@ -31,9 +33,7 @@ const TPL_DrawerOverlay_css = /* CSS */ `
 TPL_DrawerOverlay.innerHTML = /* HTML */ `
   ${TPL_DrawerOverlay_css}
 
-  <div class="overlay">
-    <h3>(Testing Label)<br />Navigation Overlay</h3>
-  </div>
+  <div class="overlay"></div>
 `;
 
 class DrawerOverlay extends HTMLElement {
@@ -49,15 +49,22 @@ class DrawerOverlay extends HTMLElement {
   }
 
   connectedCallback() {
-    this.disableOverlayPointerEvents();
+    this.enableOverlay();
+    this._overlay.addEventListener('click', () => {
+      this.disableOverlay();
+    });
   }
 
-  enableOverlayPointerEvents() {
+  enableOverlay() {
+    this._overlay.style.opacity = String(overlayOpacityEnabledValue);
     this._overlay.style.pointerEvents = 'auto';
+    document.querySelector('body')!.style.overflow = 'hidden';
   }
 
-  disableOverlayPointerEvents() {
+  disableOverlay() {
+    this._overlay.style.opacity = String(overlayOpacityDisabledValue);
     this._overlay.style.pointerEvents = 'none';
+    document.querySelector('body')!.style.overflow = 'auto';
   }
 }
 
