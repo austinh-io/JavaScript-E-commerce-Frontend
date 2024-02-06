@@ -15,7 +15,7 @@ app!.innerHTML = /* HTML */ `
     <site-nav></site-nav>
   </app-bar>
   <app-drawer> </app-drawer>
-  <nav-overlay></nav-overlay>
+  <drawer-overlay></drawer-overlay>
   <div>
     <example-component></example-component>
     <div class="btn-group">
