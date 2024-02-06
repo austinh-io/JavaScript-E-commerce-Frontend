@@ -102,7 +102,7 @@ TPL_AppDrawer.innerHTML = /* HTML */ `
           id="exit-icon"></box-icon>
       </button>
 
-      <h3 slot="drawer-title">Drawer</h3>
+      <h3 id="drawer-title">Drawer</h3>
     </div>
     <div
       class="drawer-content"
@@ -113,6 +113,9 @@ TPL_AppDrawer.innerHTML = /* HTML */ `
 export class AppDrawer extends HTMLElement {
   private _exitIcon: HTMLElement;
   private _closeButton: HTMLElement;
+  private _drawerTitle: string = '';
+  private _drawerTitleLabel: HTMLElement;
+  private _isOpen: boolean;
 
   constructor() {
     super();
@@ -121,6 +124,30 @@ export class AppDrawer extends HTMLElement {
     shadow.append(clone);
     this._exitIcon = shadow.querySelector('#exit-icon')!;
     this._closeButton = shadow.querySelector('#close-button')!;
+    this._drawerTitleLabel = shadow.querySelector('#drawer-title')!;
+
+    this._isOpen = true;
+  }
+
+  static get observedAttributes() {
+    return ['drawerTitle', 'isOpen'];
+  }
+
+  get drawerTitle() {
+    return this._drawerTitle;
+  }
+
+  set drawerTitle(value: string) {
+    this._drawerTitle = value;
+    this._drawerTitleLabel.textContent = value;
+  }
+
+  get isOpen() {
+    return this._isOpen;
+  }
+
+  set isOpen(value: boolean) {
+    this._isOpen = value;
   }
 
   connectedCallback() {
@@ -128,7 +155,7 @@ export class AppDrawer extends HTMLElement {
       this.updateIconColor();
     });
     this.updateIconColor();
-    this._closeButton.addEventListener('click', () => this.closeDrawer());
+    this._closeButton.addEventListener('click', () => this.close());
   }
 
   updateIconColor() {
@@ -138,12 +165,28 @@ export class AppDrawer extends HTMLElement {
     );
   }
 
-  closeDrawer() {
+  close() {
     this.style.transform = 'translateX(100%)';
+    this._isOpen = false;
   }
 
-  openDrawer() {
+  open() {
     this.style.transform = 'translateX(0)';
+    this._isOpen = true;
+  }
+
+  toggle() {
+    switch (this._isOpen) {
+      case true:
+        this.close();
+        break;
+      case false:
+        this.open();
+        break;
+      default:
+        this.close();
+        break;
+    }
   }
 }
 
