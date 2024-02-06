@@ -148,6 +148,8 @@ export class AppDrawer extends HTMLElement {
 
   set isOpen(value: boolean) {
     this._isOpen = value;
+    if (value) this.open();
+    else if (!value) this.close();
   }
 
   connectedCallback() {
@@ -176,17 +178,8 @@ export class AppDrawer extends HTMLElement {
   }
 
   toggle() {
-    switch (this._isOpen) {
-      case true:
-        this.close();
-        break;
-      case false:
-        this.open();
-        break;
-      default:
-        this.close();
-        break;
-    }
+    if (!this._isOpen) this.open();
+    else this.close();
   }
 }
 
