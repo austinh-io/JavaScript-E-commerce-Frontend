@@ -10,8 +10,11 @@ document.querySelector('body')!.classList.add('bg-gradient');
 
 initLightMode();
 
-const drawer = document.createElement('app-drawer');
-drawer.drawerTitle = 'Amogus';
+const navDrawer = document.createElement('app-drawer');
+const cartDrawer = document.createElement('app-drawer');
+
+navDrawer.drawerTitle = 'Navigation';
+cartDrawer.drawerTitle = 'Cart';
 
 app!.innerHTML = /* HTML */ `
   <app-bar>
@@ -62,15 +65,26 @@ app!.innerHTML = /* HTML */ `
   </div>
   <button
     class="btn btn-primary"
-    id="open-drawer">
-    Toggle Drawer
+    id="open-nav">
+    Toggle Nav Drawer
+  </button>
+
+  <button
+    class="btn btn-primary"
+    id="open-cart">
+    Toggle Cart Drawer
   </button>
 `;
 
-app!.append(drawer);
+app!.append(navDrawer);
+app!.append(cartDrawer);
 
 document
-  .querySelector('#open-drawer')
-  ?.addEventListener('click', () => drawer.toggle());
+  .querySelector('#open-nav')
+  ?.addEventListener('click', () => navDrawer.toggle());
+
+document
+  .querySelector('#open-cart')
+  ?.addEventListener('click', () => cartDrawer.toggle());
 
 initIconColorUpdateListener();
