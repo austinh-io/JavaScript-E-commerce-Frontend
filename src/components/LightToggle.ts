@@ -114,6 +114,10 @@ const TPL_LightToggle_css = /* CSS */ `
     justify-content: center;
     gap: 0.6rem;
   }
+
+  .toggle-label {
+    user-select: none;
+  }
 </style>
 `;
 
