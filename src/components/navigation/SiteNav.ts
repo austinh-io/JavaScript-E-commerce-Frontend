@@ -23,7 +23,7 @@ const TPL_SiteNav_css = /* CSS */ `
     }
 
     a {
-      color: var(--theme-font-color-base);
+      color: var(--font-color-base);
       text-decoration: none;
     }
 
@@ -157,7 +157,7 @@ export class SiteNav extends HTMLElement {
       if (icon instanceof Element)
         icon.setAttribute(
           'color',
-          currentTheme.theme.properties['--theme-font-color-base']
+          currentTheme.theme.properties['--font-color-base']
         );
     });
   }

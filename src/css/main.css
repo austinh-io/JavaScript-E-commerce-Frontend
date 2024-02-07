@@ -22,7 +22,7 @@ body {
   place-items: center;
   min-height: 100vh;
 
-  color: var(--theme-font-color-base);
+  color: var(--font-color-base);
   background-color: var(--color-surface-500);
 }
 

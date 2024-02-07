@@ -25,7 +25,7 @@ button.btn,
   align-items: center;
   justify-content: center;
 
-  border-radius: var(--theme-rounded-base);
+  border-radius: var(--rounded-button);
 
   padding-inline: 1rem;
   padding-block: 0.6rem;

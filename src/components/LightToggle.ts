@@ -48,7 +48,7 @@ const TPL_LightToggle_css = /* CSS */ `
 
     background-color: var(--color-surface-600);
     outline: 2px solid var(--color-surface-700);
-    border-radius: var(--theme-rounded-base);
+    border-radius: var(--rounded-toggle);
 
     transition: var(--transition);
   }
@@ -98,8 +98,8 @@ const TPL_LightToggle_css = /* CSS */ `
     left: var(--slider-offset-left);
     bottom: var(--slider-offset-bottom);
 
-    background-color: var(--theme-font-color-base);
-    border-radius: var(--theme-rounded-base);
+    background-color: var(--font-color-base);
+    border-radius: var(--rounded-toggle);
 
     transition: var(--transition);
   }
@@ -189,7 +189,7 @@ class LightToggle extends HTMLElement {
     );
     this._toggleIcon.setAttribute(
       'color',
-      currentTheme.theme.properties['--theme-font-color-inverse']
+      currentTheme.theme.properties['--font-color-inverse']
     );
   }
 }
