@@ -11,8 +11,8 @@ const navDrawer = new AppDrawer('Navigation');
 const cartDrawer = new AppDrawer('Cart');
 
 const appDrawers: { [key: string]: AppDrawer } = {
-  navDrawer: navDrawer,
-  cartDrawer: cartDrawer,
+  navigation: navDrawer,
+  cart: cartDrawer,
 };
 
 for (const property in appDrawers) {
