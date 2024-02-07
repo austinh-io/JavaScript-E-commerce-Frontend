@@ -5,7 +5,7 @@ const TPL_AppDrawer = document.createElement('template');
 const TPL_AppDrawer_css = /* CSS */ `
 <style>
     :host {
-      z-index: 1010;
+      z-index: 2010;
       position: fixed;
 
       bottom: 0;
@@ -14,6 +14,8 @@ const TPL_AppDrawer_css = /* CSS */ `
       height: 100svh;
       width: 28rem;
       backdrop-filter: blur(16px);
+
+      transform: translateX(100%);
 
       transition: transform 250ms ease-in-out;
     }
@@ -102,7 +104,9 @@ TPL_AppDrawer.innerHTML = /* HTML */ `
           id="exit-icon"></box-icon>
       </button>
 
-      <h3 id="drawer-title">Drawer</h3>
+      <h3
+        id="drawer-title"
+        drawerTitle></h3>
     </div>
     <div
       class="drawer-content"
@@ -113,11 +117,11 @@ TPL_AppDrawer.innerHTML = /* HTML */ `
 export class AppDrawer extends HTMLElement {
   private _exitIcon: HTMLElement;
   private _closeButton: HTMLElement;
-  private _drawerTitle: string = '';
+  private _drawerTitle: string;
   private _drawerTitleLabel: HTMLElement;
   private _isOpen: boolean;
 
-  constructor() {
+  constructor(drawerTitle: string = 'Drawer') {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     const clone = TPL_AppDrawer.content.cloneNode(true);
@@ -126,11 +130,10 @@ export class AppDrawer extends HTMLElement {
     this._closeButton = shadow.querySelector('#close-button')!;
     this._drawerTitleLabel = shadow.querySelector('#drawer-title')!;
 
-    this._isOpen = true;
-  }
+    this._drawerTitle = drawerTitle;
+    this._drawerTitleLabel.textContent = this._drawerTitle;
 
-  static get observedAttributes() {
-    return ['drawerTitle', 'isOpen'];
+    this._isOpen = false;
   }
 
   get drawerTitle() {

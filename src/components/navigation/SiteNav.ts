@@ -1,4 +1,5 @@
 import { currentTheme } from '../../utils/themeManager';
+import AppDrawer from './AppDrawer';
 
 const TPL_SiteNav = document.createElement('template');
 
@@ -86,14 +87,18 @@ TPL_SiteNav.innerHTML = /* HTML */ `
         </li>
       </ul>
       <div class="icon-buttons-container">
-        <button class="icon-button">
+        <button
+          class="icon-button"
+          id="btn-cart">
           <box-icon
             name="cart"
             size="lg"
             color="">
           </box-icon>
         </button>
-        <button class="icon-button">
+        <button
+          class="icon-button"
+          id="btn-nav">
           <box-icon
             name="menu"
             size="lg"
@@ -105,22 +110,46 @@ TPL_SiteNav.innerHTML = /* HTML */ `
   </nav>
 `;
 
-class SiteNav extends HTMLElement {
+export class SiteNav extends HTMLElement {
   private _boxicons: NodeList;
+  private _cartMenuButton: HTMLElement;
+  private _navMenuButton: HTMLElement;
+  private _drawers: { [key: string]: AppDrawer };
 
-  constructor() {
+  constructor(drawersValue: { [key: string]: AppDrawer }) {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     const clone = TPL_SiteNav.content.cloneNode(true);
     shadow.append(clone);
     this._boxicons = shadow.querySelectorAll('box-icon')!;
+    this._cartMenuButton = shadow.querySelector('#btn-cart')!;
+    this._navMenuButton = shadow.querySelector('#btn-nav')!;
+
+    this._drawers = { ...drawersValue };
+  }
+
+  set drawers(value: { [key: string]: AppDrawer }) {
+    this._drawers = { ...value };
+  }
+
+  get drawers() {
+    return this._drawers;
   }
 
   connectedCallback() {
     document.addEventListener('themeChanged', () => {
       this.updateIconColor();
     });
+
     this.updateIconColor();
+
+    this._cartMenuButton.addEventListener('click', () => {
+      this._drawers.cartDrawer.open();
+    });
+
+    this._navMenuButton.addEventListener('click', () => {
+      this._drawers.navDrawer.open();
+    });
   }
 
   updateIconColor() {
