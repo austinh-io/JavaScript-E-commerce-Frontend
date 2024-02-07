@@ -19,6 +19,13 @@ const TPL_AppDrawer_css = /* CSS */ `
 
       transition: transform 250ms ease-in-out;
     }
+
+    @media (max-width: 728px) {
+      :host {
+        max-width: 85%;
+        height: 100%;
+      }
+    }
     
     :host::before {
       content: '';
