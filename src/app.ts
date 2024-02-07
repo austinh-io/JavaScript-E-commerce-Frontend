@@ -2,6 +2,7 @@ import AppDrawer from './components/navigation/AppDrawer';
 import { currentTheme } from './utils/themeManager';
 import AppBar from './components/navigation/AppBar.ts';
 import { SiteNav } from './components/navigation/SiteNav.ts';
+import { createButton } from './utils/elementCreator.ts';
 
 export const app = document.createElement('div');
 export const appHTML = document.createElement('template');
@@ -71,17 +72,17 @@ appHTML.innerHTML = /* HTML */ `
   </div>
 `;
 
-const buttonToggleCart = document.createElement('button');
-buttonToggleCart.classList.add('btn');
-buttonToggleCart.classList.add('btn-primary');
-buttonToggleCart.addEventListener('click', () => cartDrawer.toggle());
-buttonToggleCart.textContent = 'Toggle Cart';
+const buttonToggleCart = createButton(
+  'Toggle Cart',
+  () => cartDrawer.toggle(),
+  'primary'
+);
 
-const buttonToggleNav = document.createElement('button');
-buttonToggleNav.classList.add('btn');
-buttonToggleNav.classList.add('btn-primary');
-buttonToggleNav.addEventListener('click', () => navDrawer.toggle());
-buttonToggleNav.textContent = 'Toggle Navigation';
+const buttonToggleNav = createButton(
+  'Toggle Nav',
+  () => navDrawer.toggle(),
+  'secondary'
+);
 
 app.appendChild(buttonToggleCart);
 app.appendChild(buttonToggleNav);
