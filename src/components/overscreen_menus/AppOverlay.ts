@@ -1,8 +1,5 @@
 import AppDrawer from './AppDrawer';
 
-const overlayOpacityEnabledValue = 0.8;
-const overlayOpacityDisabledValue = 0;
-
 const TPL_AppOverlay = document.createElement('template');
 
 const TPL_AppOverlay_css = /* CSS */ `
@@ -40,12 +37,12 @@ TPL_AppOverlay.innerHTML = /* HTML */ `
 class AppOverlay extends HTMLElement {
   private _overlay: HTMLElement;
   private _drawers: { [key: string]: AppDrawer };
-  // private _siteNav: SiteNav;
+  private _overlayOpacityEnabledValue = 0.8;
+  private _overlayOpacityDisabledValue = 0;
   private _isEnabled: boolean;
 
   constructor(
     drawersValue: { [key: string]: AppDrawer },
-    // siteNavValue: SiteNav,
     isEnabledValue: boolean = false
   ) {
     super();
@@ -55,7 +52,6 @@ class AppOverlay extends HTMLElement {
 
     this._overlay = shadow.querySelector('.overlay')!;
     this._drawers = { ...drawersValue };
-    // this._siteNav = siteNavValue;
     this._isEnabled = isEnabledValue;
   }
 
@@ -66,14 +62,6 @@ class AppOverlay extends HTMLElement {
   get drawers() {
     return this._drawers;
   }
-
-  // set navigation(value: SiteNav) {
-  //   this._siteNav = value;
-  // }
-
-  // get navigation() {
-  //   return this._siteNav;
-  // }
 
   set isEnabled(value: boolean) {
     this._isEnabled = value;
@@ -91,14 +79,14 @@ class AppOverlay extends HTMLElement {
   }
 
   enableOverlay() {
-    this._overlay.style.opacity = String(overlayOpacityEnabledValue);
+    this._overlay.style.opacity = String(this._overlayOpacityEnabledValue);
     this._overlay.style.pointerEvents = 'auto';
     document.querySelector('body')!.style.overflow = 'hidden';
     this._isEnabled = true;
   }
 
   disableOverlay() {
-    this._overlay.style.opacity = String(overlayOpacityDisabledValue);
+    this._overlay.style.opacity = String(this._overlayOpacityDisabledValue);
     this._overlay.style.pointerEvents = 'none';
     document.querySelector('body')!.style.overflow = 'auto';
     this._isEnabled = false;
