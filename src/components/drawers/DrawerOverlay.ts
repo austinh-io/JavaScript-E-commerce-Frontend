@@ -42,12 +42,12 @@ TPL_DrawerOverlay.innerHTML = /* HTML */ `
 class DrawerOverlay extends HTMLElement {
   private _overlay: HTMLElement;
   private _drawers: { [key: string]: AppDrawer };
-  private _siteNav: SiteNav;
+  // private _siteNav: SiteNav;
   private _isEnabled: boolean;
 
   constructor(
     drawersValue: { [key: string]: AppDrawer },
-    siteNavValue: SiteNav,
+    // siteNavValue: SiteNav,
     isEnabledValue: boolean = false
   ) {
     super();
@@ -57,7 +57,7 @@ class DrawerOverlay extends HTMLElement {
 
     this._overlay = shadow.querySelector('.overlay')!;
     this._drawers = { ...drawersValue };
-    this._siteNav = siteNavValue;
+    // this._siteNav = siteNavValue;
     this._isEnabled = isEnabledValue;
   }
 
@@ -69,13 +69,13 @@ class DrawerOverlay extends HTMLElement {
     return this._drawers;
   }
 
-  set navigation(value: SiteNav) {
-    this._siteNav = value;
-  }
+  // set navigation(value: SiteNav) {
+  //   this._siteNav = value;
+  // }
 
-  get navigation() {
-    return this._siteNav;
-  }
+  // get navigation() {
+  //   return this._siteNav;
+  // }
 
   set isEnabled(value: boolean) {
     this._isEnabled = value;
