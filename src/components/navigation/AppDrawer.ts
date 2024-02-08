@@ -71,6 +71,11 @@ const TPL_AppDrawer_css = /* CSS */ `
       background: var(--color-surface-500);
     }
 
+    .drawer-content {
+      width: 100%;
+      margin: 1rem;
+    }
+
     #close-button {
       display: flex;
       align-items: center;
@@ -127,6 +132,7 @@ export class AppDrawer extends HTMLElement {
   private _drawerTitle: string;
   private _drawerTitleLabel: HTMLElement;
   private _isOpen: boolean;
+  private _drawerContent: HTMLElement;
 
   constructor(drawerTitle: string = 'Drawer') {
     super();
@@ -136,6 +142,7 @@ export class AppDrawer extends HTMLElement {
     this._exitIcon = shadow.querySelector('#exit-icon')!;
     this._closeButton = shadow.querySelector('#close-button')!;
     this._drawerTitleLabel = shadow.querySelector('#drawer-title')!;
+    this._drawerContent = shadow.querySelector('.drawer-content')!;
 
     this._drawerTitle = drawerTitle;
     this._drawerTitleLabel.textContent = this._drawerTitle;
@@ -160,6 +167,14 @@ export class AppDrawer extends HTMLElement {
     this._isOpen = value;
     if (value) this.open();
     else if (!value) this.close();
+  }
+
+  get drawerContent() {
+    return this._drawerContent;
+  }
+
+  set drawerContent(value: HTMLElement) {
+    this._drawerContent.innerHTML = value.innerHTML;
   }
 
   connectedCallback() {
@@ -190,6 +205,10 @@ export class AppDrawer extends HTMLElement {
   toggle() {
     if (!this._isOpen) this.open();
     else this.close();
+  }
+
+  appendToDrawerContent(value: HTMLElement) {
+    this._drawerContent.append(value);
   }
 }
 

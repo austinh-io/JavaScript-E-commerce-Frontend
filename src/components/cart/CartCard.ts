@@ -2,16 +2,19 @@ const TPL_CartCard = document.createElement('template');
 
 const TPL_CartCard_css = /* CSS */ `
 <style>
+
+    :host {
+        overflow: hidden;
+        border-radius: 4px;
+
+    }
     .container {
         position: relative;
 
-        width: 26rem;
+        width: 100%;
         height: 5rem;
 
-        border-radius: 24px;
         padding: 1.2rem;
-
-        overflow: hidden;
     }
 
     .container::before {
@@ -23,7 +26,7 @@ const TPL_CartCard_css = /* CSS */ `
         height: 100%;
         z-index: -1;
         opacity: 0.4;
-        background: var(--color-surface-600);
+        background: var(--color-surface-400);
     }
 
     .cart-card-image-container {

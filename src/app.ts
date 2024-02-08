@@ -3,13 +3,33 @@ import { currentTheme } from './utils/themeManager';
 import AppBar from './components/navigation/AppBar.ts';
 import { SiteNav } from './components/navigation/SiteNav.ts';
 import { createButton } from './utils/elementCreator.ts';
+import CartMenu from './components/cart/CartMenu.ts';
+import CartCard from './components/cart/CartCard.ts';
 
 export const app = document.createElement('div');
 export const appHTML = document.createElement('template');
 
 const navDrawer = new AppDrawer('Navigation');
-
 const cartDrawer = new AppDrawer('Cart');
+const cartMenu = new CartMenu();
+cartDrawer.appendToDrawerContent(cartMenu);
+const cartItem1 = new CartCard();
+const cartItem2 = new CartCard();
+const cartItem3 = new CartCard();
+const cartItem4 = new CartCard();
+
+function appendCartItems() {
+  const timer = [2000, 4000, 6000, 8000];
+  const cartItems = [cartItem1, cartItem2, cartItem3, cartItem4];
+
+  for (let i = 0; i < timer.length; i++) {
+    setTimeout(() => {
+      cartMenu.appendToCart(cartItems[i]);
+    }, timer[i]);
+  }
+}
+
+appendCartItems();
 
 const appDrawers: { [key: string]: AppDrawer } = {
   navigation: navDrawer,
