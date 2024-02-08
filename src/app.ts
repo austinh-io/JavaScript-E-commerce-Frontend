@@ -69,6 +69,7 @@ appHTML.innerHTML = /* HTML */ `
     </div>
 
     <light-toggle></light-toggle>
+    <cart-menu></cart-menu>
   </div>
 `;
 
