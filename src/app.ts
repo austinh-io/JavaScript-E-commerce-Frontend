@@ -1,8 +1,9 @@
-import AppDrawer from './components/overscreen_menus/AppDrawer.ts';
 import { currentTheme } from './utils/themeManager';
+import { createButton } from './utils/elementCreator.ts';
+import { OverlayMediator } from './utils/overlayMediator.ts';
+import AppDrawer from './components/overscreen_menus/AppDrawer.ts';
 import AppBar from './components/navigation/AppBar.ts';
 import { SiteNav } from './components/navigation/SiteNav.ts';
-import { createButton } from './utils/elementCreator.ts';
 import CartMenu from './components/cart/CartMenu.ts';
 import CartCard from './components/cart/CartCard.ts';
 import AppOverlay from './components/overscreen_menus/AppOverlay.ts';
@@ -26,6 +27,8 @@ drawers.cart.appendToDrawerContent(cartMenu);
 
 app.append(appBar);
 app.append(drawerOverlay);
+
+const mediator = new OverlayMediator(drawers, drawerOverlay);
 
 for (const drawer in drawers) {
   app.append(drawers[drawer]);
