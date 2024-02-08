@@ -19,6 +19,18 @@ const TPL_AppBar_css = /* CSS */ `
       width: 100%;
     }
 
+    :host::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.6;
+      background: var(--color-surface-700);
+    }
+
     .app-bar {  
         display: flex;
         align-items: center;
@@ -29,7 +41,6 @@ const TPL_AppBar_css = /* CSS */ `
   
         padding-inline: 1rem;
   
-        background-color: var(--color-surface-700);
       }
 </style>
 `;
@@ -42,23 +53,11 @@ TPL_AppBar.innerHTML = /* HTML */ `
 `;
 
 class AppBar extends HTMLElement {
-  private _appBar: HTMLElement;
-  private _siteNav: Element;
-  //   private _sideDrawer: HTMLElement;
-
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     const clone = TPL_AppBar.content.cloneNode(true);
     shadow.append(clone);
-
-    this._siteNav = document.createElement('site-nav');
-    // this._sideDrawer = document.createElement('app-drawer');
-
-    this._appBar = shadow.querySelector('.app-bar')!;
-
-    // this._appBar.append(this._siteNav);
-    // this._appBar.append(this._sideDrawer);
   }
 
   connectedCallback() {}
