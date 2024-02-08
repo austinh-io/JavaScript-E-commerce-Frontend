@@ -10,44 +10,26 @@ import DrawerOverlay from './components/drawers/DrawerOverlay.ts';
 export const app = document.createElement('div');
 export const appHTML = document.createElement('template');
 
-const navDrawer = new AppDrawer('Navigation');
-const cartDrawer = new AppDrawer('Cart');
-const appDrawers: { [key: string]: AppDrawer } = {
-  navigation: navDrawer,
-  cart: cartDrawer,
+const drawers: { [key: string]: AppDrawer } = {
+  navigation: new AppDrawer('Navigation'),
+  cart: new AppDrawer('Cart'),
 };
-const cartMenu = new CartMenu();
-const overlay = new DrawerOverlay(appDrawers);
-
-const cartItem1 = new CartCard();
-const cartItem2 = new CartCard();
-const cartItem3 = new CartCard();
-const cartItem4 = new CartCard();
-
-function appendCartItems() {
-  const timer = [2000, 4000, 6000, 8000];
-  const cartItems = [cartItem1, cartItem2, cartItem3, cartItem4];
-
-  for (let i = 0; i < timer.length; i++) {
-    setTimeout(() => {
-      cartMenu.appendToCart(cartItems[i]);
-    }, timer[i]);
-  }
-}
-
-for (const drawer in appDrawers) {
-  app.append(appDrawers[drawer]);
-}
+const drawerOverlay = new DrawerOverlay(drawers);
 
 const appBar = new AppBar();
-const siteNav = new SiteNav(appDrawers, overlay);
-
+const siteNav = new SiteNav(drawers, drawerOverlay);
 appBar.append(siteNav);
-app.append(appBar);
-cartDrawer.appendToDrawerContent(cartMenu);
-app.append(overlay);
 
-appendCartItems();
+const cartMenu = new CartMenu();
+
+drawers.cart.appendToDrawerContent(cartMenu);
+
+app.append(appBar);
+app.append(drawerOverlay);
+
+for (const drawer in drawers) {
+  app.append(drawers[drawer]);
+}
 
 appHTML.innerHTML = /* HTML */ `
   <div>
@@ -95,25 +77,39 @@ appHTML.innerHTML = /* HTML */ `
   </div>
 `;
 
-const buttonToggleCart = createButton(
-  'Toggle Cart',
-  () => cartDrawer.toggle(),
-  'primary'
-);
+function initTesting() {
+  const buttonToggleCart = createButton(
+    'Toggle Cart',
+    () => drawers.cart.toggle(),
+    'primary'
+  );
 
-const buttonToggleNav = createButton(
-  'Toggle Nav',
-  () => navDrawer.toggle(),
-  'secondary'
-);
+  const buttonToggleNav = createButton(
+    'Toggle Nav',
+    () => drawers.navigation.toggle(),
+    'secondary'
+  );
 
-app.appendChild(buttonToggleCart);
-app.appendChild(buttonToggleNav);
+  app.append(buttonToggleCart);
+  app.append(buttonToggleNav);
 
-document
-  .querySelector('#open-nav')
-  ?.addEventListener('click', () => navDrawer.toggle());
+  function appendCartItems() {
+    const cartItem1 = new CartCard();
+    const cartItem2 = new CartCard();
+    const cartItem3 = new CartCard();
+    const cartItem4 = new CartCard();
 
-document
-  .querySelector('#open-cart')
-  ?.addEventListener('click', () => cartDrawer.toggle());
+    const timer = [2000, 4000, 6000, 8000];
+    const cartItems = [cartItem1, cartItem2, cartItem3, cartItem4];
+
+    for (let i = 0; i < timer.length; i++) {
+      setTimeout(() => {
+        cartMenu.appendToCart(cartItems[i]);
+      }, timer[i]);
+    }
+  }
+
+  appendCartItems();
+}
+
+initTesting();
