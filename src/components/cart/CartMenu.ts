@@ -39,7 +39,6 @@ class CartMenu extends HTMLElement {
   connectedCallback() {}
 
   appendToCart(value: HTMLElement) {
-    console.log('Appended!');
     this._container.append(value);
   }
 }

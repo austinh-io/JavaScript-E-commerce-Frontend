@@ -208,7 +208,6 @@ export class AppDrawer extends HTMLElement {
   }
 
   appendToDrawerContent(value: HTMLElement) {
-    console.log('Appended!');
     this._drawerContent.append(value);
   }
 }
