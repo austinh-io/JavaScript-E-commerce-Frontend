@@ -171,7 +171,6 @@ export class SiteNav extends HTMLElement {
   }
 
   openOverlay() {
-    console.log('Overlay Opened');
     this._overlay.enableOverlay();
   }
 }

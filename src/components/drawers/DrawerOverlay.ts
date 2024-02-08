@@ -86,9 +86,9 @@ class DrawerOverlay extends HTMLElement {
   }
 
   connectedCallback() {
-    this.enableOverlay();
+    this.disableOverlay();
     this._overlay.addEventListener('click', () => {
-      this.disableOverlay();
+      this.close();
     });
   }
 
@@ -106,11 +106,26 @@ class DrawerOverlay extends HTMLElement {
     this._isEnabled = false;
   }
 
+  closeDrawers() {
+    for (const drawer in this._drawers) {
+      this._drawers[drawer].close();
+    }
+  }
+
   toggleOverlay() {
-    if (this._isEnabled) this.disableOverlay();
-    else this.enableOverlay;
+    if (this._isEnabled) this.close();
+    else this.open();
 
     this._isEnabled = !this._isEnabled;
+  }
+
+  open() {
+    this.enableOverlay();
+  }
+
+  close() {
+    this.disableOverlay();
+    this.closeDrawers();
   }
 }
 
