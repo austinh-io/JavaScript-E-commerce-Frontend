@@ -12,7 +12,6 @@ export const appHTML = document.createElement('template');
 const navDrawer = new AppDrawer('Navigation');
 const cartDrawer = new AppDrawer('Cart');
 const cartMenu = new CartMenu();
-cartDrawer.appendToDrawerContent(cartMenu);
 
 const cartItem1 = new CartCard();
 const cartItem2 = new CartCard();
@@ -35,8 +34,8 @@ const appDrawers: { [key: string]: AppDrawer } = {
   cart: cartDrawer,
 };
 
-for (const property in appDrawers) {
-  app.append(appDrawers[property]);
+for (const drawer in appDrawers) {
+  app.append(appDrawers[drawer]);
 }
 
 const appBar = new AppBar();
@@ -44,6 +43,9 @@ const siteNav = new SiteNav(appDrawers);
 
 appBar.append(siteNav);
 app.append(appBar);
+cartDrawer.appendToDrawerContent(cartMenu);
+
+appendCartItems();
 
 appHTML.innerHTML = /* HTML */ `
   <div>
@@ -90,10 +92,6 @@ appHTML.innerHTML = /* HTML */ `
     <light-toggle></light-toggle>
   </div>
 `;
-
-appendCartItems();
-
-app.append(cartMenu);
 
 const buttonToggleCart = createButton(
   'Toggle Cart',
