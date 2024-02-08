@@ -1,5 +1,5 @@
 import { currentTheme } from '../../utils/themeManager';
-import AppDrawer from './AppDrawer';
+import AppDrawer from '../drawers/AppDrawer';
 
 const TPL_SiteNav = document.createElement('template');
 

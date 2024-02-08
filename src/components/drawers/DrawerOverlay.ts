@@ -1,3 +1,6 @@
+import SiteNav from '../navigation/SiteNav';
+import AppDrawer from './AppDrawer';
+
 let overlayOpacity: number;
 const overlayOpacityEnabledValue = 0.8;
 const overlayOpacityDisabledValue = 0;
@@ -38,14 +41,48 @@ TPL_DrawerOverlay.innerHTML = /* HTML */ `
 
 class DrawerOverlay extends HTMLElement {
   private _overlay: HTMLElement;
+  private _drawers: { [key: string]: AppDrawer };
+  private _siteNav: SiteNav;
+  private _isEnabled: boolean;
 
-  constructor() {
+  constructor(
+    drawersValue: { [key: string]: AppDrawer },
+    siteNavValue: SiteNav,
+    isEnabledValue: boolean = false
+  ) {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     const clone = TPL_DrawerOverlay.content.cloneNode(true);
     shadow.append(clone);
 
     this._overlay = shadow.querySelector('.overlay')!;
+    this._drawers = { ...drawersValue };
+    this._siteNav = siteNavValue;
+    this._isEnabled = isEnabledValue;
+  }
+
+  set drawers(value: { [key: string]: AppDrawer }) {
+    this._drawers = { ...value };
+  }
+
+  get drawers() {
+    return this._drawers;
+  }
+
+  set navigation(value: SiteNav) {
+    this._siteNav = value;
+  }
+
+  get navigation() {
+    return this._siteNav;
+  }
+
+  set isEnabled(value: boolean) {
+    this._isEnabled = value;
+  }
+
+  get isEnabled() {
+    return this._isEnabled;
   }
 
   connectedCallback() {
@@ -59,12 +96,21 @@ class DrawerOverlay extends HTMLElement {
     this._overlay.style.opacity = String(overlayOpacityEnabledValue);
     this._overlay.style.pointerEvents = 'auto';
     document.querySelector('body')!.style.overflow = 'hidden';
+    this._isEnabled = true;
   }
 
   disableOverlay() {
     this._overlay.style.opacity = String(overlayOpacityDisabledValue);
     this._overlay.style.pointerEvents = 'none';
     document.querySelector('body')!.style.overflow = 'auto';
+    this._isEnabled = false;
+  }
+
+  toggleOverlay() {
+    if (this._isEnabled) this.disableOverlay();
+    else this.enableOverlay;
+
+    this._isEnabled = !this._isEnabled;
   }
 }
 

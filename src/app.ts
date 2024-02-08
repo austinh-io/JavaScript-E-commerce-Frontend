@@ -1,10 +1,11 @@
-import AppDrawer from './components/navigation/AppDrawer';
+import AppDrawer from './components/drawers/AppDrawer.ts';
 import { currentTheme } from './utils/themeManager';
 import AppBar from './components/navigation/AppBar.ts';
 import { SiteNav } from './components/navigation/SiteNav.ts';
 import { createButton } from './utils/elementCreator.ts';
 import CartMenu from './components/cart/CartMenu.ts';
 import CartCard from './components/cart/CartCard.ts';
+import DrawerOverlay from './components/drawers/DrawerOverlay.ts';
 
 export const app = document.createElement('div');
 export const appHTML = document.createElement('template');
@@ -12,6 +13,7 @@ export const appHTML = document.createElement('template');
 const navDrawer = new AppDrawer('Navigation');
 const cartDrawer = new AppDrawer('Cart');
 const cartMenu = new CartMenu();
+const overlay = new DrawerOverlay();
 
 const cartItem1 = new CartCard();
 const cartItem2 = new CartCard();
@@ -44,6 +46,7 @@ const siteNav = new SiteNav(appDrawers);
 appBar.append(siteNav);
 app.append(appBar);
 cartDrawer.appendToDrawerContent(cartMenu);
+app.append(overlay);
 
 appendCartItems();
 

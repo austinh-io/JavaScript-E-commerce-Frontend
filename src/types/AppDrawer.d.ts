@@ -1,4 +1,4 @@
-import AppDrawer from '../components/navigation/AppDrawer';
+import AppDrawer from '../components/drawers/AppDrawer';
 
 declare global {
   interface HTMLElementTagNameMap {
