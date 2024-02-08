@@ -1,5 +1,6 @@
 import { currentTheme } from '../../utils/themeManager';
 import AppDrawer from '../drawers/AppDrawer';
+import DrawerOverlay from '../drawers/DrawerOverlay';
 
 const TPL_SiteNav = document.createElement('template');
 
@@ -115,8 +116,12 @@ export class SiteNav extends HTMLElement {
   private _cartMenuButton: HTMLElement;
   private _navMenuButton: HTMLElement;
   private _drawers: { [key: string]: AppDrawer };
+  private _overlay: DrawerOverlay;
 
-  constructor(drawersValue: { [key: string]: AppDrawer }) {
+  constructor(
+    drawersValue: { [key: string]: AppDrawer },
+    overlayValue: DrawerOverlay
+  ) {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     const clone = TPL_SiteNav.content.cloneNode(true);
@@ -126,6 +131,7 @@ export class SiteNav extends HTMLElement {
     this._navMenuButton = shadow.querySelector('#btn-nav')!;
 
     this._drawers = { ...drawersValue };
+    this._overlay = overlayValue;
   }
 
   set drawers(value: { [key: string]: AppDrawer }) {
@@ -145,10 +151,12 @@ export class SiteNav extends HTMLElement {
 
     this._cartMenuButton.addEventListener('click', () => {
       this._drawers.cart.open();
+      this.openOverlay();
     });
 
     this._navMenuButton.addEventListener('click', () => {
       this._drawers.navigation.open();
+      this.openOverlay();
     });
   }
 
@@ -160,6 +168,11 @@ export class SiteNav extends HTMLElement {
           currentTheme.theme.properties['--font-color-base']
         );
     });
+  }
+
+  openOverlay() {
+    console.log('Overlay Opened');
+    this._overlay.enableOverlay();
   }
 }
 

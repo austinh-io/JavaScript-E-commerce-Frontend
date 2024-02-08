@@ -12,8 +12,12 @@ export const appHTML = document.createElement('template');
 
 const navDrawer = new AppDrawer('Navigation');
 const cartDrawer = new AppDrawer('Cart');
+const appDrawers: { [key: string]: AppDrawer } = {
+  navigation: navDrawer,
+  cart: cartDrawer,
+};
 const cartMenu = new CartMenu();
-const overlay = new DrawerOverlay();
+const overlay = new DrawerOverlay(appDrawers);
 
 const cartItem1 = new CartCard();
 const cartItem2 = new CartCard();
@@ -31,17 +35,12 @@ function appendCartItems() {
   }
 }
 
-const appDrawers: { [key: string]: AppDrawer } = {
-  navigation: navDrawer,
-  cart: cartDrawer,
-};
-
 for (const drawer in appDrawers) {
   app.append(appDrawers[drawer]);
 }
 
 const appBar = new AppBar();
-const siteNav = new SiteNav(appDrawers);
+const siteNav = new SiteNav(appDrawers, overlay);
 
 appBar.append(siteNav);
 app.append(appBar);
