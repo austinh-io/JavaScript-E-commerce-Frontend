@@ -1,2 +1,2 @@
-import './CartCard';
-import './CartMenu';
+import './CartCard.ts';
+import './CartMenu.ts';

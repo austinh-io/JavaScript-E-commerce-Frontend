@@ -1,6 +1,6 @@
 import { currentTheme } from '../../utils/themeManager';
-import AppDrawer from '../drawers/AppDrawer';
-import DrawerOverlay from '../drawers/DrawerOverlay';
+import AppDrawer from '../overscreen_menus/AppDrawer';
+import AppOverlay from '../overscreen_menus/AppOverlay';
 
 const TPL_SiteNav = document.createElement('template');
 
@@ -116,11 +116,11 @@ export class SiteNav extends HTMLElement {
   private _cartMenuButton: HTMLElement;
   private _navMenuButton: HTMLElement;
   private _drawers: { [key: string]: AppDrawer };
-  private _overlay: DrawerOverlay;
+  private _overlay: AppOverlay;
 
   constructor(
     drawersValue: { [key: string]: AppDrawer },
-    overlayValue: DrawerOverlay
+    overlayValue: AppOverlay
   ) {
     super();
     const shadow = this.attachShadow({ mode: 'open' });

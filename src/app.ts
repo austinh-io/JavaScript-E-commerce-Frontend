@@ -1,11 +1,11 @@
-import AppDrawer from './components/drawers/AppDrawer.ts';
+import AppDrawer from './components/overscreen_menus/AppDrawer.ts';
 import { currentTheme } from './utils/themeManager';
 import AppBar from './components/navigation/AppBar.ts';
 import { SiteNav } from './components/navigation/SiteNav.ts';
 import { createButton } from './utils/elementCreator.ts';
 import CartMenu from './components/cart/CartMenu.ts';
 import CartCard from './components/cart/CartCard.ts';
-import DrawerOverlay from './components/drawers/DrawerOverlay.ts';
+import AppOverlay from './components/overscreen_menus/AppOverlay.ts';
 
 export const app = document.createElement('div');
 export const appHTML = document.createElement('template');
@@ -14,7 +14,7 @@ const drawers: { [key: string]: AppDrawer } = {
   navigation: new AppDrawer('Navigation'),
   cart: new AppDrawer('Cart'),
 };
-const drawerOverlay = new DrawerOverlay(drawers);
+const drawerOverlay = new AppOverlay(drawers);
 
 const appBar = new AppBar();
 const siteNav = new SiteNav(drawers, drawerOverlay);

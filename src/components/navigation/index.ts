@@ -1,3 +1,3 @@
 import './AppBar.ts';
-import '../drawers/AppDrawer.ts';
-import '../drawers/DrawerOverlay.ts';
+import '../overscreen_menus/AppDrawer.ts';
+import '../overscreen_menus/AppOverlay.ts';

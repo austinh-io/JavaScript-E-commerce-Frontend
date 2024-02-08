@@ -1,13 +1,11 @@
-import SiteNav from '../navigation/SiteNav';
 import AppDrawer from './AppDrawer';
 
-let overlayOpacity: number;
 const overlayOpacityEnabledValue = 0.8;
 const overlayOpacityDisabledValue = 0;
 
-const TPL_DrawerOverlay = document.createElement('template');
+const TPL_AppOverlay = document.createElement('template');
 
-const TPL_DrawerOverlay_css = /* CSS */ `
+const TPL_AppOverlay_css = /* CSS */ `
 <style>
     :host {
       z-index: 1000;
@@ -33,13 +31,13 @@ const TPL_DrawerOverlay_css = /* CSS */ `
 </style>
 `;
 
-TPL_DrawerOverlay.innerHTML = /* HTML */ `
-  ${TPL_DrawerOverlay_css}
+TPL_AppOverlay.innerHTML = /* HTML */ `
+  ${TPL_AppOverlay_css}
 
   <div class="overlay"></div>
 `;
 
-class DrawerOverlay extends HTMLElement {
+class AppOverlay extends HTMLElement {
   private _overlay: HTMLElement;
   private _drawers: { [key: string]: AppDrawer };
   // private _siteNav: SiteNav;
@@ -52,7 +50,7 @@ class DrawerOverlay extends HTMLElement {
   ) {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
-    const clone = TPL_DrawerOverlay.content.cloneNode(true);
+    const clone = TPL_AppOverlay.content.cloneNode(true);
     shadow.append(clone);
 
     this._overlay = shadow.querySelector('.overlay')!;
@@ -129,6 +127,6 @@ class DrawerOverlay extends HTMLElement {
   }
 }
 
-window.customElements.define('drawer-overlay', DrawerOverlay);
+window.customElements.define('drawer-overlay', AppOverlay);
 
-export default DrawerOverlay;
+export default AppOverlay;
