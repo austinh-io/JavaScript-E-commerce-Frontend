@@ -13,6 +13,7 @@ const navDrawer = new AppDrawer('Navigation');
 const cartDrawer = new AppDrawer('Cart');
 const cartMenu = new CartMenu();
 cartDrawer.appendToDrawerContent(cartMenu);
+
 const cartItem1 = new CartCard();
 const cartItem2 = new CartCard();
 const cartItem3 = new CartCard();
@@ -28,8 +29,6 @@ function appendCartItems() {
     }, timer[i]);
   }
 }
-
-appendCartItems();
 
 const appDrawers: { [key: string]: AppDrawer } = {
   navigation: navDrawer,
@@ -89,9 +88,12 @@ appHTML.innerHTML = /* HTML */ `
     </div>
 
     <light-toggle></light-toggle>
-    <cart-menu></cart-menu>
   </div>
 `;
+
+appendCartItems();
+
+app.append(cartMenu);
 
 const buttonToggleCart = createButton(
   'Toggle Cart',
