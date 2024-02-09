@@ -1,3 +1,4 @@
+import { TestClass } from '../../utils/testClass';
 import AppDrawer from './AppDrawer';
 
 const TPL_AppOverlay = document.createElement('template');
@@ -53,6 +54,8 @@ class AppOverlay extends HTMLElement {
     this._overlay = shadow.querySelector('.overlay')!;
     this._drawers = { ...drawersValue };
     this._isEnabled = isEnabledValue;
+
+    TestClass.add('overlay', this);
   }
 
   set drawers(value: { [key: string]: AppDrawer }) {

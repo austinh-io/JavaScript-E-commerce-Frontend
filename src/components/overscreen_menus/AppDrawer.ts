@@ -1,3 +1,4 @@
+import { TestClass } from '../../utils/testClass';
 import { currentTheme } from '../../utils/themeManager';
 
 const TPL_AppDrawer = document.createElement('template');
@@ -148,6 +149,7 @@ export class AppDrawer extends HTMLElement {
     this._drawerTitleLabel.textContent = this._drawerTitle;
 
     this._isOpen = false;
+    TestClass.add(`${this._drawerTitle.toLowerCase()}Drawer`, this);
   }
 
   get drawerTitle() {

@@ -7,6 +7,7 @@ import { SiteNav } from './components/navigation/SiteNav.ts';
 import CartMenu from './components/cart/CartMenu.ts';
 import CartCard from './components/cart/CartCard.ts';
 import AppOverlay from './components/overscreen_menus/AppOverlay.ts';
+import { TestClass } from './utils/testClass.ts';
 
 export const app = document.createElement('div');
 export const appHTML = document.createElement('template');
@@ -16,6 +17,11 @@ const drawers: { [key: string]: AppDrawer } = {
   cart: new AppDrawer('Cart'),
 };
 const drawerOverlay = new AppOverlay(drawers);
+
+// TestClass.add('bingus', 'amogus');
+// TestClass.add('navDrawer', drawers['navigation']);
+
+console.log(TestClass.getAll());
 
 const appBar = new AppBar();
 const siteNav = new SiteNav(drawers, drawerOverlay);
