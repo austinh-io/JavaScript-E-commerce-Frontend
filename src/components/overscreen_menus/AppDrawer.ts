@@ -1,5 +1,5 @@
-import { DrawerOverlayManager } from '../../utils/drawerOverlayManager';
-import { currentTheme } from '../../utils/themeManager';
+import { DrawerOverlayManager } from '../../utils/drawerOverlayManager.ts';
+import { currentTheme } from '../../utils/themeManager.ts';
 
 const TPL_AppDrawer = document.createElement('template');
 
