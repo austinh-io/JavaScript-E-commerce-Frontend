@@ -1,13 +1,11 @@
-import { currentTheme } from './utils/themeManager';
-import { createButton } from './utils/elementCreator.ts';
-import { OverlayMediator } from './utils/overlayMediator.ts';
 import AppDrawer from './components/overscreen_menus/AppDrawer.ts';
+import AppOverlay from './components/overscreen_menus/AppOverlay.ts';
+import SiteNav from './components/navigation/SiteNav.ts';
+import { createButton } from './utils/elementCreator.ts';
 import AppBar from './components/navigation/AppBar.ts';
-import { SiteNav } from './components/navigation/SiteNav.ts';
 import CartMenu from './components/cart/CartMenu.ts';
 import CartCard from './components/cart/CartCard.ts';
-import AppOverlay from './components/overscreen_menus/AppOverlay.ts';
-import { TestClass } from './utils/testClass.ts';
+import { currentTheme } from './utils/themeManager.ts';
 
 export const app = document.createElement('div');
 export const appHTML = document.createElement('template');
@@ -17,11 +15,6 @@ const drawers: { [key: string]: AppDrawer } = {
   cart: new AppDrawer('Cart'),
 };
 const drawerOverlay = new AppOverlay(drawers);
-
-// TestClass.add('bingus', 'amogus');
-// TestClass.add('navDrawer', drawers['navigation']);
-
-console.log(TestClass.getAll());
 
 const appBar = new AppBar();
 const siteNav = new SiteNav(drawers, drawerOverlay);
@@ -33,8 +26,6 @@ drawers.cart.appendToDrawerContent(cartMenu);
 
 app.append(appBar);
 app.append(drawerOverlay);
-
-const mediator = new OverlayMediator(drawers, drawerOverlay);
 
 for (const drawer in drawers) {
   app.append(drawers[drawer]);

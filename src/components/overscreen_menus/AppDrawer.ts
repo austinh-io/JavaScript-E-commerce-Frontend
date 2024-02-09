@@ -1,4 +1,4 @@
-import { TestClass } from '../../utils/testClass';
+import { DrawerOverlayManager } from '../../utils/drawerOverlayManager';
 import { currentTheme } from '../../utils/themeManager';
 
 const TPL_AppDrawer = document.createElement('template');
@@ -134,6 +134,7 @@ export class AppDrawer extends HTMLElement {
   private _drawerTitleLabel: HTMLElement;
   private _isOpen: boolean;
   private _drawerContent: HTMLElement;
+  private _name: string = '';
 
   constructor(drawerTitle: string = 'Drawer') {
     super();
@@ -147,9 +148,10 @@ export class AppDrawer extends HTMLElement {
 
     this._drawerTitle = drawerTitle;
     this._drawerTitleLabel.textContent = this._drawerTitle;
+    this._name = `${this._drawerTitle.toLowerCase()}Drawer`;
 
     this._isOpen = false;
-    TestClass.add(`${this._drawerTitle.toLowerCase()}Drawer`, this);
+    DrawerOverlayManager.addDrawer(this._name, this);
   }
 
   get drawerTitle() {
@@ -197,11 +199,14 @@ export class AppDrawer extends HTMLElement {
   close() {
     this.style.transform = 'translateX(100%)';
     this._isOpen = false;
+    DrawerOverlayManager.removeOpenDrawer(this._name);
+    DrawerOverlayManager.closeOverlay('overlay');
   }
 
   open() {
     this.style.transform = 'translateX(0)';
     this._isOpen = true;
+    DrawerOverlayManager.trackOpenDrawer(this._name);
   }
 
   toggle() {

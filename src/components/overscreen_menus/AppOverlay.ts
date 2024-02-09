@@ -1,4 +1,4 @@
-import { TestClass } from '../../utils/testClass';
+import { DrawerOverlayManager } from '../../utils/drawerOverlayManager';
 import AppDrawer from './AppDrawer';
 
 const TPL_AppOverlay = document.createElement('template');
@@ -55,7 +55,7 @@ class AppOverlay extends HTMLElement {
     this._drawers = { ...drawersValue };
     this._isEnabled = isEnabledValue;
 
-    TestClass.add('overlay', this);
+    DrawerOverlayManager.addOverlay('overlay', this);
   }
 
   set drawers(value: { [key: string]: AppDrawer }) {
@@ -77,7 +77,7 @@ class AppOverlay extends HTMLElement {
   connectedCallback() {
     this.disableOverlay();
     this._overlay.addEventListener('click', () => {
-      this.close();
+      this.closeDrawers();
     });
   }
 
@@ -114,7 +114,6 @@ class AppOverlay extends HTMLElement {
 
   close() {
     this.disableOverlay();
-    this.closeDrawers();
   }
 }
 
