@@ -50,6 +50,10 @@ export class DrawerOverlayManager {
     return false;
   }
 
+  static openOverlay(key: string): void {
+    this._overlay[key].open();
+  }
+
   static closeDrawer(drawerName: string, overlay: string) {
     this._drawers[drawerName].close();
     this._overlay[overlay].close();

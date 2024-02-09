@@ -210,8 +210,10 @@ export class AppDrawer extends HTMLElement {
   }
 
   toggle() {
-    if (!this._isOpen) this.open();
-    else this.close();
+    if (!this._isOpen) {
+      this.open();
+      DrawerOverlayManager.openOverlay('overlay');
+    } else this.close();
   }
 
   appendToDrawerContent(value: HTMLElement) {
