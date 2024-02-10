@@ -1,8 +1,11 @@
+> [!IMPORTANT]
+> At this point (2024-02-10) I am completely redoing this project using TypeScript, thus the repo name now matches what I am currently working on, as opposed to the title you see below this message. The redo is still very much a work-in-progress, however, so I am keeping this version the same until I am full done with the new version. This readme will also be totally updated once finished. To check out my progress, you can see the branch <a href="https://github.com/austinh-io/ts-e-commerce-frontend/tree/total-rework-2024" target="_blank">Here</a>.
+
 # Simple Ecommerce Frontend
 
 > An ecommerce site frontend done only in JS, CSS, and HTML.
 
-<a href="https://projects.gmni.dev/simple-ecom/" target="_blank">Demo</a>
+<a href="https://projects.austinh.io/simple-ecom/" target="_blank">Demo</a>
 
 Since this is only a front end project, I have a mockup set of data in a JSON file, and a lot of behavior that would typically be handled by a server is coded just as plain JavaScript that runs on the client.
 
