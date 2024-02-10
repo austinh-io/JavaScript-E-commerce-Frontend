@@ -17,7 +17,7 @@ const drawers: { [key: string]: AppDrawer } = {
 const drawerOverlay = new AppOverlay(drawers);
 
 const appBar = new AppBar();
-const siteNav = new SiteNav(drawers, drawerOverlay);
+const siteNav = new SiteNav();
 appBar.append(siteNav);
 
 const cartMenu = new CartMenu();

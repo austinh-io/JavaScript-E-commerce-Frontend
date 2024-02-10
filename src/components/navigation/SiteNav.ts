@@ -1,3 +1,4 @@
+import { DrawerOverlayManager } from '../../utils/drawerOverlayManager';
 import { currentTheme } from '../../utils/themeManager';
 import AppDrawer from '../overscreen_menus/AppDrawer';
 import AppOverlay from '../overscreen_menus/AppOverlay';
@@ -116,12 +117,9 @@ export class SiteNav extends HTMLElement {
   private _cartMenuButton: HTMLElement;
   private _navMenuButton: HTMLElement;
   private _drawers: { [key: string]: AppDrawer };
-  private _overlay: AppOverlay;
+  private _overlay: AppOverlay | undefined;
 
-  constructor(
-    drawersValue: { [key: string]: AppDrawer },
-    overlayValue: AppOverlay
-  ) {
+  constructor() {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     const clone = TPL_SiteNav.content.cloneNode(true);
@@ -130,8 +128,8 @@ export class SiteNav extends HTMLElement {
     this._cartMenuButton = shadow.querySelector('#btn-cart')!;
     this._navMenuButton = shadow.querySelector('#btn-nav')!;
 
-    this._drawers = { ...drawersValue };
-    this._overlay = overlayValue;
+    this._drawers = DrawerOverlayManager.getAllDrawers();
+    this._overlay = DrawerOverlayManager.getOverlay();
   }
 
   set drawers(value: { [key: string]: AppDrawer }) {
@@ -150,12 +148,12 @@ export class SiteNav extends HTMLElement {
     this.updateIconColor();
 
     this._cartMenuButton.addEventListener('click', () => {
-      this._drawers.cart.open();
+      this._drawers.cartDrawer.open();
       this.openOverlay();
     });
 
     this._navMenuButton.addEventListener('click', () => {
-      this._drawers.navigation.open();
+      this._drawers.navigationDrawer.open();
       this.openOverlay();
     });
   }
