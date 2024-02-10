@@ -1,5 +1,5 @@
-import { DrawerOverlayManager } from '../../utils/drawerOverlayManager';
-import { currentTheme } from '../../utils/themeManager';
+import { DrawerOverlayManager } from '../../utils/ui/drawerOverlayManager';
+import { currentTheme } from '../../utils/ui/themeManager';
 import AppDrawer from '../overscreen_menus/AppDrawer';
 import AppOverlay from '../overscreen_menus/AppOverlay';
 

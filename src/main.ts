@@ -3,7 +3,7 @@ import './imports.ts';
 import {
   initLightMode,
   initIconColorUpdateListener,
-} from './utils/themeManager.ts';
+} from './utils/ui/themeManager.ts';
 
 app.id = 'app';
 app.append(appHTML.content.cloneNode(true));

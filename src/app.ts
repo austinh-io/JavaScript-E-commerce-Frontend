@@ -1,11 +1,11 @@
 import AppDrawer from './components/overscreen_menus/AppDrawer.ts';
 import AppOverlay from './components/overscreen_menus/AppOverlay.ts';
 import SiteNav from './components/navigation/SiteNav.ts';
-import { createButton } from './utils/elementCreator.ts';
+import { createButton } from './utils/ui/elementCreator.ts';
 import AppBar from './components/navigation/AppBar.ts';
 import CartMenu from './components/cart/CartMenu.ts';
 import CartCard from './components/cart/CartCard.ts';
-import { currentTheme } from './utils/themeManager.ts';
+import { currentTheme } from './utils/ui/themeManager.ts';
 
 export const app = document.createElement('div');
 export const appHTML = document.createElement('template');

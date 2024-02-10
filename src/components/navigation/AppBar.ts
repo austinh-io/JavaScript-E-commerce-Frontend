@@ -1,4 +1,4 @@
-import { currentTheme } from '../../utils/themeManager';
+import { currentTheme } from '../../utils/ui/themeManager';
 
 const TPL_AppBar = document.createElement('template');
 

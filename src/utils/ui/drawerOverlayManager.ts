@@ -1,5 +1,5 @@
-import AppDrawer from '../components/overscreen_menus/AppDrawer';
-import AppOverlay from '../components/overscreen_menus/AppOverlay';
+import AppDrawer from '../../components/overscreen_menus/AppDrawer';
+import AppOverlay from '../../components/overscreen_menus/AppOverlay';
 
 export class DrawerOverlayManager {
   private static _drawers: Record<string, AppDrawer> = {};

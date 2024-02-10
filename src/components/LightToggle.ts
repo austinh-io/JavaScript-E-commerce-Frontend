@@ -2,7 +2,7 @@ import {
   userPreferredLightMode,
   isDarkMode,
   currentTheme,
-} from '../utils/themeManager';
+} from '../utils/ui/themeManager';
 
 const TPL_LightToggle = document.createElement('template');
 

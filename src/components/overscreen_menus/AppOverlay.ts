@@ -1,4 +1,4 @@
-import { DrawerOverlayManager } from '../../utils/drawerOverlayManager';
+import { DrawerOverlayManager } from '../../utils/ui/drawerOverlayManager';
 import AppDrawer from './AppDrawer';
 
 const TPL_AppOverlay = document.createElement('template');
