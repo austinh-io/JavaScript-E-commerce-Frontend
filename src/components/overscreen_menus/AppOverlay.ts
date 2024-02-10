@@ -25,6 +25,8 @@ const TPL_AppOverlay_css = /* CSS */ `
       backdrop-filter: blur(12px);
 
       opacity: 0.8;
+
+      transition: opacity 150ms ease-in-out;
     }
 </style>
 `;
