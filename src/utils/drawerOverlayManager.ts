@@ -34,8 +34,14 @@ export class DrawerOverlayManager {
     this._overlay[key] = value;
   }
 
-  static getOverlay(key: string): AppOverlay {
-    return this._overlay[key];
+  static getOverlay(): AppOverlay | undefined {
+    const keys = Object.keys(this._overlay);
+    if (keys.length === 0) {
+      console.error('Overlay does not exist.');
+      return undefined;
+    } else {
+      return this._overlay[keys[0]];
+    }
   }
 
   static hasOverlay(key: string): boolean {
@@ -50,18 +56,30 @@ export class DrawerOverlayManager {
     return false;
   }
 
-  static openOverlay(key: string): void {
-    this._overlay[key].open();
+  static openOverlay(): void {
+    const keys = Object.keys(this._overlay);
+
+    if (keys.length === 0) {
+      console.error('Overlay does not exist.');
+    } else {
+      this._overlay[keys[0]].open();
+    }
   }
 
-  static closeDrawer(drawerName: string, overlay: string) {
+  static closeDrawer(drawerName: string) {
     this._drawers[drawerName].close();
-    this._overlay[overlay].close();
+    this.closeOverlay();
   }
 
-  static closeOverlay(overlay: string) {
+  static closeOverlay(): void {
+    const keys = Object.keys(this._overlay);
+
     if (this._openDrawers.size === 0) {
-      this._overlay[overlay].close();
+      if (keys.length === 0) {
+        console.error('Overlay does not exist.');
+      } else {
+        this._overlay[keys[0]].close();
+      }
     }
   }
 
@@ -71,5 +89,9 @@ export class DrawerOverlayManager {
 
   static removeOpenDrawer(drawerName: string) {
     this._openDrawers.delete(drawerName);
+  }
+
+  static isEmpty(obj: Object) {
+    return Object.keys(obj).length === 0;
   }
 }

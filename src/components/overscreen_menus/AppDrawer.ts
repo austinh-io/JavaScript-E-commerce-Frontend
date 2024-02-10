@@ -200,7 +200,7 @@ export class AppDrawer extends HTMLElement {
     this.style.transform = 'translateX(100%)';
     this._isOpen = false;
     DrawerOverlayManager.removeOpenDrawer(this._name);
-    DrawerOverlayManager.closeOverlay('overlay');
+    DrawerOverlayManager.closeOverlay();
   }
 
   open() {
@@ -212,7 +212,7 @@ export class AppDrawer extends HTMLElement {
   toggle() {
     if (!this._isOpen) {
       this.open();
-      DrawerOverlayManager.openOverlay('overlay');
+      DrawerOverlayManager.openOverlay();
     } else this.close();
   }
 
