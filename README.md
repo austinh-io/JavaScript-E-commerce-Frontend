@@ -1,6 +1,6 @@
 # Simple E-commerce Frontend v2
 
-> An e-commerce site frontend made only with TS and Vite
+> An e-commerce site frontend made only with TypeScript, Vite, and built-in JavaScript APIs.
 
 I have completely redone this project from the ground up, this time using TypeScript and Vite.
 
