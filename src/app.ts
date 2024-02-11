@@ -41,6 +41,12 @@ appHTML.innerHTML = /* HTML */ `
         >Home</app-button
       >
       <app-button
+        iconName="windows"
+        iconType="logo"
+        type="secondary"
+        >TEst 332</app-button
+      >
+      <app-button
         iconName="home"
         iconType="solid"
         type="tertiary"
