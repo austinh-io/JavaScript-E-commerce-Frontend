@@ -19,8 +19,7 @@
 }
 
 a.btn,
-button.btn,
-::part(btn) {
+button.btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,8 +38,7 @@ button.btn,
 }
 
 a > .btn-content,
-button > .btn-content,
-::part(btn-content) {
+button > .btn-content {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,66 +49,57 @@ button > .btn-content,
 /**** Primary ****/
 
 a.btn-primary,
-button.btn-primary,
-::part(btn-primary) {
+button.btn-primary {
   background-color: var(--color-primary-500);
   color: var(--color-on-primary);
 }
 
 a.btn-primary:hover,
-button.btn-primary:hover,
-::part(btn-primary):hover {
+button.btn-primary:hover {
   cursor: pointer;
   background-color: var(--color-primary-400);
 }
 
 button.btn-primary:active,
-a.btn-primary:active,
-::part(btn-primary):active {
+a.btn-primary:active {
   background-color: var(--color-primary-600);
 }
 
 /**** Secondary *****/
 
 a.btn-secondary,
-button.btn-secondary,
-::part(btn-secondary) {
+button.btn-secondary {
   background-color: var(--color-secondary-500);
   color: var(--color-on-secondary);
 }
 
 a.btn-secondary:hover,
-button.btn-secondary:hover,
-::part(btn-secondary):hover {
+button.btn-secondary:hover {
   cursor: pointer;
   background-color: var(--color-secondary-400);
 }
 
 button.btn-secondary:active,
-a.btn-secondary:active,
-::part(btn-secondary):active {
+a.btn-secondary:active {
   background-color: var(--color-secondary-600);
 }
 
 /**** Tertiary *****/
 
 a.btn-tertiary,
-button.btn-tertiary,
-::part(btn-tertiary) {
+button.btn-tertiary {
   background-color: var(--color-tertiary-500);
   color: var(--color-on-tertiary);
 }
 
 a.btn-tertiary:hover,
-button.btn-tertiary:hover,
-::part(btn-tertiary):hover {
+button.btn-tertiary:hover {
   cursor: pointer;
   background-color: var(--color-tertiary-400);
 }
 
 button.btn-tertiary:active,
-a.btn-tertiary:active,
-::part(btn-tertiary):active {
+a.btn-tertiary:active {
   background-color: var(--color-tertiary-600);
 }
 

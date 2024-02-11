@@ -68,11 +68,9 @@ TPL_CartCard.innerHTML = /* HTML */ `
       <p>$0.00</p>
     </div>
     <div class="grid-item">
-      <button
-        class="btn btn-primary"
-        part="btn btn-primary">
-        Remove from Cart
-      </button>
+      <app-button
+        iconType="solid"
+        iconName="trash"></app-button>
     </div>
   </div>
 `;

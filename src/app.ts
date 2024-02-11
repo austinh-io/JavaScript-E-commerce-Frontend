@@ -35,7 +35,14 @@ appHTML.innerHTML = /* HTML */ `
   <div>
     <example-component></example-component>
     <div class="btn-group">
-      <app-button>Home</app-button>
+      <app-button
+        iconName="home"
+        iconType="solid"
+        >Home</app-button
+      >
+      <app-button
+        iconName="home"
+        iconType="solid"></app-button>
       <button class="btn btn-secondary">
         <div class="btn-content">
           <box-icon
