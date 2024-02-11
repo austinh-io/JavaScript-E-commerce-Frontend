@@ -272,6 +272,7 @@ class AppButton extends HTMLElement {
         break;
       case 'iconColor':
         this.iconColor = newVal;
+        this.updateIconColor();
         break;
       case 'iconSize':
         this.iconSize = newVal;
