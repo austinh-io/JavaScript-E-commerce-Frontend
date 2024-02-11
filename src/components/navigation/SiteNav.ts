@@ -163,7 +163,7 @@ export class SiteNav extends HTMLElement {
       if (icon instanceof Element)
         icon.setAttribute(
           'color',
-          currentTheme.theme.properties['--font-color-base']
+          currentTheme.properties['--font-color-base']
         );
     });
   }

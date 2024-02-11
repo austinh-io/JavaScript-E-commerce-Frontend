@@ -192,7 +192,7 @@ export class AppDrawer extends HTMLElement {
   updateIconColor() {
     this._exitIcon.setAttribute(
       'color',
-      currentTheme.theme.properties['--color-error-500']
+      currentTheme.properties['--color-error-500']
     );
   }
 

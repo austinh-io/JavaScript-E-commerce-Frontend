@@ -177,11 +177,11 @@ class AppButton extends HTMLElement {
     if (!value) {
       this.setAttribute(
         'iconColor',
-        currentTheme.theme.properties['--color-on-primary']
+        currentTheme.properties['--color-on-primary']
       );
       this._boxicon.setAttribute(
         'color',
-        currentTheme.theme.properties['--color-on-primary']
+        currentTheme.properties['--color-on-primary']
       );
       return;
     }
@@ -311,25 +311,25 @@ class AppButton extends HTMLElement {
       case 'primary':
         this._boxicon.setAttribute(
           'color',
-          currentTheme.theme.properties['--color-on-primary']
+          currentTheme.properties['--color-on-primary']
         );
         break;
       case 'secondary':
         this._boxicon.setAttribute(
           'color',
-          currentTheme.theme.properties['--color-on-secondary']
+          currentTheme.properties['--color-on-secondary']
         );
         break;
       case 'tertiary':
         this._boxicon.setAttribute(
           'color',
-          currentTheme.theme.properties['--color-on-tertiary']
+          currentTheme.properties['--color-on-tertiary']
         );
         break;
       default:
         this._boxicon.setAttribute(
           'color',
-          currentTheme.theme.properties['--color-on-primary']
+          currentTheme.properties['--color-on-primary']
         );
         break;
     }

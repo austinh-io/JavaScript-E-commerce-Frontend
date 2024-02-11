@@ -58,9 +58,7 @@ appHTML.innerHTML = /* HTML */ `
           <box-icon
             type="logo"
             name="facebook-square"
-            color=${currentTheme.theme.properties[
-              '--color-on-secondary'
-            ]}></box-icon>
+            color=${currentTheme.properties['--color-on-secondary']}></box-icon>
           Facebook
         </div>
       </button>
@@ -70,9 +68,7 @@ appHTML.innerHTML = /* HTML */ `
           <box-icon
             type="solid"
             name="hot"
-            color=${currentTheme.theme.properties[
-              '--color-on-tertiary'
-            ]}></box-icon>
+            color=${currentTheme.properties['--color-on-tertiary']}></box-icon>
           Lorem Ipsum
         </div>
       </button>
@@ -82,9 +78,7 @@ appHTML.innerHTML = /* HTML */ `
           <box-icon
             type="solid"
             name="color"
-            color=${currentTheme.theme.properties[
-              '--color-on-primary'
-            ]}></box-icon>
+            color=${currentTheme.properties['--color-on-primary']}></box-icon>
           Lorem Ipsum
         </div>
       </button>

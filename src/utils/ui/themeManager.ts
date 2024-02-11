@@ -12,6 +12,10 @@ class ActiveTheme {
   set theme(theme: Theme) {
     this._theme = theme;
   }
+
+  get properties() {
+    return this._theme.properties;
+  }
 }
 
 export const currentTheme = new ActiveTheme(lightMode);
@@ -114,17 +118,17 @@ function setIconAttribute(iconToSet: Element) {
   if (iconContainer.classList.contains('btn-primary')) {
     iconToSet.setAttribute(
       'color',
-      currentTheme.theme.properties['--color-on-primary']
+      currentTheme.properties['--color-on-primary']
     );
   } else if (iconContainer.classList.contains('btn-secondary')) {
     iconToSet.setAttribute(
       'color',
-      currentTheme.theme.properties['--color-on-secondary']
+      currentTheme.properties['--color-on-secondary']
     );
   } else if (iconContainer.classList.contains('btn-tertiary')) {
     iconToSet.setAttribute(
       'color',
-      currentTheme.theme.properties['--color-on-tertiary']
+      currentTheme.properties['--color-on-tertiary']
     );
   }
 }

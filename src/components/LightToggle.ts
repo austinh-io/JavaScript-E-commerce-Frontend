@@ -193,7 +193,7 @@ class LightToggle extends HTMLElement {
     );
     this._toggleIcon.setAttribute(
       'color',
-      currentTheme.theme.properties['--font-color-inverse']
+      currentTheme.properties['--font-color-inverse']
     );
   }
 }
