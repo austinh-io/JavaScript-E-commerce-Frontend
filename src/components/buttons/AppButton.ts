@@ -4,14 +4,103 @@ const TPL_AppButton = document.createElement('template');
 
 const TPL_AppButton_CSS = /* CSS */ `
 <style>
-  @media (max-width: 728px) {
-    :host {
-      width: 100%;
-    }
+
+  :host {
+
+    /*** All Buttons ***/
+    --btn-height-sm: 32px;
+    --btn-height-md: 44px;
+    --btn-height-lg: 52px;
+
+    /*** Icon sizes (all) ***/
+    --icon-size-sm: 16px;
+    --icon-size-md: 20px;
+    --icon-size-lg: 24px;
+
+    /*** Buttons with only text ***/
+    --btn-text-only-padding-sm: 16px;
+    --btn-text-only-padding-md: 24px;
+    --btn-text-only-padding-lg: 32px;
+
+    /*** Buttons with icons and text ***/
+    /* padding left */
+    --btn-dual-padding-l-sm: 12px;
+    --btn-dual-padding-l-md: 20px;
+    --btn-dual-padding-l-lg: 24px;
+
+    /* padding right */
+    --btn-dual-padding-r-sm: 16px;
+    --btn-dual-padding-r-md: 24px;
+    --btn-dual-padding-r-lg: 32px;
+
+    /* padding between icon and text */
+    --btn-dual-gap-sm: 4px;
+    --btn-dual-gap-md: 8px;
+    --btn-dual-gap-lg: 8px;
   }
 
-  .hidden {
-    display: none;
+  .aspect-square {
+    aspect-ratio: 1/1;
+  }
+
+  .icon-sm {
+    height: var(--icon-size-sm);
+    width: var(--icon-size-sm);
+  }
+
+  .icon-md {
+    height: var(--icon-size-md);
+    width: var(--icon-size-md);
+  }
+
+  .icon-lg {
+    height: var(--icon-size-lg);
+    width: var(--icon-size-lg);
+  }
+
+  .btn-sm {
+    height: var(--btn-height-sm);
+    min-width: var(--btn-height-sm);
+  }
+
+  .btn-md {
+    height: var(--btn-height-md);
+    min-width: var(--btn-height-md);
+  }
+
+  .btn-lg {
+    height: var(--btn-height-lg);
+    min-width: var(--btn-height-lg);
+  }
+
+  .btn-only-text-sm {
+    padding-inline: var(--btn-text-only-padding-sm);
+  }
+
+  .btn-only-text-md {
+    padding-inline: var(--btn-text-only-padding-md);
+  }
+
+  .btn-only-text-lg {
+    padding-inline: var(--btn-text-only-padding-lg);
+  }
+
+  .btn-dual-sm: {
+    padding-left: var(--btn-dual-padding-l-sm);
+    padding-right: var(--btn-dual-padding-r-sm);
+    gap: var(--btn-dual-gap-sm);
+  }
+
+  .btn-dual-lg: {
+    padding-left: var(--btn-dual-padding-l-lg);
+    padding-right: var(--btn-dual-padding-r-lg);
+    gap: var(--btn-dual-gap-lg);
+  }
+
+  .btn-dual-lg: {
+    padding-left: var(--btn-dual-padding-l-lg);
+    padding-right: var(--btn-dual-padding-r-lg);
+    gap: var(--btn-dual-gap-lg);
   }
 
   button.btn {
@@ -19,15 +108,14 @@ const TPL_AppButton_CSS = /* CSS */ `
     align-items: center;
     justify-content: center;
 
-    border-radius: var(--rounded-button);
-
-    padding-inline: 1rem;
-    padding-block: 0.6rem;
-
-    font-size: 1.2rem;
-    font-weight: 700;
+    margin: 0;
+    padding: 0;
 
     border: none;
+    border-radius: var(--rounded-button);
+
+    font-size: 1rem;
+    font-weight: 600;
 
     transition: color 100ms ease-out, background-color 100ms ease-out;
   }
@@ -40,8 +128,6 @@ const TPL_AppButton_CSS = /* CSS */ `
     display: flex;
     align-items: center;
     justify-content: center;
-
-    margin-inline: 0.4rem;
   }
 
   /**** Primary ****/
@@ -89,6 +175,16 @@ const TPL_AppButton_CSS = /* CSS */ `
   a.btn-tertiary:active {
     background-color: var(--color-tertiary-600);
   }
+
+  @media (max-width: 728px) {
+    :host {
+      width: 100%;
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
 </style>
 `;
 
@@ -104,8 +200,8 @@ TPL_AppButton.innerHTML = /* HTML */ `
 
 class AppButton extends HTMLElement {
   private _boxicon: HTMLElement | undefined;
-  private _buttonContent: HTMLElement;
   private _button: HTMLElement;
+  private _buttonContent: HTMLElement;
 
   constructor() {
     super();
@@ -114,6 +210,7 @@ class AppButton extends HTMLElement {
     shadow.append(clone);
     this._button = shadow.querySelector('button')!;
     this._buttonContent = shadow.querySelector('.btn-content')!;
+    this._buttonText = shadow.querySelector('.btn-text')!;
   }
 
   connectedCallback() {
@@ -123,11 +220,32 @@ class AppButton extends HTMLElement {
     }
 
     this.initIcon();
+    this.initButtonSizing();
+  }
+
+  initButtonSizing() {
+    if (!this.size) {
+      this.setAttribute('size', 'md');
+      this._button.classList.add('btn-md');
+      if (this.innerText !== '' && this._boxicon) {
+        console.log(this);
+        console.log('Has text and icon');
+      } else if (this.innerText !== '') {
+        console.log(this);
+        console.log('Has no icon, just text');
+      } else if (this._boxicon) {
+        console.log(this);
+        console.log('Has no text, just icon');
+      } else {
+        console.error('Has nothing? Idk what this would be lol');
+      }
+    }
   }
 
   static get observedAttributes() {
     return [
       'type',
+      'size',
       'iconName',
       'iconType',
       'iconColor',
@@ -146,6 +264,14 @@ class AppButton extends HTMLElement {
 
   set type(value: 'primary' | 'secondary' | 'tertiary') {
     if (this.type !== value) this.setAttribute('type', value);
+  }
+
+  get size(): string | null {
+    return this.getAttribute('size');
+  }
+
+  set size(value: 'sm' | 'md' | 'lg') {
+    if (this.size !== value) this.setAttribute('size', value);
   }
 
   get iconName(): string | null {
@@ -263,6 +389,9 @@ class AppButton extends HTMLElement {
         this.type = newVal;
         this._button.classList.remove(`btn-${oldVal}`);
         this._button.classList.add(`btn-${newVal}`);
+        break;
+      case 'size':
+        this.size = newVal;
         break;
       case 'iconName':
         this.iconName = newVal;

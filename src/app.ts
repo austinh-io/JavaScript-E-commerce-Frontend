@@ -43,15 +43,8 @@ appHTML.innerHTML = /* HTML */ `
       <app-button
         iconName="windows"
         iconType="logo"
-        type="secondary"
-        >TEst 332</app-button
-      >
-      <app-button
-        iconName="home"
-        iconType="solid"
-        type="tertiary"
-        >Test</app-button
-      >
+        type="secondary"></app-button>
+      <app-button type="tertiary">Test</app-button>
 
       <button class="btn btn-secondary">
         <div class="btn-content">
@@ -123,4 +116,4 @@ function initTesting() {
   appendCartItems();
 }
 
-initTesting();
+// initTesting();
