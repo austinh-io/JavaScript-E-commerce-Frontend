@@ -32,6 +32,10 @@ const TPL_AppButton_CSS = /* CSS */ `
     transition: color 100ms ease-out, background-color 100ms ease-out;
   }
 
+  button.btn:hover {
+    cursor: pointer;
+  }
+
   button > .btn-content {
     display: flex;
     align-items: center;
@@ -48,7 +52,6 @@ const TPL_AppButton_CSS = /* CSS */ `
   }
 
   button.btn-primary:hover {
-    cursor: pointer;
     background-color: var(--color-primary-400);
   }
 
@@ -64,7 +67,6 @@ const TPL_AppButton_CSS = /* CSS */ `
   }
 
   button.btn-secondary:hover {
-    cursor: pointer;
     background-color: var(--color-secondary-400);
   }
 
@@ -80,7 +82,6 @@ const TPL_AppButton_CSS = /* CSS */ `
   }
 
   button.btn-tertiary:hover {
-    cursor: pointer;
     background-color: var(--color-tertiary-400);
   }
 
@@ -94,7 +95,7 @@ const TPL_AppButton_CSS = /* CSS */ `
 TPL_AppButton.innerHTML = /* HTML */ `
   ${TPL_AppButton_CSS}
 
-  <button class="btn btn-primary">
+  <button class="btn">
     <div class="btn-content">
       <slot></slot>
     </div>
@@ -104,23 +105,29 @@ TPL_AppButton.innerHTML = /* HTML */ `
 class AppButton extends HTMLElement {
   private _boxicon: HTMLElement | undefined;
   private _buttonContent: HTMLElement;
+  private _button: HTMLElement;
 
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     const clone = TPL_AppButton.content.cloneNode(true);
     shadow.append(clone);
+    this._button = shadow.querySelector('button')!;
     this._buttonContent = shadow.querySelector('.btn-content')!;
   }
 
   connectedCallback() {
-    console.log('AppButton starting!');
-    console.log(this.iconType);
+    if (!this.type) {
+      this.setAttribute('type', 'primary');
+      this._button.classList.add('btn-primary');
+    }
+
     this.initIcon();
   }
 
   static get observedAttributes() {
     return [
+      'type',
       'iconName',
       'iconType',
       'iconColor',
@@ -131,6 +138,14 @@ class AppButton extends HTMLElement {
       'iconAnimation',
       'iconPull',
     ];
+  }
+
+  get type(): string | null {
+    return this.getAttribute('type');
+  }
+
+  set type(value: 'primary' | 'secondary' | 'tertiary') {
+    if (this.type !== value) this.setAttribute('type', value);
   }
 
   get iconName(): string | null {
@@ -241,32 +256,89 @@ class AppButton extends HTMLElement {
   }
 
   attributeChangedCallback(attName: string, oldVal: any, newVal: any) {
-    console.log('Attribute changed!');
-    if (attName === 'iconName') this.iconName = newVal;
-    if (attName === 'iconType') this.iconType = newVal;
-    if (attName === 'iconColor') this.iconColor = newVal;
-    if (attName === 'iconSize') this.iconSize = newVal;
-    if (attName === 'iconRotate') this.iconRotate = newVal;
-    if (attName === 'iconFlip') this.iconFlip = newVal;
-    if (attName === 'iconBorder') this.iconBorder = newVal;
-    if (attName === 'iconAnimation') this.iconAnimation = newVal;
-    if (attName === 'iconPull') this.iconPull = newVal;
+    if (oldVal === newVal) return;
+
+    switch (attName) {
+      case 'type':
+        this.type = newVal;
+        this._button.classList.remove(`btn-${oldVal}`);
+        this._button.classList.add(`btn-${newVal}`);
+        break;
+      case 'iconName':
+        this.iconName = newVal;
+        break;
+      case 'iconType':
+        this.iconType = newVal;
+        break;
+      case 'iconColor':
+        this.iconColor = newVal;
+        break;
+      case 'iconSize':
+        this.iconSize = newVal;
+        break;
+      case 'iconRotate':
+        this.iconRotate = newVal;
+        break;
+      case 'iconFlip':
+        this.iconFlip = newVal;
+        break;
+      case 'iconBorder':
+        this.iconBorder = newVal;
+        break;
+      case 'iconAnimation':
+        this.iconAnimation = newVal;
+        break;
+      case 'iconPull':
+        this.iconPull = newVal;
+        break;
+    }
   }
 
   updateIconColor() {
     if (!this._boxicon) return;
+    if (!this.iconColor) {
+      this.setIconColorBasedOnTheme();
+    } else {
+      this._boxicon.setAttribute('color', this.iconColor);
+    }
+  }
 
-    this._boxicon.setAttribute(
-      'color',
-      currentTheme.theme.properties['--color-on-primary']
-    );
+  setIconColorBasedOnTheme() {
+    if (!this._boxicon) return;
+
+    switch (this.type) {
+      case 'primary':
+        this._boxicon.setAttribute(
+          'color',
+          currentTheme.theme.properties['--color-on-primary']
+        );
+        break;
+      case 'secondary':
+        this._boxicon.setAttribute(
+          'color',
+          currentTheme.theme.properties['--color-on-secondary']
+        );
+        break;
+      case 'tertiary':
+        this._boxicon.setAttribute(
+          'color',
+          currentTheme.theme.properties['--color-on-tertiary']
+        );
+        break;
+      default:
+        this._boxicon.setAttribute(
+          'color',
+          currentTheme.theme.properties['--color-on-primary']
+        );
+        break;
+    }
   }
 
   updateIconAttributes() {
     if (!this._boxicon) return;
 
-    if (this.iconName) this._boxicon.setAttribute('name', this.iconName);
     if (this.iconType) this._boxicon.setAttribute('type', this.iconType);
+    if (this.iconName) this._boxicon.setAttribute('name', this.iconName);
     if (this.iconColor) this._boxicon.setAttribute('color', this.iconColor);
     if (this.iconSize) this._boxicon.setAttribute('size', this.iconSize);
     if (this.iconRotate) this._boxicon.setAttribute('rotate', this.iconRotate);
@@ -280,9 +352,9 @@ class AppButton extends HTMLElement {
   initIcon() {
     if (this.iconName) {
       this._boxicon = document.createElement('box-icon');
-      this._buttonContent.prepend(this._boxicon);
       this.updateIconAttributes();
       this.updateIconColor();
+      this._buttonContent.prepend(this._boxicon);
       document.addEventListener('themeChanged', () => {
         this.updateIconColor();
       });

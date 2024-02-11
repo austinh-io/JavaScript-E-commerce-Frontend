@@ -36,13 +36,17 @@ appHTML.innerHTML = /* HTML */ `
     <example-component></example-component>
     <div class="btn-group">
       <app-button
-        iconName="home"
-        iconType="solid"
+        iconName="yelp"
+        iconType="logo"
         >Home</app-button
       >
       <app-button
         iconName="home"
-        iconType="solid"></app-button>
+        iconType="solid"
+        type="tertiary"
+        >Test</app-button
+      >
+
       <button class="btn btn-secondary">
         <div class="btn-content">
           <box-icon
