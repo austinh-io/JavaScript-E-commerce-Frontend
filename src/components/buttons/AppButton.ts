@@ -210,7 +210,6 @@ class AppButton extends HTMLElement {
     shadow.append(clone);
     this._button = shadow.querySelector('button')!;
     this._buttonContent = shadow.querySelector('.btn-content')!;
-    this._buttonText = shadow.querySelector('.btn-text')!;
   }
 
   connectedCallback() {
