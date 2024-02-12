@@ -1,4 +1,5 @@
 import { CartItem } from '../../models/cartItem';
+import { CartManager } from '../../utils/core/cartManager';
 
 const TPL_CartCard = document.createElement('template');
 
@@ -73,16 +74,18 @@ TPL_CartCard.innerHTML = /* HTML */ `
       <app-button
         iconType="solid"
         iconName="trash"
-        size="sm"></app-button>
+        size="sm"
+        id="btn-remove"></app-button>
     </div>
   </div>
 `;
 
 class CartCard extends HTMLElement {
+  private _cartItem: CartItem;
   private _itemTitleLabel: HTMLElement;
   private _itemDescriptionLabel: HTMLElement;
   private _itemPriceLabel: HTMLElement;
-  private _cartItem: CartItem;
+  private _removeButton: HTMLElement;
 
   constructor(cartItem: CartItem) {
     super();
@@ -93,6 +96,7 @@ class CartCard extends HTMLElement {
     this._itemTitleLabel = shadow.querySelector('#title')!;
     this._itemDescriptionLabel = shadow.querySelector('#description')!;
     this._itemPriceLabel = shadow.querySelector('#price')!;
+    this._removeButton = shadow.querySelector('#btn-remove')!;
 
     this._cartItem = cartItem;
     this.itemId = String(cartItem.itemId);
@@ -147,12 +151,19 @@ class CartCard extends HTMLElement {
     this.setAttribute('itemPrice', String(value));
   }
 
-  connectedCallback() {}
+  connectedCallback() {
+    this._removeButton.addEventListener('click', () => this.removeItem());
+  }
 
   updateItemLabels() {
     this._itemTitleLabel.innerText = this.itemName!;
     this._itemDescriptionLabel.innerText = this.itemDescription!;
     this._itemPriceLabel.innerText = this.itemPrice!;
+  }
+
+  removeItem() {
+    CartManager.removeItem(this._cartItem.itemId);
+    this.remove();
   }
 }
 
