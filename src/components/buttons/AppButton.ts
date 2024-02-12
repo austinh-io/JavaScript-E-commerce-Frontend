@@ -73,31 +73,31 @@ const TPL_AppButton_CSS = /* CSS */ `
     min-width: var(--btn-height-lg);
   }
 
-  .btn-only-text-sm {
+  .btn-only-text-content-sm {
     padding-inline: var(--btn-text-only-padding-sm);
   }
 
-  .btn-only-text-md {
+  .btn-only-text-content-md {
     padding-inline: var(--btn-text-only-padding-md);
   }
 
-  .btn-only-text-lg {
+  .btn-only-text-content-lg {
     padding-inline: var(--btn-text-only-padding-lg);
   }
 
-  .btn-dual-sm: {
+  .btn-dual-content-sm {
     padding-left: var(--btn-dual-padding-l-sm);
     padding-right: var(--btn-dual-padding-r-sm);
     gap: var(--btn-dual-gap-sm);
   }
 
-  .btn-dual-lg: {
-    padding-left: var(--btn-dual-padding-l-lg);
-    padding-right: var(--btn-dual-padding-r-lg);
-    gap: var(--btn-dual-gap-lg);
+  .btn-dual-content-md {
+    padding-left: var(--btn-dual-padding-l-md);
+    padding-right: var(--btn-dual-padding-r-md);
+    gap: var(--btn-dual-gap-md);
   }
 
-  .btn-dual-lg: {
+  .btn-dual-content-lg {
     padding-left: var(--btn-dual-padding-l-lg);
     padding-right: var(--btn-dual-padding-r-lg);
     gap: var(--btn-dual-gap-lg);
@@ -124,7 +124,7 @@ const TPL_AppButton_CSS = /* CSS */ `
     cursor: pointer;
   }
 
-  button > .btn-content {
+  .btn-content {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -220,25 +220,64 @@ class AppButton extends HTMLElement {
 
     this.initIcon();
     this.initButtonSizing();
+    this.updateButtonSizing();
   }
 
   initButtonSizing() {
     if (!this.size) {
-      this.setAttribute('size', 'md');
-      this._button.classList.add('btn-md');
-      if (this.innerText !== '' && this._boxicon) {
-        console.log(this);
-        console.log('Has text and icon');
-      } else if (this.innerText !== '') {
-        console.log(this);
-        console.log('Has no icon, just text');
-      } else if (this._boxicon) {
-        console.log(this);
-        console.log('Has no text, just icon');
-      } else {
-        console.error('Has nothing? Idk what this would be lol');
-      }
+      this.size = 'md';
     }
+  }
+
+  updateButtonSizing() {
+    this.resetButtonSizeClasses();
+    if (this.innerText && this._boxicon) {
+      /* Has Icon + Text */
+      this.setButtonTextAndIcon();
+    } else if (this.innerText) {
+      /* No icon, only text */
+      this.setButtonTextOnly();
+    } else if (this._boxicon) {
+      /* No text, only icon */
+      this.setButtonIconOnly();
+    }
+  }
+
+  setButtonIconOnly() {
+    this._button.classList.add(`btn-${this.size}`);
+
+    this._button.classList.add(`aspect-square`);
+    this._boxicon!.classList.add(`icon-${this.size}`);
+  }
+
+  setButtonTextOnly() {
+    this._button.classList.add(`btn-${this.size}`);
+
+    this._buttonContent.classList.add(`btn-only-text-content-${this.size}`);
+  }
+
+  setButtonTextAndIcon() {
+    this._button.classList.add(`btn-${this.size}`);
+
+    this._boxicon!.classList.add(`icon-${this.size}`);
+
+    this._buttonContent.classList.add(`btn-dual-content-${this.size}`);
+  }
+
+  resetButtonSizeClasses() {
+    this._button.classList.remove('aspect-square');
+
+    this._button.classList.remove('btn-sm');
+    this._button.classList.remove('btn-md');
+    this._button.classList.remove('btn-lg');
+
+    this._buttonContent.classList.remove('btn-only-text-content-sm');
+    this._buttonContent.classList.remove('btn-only-text-content-md');
+    this._buttonContent.classList.remove('btn-only-text-content-lg');
+
+    this._buttonContent.classList.remove('btn-dual-content-sm');
+    this._buttonContent.classList.remove('btn-dual-content-md');
+    this._buttonContent.classList.remove('btn-dual-content-lg');
   }
 
   static get observedAttributes() {
@@ -248,7 +287,6 @@ class AppButton extends HTMLElement {
       'iconName',
       'iconType',
       'iconColor',
-      'iconSize',
       'iconRotate',
       'iconFlip',
       'iconBorder',
@@ -312,17 +350,6 @@ class AppButton extends HTMLElement {
     }
     this.setAttribute('iconColor', value);
     this._boxicon.setAttribute('color', value);
-  }
-
-  get iconSize(): string | null {
-    return this.getAttribute('iconSize');
-  }
-
-  set iconSize(value: 'xs' | 'sm' | 'md' | 'lg' | string) {
-    if (!this._boxicon) return;
-
-    this.setAttribute('iconSize', value);
-    this._boxicon.setAttribute('size', value);
   }
 
   get iconRotate(): string | null {
@@ -402,9 +429,6 @@ class AppButton extends HTMLElement {
         this.iconColor = newVal;
         this.updateIconColor();
         break;
-      case 'iconSize':
-        this.iconSize = newVal;
-        break;
       case 'iconRotate':
         this.iconRotate = newVal;
         break;
@@ -469,7 +493,6 @@ class AppButton extends HTMLElement {
     if (this.iconType) this._boxicon.setAttribute('type', this.iconType);
     if (this.iconName) this._boxicon.setAttribute('name', this.iconName);
     if (this.iconColor) this._boxicon.setAttribute('color', this.iconColor);
-    if (this.iconSize) this._boxicon.setAttribute('size', this.iconSize);
     if (this.iconRotate) this._boxicon.setAttribute('rotate', this.iconRotate);
     if (this.iconFlip) this._boxicon.setAttribute('flip', this.iconFlip);
     if (this.iconBorder) this._boxicon.setAttribute('border', this.iconBorder);

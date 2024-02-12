@@ -44,37 +44,33 @@ appHTML.innerHTML = /* HTML */ `
         iconName="windows"
         iconType="logo"
         type="secondary"></app-button>
+
+      <app-button
+        iconName="windows"
+        iconType="logo"
+        type="secondary"
+        size="sm"></app-button>
+
+      <app-button
+        iconName="windows"
+        iconType="logo"
+        type="secondary"
+        size="lg"></app-button>
+
       <app-button type="tertiary">Test</app-button>
 
-      <button class="btn btn-secondary">
-        <div class="btn-content">
-          <box-icon
-            type="logo"
-            name="facebook-square"
-            color=${currentTheme.properties['--color-on-secondary']}></box-icon>
-          Facebook
-        </div>
-      </button>
-
-      <button class="btn btn-tertiary">
-        <div class="btn-content">
-          <box-icon
-            type="solid"
-            name="hot"
-            color=${currentTheme.properties['--color-on-tertiary']}></box-icon>
-          Lorem Ipsum
-        </div>
-      </button>
-
-      <button class="btn btn-primary">
-        <div class="btn-content">
-          <box-icon
-            type="solid"
-            name="color"
-            color=${currentTheme.properties['--color-on-primary']}></box-icon>
-          Lorem Ipsum
-        </div>
-      </button>
+      <app-button
+        iconName="windows"
+        iconType="logo"
+        type="secondary"
+        size="lg"
+        >Windows 11</app-button
+      >
+      <app-button
+        type="tertiary"
+        size="sm"
+        >Test</app-button
+      >
     </div>
 
     <light-toggle></light-toggle>
