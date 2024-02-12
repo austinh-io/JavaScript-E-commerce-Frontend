@@ -6,6 +6,7 @@ import AppBar from './components/navigation/AppBar.ts';
 import CartMenu from './components/cart/CartMenu.ts';
 import CartCard from './components/cart/CartCard.ts';
 import { currentTheme } from './utils/ui/themeManager.ts';
+import { DrawerOverlayManager } from './utils/ui/drawerOverlayManager.ts';
 
 export const app = document.createElement('div');
 export const appHTML = document.createElement('template');
@@ -94,22 +95,23 @@ function initTesting() {
   app.append(buttonToggleNav);
 
   function appendCartItems() {
-    const cartItem1 = new CartCard();
-    const cartItem2 = new CartCard();
-    const cartItem3 = new CartCard();
-    const cartItem4 = new CartCard();
+    // const cartItem1 = new CartCard();
+    // const cartItem2 = new CartCard();
+    // const cartItem3 = new CartCard();
+    // const cartItem4 = new CartCard();
 
     const timer = [2000, 4000, 6000, 8000];
-    const cartItems = [cartItem1, cartItem2, cartItem3, cartItem4];
+    // const cartItems = [cartItem1, cartItem2, cartItem3, cartItem4];
 
     for (let i = 0; i < timer.length; i++) {
       setTimeout(() => {
-        cartMenu.appendToCart(cartItems[i]);
+        // cartMenu.appendToCart(cartItems[i]);
       }, timer[i]);
     }
   }
 
   appendCartItems();
+  DrawerOverlayManager.getDrawer('cartDrawer').open();
 }
 
-// initTesting();
+initTesting();

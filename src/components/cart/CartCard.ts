@@ -1,3 +1,5 @@
+import { CartItem } from '../../models/cartItem';
+
 const TPL_CartCard = document.createElement('template');
 
 const TPL_CartCard_css = /* CSS */ `
@@ -63,9 +65,9 @@ TPL_CartCard.innerHTML = /* HTML */ `
       <div class="cart-card-image-container"></div>
     </div>
     <div class="grid-item">
-      <h4>Cart Item</h4>
-      <p>Lorem Ipsum</p>
-      <p>$0.00</p>
+      <h4 id="title">Cart Item</h4>
+      <p id="description">Lorem Ipsum</p>
+      <p id="price">$0.00</p>
     </div>
     <div class="grid-item">
       <app-button
@@ -77,14 +79,81 @@ TPL_CartCard.innerHTML = /* HTML */ `
 `;
 
 class CartCard extends HTMLElement {
-  constructor() {
+  private _itemTitleLabel: HTMLElement;
+  private _itemDescriptionLabel: HTMLElement;
+  private _itemPriceLabel: HTMLElement;
+  private _cartItem: CartItem;
+
+  constructor(cartItem: CartItem) {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     const clone = TPL_CartCard.content.cloneNode(true);
     shadow.append(clone);
+
+    this._itemTitleLabel = shadow.querySelector('#title')!;
+    this._itemDescriptionLabel = shadow.querySelector('#description')!;
+    this._itemPriceLabel = shadow.querySelector('#price')!;
+
+    this._cartItem = cartItem;
+    this.itemId = String(cartItem.itemId);
+    this.itemName = cartItem.itemName;
+    this.itemDescription = cartItem.itemDescription;
+    this.itemPrice = cartItem.itemPrice;
+
+    this._itemTitleLabel.innerText = this.itemName;
+    this._itemDescriptionLabel.innerText = this.itemDescription;
+    this._itemPriceLabel.innerText = this.itemPrice;
+  }
+
+  get cartItem(): CartItem | null {
+    return this._cartItem;
+  }
+
+  set cartItem(value: CartItem) {
+    this._cartItem = value;
+    this.itemId = value.itemId;
+    this.updateItemLabels();
+  }
+
+  get itemId(): string | null {
+    return this.getAttribute('itemId');
+  }
+
+  set itemId(value: string | number) {
+    this.setAttribute('itemId', String(value));
+  }
+
+  get itemName(): string | null {
+    return this.getAttribute('itemName');
+  }
+
+  set itemName(value: string) {
+    this.setAttribute('itemName', value);
+  }
+
+  get itemDescription(): string | null {
+    return this.getAttribute('itemDescription');
+  }
+
+  set itemDescription(value: string) {
+    this.setAttribute('itemDescription', value);
+  }
+
+  get itemPrice(): string {
+    return this.getAttribute('itemPrice')!;
+  }
+
+  set itemPrice(value: number) {
+    this.setAttribute('itemPrice', String(value));
   }
 
   connectedCallback() {}
+
+  updateItemLabels() {
+    this._itemTitleLabel.innerText = this.itemName!;
+    this._itemDescriptionLabel.innerText = this.itemDescription!;
+    this._itemPriceLabel.innerText = this.itemPrice!;
+  }
 }
 
 window.customElements.define('cart-card', CartCard);

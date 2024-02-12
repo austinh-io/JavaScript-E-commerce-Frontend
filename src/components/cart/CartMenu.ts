@@ -1,3 +1,7 @@
+import { CartItem } from '../../models/cartItem';
+import { CartManager } from '../../utils/core/cartManager';
+import CartCard from './CartCard';
+
 const TPL_CartMenu = document.createElement('template');
 
 const TPL_CartMenu_css = /* CSS */ `
@@ -20,14 +24,13 @@ const TPL_CartMenu_css = /* CSS */ `
 TPL_CartMenu.innerHTML = /* HTML */ `
   ${TPL_CartMenu_css}
 
-  <div class="container">
-    <cart-card></cart-card>
-    <cart-card></cart-card>
-  </div>
+  <div class="container"></div>
 `;
 
 class CartMenu extends HTMLElement {
   private _container: HTMLElement;
+  private _cartItems: { [key: string]: CartItem } = {};
+
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
@@ -36,7 +39,14 @@ class CartMenu extends HTMLElement {
     this._container = shadow.querySelector('.container')!;
   }
 
-  connectedCallback() {}
+  connectedCallback() {
+    this._cartItems = CartManager.getAllItems();
+
+    for (const key in this._cartItems) {
+      const cartCard = new CartCard(CartManager.getItem(key));
+      this._container.append(cartCard);
+    }
+  }
 
   appendToCart(value: HTMLElement) {
     this._container.append(value);
