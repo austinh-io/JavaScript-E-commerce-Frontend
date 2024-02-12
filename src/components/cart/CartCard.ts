@@ -70,7 +70,8 @@ TPL_CartCard.innerHTML = /* HTML */ `
     <div class="grid-item">
       <app-button
         iconType="solid"
-        iconName="trash"></app-button>
+        iconName="trash"
+        size="sm"></app-button>
     </div>
   </div>
 `;
