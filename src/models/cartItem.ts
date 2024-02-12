@@ -1,5 +1,3 @@
-// TODO: set everything up
-
 export class CartItem {
   private _itemId: string = '0';
   private _itemName: string = '';
