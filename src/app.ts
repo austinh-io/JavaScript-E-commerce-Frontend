@@ -4,8 +4,6 @@ import SiteNav from './components/navigation/SiteNav.ts';
 import { createButton } from './utils/ui/elementCreator.ts';
 import AppBar from './components/navigation/AppBar.ts';
 import CartMenu from './components/cart/CartMenu.ts';
-import CartCard from './components/cart/CartCard.ts';
-import { currentTheme } from './utils/ui/themeManager.ts';
 import { DrawerOverlayManager } from './utils/ui/drawerOverlayManager.ts';
 
 export const app = document.createElement('div');
