@@ -1,4 +1,4 @@
-import { CartItem } from '../../models/cartItem';
+import { CartItem } from '../../models/product';
 import { CartManager } from '../../utils/core/cartManager';
 import CartCard from './CartCard';
 

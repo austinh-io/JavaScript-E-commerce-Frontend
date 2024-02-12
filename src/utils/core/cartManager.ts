@@ -1,4 +1,4 @@
-import { CartItem } from '../../models/cartItem';
+import { CartItem } from '../../models/product';
 
 export class CartManager {
   private static _items: { [key: string]: CartItem } = {};
