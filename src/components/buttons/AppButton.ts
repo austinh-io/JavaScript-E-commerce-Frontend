@@ -185,6 +185,12 @@ const TPL_AppButton_CSS = /* CSS */ `
   .hidden {
     display: none;
   }
+
+  slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 </style>
 `;
 
