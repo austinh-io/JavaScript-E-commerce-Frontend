@@ -1,4 +1,4 @@
-import { Product } from '../../models/product';
+import { ProductGroup } from '../../models/productGroup';
 import { Cart } from '../../utils/core/cartManager';
 
 const TPL_CartCard = document.createElement('template');
@@ -77,13 +77,13 @@ TPL_CartCard.innerHTML = /* HTML */ `
 `;
 
 class CartCard extends HTMLElement {
-  private _cartItem: Product;
+  private _cartItem: ProductGroup;
   private _titleLabel: HTMLElement;
   private _descriptionLabel: HTMLElement;
   private _priceLabel: HTMLElement;
   private _removeButton: HTMLElement;
 
-  constructor(cartItem: Product) {
+  constructor(cartItem: ProductGroup) {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     const clone = TPL_CartCard.content.cloneNode(true);
@@ -101,11 +101,11 @@ class CartCard extends HTMLElement {
     this._priceLabel.innerText = String(cartItem.price);
   }
 
-  get cartItem(): Product | null {
+  get cartItem(): ProductGroup | null {
     return this._cartItem;
   }
 
-  set cartItem(value: Product) {
+  set cartItem(value: ProductGroup) {
     this._cartItem = value;
     this.updateItemLabels();
   }

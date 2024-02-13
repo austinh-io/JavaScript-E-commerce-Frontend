@@ -1,4 +1,4 @@
-import { Product } from '../../models/product.ts';
+import { ProductGroup } from '../../models/productGroup.ts';
 import { Cart } from '../../utils/core/cartManager.ts';
 import { DrawerOverlayManager } from '../../utils/ui/drawerOverlayManager.ts';
 
@@ -90,14 +90,14 @@ TPL_CatalogCard.innerHTML = /* HTML */ `
 `;
 
 export default class CatalogCard extends HTMLElement {
-  private _catalogItem: Product;
+  private _catalogItem: ProductGroup;
   private _itemTitleLabel: HTMLElement;
   private _itemDescriptionLabel: HTMLElement;
   private _itemPriceLabel: HTMLElement;
   private _removeButton: HTMLElement;
   private _addButton: HTMLElement;
 
-  constructor(item: Product) {
+  constructor(item: ProductGroup) {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     const clone = TPL_CatalogCard.content.cloneNode(true);
@@ -120,11 +120,11 @@ export default class CatalogCard extends HTMLElement {
     this._itemPriceLabel.innerText = this.itemPrice;
   }
 
-  get item(): Product | null {
+  get item(): ProductGroup | null {
     return this._catalogItem;
   }
 
-  set item(value: Product) {
+  set item(value: ProductGroup) {
     this._catalogItem = value;
     this.itemId = value.id;
     this.updateItemLabels();

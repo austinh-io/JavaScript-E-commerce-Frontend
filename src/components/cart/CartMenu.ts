@@ -1,4 +1,4 @@
-import { Product } from '../../models/product';
+import { ProductGroup } from '../../models/productGroup';
 import { Cart } from '../../utils/core/cartManager';
 import { Catalog } from '../../utils/core/catalogManager';
 import CartCard from './CartCard';
@@ -30,7 +30,7 @@ TPL_CartMenu.innerHTML = /* HTML */ `
 
 export default class CartMenu extends HTMLElement {
   private _container: HTMLElement;
-  private _cartItems: { [key: string]: Product } = {};
+  private _cartItems: { [key: string]: ProductGroup } = {};
 
   constructor() {
     super();
