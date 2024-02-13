@@ -1,5 +1,5 @@
-import { Product } from '../models/product';
-import { Cart } from '../utils/core/cartManager';
+import { Product } from '../../models/product.ts';
+import { Cart } from '../../utils/core/cartManager.ts';
 
 const TPL_CatalogCard = document.createElement('template');
 
@@ -13,7 +13,6 @@ const TPL_CatalogCard_css = /* CSS */ `
     .container {
         position: relative;
 
-        width: 100%;
         height: 5rem;
 
         padding: 1.2rem;
@@ -54,6 +53,10 @@ const TPL_CatalogCard_css = /* CSS */ `
     .grid-item {
 
     }
+
+    .hidden {
+      display: none;
+    }
 </style>
 `;
 
@@ -74,7 +77,8 @@ TPL_CatalogCard.innerHTML = /* HTML */ `
         iconType="solid"
         iconName="trash"
         size="sm"
-        id="btn-remove"></app-button>
+        id="btn-remove"
+        class="hidden"></app-button>
       <app-button
         iconType="solid"
         iconName="cart-add"
@@ -84,7 +88,7 @@ TPL_CatalogCard.innerHTML = /* HTML */ `
   </div>
 `;
 
-class CatalogCard extends HTMLElement {
+export default class CatalogCard extends HTMLElement {
   private _catalogItem: Product;
   private _itemTitleLabel: HTMLElement;
   private _itemDescriptionLabel: HTMLElement;
@@ -92,7 +96,7 @@ class CatalogCard extends HTMLElement {
   private _removeButton: HTMLElement;
   private _addButton: HTMLElement;
 
-  constructor(cartItem: Product) {
+  constructor(item: Product) {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     const clone = TPL_CatalogCard.content.cloneNode(true);
@@ -104,22 +108,22 @@ class CatalogCard extends HTMLElement {
     this._removeButton = shadow.querySelector('#btn-remove')!;
     this._addButton = shadow.querySelector('#btn-add')!;
 
-    this._catalogItem = cartItem;
-    this.itemId = String(cartItem.id);
-    this.itemName = cartItem.name;
-    this.itemDescription = cartItem.description;
-    this.itemPrice = cartItem.price;
+    this._catalogItem = item;
+    this.itemId = String(item.id);
+    this.itemName = item.name;
+    this.itemDescription = item.description;
+    this.itemPrice = item.price;
 
     this._itemTitleLabel.innerText = this.itemName;
     this._itemDescriptionLabel.innerText = this.itemDescription;
     this._itemPriceLabel.innerText = this.itemPrice;
   }
 
-  get cartItem(): Product | null {
+  get item(): Product | null {
     return this._catalogItem;
   }
 
-  set cartItem(value: Product) {
+  set item(value: Product) {
     this._catalogItem = value;
     this.itemId = value.id;
     this.updateItemLabels();
@@ -173,16 +177,14 @@ class CatalogCard extends HTMLElement {
   }
 
   addToCart() {
-    this.dispatchEvent(
+    window.dispatchEvent(
       new CustomEvent('addToCart', {
+        detail: { productId: this.itemId },
         bubbles: true,
         composed: true,
-        detail: { itemId: this._catalogItem.id },
       })
     );
   }
 }
 
 window.customElements.define('catalog-card', CatalogCard);
-
-export default CatalogCard;

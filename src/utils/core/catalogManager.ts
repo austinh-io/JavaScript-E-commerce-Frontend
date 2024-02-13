@@ -1,7 +1,6 @@
 import { Product } from '../../models/product';
-import { Catalog } from './catalogManager';
 
-export class Cart {
+export class Catalog {
   private static _items: { [key: string]: Product } = {};
 
   static addItem(item: Product) {
@@ -25,15 +24,10 @@ export class Cart {
     this.addItem(new Product('1', 'Item 1', 'A nice item!', 6.9));
     this.addItem(new Product('2', 'Item 2', 'A nice item!', 2.49));
     this.addItem(new Product('3', 'Item 3', 'A nice item!', 17.99));
+    this.addItem(new Product('4', 'Item 4', 'A nice item!', 10.99));
+    this.addItem(new Product('5', 'Item 5', 'A nice item!', 9.99));
+    this.addItem(new Product('6', 'Item 6', 'A nice item!', 135.94));
   }
 }
 
-Cart.setTestingItems();
-
-window.addEventListener('addToCart', (event: Event) => {
-  if (event instanceof CustomEvent && event.detail) {
-    const { productId } = event.detail;
-    const product = Catalog.getItem(productId);
-    Cart.addItem(product);
-  }
-});
+Catalog.setTestingItems();

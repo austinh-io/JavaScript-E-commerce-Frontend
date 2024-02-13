@@ -5,6 +5,8 @@ import { createButton } from './utils/ui/elementCreator.ts';
 import AppBar from './components/navigation/AppBar.ts';
 import CartMenu from './components/cart/CartMenu.ts';
 import { DrawerOverlayManager } from './utils/ui/drawerOverlayManager.ts';
+import { Catalog } from './utils/core/catalogManager.ts';
+import CatalogCard from './components/catalog/CatalogCard.ts';
 
 export const app = document.createElement('div');
 export const appHTML = document.createElement('template');
@@ -110,6 +112,17 @@ function initTesting() {
 
   appendCartItems();
   DrawerOverlayManager.getDrawer('cartDrawer').open();
+
+  const catalogItems = document.createElement('div');
+  const allCatalogProducts = Catalog.getAllItems();
+  for (const key in allCatalogProducts) {
+    const cartCard = new CatalogCard(Catalog.getItem(key));
+    catalogItems.append(cartCard);
+  }
+  catalogItems.style.display = 'flex';
+  catalogItems.style.flexWrap = 'wrap';
+  catalogItems.style.gap = '10px';
+  app.append(catalogItems);
 }
 
 initTesting();

@@ -1,5 +1,6 @@
 import { Product } from '../../models/product';
 import { Cart } from '../../utils/core/cartManager';
+import { Catalog } from '../../utils/core/catalogManager';
 import CartCard from './CartCard';
 
 const TPL_CartMenu = document.createElement('template');
@@ -27,7 +28,7 @@ TPL_CartMenu.innerHTML = /* HTML */ `
   <div class="container"></div>
 `;
 
-class CartMenu extends HTMLElement {
+export default class CartMenu extends HTMLElement {
   private _container: HTMLElement;
   private _cartItems: { [key: string]: Product } = {};
 
@@ -40,6 +41,25 @@ class CartMenu extends HTMLElement {
   }
 
   connectedCallback() {
+    this.updateCartItems();
+
+    window.addEventListener('addToCart', (event: Event) => {
+      if (event instanceof CustomEvent) this.handleAddToCart(event);
+    });
+  }
+
+  appendToCart(value: HTMLElement) {
+    this._container.append(value);
+  }
+
+  handleAddToCart(event: CustomEvent<{ productId: string }>) {
+    const { productId } = event.detail;
+    const productToAdd = Catalog.getItem(productId);
+    const cartCard = new CartCard(productToAdd);
+    this.appendToCart(cartCard);
+  }
+
+  updateCartItems() {
     this._cartItems = Cart.getAllItems();
 
     for (const key in this._cartItems) {
@@ -47,17 +67,6 @@ class CartMenu extends HTMLElement {
       this._container.append(cartCard);
     }
   }
-
-  appendToCart(value: HTMLElement) {
-    this._container.append(value);
-  }
-
-  // handleAddToCart(event) {
-  //   const { itemId } = event.detail;
-  //   const productToAdd = n;
-  // }
 }
 
 window.customElements.define('cart-menu', CartMenu);
-
-export default CartMenu;
