@@ -95,14 +95,10 @@ class CartCard extends HTMLElement {
     this._removeButton = shadow.querySelector('#btn-remove')!;
 
     this._cartItem = cartItem;
-    this.productId = String(cartItem.id);
-    this.productName = cartItem.name;
-    this.productDescription = cartItem.description;
-    this.productPrice = cartItem.price;
 
-    this._titleLabel.innerText = this.productName;
-    this._descriptionLabel.innerText = this.productDescription;
-    this._priceLabel.innerText = this.productPrice;
+    this._titleLabel.innerText = cartItem.name;
+    this._descriptionLabel.innerText = cartItem.description;
+    this._priceLabel.innerText = String(cartItem.price);
   }
 
   get cartItem(): Product | null {
@@ -111,40 +107,7 @@ class CartCard extends HTMLElement {
 
   set cartItem(value: Product) {
     this._cartItem = value;
-    this.productId = value.id;
     this.updateItemLabels();
-  }
-
-  get productId(): string | null {
-    return this.getAttribute('itemId');
-  }
-
-  set productId(value: string | number) {
-    this.setAttribute('itemId', String(value));
-  }
-
-  get productName(): string | null {
-    return this.getAttribute('itemName');
-  }
-
-  set productName(value: string) {
-    this.setAttribute('itemName', value);
-  }
-
-  get productDescription(): string | null {
-    return this.getAttribute('itemDescription');
-  }
-
-  set productDescription(value: string) {
-    this.setAttribute('itemDescription', value);
-  }
-
-  get productPrice(): string {
-    return this.getAttribute('itemPrice')!;
-  }
-
-  set productPrice(value: number) {
-    this.setAttribute('itemPrice', String(value));
   }
 
   connectedCallback() {
@@ -152,13 +115,13 @@ class CartCard extends HTMLElement {
   }
 
   updateItemLabels() {
-    this._titleLabel.innerText = this.productName!;
-    this._descriptionLabel.innerText = this.productDescription!;
-    this._priceLabel.innerText = this.productPrice!;
+    this._titleLabel.innerText = this._cartItem.name!;
+    this._descriptionLabel.innerText = this._cartItem.description!;
+    this._priceLabel.innerText = String(this._cartItem.price)!;
   }
 
   removeItem() {
-    if (this.productId) Cart.removeItem(this.productId);
+    Cart.removeItem(this._cartItem.id);
     this.remove();
   }
 
