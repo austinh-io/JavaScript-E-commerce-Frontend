@@ -48,7 +48,7 @@ export default class CartMenu extends HTMLElement {
     });
   }
 
-  appendToCart(value: HTMLElement) {
+  appendToMenu(value: HTMLElement) {
     this._container.append(value);
   }
 
@@ -56,7 +56,7 @@ export default class CartMenu extends HTMLElement {
     const { productId } = event.detail;
     const productToAdd = Catalog.getItem(productId);
     const cartCard = new CartCard(productToAdd);
-    this.appendToCart(cartCard);
+    this.appendToMenu(cartCard);
   }
 
   updateCartItems() {
