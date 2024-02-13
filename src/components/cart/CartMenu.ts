@@ -67,6 +67,12 @@ export default class CartMenu extends HTMLElement {
       this._container.append(cartCard);
     }
   }
+
+  disconnectedCallback() {
+    window.removeEventListener('addToCart', (event: Event) => {
+      if (event instanceof CustomEvent) this.handleAddToCart(event);
+    });
+  }
 }
 
 window.customElements.define('cart-menu', CartMenu);

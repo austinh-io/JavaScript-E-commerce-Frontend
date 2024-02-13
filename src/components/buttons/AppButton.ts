@@ -518,5 +518,11 @@ class AppButton extends HTMLElement {
       });
     }
   }
+
+  disconnectedCallback() {
+    document.removeEventListener('themeChanged', () => {
+      this.updateIconColor();
+    });
+  }
 }
 window.customElements.define('app-button', AppButton);

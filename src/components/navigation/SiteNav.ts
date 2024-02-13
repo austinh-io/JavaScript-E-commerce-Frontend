@@ -169,7 +169,13 @@ export class SiteNav extends HTMLElement {
   }
 
   openOverlay() {
-    this._overlay.enableOverlay();
+    if (this._overlay) this._overlay.enableOverlay();
+  }
+
+  disconnectedCallback() {
+    document.removeEventListener('themeChanged', () => {
+      this.updateIconColor();
+    });
   }
 }
 

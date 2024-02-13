@@ -185,6 +185,11 @@ export default class CatalogCard extends HTMLElement {
       })
     );
   }
+
+  disconnectedCallback() {
+    this._removeButton.removeEventListener('click', () => this.removeItem());
+    this._addButton.removeEventListener('click', () => this.addToCart());
+  }
 }
 
 window.customElements.define('catalog-card', CatalogCard);

@@ -161,6 +161,10 @@ class CartCard extends HTMLElement {
     Cart.removeItem(this._cartItem.id);
     this.remove();
   }
+
+  disconnectedCallback() {
+    this._removeButton.removeEventListener('click', () => this.removeItem());
+  }
 }
 
 window.customElements.define('cart-card', CartCard);

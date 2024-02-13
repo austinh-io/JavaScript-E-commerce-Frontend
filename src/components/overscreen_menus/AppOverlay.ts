@@ -117,6 +117,14 @@ class AppOverlay extends HTMLElement {
   close() {
     this.disableOverlay();
   }
+
+  disconnectedCallback() {
+    this.disableOverlay();
+    this._overlay.removeEventListener('click', () => {
+      this.closeDrawers();
+    });
+    DrawerOverlayManager.removeOverlay('overlay');
+  }
 }
 
 window.customElements.define('drawer-overlay', AppOverlay);

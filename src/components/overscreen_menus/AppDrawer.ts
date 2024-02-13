@@ -219,6 +219,15 @@ export class AppDrawer extends HTMLElement {
   appendToDrawerContent(value: HTMLElement) {
     this._drawerContent.append(value);
   }
+
+  disconnectedCallback() {
+    document.removeEventListener('themeChanged', () => {
+      this.updateIconColor();
+    });
+
+    this._closeButton.removeEventListener('click', () => this.close());
+    DrawerOverlayManager.removeDrawer(this._name);
+  }
 }
 
 window.customElements.define('app-drawer', AppDrawer);

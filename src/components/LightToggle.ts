@@ -196,6 +196,13 @@ class LightToggle extends HTMLElement {
       currentTheme.properties['--font-color-inverse']
     );
   }
+
+  disconnectedCallback() {
+    this._toggle!.removeEventListener(
+      'change',
+      this.toggleLightMode.bind(this)
+    );
+  }
 }
 
 window.customElements.define('light-toggle', LightToggle);
