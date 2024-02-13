@@ -158,7 +158,7 @@ class CartCard extends HTMLElement {
   }
 
   removeItem() {
-    Cart.removeItem(this._cartItem.id);
+    if (this.productId) Cart.removeItem(this.productId);
     this.remove();
   }
 
