@@ -1,5 +1,5 @@
-import { CartItem } from '../../models/product';
-import { CartManager } from '../../utils/core/cartManager';
+import { Product } from '../../models/product';
+import { Cart } from '../../utils/core/cartManager';
 import CartCard from './CartCard';
 
 const TPL_CartMenu = document.createElement('template');
@@ -29,7 +29,7 @@ TPL_CartMenu.innerHTML = /* HTML */ `
 
 class CartMenu extends HTMLElement {
   private _container: HTMLElement;
-  private _cartItems: { [key: string]: CartItem } = {};
+  private _cartItems: { [key: string]: Product } = {};
 
   constructor() {
     super();
@@ -40,10 +40,10 @@ class CartMenu extends HTMLElement {
   }
 
   connectedCallback() {
-    this._cartItems = CartManager.getAllItems();
+    this._cartItems = Cart.getAllItems();
 
     for (const key in this._cartItems) {
-      const cartCard = new CartCard(CartManager.getItem(key));
+      const cartCard = new CartCard(Cart.getItem(key));
       this._container.append(cartCard);
     }
   }
@@ -51,6 +51,11 @@ class CartMenu extends HTMLElement {
   appendToCart(value: HTMLElement) {
     this._container.append(value);
   }
+
+  // handleAddToCart(event) {
+  //   const { itemId } = event.detail;
+  //   const productToAdd = n;
+  // }
 }
 
 window.customElements.define('cart-menu', CartMenu);

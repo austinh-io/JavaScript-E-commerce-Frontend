@@ -1,50 +1,45 @@
-export class CartItem {
+export class Product {
   private _itemId: string = '0';
   private _itemName: string = '';
   private _itemDescription: string = '';
   private _itemPrice: number = 0.0;
 
-  constructor(
-    itemId: string,
-    itemName: string,
-    itemDescription: string,
-    itemPrice: number
-  ) {
-    this.itemId = itemId;
-    this.itemName = itemName;
-    this.itemDescription = itemDescription;
-    this.itemPrice = itemPrice;
+  constructor(id: string, name: string, description: string, price: number) {
+    this.id = id;
+    this.name = name;
+    this.description = description;
+    this.price = price;
   }
 
-  get itemId(): string {
+  get id(): string {
     return this._itemId;
   }
 
-  set itemId(value: string) {
+  set id(value: string) {
     this._itemId = value;
   }
 
-  get itemName(): string {
+  get name(): string {
     return this._itemName;
   }
 
-  set itemName(value: string) {
+  set name(value: string) {
     this._itemName = value;
   }
 
-  get itemDescription(): string {
+  get description(): string {
     return this._itemDescription;
   }
 
-  set itemDescription(value: string) {
+  set description(value: string) {
     this._itemDescription = value;
   }
 
-  get itemPrice(): number {
+  get price(): number {
     return this._itemPrice;
   }
 
-  set itemPrice(value: number) {
+  set price(value: number) {
     this._itemPrice = value;
   }
 }

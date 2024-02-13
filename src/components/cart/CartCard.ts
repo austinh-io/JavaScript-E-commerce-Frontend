@@ -1,22 +1,18 @@
-import { CartItem } from '../../models/product';
-import { CartManager } from '../../utils/core/cartManager';
+import { Product } from '../../models/product';
+import { Cart } from '../../utils/core/cartManager';
 
 const TPL_CartCard = document.createElement('template');
 
 const TPL_CartCard_css = /* CSS */ `
 <style>
-
     :host {
         overflow: hidden;
         border-radius: 4px;
-
     }
+
     .container {
         position: relative;
-
-        width: 100%;
         height: 5rem;
-
         padding: 1.2rem;
     }
 
@@ -49,7 +45,7 @@ const TPL_CartCard_css = /* CSS */ `
         grid-template-columns: auto auto auto;
         gap: 1rem;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
     }
 
     .grid-item {
@@ -81,73 +77,73 @@ TPL_CartCard.innerHTML = /* HTML */ `
 `;
 
 class CartCard extends HTMLElement {
-  private _cartItem: CartItem;
-  private _itemTitleLabel: HTMLElement;
-  private _itemDescriptionLabel: HTMLElement;
-  private _itemPriceLabel: HTMLElement;
+  private _cartItem: Product;
+  private _titleLabel: HTMLElement;
+  private _descriptionLabel: HTMLElement;
+  private _priceLabel: HTMLElement;
   private _removeButton: HTMLElement;
 
-  constructor(cartItem: CartItem) {
+  constructor(cartItem: Product) {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     const clone = TPL_CartCard.content.cloneNode(true);
     shadow.append(clone);
 
-    this._itemTitleLabel = shadow.querySelector('#title')!;
-    this._itemDescriptionLabel = shadow.querySelector('#description')!;
-    this._itemPriceLabel = shadow.querySelector('#price')!;
+    this._titleLabel = shadow.querySelector('#title')!;
+    this._descriptionLabel = shadow.querySelector('#description')!;
+    this._priceLabel = shadow.querySelector('#price')!;
     this._removeButton = shadow.querySelector('#btn-remove')!;
 
     this._cartItem = cartItem;
-    this.itemId = String(cartItem.itemId);
-    this.itemName = cartItem.itemName;
-    this.itemDescription = cartItem.itemDescription;
-    this.itemPrice = cartItem.itemPrice;
+    this.productId = String(cartItem.id);
+    this.productName = cartItem.name;
+    this.productDescription = cartItem.description;
+    this.productPrice = cartItem.price;
 
-    this._itemTitleLabel.innerText = this.itemName;
-    this._itemDescriptionLabel.innerText = this.itemDescription;
-    this._itemPriceLabel.innerText = this.itemPrice;
+    this._titleLabel.innerText = this.productName;
+    this._descriptionLabel.innerText = this.productDescription;
+    this._priceLabel.innerText = this.productPrice;
   }
 
-  get cartItem(): CartItem | null {
+  get cartItem(): Product | null {
     return this._cartItem;
   }
 
-  set cartItem(value: CartItem) {
+  set cartItem(value: Product) {
     this._cartItem = value;
-    this.itemId = value.itemId;
+    this.productId = value.id;
     this.updateItemLabels();
   }
 
-  get itemId(): string | null {
+  get productId(): string | null {
     return this.getAttribute('itemId');
   }
 
-  set itemId(value: string | number) {
+  set productId(value: string | number) {
     this.setAttribute('itemId', String(value));
   }
 
-  get itemName(): string | null {
+  get productName(): string | null {
     return this.getAttribute('itemName');
   }
 
-  set itemName(value: string) {
+  set productName(value: string) {
     this.setAttribute('itemName', value);
   }
 
-  get itemDescription(): string | null {
+  get productDescription(): string | null {
     return this.getAttribute('itemDescription');
   }
 
-  set itemDescription(value: string) {
+  set productDescription(value: string) {
     this.setAttribute('itemDescription', value);
   }
 
-  get itemPrice(): string {
+  get productPrice(): string {
     return this.getAttribute('itemPrice')!;
   }
 
-  set itemPrice(value: number) {
+  set productPrice(value: number) {
     this.setAttribute('itemPrice', String(value));
   }
 
@@ -156,13 +152,13 @@ class CartCard extends HTMLElement {
   }
 
   updateItemLabels() {
-    this._itemTitleLabel.innerText = this.itemName!;
-    this._itemDescriptionLabel.innerText = this.itemDescription!;
-    this._itemPriceLabel.innerText = this.itemPrice!;
+    this._titleLabel.innerText = this.productName!;
+    this._descriptionLabel.innerText = this.productDescription!;
+    this._priceLabel.innerText = this.productPrice!;
   }
 
   removeItem() {
-    CartManager.removeItem(this._cartItem.itemId);
+    Cart.removeItem(this._cartItem.id);
     this.remove();
   }
 }
