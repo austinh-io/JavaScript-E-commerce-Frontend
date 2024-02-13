@@ -66,6 +66,11 @@ export class DrawerOverlayManager {
     }
   }
 
+  static openDrawer(drawerName: string) {
+    this._drawers[drawerName].open();
+    this.openOverlay();
+  }
+
   static closeDrawer(drawerName: string) {
     this._drawers[drawerName].close();
     this.closeOverlay();

@@ -1,5 +1,6 @@
 import { Product } from '../../models/product.ts';
 import { Cart } from '../../utils/core/cartManager.ts';
+import { DrawerOverlayManager } from '../../utils/ui/drawerOverlayManager.ts';
 
 const TPL_CatalogCard = document.createElement('template');
 
@@ -184,6 +185,7 @@ export default class CatalogCard extends HTMLElement {
         composed: true,
       })
     );
+    DrawerOverlayManager.openDrawer('cartDrawer');
   }
 
   disconnectedCallback() {
