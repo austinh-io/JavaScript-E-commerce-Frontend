@@ -1,14 +1,6 @@
-import { app, appHTML, initTesting } from './app.ts';
+import { app, appHTML } from './app.ts';
 import './imports.ts';
-import { initCatalog } from './utils/core/catalogManager.ts';
-import {
-  initLightMode,
-  initIconColorUpdateListener,
-} from './utils/ui/themeManager.ts';
-
-initLightMode();
-await initCatalog();
-initTesting();
+import { initIconColorUpdateListener } from './utils/ui/themeManager.ts';
 
 app.id = 'app';
 app.append(appHTML.content.cloneNode(true));

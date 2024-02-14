@@ -7,6 +7,9 @@ import AppBar from './components/navigation/AppBar.ts';
 import CartMenu from './components/cart/CartMenu.ts';
 import { DrawerOverlayManager } from './utils/ui/drawerOverlayManager.ts';
 import CatalogCard from './components/catalog/CatalogCard.ts';
+import { initApp } from './utils/core/appInit.ts';
+
+await initApp();
 
 export const app = document.createElement('div');
 export const appHTML = document.createElement('template');
@@ -114,3 +117,5 @@ export function initTesting() {
 
   populateCatalog();
 }
+
+initTesting();
