@@ -37,6 +37,11 @@ const TPL_AppButton_CSS = /* CSS */ `
     --btn-dual-gap-sm: 4px;
     --btn-dual-gap-md: 8px;
     --btn-dual-gap-lg: 8px;
+
+  }
+
+  :host([fullWidth="true"]) {
+    width: 100%;
   }
 
   .aspect-square {
@@ -101,6 +106,10 @@ const TPL_AppButton_CSS = /* CSS */ `
     padding-left: var(--btn-dual-padding-l-lg);
     padding-right: var(--btn-dual-padding-r-lg);
     gap: var(--btn-dual-gap-lg);
+  }
+
+  .btn-full-width {
+    width: 100%;
   }
 
   button.btn {
@@ -230,9 +239,8 @@ class AppButton extends HTMLElement {
   }
 
   initButtonSizing() {
-    if (!this.size) {
-      this.size = 'md';
-    }
+    if (!this.size) this.size = 'md';
+    if (!this.fullWidth) this.fullWidth = 'false';
   }
 
   updateButtonSizing() {
@@ -250,28 +258,36 @@ class AppButton extends HTMLElement {
   }
 
   setButtonIconOnly() {
-    this._button.classList.add(`btn-${this.size}`);
+    this.setButtonWidth();
 
     this._button.classList.add(`aspect-square`);
     this._boxicon!.classList.add(`icon-${this.size}`);
   }
 
   setButtonTextOnly() {
-    this._button.classList.add(`btn-${this.size}`);
+    this.setButtonWidth();
 
     this._buttonContent.classList.add(`btn-only-text-content-${this.size}`);
   }
 
   setButtonTextAndIcon() {
-    this._button.classList.add(`btn-${this.size}`);
+    this.setButtonWidth();
 
     this._boxicon!.classList.add(`icon-${this.size}`);
-
     this._buttonContent.classList.add(`btn-dual-content-${this.size}`);
+  }
+
+  setButtonWidth() {
+    if (this.fullWidth === 'true') {
+      this._button.classList.add('btn-full-width');
+    }
+
+    this._button.classList.add(`btn-${this.size}`);
   }
 
   resetButtonSizeClasses() {
     this._button.classList.remove('aspect-square');
+    this._button.classList.remove('btn-full-width');
 
     this._button.classList.remove('btn-sm');
     this._button.classList.remove('btn-md');
@@ -290,6 +306,7 @@ class AppButton extends HTMLElement {
     return [
       'type',
       'size',
+      'fullWidth',
       'iconName',
       'iconType',
       'iconColor',
@@ -315,6 +332,14 @@ class AppButton extends HTMLElement {
 
   set size(value: 'sm' | 'md' | 'lg') {
     if (this.size !== value) this.setAttribute('size', value);
+  }
+
+  get fullWidth(): string | null {
+    return this.getAttribute('fullWidth');
+  }
+
+  set fullWidth(value: 'true' | 'false') {
+    if (this.fullWidth !== value) this.setAttribute('fullWidth', value);
   }
 
   get iconName(): string | null {
@@ -424,6 +449,9 @@ class AppButton extends HTMLElement {
         break;
       case 'size':
         this.size = newVal;
+        break;
+      case 'fullWidth':
+        this.fullWidth = newVal;
         break;
       case 'iconName':
         this.iconName = newVal;

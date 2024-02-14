@@ -14,7 +14,8 @@ const TPL_CatalogCard_css = /* CSS */ `
     .container {
         position: relative;
 
-        height: 5rem;
+        height: 24rem;
+        width: 14rem;
 
         padding: 1.2rem;
     }
@@ -32,8 +33,9 @@ const TPL_CatalogCard_css = /* CSS */ `
     }
 
     .cart-card-image-container {
-        width: 4rem;
-        height: 4rem;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1/1;
         background: var(--color-tertiary-500);
         opacity: 0.5;
     }
@@ -43,16 +45,22 @@ const TPL_CatalogCard_css = /* CSS */ `
         padding: 0;
     }
 
-    .grid-container {
-        display: grid;
-        grid-template-columns: auto auto auto;
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
         gap: 1rem;
         align-items: center;
         justify-content: center;
     }
 
-    .grid-item {
-
+    .container-item {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+      width: 100%;
     }
 
     .hidden {
@@ -64,16 +72,16 @@ const TPL_CatalogCard_css = /* CSS */ `
 TPL_CatalogCard.innerHTML = /* HTML */ `
   ${TPL_CatalogCard_css}
 
-  <div class="container grid-container">
-    <div class="grid-item">
+  <div class="container flex-container">
+    <div class="container-item">
       <div class="cart-card-image-container"></div>
     </div>
-    <div class="grid-item">
+    <div class="container-item">
       <h4 id="title">Cart Item</h4>
       <p id="description">Lorem Ipsum</p>
       <p id="price">$0.00</p>
     </div>
-    <div class="grid-item">
+    <div class="container-item">
       <app-button
         iconType="solid"
         iconName="trash"
@@ -83,7 +91,8 @@ TPL_CatalogCard.innerHTML = /* HTML */ `
       <app-button
         iconType="solid"
         iconName="cart-add"
-        size="sm"
+        size="md"
+        fullWidth="true"
         id="btn-add"></app-button>
     </div>
   </div>
