@@ -12,13 +12,13 @@ export class ProductGroup {
     name: string,
     description: string,
     price: number,
-    variants: { [key: string]: ProductVariant }
+    variants?: { [key: string]: ProductVariant }
   ) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.price = price;
-    this.variants = variants;
+    if (variants) this.variants = variants;
   }
 
   get id(): string {

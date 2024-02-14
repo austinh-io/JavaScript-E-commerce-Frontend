@@ -1,3 +1,4 @@
+import { Catalog } from './utils/core/catalogManager.ts';
 import AppDrawer from './components/overscreen_menus/AppDrawer.ts';
 import AppOverlay from './components/overscreen_menus/AppOverlay.ts';
 import SiteNav from './components/navigation/SiteNav.ts';
@@ -5,7 +6,6 @@ import { createButton } from './utils/ui/elementCreator.ts';
 import AppBar from './components/navigation/AppBar.ts';
 import CartMenu from './components/cart/CartMenu.ts';
 import { DrawerOverlayManager } from './utils/ui/drawerOverlayManager.ts';
-import { Catalog } from './utils/core/catalogManager.ts';
 import CatalogCard from './components/catalog/CatalogCard.ts';
 
 export const app = document.createElement('div');
@@ -78,7 +78,7 @@ appHTML.innerHTML = /* HTML */ `
   </div>
 `;
 
-function initTesting() {
+export function initTesting() {
   const buttonToggleCart = createButton(
     'Toggle Cart',
     () => drawers.cart.toggle(),
@@ -94,35 +94,23 @@ function initTesting() {
   app.append(buttonToggleCart);
   app.append(buttonToggleNav);
 
-  function appendCartItems() {
-    // const cartItem1 = new CartCard();
-    // const cartItem2 = new CartCard();
-    // const cartItem3 = new CartCard();
-    // const cartItem4 = new CartCard();
-
-    const timer = [2000, 4000, 6000, 8000];
-    // const cartItems = [cartItem1, cartItem2, cartItem3, cartItem4];
-
-    for (let i = 0; i < timer.length; i++) {
-      setTimeout(() => {
-        // cartMenu.appendToCart(cartItems[i]);
-      }, timer[i]);
-    }
-  }
-
-  appendCartItems();
   DrawerOverlayManager.getDrawer('cartDrawer').open();
 
   const catalogItems = document.createElement('div');
   const allCatalogProducts = Catalog.getAllItems();
-  for (const key in allCatalogProducts) {
-    const cartCard = new CatalogCard(Catalog.getItem(key));
-    catalogItems.append(cartCard);
-  }
-  catalogItems.style.display = 'flex';
-  catalogItems.style.flexWrap = 'wrap';
-  catalogItems.style.gap = '10px';
-  app.append(catalogItems);
-}
 
-initTesting();
+  function populateCatalog() {
+    for (const key in allCatalogProducts) {
+      const catalogCard = new CatalogCard(Catalog.getItem(key));
+      catalogItems.append(catalogCard);
+    }
+
+    catalogItems.style.display = 'flex';
+    catalogItems.style.flexWrap = 'wrap';
+    catalogItems.style.gap = '10px';
+
+    app.append(catalogItems);
+  }
+
+  populateCatalog();
+}
