@@ -1,4 +1,4 @@
-import AppDrawer from '../components/overscreen_menus/AppDrawer';
+import AppDrawer from '../../components/overscreen_menus/AppDrawer';
 
 declare global {
   interface HTMLElementTagNameMap {

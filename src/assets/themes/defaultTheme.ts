@@ -1,4 +1,4 @@
-import { Theme } from '../types/Theme';
+import { Theme } from '../../utils/types/Theme';
 
 export const darkMode: Theme = {
   name: 'dark',

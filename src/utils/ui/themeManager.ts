@@ -1,5 +1,5 @@
-import { lightMode, darkMode } from '../../themes/defaultTheme.ts';
-import { Theme } from '../../types/Theme';
+import { lightMode, darkMode } from '../../assets/themes/defaultTheme.ts';
+import { Theme } from '../types/Theme';
 
 class ActiveTheme {
   private _theme: Theme;
