@@ -1,13 +1,13 @@
+import { initApp } from './utils/core/appInit.ts';
 import { Catalog } from './utils/core/catalogManager.ts';
+import { createButton } from './utils/ui/elementCreator.ts';
+import { DrawerOverlayManager } from './utils/ui/drawerOverlayManager.ts';
 import AppDrawer from './components/overscreen_menus/AppDrawer.ts';
 import AppOverlay from './components/overscreen_menus/AppOverlay.ts';
 import SiteNav from './components/navigation/SiteNav.ts';
-import { createButton } from './utils/ui/elementCreator.ts';
 import AppBar from './components/navigation/AppBar.ts';
 import CartMenu from './components/cart/CartMenu.ts';
-import { DrawerOverlayManager } from './utils/ui/drawerOverlayManager.ts';
 import CatalogCard from './components/catalog/CatalogCard.ts';
-import { initApp } from './utils/core/appInit.ts';
 
 await initApp();
 
