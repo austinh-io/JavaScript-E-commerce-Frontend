@@ -5,6 +5,7 @@ export class CartItem {
   private _count: number = 1;
   private _productGroup: ProductGroup;
   private _productVariant: ProductVariant;
+  private _cartId: string;
 
   constructor(
     productGroup: ProductGroup,
@@ -14,6 +15,15 @@ export class CartItem {
     this._productGroup = productGroup;
     this._productVariant = productVariant;
     if (count) this._count = count;
+    this._cartId = String(productGroup.id) + String(productVariant.id);
+  }
+
+  get id(): string {
+    return this._cartId;
+  }
+
+  set id(value: string) {
+    this._cartId = value;
   }
 
   get count(): number {
@@ -59,15 +69,15 @@ export class CartItem {
     return this.productGroup.id;
   }
 
-  get groupName(): string | null {
+  get groupName(): string {
     return this.productGroup.name;
   }
 
-  get groupDescription(): string | null {
+  get groupDescription(): string {
     return this.productGroup.description;
   }
 
-  get groupPrice(): number | null {
+  get groupPrice(): number {
     return this.productGroup.price;
   }
 

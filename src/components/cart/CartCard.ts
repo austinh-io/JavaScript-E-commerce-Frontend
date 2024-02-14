@@ -1,5 +1,7 @@
+import { CartItem } from '../../models/cartItem';
 import { ProductGroup } from '../../models/productGroup';
 import { Cart } from '../../utils/core/cartManager';
+import { Catalog } from '../../utils/core/catalogManager';
 
 const TPL_CartCard = document.createElement('template');
 
@@ -12,7 +14,7 @@ const TPL_CartCard_css = /* CSS */ `
 
     .container {
         position: relative;
-        height: 5rem;
+        height: 6rem;
         padding: 1.2rem;
     }
 
@@ -65,6 +67,7 @@ TPL_CartCard.innerHTML = /* HTML */ `
       <h4 id="title">Cart Item</h4>
       <p id="description">Lorem Ipsum</p>
       <p id="price">$0.00</p>
+      <p>Count: <span id="count">1</span></p>
     </div>
     <div class="grid-item">
       <app-button
@@ -77,13 +80,15 @@ TPL_CartCard.innerHTML = /* HTML */ `
 `;
 
 class CartCard extends HTMLElement {
-  private _cartItem: ProductGroup;
+  private _cartItem: CartItem;
   private _titleLabel: HTMLElement;
   private _descriptionLabel: HTMLElement;
   private _priceLabel: HTMLElement;
+  private _countLabel: HTMLElement;
   private _removeButton: HTMLElement;
+  private _count = 1;
 
-  constructor(cartItem: ProductGroup) {
+  constructor(cartItem: CartItem) {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     const clone = TPL_CartCard.content.cloneNode(true);
@@ -92,20 +97,22 @@ class CartCard extends HTMLElement {
     this._titleLabel = shadow.querySelector('#title')!;
     this._descriptionLabel = shadow.querySelector('#description')!;
     this._priceLabel = shadow.querySelector('#price')!;
+    this._countLabel = shadow.querySelector('#count')!;
     this._removeButton = shadow.querySelector('#btn-remove')!;
 
     this._cartItem = cartItem;
 
-    this._titleLabel.innerText = cartItem.name;
-    this._descriptionLabel.innerText = cartItem.description;
-    this._priceLabel.innerText = String(cartItem.price);
+    this._titleLabel.innerText = cartItem.groupName;
+    this._descriptionLabel.innerText = cartItem.groupDescription;
+    this._priceLabel.innerText = String(cartItem.groupPrice);
+    this._count = cartItem.count;
   }
 
-  get cartItem(): ProductGroup | null {
+  get cartItem(): CartItem | null {
     return this._cartItem;
   }
 
-  set cartItem(value: ProductGroup) {
+  set cartItem(value: CartItem) {
     this._cartItem = value;
     this.updateItemLabels();
   }
@@ -115,15 +122,20 @@ class CartCard extends HTMLElement {
   }
 
   updateItemLabels() {
-    this._titleLabel.innerText = this._cartItem.name!;
-    this._descriptionLabel.innerText = this._cartItem.description!;
-    this._priceLabel.innerText = String(this._cartItem.price)!;
+    this._titleLabel.innerText = this._cartItem.groupName!;
+    this._descriptionLabel.innerText = this._cartItem.groupDescription!;
+    this._priceLabel.innerText = String(this._cartItem.groupPrice)!;
   }
 
   removeItem() {
-    Cart.removeItem(this._cartItem.id);
+    Cart.removeItem(
+      Catalog.getGroup(this._cartItem.groupId),
+      Catalog.getVariant(this._cartItem.groupId, this._cartItem.variantId)
+    );
     this.remove();
   }
+
+  incrementCount() {}
 
   disconnectedCallback() {
     this._removeButton.removeEventListener('click', () => this.removeItem());

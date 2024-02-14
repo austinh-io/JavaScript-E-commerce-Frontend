@@ -100,11 +100,11 @@ export function initTesting() {
   DrawerOverlayManager.getDrawer('cartDrawer').open();
 
   const catalogItems = document.createElement('div');
-  const allCatalogProducts = Catalog.getAllItems();
+  const allCatalogProducts = Catalog.getAllGroups();
 
   function populateCatalog() {
     for (const key in allCatalogProducts) {
-      const catalogCard = new CatalogCard(Catalog.getItem(key));
+      const catalogCard = new CatalogCard(Catalog.getGroup(key));
       catalogItems.append(catalogCard);
     }
 

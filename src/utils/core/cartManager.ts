@@ -1,39 +1,48 @@
+import { CartItem } from '../../models/cartItem';
 import { ProductGroup } from '../../models/productGroup';
+import { ProductVariant } from '../../models/productVariant';
 import { Catalog } from './catalogManager';
 
 export class Cart {
-  private static _items: { [key: string]: ProductGroup } = {};
+  private static _items: { [key: string]: CartItem } = {};
 
-  static addItem(item: ProductGroup) {
-    this._items[item.id] = item;
+  static addItem(itemGroup: ProductGroup, itemVariant: ProductVariant) {
+    const newCartItem = new CartItem(itemGroup, itemVariant);
+    this._items[newCartItem.id] = newCartItem;
   }
 
-  static removeItem(productId: string) {
-    delete this._items[productId];
+  static removeItem(itemGroup: ProductGroup, itemVariant: ProductVariant) {
+    if (this.hasItem(itemGroup, itemVariant)) {
+      delete this._items[this.getItemKey(itemGroup, itemVariant)];
+    }
   }
 
-  static getItem(productId: string): ProductGroup {
+  static getItem(productId: string): CartItem {
     return this._items[productId];
   }
 
-  static getAllItems(): { [key: string]: ProductGroup } {
+  static getAllItems(): { [key: string]: CartItem } {
     return this._items;
   }
 
-  static setTestingItems() {
-    // this.addItem(new ProductGroup('0', 'Item 0', 'A nice item!', 4.99));
-    // this.addItem(new ProductGroup('1', 'Item 1', 'A nice item!', 6.9));
-    // this.addItem(new ProductGroup('2', 'Item 2', 'A nice item!', 2.49));
-    // this.addItem(new ProductGroup('3', 'Item 3', 'A nice item!', 17.99));
+  static hasItem(
+    itemGroup: ProductGroup,
+    itemVariant: ProductVariant
+  ): boolean {
+    return this.getItemKey(itemGroup, itemVariant) in this._items;
+  }
+
+  static getItemKey(itemGroup: ProductGroup, itemVariant: ProductVariant) {
+    return String(itemGroup.id) + String(itemVariant.id);
   }
 }
 
-Cart.setTestingItems();
-
 window.addEventListener('addToCart', (event: Event) => {
   if (event instanceof CustomEvent && event.detail) {
-    const { productId } = event.detail;
-    const product = Catalog.getItem(productId);
-    Cart.addItem(product);
+    const { productGroupId } = event.detail;
+    const { productVariantId } = event.detail;
+    const productToAdd = Catalog.getGroup(productGroupId);
+    const variantToAdd = Catalog.getVariant(productGroupId, productVariantId);
+    Cart.addItem(productToAdd, variantToAdd);
   }
 });

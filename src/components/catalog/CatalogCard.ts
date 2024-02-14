@@ -1,5 +1,6 @@
 import { ProductGroup } from '../../models/productGroup.ts';
 import { Cart } from '../../utils/core/cartManager.ts';
+import { Catalog } from '../../utils/core/catalogManager.ts';
 import { DrawerOverlayManager } from '../../utils/ui/drawerOverlayManager.ts';
 
 const TPL_CatalogCard = document.createElement('template');
@@ -84,22 +85,18 @@ TPL_CatalogCard.innerHTML = /* HTML */ `
     <div class="container-item">
       <app-button
         iconType="solid"
-        iconName="trash"
-        size="sm"
-        id="btn-remove"
-        class="hidden"></app-button>
-      <app-button
-        iconType="solid"
         iconName="cart-add"
         size="md"
         fullWidth="true"
-        id="btn-add"></app-button>
+        id="btn-add"
+        >Add to Cart</app-button
+      >
     </div>
   </div>
 `;
 
 export default class CatalogCard extends HTMLElement {
-  private _catalogItem: ProductGroup;
+  private _productGroup: ProductGroup;
   private _itemTitleLabel: HTMLElement;
   private _itemDescriptionLabel: HTMLElement;
   private _itemPriceLabel: HTMLElement;
@@ -118,7 +115,7 @@ export default class CatalogCard extends HTMLElement {
     this._removeButton = shadow.querySelector('#btn-remove')!;
     this._addButton = shadow.querySelector('#btn-add')!;
 
-    this._catalogItem = item;
+    this._productGroup = item;
     this.itemId = String(item.id);
     this.itemName = item.name;
     this.itemDescription = item.description;
@@ -130,11 +127,11 @@ export default class CatalogCard extends HTMLElement {
   }
 
   get item(): ProductGroup | null {
-    return this._catalogItem;
+    return this._productGroup;
   }
 
   set item(value: ProductGroup) {
-    this._catalogItem = value;
+    this._productGroup = value;
     this.itemId = value.id;
     this.updateItemLabels();
   }
@@ -172,7 +169,6 @@ export default class CatalogCard extends HTMLElement {
   }
 
   connectedCallback() {
-    this._removeButton.addEventListener('click', () => this.removeItem());
     this._addButton.addEventListener('click', () => this.addToCart());
   }
 
@@ -180,10 +176,6 @@ export default class CatalogCard extends HTMLElement {
     this._itemTitleLabel.innerText = this.itemName!;
     this._itemDescriptionLabel.innerText = this.itemDescription!;
     this._itemPriceLabel.innerText = this.itemPrice!;
-  }
-
-  removeItem() {
-    Cart.removeItem(this._catalogItem.id);
   }
 
   addToCart() {
@@ -198,7 +190,6 @@ export default class CatalogCard extends HTMLElement {
   }
 
   disconnectedCallback() {
-    this._removeButton.removeEventListener('click', () => this.removeItem());
     this._addButton.removeEventListener('click', () => this.addToCart());
   }
 }
