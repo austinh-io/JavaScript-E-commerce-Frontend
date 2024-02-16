@@ -55,13 +55,13 @@ export async function initCatalog() {
   try {
     const productData = await processData();
     if (productData) {
-      productData.forEach((pgData: any) => {
+      productData.forEach((productGroupData: any) => {
         const productGroup = new ProductGroup(
-          pgData.id,
-          pgData.name,
-          pgData.description,
-          pgData.price,
-          pgData.variants
+          productGroupData.id,
+          productGroupData.name,
+          productGroupData.description,
+          productGroupData.price,
+          productGroupData.variants
         );
         Catalog.addGroup(productGroup);
       });

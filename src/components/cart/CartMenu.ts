@@ -1,3 +1,4 @@
+import { CartItem } from '../../models/cartItem';
 import { ProductGroup } from '../../models/productGroup';
 import { Cart } from '../../utils/core/cartManager';
 import { Catalog } from '../../utils/core/catalogManager';
@@ -30,7 +31,7 @@ TPL_CartMenu.innerHTML = /* HTML */ `
 
 export default class CartMenu extends HTMLElement {
   private _container: HTMLElement;
-  private _cartItems: { [key: string]: ProductGroup } = {};
+  private _cartItems: { [key: string]: CartItem } = {};
 
   constructor() {
     super();
@@ -52,10 +53,16 @@ export default class CartMenu extends HTMLElement {
     this._container.append(value);
   }
 
-  handleAddToCart(event: CustomEvent<{ productId: string }>) {
-    const { productId } = event.detail;
-    const productToAdd = Catalog.getItem(productId);
-    const cartCard = new CartCard(productToAdd);
+  handleAddToCart(
+    event: CustomEvent<{ productGroupId: string; productVariantId: string }>
+  ) {
+    const { productGroupId, productVariantId } = event.detail;
+    const cartItemId = Cart.getItemKey(
+      Catalog.getGroup(productGroupId),
+      Catalog.getVariant(productGroupId, productVariantId)
+    );
+    const cartItem = Cart.getItem(cartItemId);
+    const cartCard = new CartCard(cartItem);
     this.appendToMenu(cartCard);
   }
 

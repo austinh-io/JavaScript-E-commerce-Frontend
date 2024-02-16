@@ -5,7 +5,7 @@ export class CartItem {
   private _count: number = 1;
   private _productGroup: ProductGroup;
   private _productVariant: ProductVariant;
-  private _cartId: string;
+  private _cartId: string = '';
 
   constructor(
     productGroup: ProductGroup,
@@ -15,15 +15,15 @@ export class CartItem {
     this._productGroup = productGroup;
     this._productVariant = productVariant;
     if (count) this._count = count;
-    this._cartId = String(productGroup.id) + String(productVariant.id);
+    this.setCartId(productGroup, productVariant);
   }
 
   get id(): string {
     return this._cartId;
   }
 
-  set id(value: string) {
-    this._cartId = value;
+  setCartId(productGroup: ProductGroup, productVariant: ProductVariant) {
+    this._cartId = String(productGroup.id) + String(productVariant.id);
   }
 
   get count(): number {
@@ -54,7 +54,9 @@ export class CartItem {
     If this was not set then you could have a group + variant in
     the cart that actually do not belong to each other.
     */
-    this.productVariant = this._productGroup.variants[0];
+    const [firstValueVariant] = Object.values(value.variants);
+    this.productVariant = firstValueVariant;
+    this.setCartId(value, firstValueVariant);
   }
 
   get productVariant(): ProductVariant {
@@ -63,6 +65,7 @@ export class CartItem {
 
   set productVariant(value: ProductVariant) {
     if (this.groupHasVariant(value.id)) this._productVariant = value;
+    this.setCartId(this._productGroup, this.productVariant);
   }
 
   get groupId(): string {

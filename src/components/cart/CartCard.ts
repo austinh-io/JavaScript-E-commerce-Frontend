@@ -102,7 +102,10 @@ class CartCard extends HTMLElement {
 
     this._cartItem = cartItem;
 
-    this._titleLabel.innerText = cartItem.groupName;
+    if (cartItem.variantName) {
+      this._titleLabel.innerText = cartItem.variantName;
+    } else this._titleLabel.innerText = cartItem.groupName;
+
     this._descriptionLabel.innerText = cartItem.groupDescription;
     this._priceLabel.innerText = String(cartItem.groupPrice);
     this._count = cartItem.count;

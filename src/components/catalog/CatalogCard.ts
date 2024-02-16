@@ -1,4 +1,5 @@
 import { ProductGroup } from '../../models/productGroup.ts';
+import { ProductVariant } from '../../models/productVariant.ts';
 import { Cart } from '../../utils/core/cartManager.ts';
 import { Catalog } from '../../utils/core/catalogManager.ts';
 import { DrawerOverlayManager } from '../../utils/ui/drawerOverlayManager.ts';
@@ -97,13 +98,13 @@ TPL_CatalogCard.innerHTML = /* HTML */ `
 
 export default class CatalogCard extends HTMLElement {
   private _productGroup: ProductGroup;
+  private _activeVariant: ProductVariant;
   private _itemTitleLabel: HTMLElement;
   private _itemDescriptionLabel: HTMLElement;
   private _itemPriceLabel: HTMLElement;
-  private _removeButton: HTMLElement;
   private _addButton: HTMLElement;
 
-  constructor(item: ProductGroup) {
+  constructor(productGroup: ProductGroup) {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     const clone = TPL_CatalogCard.content.cloneNode(true);
@@ -112,14 +113,14 @@ export default class CatalogCard extends HTMLElement {
     this._itemTitleLabel = shadow.querySelector('#title')!;
     this._itemDescriptionLabel = shadow.querySelector('#description')!;
     this._itemPriceLabel = shadow.querySelector('#price')!;
-    this._removeButton = shadow.querySelector('#btn-remove')!;
     this._addButton = shadow.querySelector('#btn-add')!;
 
-    this._productGroup = item;
-    this.itemId = String(item.id);
-    this.itemName = item.name;
-    this.itemDescription = item.description;
-    this.itemPrice = item.price;
+    this._productGroup = productGroup;
+    this._activeVariant = this.getFirstVariant();
+    this.itemGroupId = String(productGroup.id);
+    this.itemName = productGroup.name;
+    this.itemDescription = productGroup.description;
+    this.itemPrice = productGroup.price;
 
     this._itemTitleLabel.innerText = this.itemName;
     this._itemDescriptionLabel.innerText = this.itemDescription;
@@ -132,16 +133,32 @@ export default class CatalogCard extends HTMLElement {
 
   set item(value: ProductGroup) {
     this._productGroup = value;
-    this.itemId = value.id;
+    this.itemGroupId = value.id;
     this.updateItemLabels();
   }
 
-  get itemId(): string | null {
+  get itemGroupId(): string | null {
     return this.getAttribute('itemId');
   }
 
-  set itemId(value: string | number) {
+  set itemGroupId(value: string | number) {
     this.setAttribute('itemId', String(value));
+  }
+
+  get activeVariantId(): string | null {
+    if (
+      String(this.getAttribute('activeVariantId')) ===
+      String(this._activeVariant.id)
+    ) {
+      return this.getAttribute('activeVariantId');
+    } else {
+      console.error('Mismatch in variant id! Please investigate!');
+      return null;
+    }
+  }
+
+  set activeVariantId(value: string | number) {
+    this.setAttribute('activeVariantId', String(value));
   }
 
   get itemName(): string | null {
@@ -170,6 +187,7 @@ export default class CatalogCard extends HTMLElement {
 
   connectedCallback() {
     this._addButton.addEventListener('click', () => this.addToCart());
+    this.initVariant();
   }
 
   updateItemLabels() {
@@ -178,10 +196,23 @@ export default class CatalogCard extends HTMLElement {
     this._itemPriceLabel.innerText = this.itemPrice!;
   }
 
+  getFirstVariant(): ProductVariant {
+    const [firstValueVariant] = Object.values(this._productGroup.variants);
+    return firstValueVariant;
+  }
+
+  initVariant() {
+    this._activeVariant = this.getFirstVariant();
+    this.setAttribute('activeVariantId', this._activeVariant.id);
+  }
+
   addToCart() {
     window.dispatchEvent(
       new CustomEvent('addToCart', {
-        detail: { productId: this.itemId },
+        detail: {
+          productGroupId: this.itemGroupId,
+          productVariantId: this.activeVariantId,
+        },
         bubbles: true,
         composed: true,
       })
