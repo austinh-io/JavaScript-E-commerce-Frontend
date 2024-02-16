@@ -1,4 +1,5 @@
 import { ProductGroup } from '../../models/productGroup';
+import { ProductVariant } from '../../models/productVariant';
 
 export class Catalog {
   private static _productGroups: { [key: string]: ProductGroup } = {};
@@ -19,7 +20,7 @@ export class Catalog {
     return this._productGroups;
   }
 
-  static getVariant(groupId: string, variantId: string) {
+  static getVariant(groupId: string, variantId: string): ProductVariant {
     return this._productGroups[groupId].variants[variantId];
   }
 }

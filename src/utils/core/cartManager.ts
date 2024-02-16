@@ -7,35 +7,38 @@ export class Cart {
   private static _CartItems: { [key: string]: CartItem } = {};
 
   static addItem(itemGroup: ProductGroup, itemVariant: ProductVariant) {
-    const newCartItem = new CartItem(itemGroup, itemVariant);
-    this._CartItems[newCartItem.id] = newCartItem;
+    const itemKey = this.getItemKey(itemGroup.id, itemVariant.id);
+    if (this.hasItem(itemKey)) {
+      this.getItem(itemKey).incrementCount();
+    } else {
+      const newCartItem = new CartItem(itemGroup, itemVariant);
+      this._CartItems[newCartItem.id] = newCartItem;
+    }
   }
 
   static removeItem(itemGroup: ProductGroup, itemVariant: ProductVariant) {
-    if (this.hasItem(itemGroup, itemVariant)) {
-      delete this._CartItems[this.getItemKey(itemGroup, itemVariant)];
+    const itemKey = this.getItemKey(itemGroup.id, itemVariant.id);
+    if (this.hasItem(itemKey)) {
+      delete this._CartItems[itemKey];
     } else {
       console.error('Item does not exist in cart!');
     }
   }
 
-  static getItem(productId: string): CartItem {
-    return this._CartItems[productId];
+  static getItem(cartItemId: string): CartItem {
+    return this._CartItems[cartItemId];
   }
 
   static getAllItems(): { [key: string]: CartItem } {
     return this._CartItems;
   }
 
-  static hasItem(
-    itemGroup: ProductGroup,
-    itemVariant: ProductVariant
-  ): boolean {
-    return this.getItemKey(itemGroup, itemVariant) in this._CartItems;
+  static hasItem(itemKey: string): boolean {
+    return itemKey in this._CartItems;
   }
 
-  static getItemKey(itemGroup: ProductGroup, itemVariant: ProductVariant) {
-    return String(itemGroup.id) + String(itemVariant.id);
+  static getItemKey(itemGroupId: string, itemVariantId: string) {
+    return String(itemGroupId) + String(itemVariantId);
   }
 }
 
