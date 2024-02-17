@@ -58,11 +58,7 @@ export default class CartMenu extends HTMLElement {
   ) {
     const { productGroupId, productVariantId } = event.detail;
 
-    if (this.itemInCart(productGroupId, productVariantId)) {
-      // Item exists in cart, do nothing
-      return;
-    } else {
-      // Item does not exist, create new cart card and add it to menu
+    if (!this.itemInCart(productGroupId, productVariantId)) {
       const cartItemId = Cart.getItemKey(productGroupId, productVariantId);
       const cartItem = Cart.getItem(cartItemId);
       const cartCard = new CartCard(cartItem);
