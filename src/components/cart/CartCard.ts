@@ -1,5 +1,4 @@
 import { CartItem } from '../../models/cartItem';
-import { ProductGroup } from '../../models/productGroup';
 import { Cart } from '../../utils/core/cartManager';
 import { Catalog } from '../../utils/core/catalogManager';
 
@@ -126,13 +125,14 @@ class CartCard extends HTMLElement {
   private _removeButton: HTMLElement;
   private _addButton: HTMLElement;
   private _subtractButton: HTMLElement;
-  private _totalCost: Number;
 
   constructor(cartItem: CartItem) {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     const clone = TPL_CartCard.content.cloneNode(true);
     shadow.append(clone);
+
+    this._cartItem = cartItem;
 
     this._titleLabel = shadow.querySelector('#title')!;
     this._descriptionLabel = shadow.querySelector('#description')!;
@@ -141,20 +141,18 @@ class CartCard extends HTMLElement {
     this._removeButton = shadow.querySelector('#btn-remove')!;
     this._addButton = shadow.querySelector('#btn-increment')!;
     this._subtractButton = shadow.querySelector('#btn-decrement')!;
-    this._cartItem = cartItem;
 
     if (cartItem.variantName) {
       this._titleLabel.innerText = cartItem.variantName;
     } else this._titleLabel.innerText = cartItem.groupName;
 
     this._descriptionLabel.innerText = cartItem.groupDescription;
-    this._totalCost = cartItem.groupPrice;
-    this._priceLabel.innerText = String(this._totalCost);
+    this._priceLabel.innerText = this.cartItem!.totalCost.toString();
     this.count = String(cartItem.count);
   }
 
   static get observedAttributes() {
-    return ['count', 'totalCost'];
+    return ['count'];
   }
 
   attributeChangedCallback(attName: String, oldVal: any, newVal: any) {
@@ -163,7 +161,7 @@ class CartCard extends HTMLElement {
     switch (attName) {
       case 'count':
         this._countLabel.innerText = String(newVal);
-        this._priceLabel.innerText = String(this.totalCost);
+        this._priceLabel.innerText = String(this.cartItem?.totalCost);
         break;
     }
   }
@@ -173,8 +171,11 @@ class CartCard extends HTMLElement {
   }
 
   set count(value: string) {
+    if (value != this.cartItem?.count.toString())
+      console.warn(
+        'Cart Card count has been set to a value different than the cart item!'
+      );
     this.setAttribute('count', value);
-    this.cartItem!.count = Number(value);
   }
 
   get cartItem(): CartItem | null {
@@ -186,15 +187,6 @@ class CartCard extends HTMLElement {
     this.updateItemLabels();
   }
 
-  get totalCost(): Number {
-    return Number(this._totalCost) * Number(this.count);
-  }
-
-  set totalCost(value: number) {
-    this._totalCost = value;
-    this.setAttribute('totalCost', String(value));
-  }
-
   connectedCallback() {
     this._removeButton.addEventListener('click', () => this.removeItem());
     this._addButton.addEventListener('click', () => this.incrementCount());
@@ -204,7 +196,7 @@ class CartCard extends HTMLElement {
   updateItemLabels() {
     this._titleLabel.innerText = this._cartItem.groupName!;
     this._descriptionLabel.innerText = this._cartItem.groupDescription!;
-    this._priceLabel.innerText = String(this._cartItem.groupPrice)!;
+    this._priceLabel.innerText = String(this._cartItem.price)!;
   }
 
   removeItem() {
@@ -216,12 +208,12 @@ class CartCard extends HTMLElement {
   }
 
   incrementCount() {
-    this.cartItem!.count++;
+    this.cartItem!.incrementCount();
     this.count = String(this.cartItem!.count);
   }
 
   decrementCount() {
-    this.cartItem!.count--;
+    this.cartItem!.decrementCount();
 
     if (this.cartItem!.count >= 1) {
       this.count = String(this.cartItem!.count);
@@ -232,9 +224,11 @@ class CartCard extends HTMLElement {
 
   disconnectedCallback() {
     this._removeButton.removeEventListener('click', () => this.removeItem());
+    this._addButton.removeEventListener('click', () => this.incrementCount());
+    this._subtractButton.removeEventListener('click', () =>
+      this.decrementCount()
+    );
   }
-
-  updateTotalCost() {}
 }
 
 window.customElements.define('cart-card', CartCard);

@@ -2,10 +2,12 @@ import { ProductGroup } from './productGroup';
 import { ProductVariant } from './productVariant';
 
 export class CartItem {
-  private _count: number = 1;
   private _productGroup: ProductGroup;
   private _productVariant: ProductVariant;
   private _cartId: string = '';
+  private _price: number = 0;
+  private _count: number = 1;
+  private _totalCost: number = 0;
 
   constructor(
     productGroup: ProductGroup,
@@ -14,8 +16,19 @@ export class CartItem {
   ) {
     this._productGroup = productGroup;
     this._productVariant = productVariant;
-    if (count) this._count = count;
     this.setCartId(productGroup, productVariant);
+
+    if (this.productVariant.priceOverride) {
+      this._price = this.productVariant.priceOverride;
+    } else {
+      this._price = this.productGroup.price;
+    }
+
+    if (count) {
+      this._count = count;
+    }
+
+    this._totalCost = this._count * this._price;
   }
 
   get id(): string {
@@ -32,14 +45,17 @@ export class CartItem {
 
   set count(value: number) {
     this._count = value;
+    this.updateTotalCost();
   }
 
   incrementCount() {
     this._count++;
+    this.updateTotalCost();
   }
 
   decrementCount() {
     this._count--;
+    this.updateTotalCost();
   }
 
   get productGroup(): ProductGroup {
@@ -80,8 +96,13 @@ export class CartItem {
     return this.productGroup.description;
   }
 
-  get groupPrice(): number {
-    return this.productGroup.price;
+  get price(): number {
+    return this._price;
+  }
+
+  get totalCost(): number {
+    this.updateTotalCost();
+    return this._totalCost;
   }
 
   get variantId(): string {
@@ -96,11 +117,11 @@ export class CartItem {
     return this.productVariant.descriptionOverride;
   }
 
-  get variantPrice(): number | null {
-    return this.productVariant.priceOverride;
-  }
-
   groupHasVariant(key: string): boolean {
     return key in this._productGroup.variants;
+  }
+
+  updateTotalCost() {
+    this._totalCost = this._count * this._price;
   }
 }
