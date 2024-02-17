@@ -124,7 +124,9 @@ class CartCard extends HTMLElement {
   private _priceLabel: HTMLElement;
   private _countLabel: HTMLElement;
   private _removeButton: HTMLElement;
-  private _count = 1;
+  private _addButton: HTMLElement;
+  private _subtractButton: HTMLElement;
+  private _totalCost: Number;
 
   constructor(cartItem: CartItem) {
     super();
@@ -137,7 +139,8 @@ class CartCard extends HTMLElement {
     this._priceLabel = shadow.querySelector('#price')!;
     this._countLabel = shadow.querySelector('#count')!;
     this._removeButton = shadow.querySelector('#btn-remove')!;
-
+    this._addButton = shadow.querySelector('#btn-increment')!;
+    this._subtractButton = shadow.querySelector('#btn-decrement')!;
     this._cartItem = cartItem;
 
     if (cartItem.variantName) {
@@ -145,8 +148,33 @@ class CartCard extends HTMLElement {
     } else this._titleLabel.innerText = cartItem.groupName;
 
     this._descriptionLabel.innerText = cartItem.groupDescription;
-    this._priceLabel.innerText = String(cartItem.groupPrice);
-    this._count = cartItem.count;
+    this._totalCost = cartItem.groupPrice;
+    this._priceLabel.innerText = String(this._totalCost);
+    this.count = String(cartItem.count);
+  }
+
+  static get observedAttributes() {
+    return ['count', 'totalCost'];
+  }
+
+  attributeChangedCallback(attName: String, oldVal: any, newVal: any) {
+    if (oldVal === newVal) return;
+
+    switch (attName) {
+      case 'count':
+        this._countLabel.innerText = String(newVal);
+        this._priceLabel.innerText = String(this.totalCost);
+        break;
+    }
+  }
+
+  get count(): string | null {
+    return this.getAttribute('count');
+  }
+
+  set count(value: string) {
+    this.setAttribute('count', value);
+    this.cartItem!.count = Number(value);
   }
 
   get cartItem(): CartItem | null {
@@ -158,8 +186,19 @@ class CartCard extends HTMLElement {
     this.updateItemLabels();
   }
 
+  get totalCost(): Number {
+    return Number(this._totalCost) * Number(this.count);
+  }
+
+  set totalCost(value: number) {
+    this._totalCost = value;
+    this.setAttribute('totalCost', String(value));
+  }
+
   connectedCallback() {
     this._removeButton.addEventListener('click', () => this.removeItem());
+    this._addButton.addEventListener('click', () => this.incrementCount());
+    this._subtractButton.addEventListener('click', () => this.decrementCount());
   }
 
   updateItemLabels() {
@@ -176,11 +215,26 @@ class CartCard extends HTMLElement {
     this.remove();
   }
 
-  incrementCount() {}
+  incrementCount() {
+    this.cartItem!.count++;
+    this.count = String(this.cartItem!.count);
+  }
+
+  decrementCount() {
+    this.cartItem!.count--;
+
+    if (this.cartItem!.count >= 1) {
+      this.count = String(this.cartItem!.count);
+    } else {
+      this.removeItem();
+    }
+  }
 
   disconnectedCallback() {
     this._removeButton.removeEventListener('click', () => this.removeItem());
   }
+
+  updateTotalCost() {}
 }
 
 window.customElements.define('cart-card', CartCard);
