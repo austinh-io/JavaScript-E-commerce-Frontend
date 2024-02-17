@@ -5,6 +5,15 @@ export class DrawerOverlayManager {
   private static _drawers: Record<string, AppDrawer> = {};
   private static _openDrawers: Set<string> = new Set();
   private static _overlay: { [key: string]: AppOverlay } = {};
+  private static _overlayIsOpen: boolean;
+
+  static get overlayIsOpen(): boolean {
+    return this._overlayIsOpen;
+  }
+
+  static set overlayIsOpen(value: boolean) {
+    this._overlayIsOpen = value;
+  }
 
   static addDrawer(key: string, value: AppDrawer): void {
     this._drawers[key] = value;
@@ -63,6 +72,7 @@ export class DrawerOverlayManager {
       console.error('Overlay does not exist.');
     } else {
       this._overlay[keys[0]].open();
+      this.overlayIsOpen = true;
     }
   }
 
@@ -84,6 +94,7 @@ export class DrawerOverlayManager {
         console.error('Overlay does not exist.');
       } else {
         this._overlay[keys[0]].close();
+        this.overlayIsOpen = false;
       }
     }
   }

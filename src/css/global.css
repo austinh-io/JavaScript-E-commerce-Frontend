@@ -18,6 +18,26 @@
   }
 }
 
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-surface-700);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-on-surface);
+}
+
+.lock-width-chromium {
+  padding-right: var(--scrollbar-width);
+}
+
+.lock-width-firefox {
+  scrollbar-gutter: stable both-edges;
+}
+
 a.btn,
 button.btn {
   display: flex;

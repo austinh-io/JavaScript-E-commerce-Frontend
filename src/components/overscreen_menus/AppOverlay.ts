@@ -1,3 +1,4 @@
+import { BrowserCheck } from '../../utils/core/browserChecker';
 import { DrawerOverlayManager } from '../../utils/ui/drawerOverlayManager';
 import AppDrawer from './AppDrawer';
 
@@ -43,6 +44,7 @@ class AppOverlay extends HTMLElement {
   private _overlayOpacityEnabledValue = 0.8;
   private _overlayOpacityDisabledValue = 0;
   private _isEnabled: boolean;
+  private _appBody: HTMLElement;
 
   constructor(
     drawersValue: { [key: string]: AppDrawer },
@@ -56,6 +58,8 @@ class AppOverlay extends HTMLElement {
     this._overlay = shadow.querySelector('.overlay')!;
     this._drawers = { ...drawersValue };
     this._isEnabled = isEnabledValue;
+
+    this._appBody = document.querySelector('body')!;
 
     DrawerOverlayManager.addOverlay('overlay', this);
   }
@@ -88,6 +92,17 @@ class AppOverlay extends HTMLElement {
     this._overlay.style.pointerEvents = 'auto';
     document.querySelector('body')!.style.overflow = 'hidden';
     this._isEnabled = true;
+    this.addScrollPadding();
+
+    window.dispatchEvent(
+      new CustomEvent('overlayOpened', {
+        detail: {
+          overlayIsOpen: true,
+        },
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 
   disableOverlay() {
@@ -95,6 +110,17 @@ class AppOverlay extends HTMLElement {
     this._overlay.style.pointerEvents = 'none';
     document.querySelector('body')!.style.overflow = 'auto';
     this._isEnabled = false;
+    this.removeScrollPadding();
+
+    window.dispatchEvent(
+      new CustomEvent('overlayClosed', {
+        detail: {
+          overlayIsOpen: false,
+        },
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 
   closeDrawers() {
@@ -111,11 +137,28 @@ class AppOverlay extends HTMLElement {
   }
 
   open() {
+    console.log('overlay opened');
     this.enableOverlay();
   }
 
   close() {
     this.disableOverlay();
+  }
+
+  addScrollPadding() {
+    if (BrowserCheck.isChromium()) {
+      this._appBody.classList.add('lock-width-chromium');
+    } else {
+      this._appBody.classList.add('lock-width-firefox');
+    }
+  }
+
+  removeScrollPadding() {
+    if (BrowserCheck.isChromium()) {
+      this._appBody.classList.remove('lock-width-chromium');
+    } else {
+      this._appBody.classList.remove('lock-width-firefox');
+    }
   }
 
   disconnectedCallback() {

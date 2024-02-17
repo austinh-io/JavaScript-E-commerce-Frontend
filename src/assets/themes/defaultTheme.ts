@@ -4,6 +4,7 @@ export const darkMode: Theme = {
   name: 'dark',
   properties: {
     // =~= Theme Properties =~=
+    '--scrollbar-width': '0.4rem',
     '--font-color-base': 'rgb(255 255 255)',
     '--font-color-inverse': 'rgb(12 13 13)',
     '--rounded-base': '9999px',
@@ -107,6 +108,7 @@ export const lightMode: Theme = {
   name: 'light',
   properties: {
     // =~= Theme Properties =~=
+    '--scrollbar-width': '0.4rem',
     '--font-color-base': 'rgb(12 13 13)',
     '--font-color-inverse': 'rgb(255 255 255)',
     '--rounded-base': '9999px',

@@ -1,7 +1,5 @@
 import { CartItem } from '../../models/cartItem';
-import { ProductGroup } from '../../models/productGroup';
 import { Cart } from '../../utils/core/cartManager';
-import { Catalog } from '../../utils/core/catalogManager';
 import CartCard from './CartCard';
 
 const TPL_CartMenu = document.createElement('template');
