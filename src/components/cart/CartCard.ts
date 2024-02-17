@@ -183,6 +183,7 @@ class CartCard extends HTMLElement {
   }
 
   set cartItem(value: CartItem) {
+    console.warn('Cart item has been set to a new value!');
     this._cartItem = value;
     this.updateItemLabels();
   }
