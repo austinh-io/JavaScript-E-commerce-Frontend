@@ -11,6 +11,21 @@ const TPL_CartCard_css = /* CSS */ `
         overflow: hidden;
         border-radius: 4px;
     }
+    #count {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 1rem;
+      height: 1rem;
+
+      padding: 0.1rem;
+      margin: 0;
+    }
+
+    #btn-remove {
+      margin-left: auto;
+    }
 
     .container {
         position: relative;
@@ -35,6 +50,7 @@ const TPL_CartCard_css = /* CSS */ `
         height: 4rem;
         background: var(--color-tertiary-500);
         opacity: 0.5;
+        margin-block: auto;
     }
 
     h1, h2, h3, h4, h5, h6, p {
@@ -51,7 +67,19 @@ const TPL_CartCard_css = /* CSS */ `
     }
 
     .grid-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: start;
 
+      height: 100%;
+    }
+
+    .button-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
 </style>
 `;
@@ -67,7 +95,6 @@ TPL_CartCard.innerHTML = /* HTML */ `
       <h4 id="title">Cart Item</h4>
       <p id="description">Lorem Ipsum</p>
       <p id="price">$0.00</p>
-      <p>Count: <span id="count">1</span></p>
     </div>
     <div class="grid-item">
       <app-button
@@ -75,6 +102,17 @@ TPL_CartCard.innerHTML = /* HTML */ `
         iconName="trash"
         size="sm"
         id="btn-remove"></app-button>
+      <div class="button-group">
+        <app-button
+          iconName="minus"
+          size="sm"
+          id="btn-decrement"></app-button>
+        <p><span id="count">1</span></p>
+        <app-button
+          iconName="plus"
+          size="sm"
+          id="btn-increment"></app-button>
+      </div>
     </div>
   </div>
 `;
