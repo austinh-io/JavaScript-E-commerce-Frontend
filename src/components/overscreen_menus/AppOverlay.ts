@@ -46,18 +46,19 @@ class AppOverlay extends HTMLElement {
   private _isEnabled: boolean;
   private _appBody: HTMLElement;
 
-  constructor(
-    drawersValue: { [key: string]: AppDrawer },
-    isEnabledValue: boolean = false
-  ) {
+  constructor(isEnabledValue: boolean = false) {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     const clone = TPL_AppOverlay.content.cloneNode(true);
     shadow.append(clone);
 
     this._overlay = shadow.querySelector('.overlay')!;
-    this._drawers = { ...drawersValue };
     this._isEnabled = isEnabledValue;
+
+    this._drawers = {
+      navigation: new AppDrawer('Navigation'),
+      cart: new AppDrawer('Cart'),
+    };
 
     this._appBody = document.querySelector('body')!;
 
@@ -137,11 +138,16 @@ class AppOverlay extends HTMLElement {
   }
 
   open() {
-    console.log('overlay opened');
+    // I just wanted to note that despite this function seeming redundant, it was actually used
+    // because I wanted to include some behavior specific to the open() function, but not the enable() function.
+    // I may want to re-implement this sometime, so please leave this as-is for now.
+
     this.enableOverlay();
   }
 
   close() {
+    // Read the open() comment, same reasoning applied.
+
     this.disableOverlay();
   }
 

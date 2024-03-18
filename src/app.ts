@@ -2,7 +2,6 @@ import { initApp } from './utils/core/appInit.ts';
 import { Catalog } from './utils/core/catalogManager.ts';
 import { createButton } from './utils/ui/elementCreator.ts';
 import { DrawerOverlayManager } from './utils/ui/drawerOverlayManager.ts';
-import AppDrawer from './components/overscreen_menus/AppDrawer.ts';
 import AppOverlay from './components/overscreen_menus/AppOverlay.ts';
 import SiteNav from './components/navigation/SiteNav.ts';
 import AppBar from './components/navigation/AppBar.ts';
@@ -12,27 +11,26 @@ import CatalogCard from './components/catalog/CatalogCard.ts';
 await initApp();
 
 export const app = document.createElement('div');
-export const appHTML = document.createElement('template');
+const appHTML = document.createElement('template');
 
-const drawers: { [key: string]: AppDrawer } = {
-  navigation: new AppDrawer('Navigation'),
-  cart: new AppDrawer('Cart'),
-};
-const drawerOverlay = new AppOverlay(drawers);
+function initPage() {
+  const drawerOverlay = new AppOverlay();
+  const appBar = new AppBar();
+  const siteNav = new SiteNav();
+  const cartMenu = new CartMenu();
 
-const appBar = new AppBar();
-const siteNav = new SiteNav();
-appBar.append(siteNav);
+  appBar.append(siteNav);
+  app.id = 'app';
+  drawerOverlay.drawers.cart.appendToDrawerContent(cartMenu);
 
-const cartMenu = new CartMenu();
+  app.append(appBar);
+  app.append(drawerOverlay);
 
-drawers.cart.appendToDrawerContent(cartMenu);
+  for (const drawer in drawerOverlay.drawers) {
+    app.append(drawerOverlay.drawers[drawer]);
+  }
 
-app.append(appBar);
-app.append(drawerOverlay);
-
-for (const drawer in drawers) {
-  app.append(drawers[drawer]);
+  initTesting(drawerOverlay);
 }
 
 appHTML.innerHTML = /* HTML */ `
@@ -81,16 +79,16 @@ appHTML.innerHTML = /* HTML */ `
   </div>
 `;
 
-export function initTesting() {
+export function initTesting(overlay: AppOverlay) {
   const buttonToggleCart = createButton(
     'Toggle Cart',
-    () => drawers.cart.toggle(),
+    () => overlay.drawers.cart.toggle(),
     'primary'
   );
 
   const buttonToggleNav = createButton(
     'Toggle Nav',
-    () => drawers.navigation.toggle(),
+    () => overlay.drawers.navigation.toggle(),
     'secondary'
   );
 
@@ -118,4 +116,6 @@ export function initTesting() {
   populateCatalog();
 }
 
-initTesting();
+initPage();
+
+app.append(appHTML.content.cloneNode(true));
