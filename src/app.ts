@@ -10,6 +10,8 @@ import CatalogCard from './components/catalog/CatalogCard.ts';
 
 await initApp();
 
+/*** TODO: Seperate this into the initApp() function in the appInit().ts file ***/
+// Also look at the appInit.ts and read the TODO there
 export const app = document.createElement('div');
 const appHTML = document.createElement('template');
 
@@ -32,6 +34,7 @@ function initPage() {
 
   initTesting(drawerOverlay);
 }
+/*** ******* ***/
 
 appHTML.innerHTML = /* HTML */ `
   <div>

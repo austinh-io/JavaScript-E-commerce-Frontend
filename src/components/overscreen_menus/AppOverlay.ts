@@ -146,7 +146,7 @@ class AppOverlay extends HTMLElement {
   }
 
   close() {
-    // Read the open() comment, same reasoning applied.
+    // Read the open() function comment, same reasoning applied.
 
     this.disableOverlay();
   }

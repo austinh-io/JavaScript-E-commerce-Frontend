@@ -4,6 +4,9 @@ export class BrowserCheck {
       case 'Firefox':
         return false;
         break;
+      case 'Internet Explorer':
+        return false;
+        break;
       default:
         return true;
         break;
