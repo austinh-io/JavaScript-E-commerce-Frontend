@@ -52,11 +52,12 @@ async function processData() {
   }
 }
 
+// TODO: Move this somewhere else (like maybe the CatalogDisplay.ts component that I am not using)
 export async function initCatalog() {
   try {
     const productData = await processData();
     if (productData) {
-      productData.forEach((productGroupData: any) => {
+      productData.forEach((productGroupData: ProductGroup) => {
         const productGroup = new ProductGroup(
           productGroupData.id,
           productGroupData.name,
@@ -64,6 +65,10 @@ export async function initCatalog() {
           productGroupData.price,
           productGroupData.variants
         );
+
+        //Test log to see what comes up
+        console.log(productGroupData.variants);
+
         Catalog.addGroup(productGroup);
       });
     }
