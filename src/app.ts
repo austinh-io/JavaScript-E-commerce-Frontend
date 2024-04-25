@@ -1,7 +1,7 @@
 import { initApp } from './utils/core/appInit.ts';
 import { Catalog } from './utils/core/catalogManager.ts';
 import { createButton } from './utils/ui/elementCreator.ts';
-import { DrawerOverlayManager } from './utils/ui/drawerOverlayManager.ts';
+// import { DrawerOverlayManager } from './utils/ui/drawerOverlayManager.ts';
 import AppOverlay from './components/overscreen_menus/AppOverlay.ts';
 import SiteNav from './components/navigation/SiteNav.ts';
 import AppBar from './components/navigation/AppBar.ts';
@@ -98,7 +98,7 @@ export function initTesting(overlay: AppOverlay) {
   app.append(buttonToggleCart);
   app.append(buttonToggleNav);
 
-  DrawerOverlayManager.getDrawer('cartDrawer').open();
+  // DrawerOverlayManager.getDrawer('cartDrawer').open();
 
   const catalogItems = document.createElement('div');
   const allCatalogProducts = Catalog.getAllGroups();

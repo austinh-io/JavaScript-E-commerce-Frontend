@@ -217,7 +217,7 @@ export default class CatalogCard extends HTMLElement {
         composed: true,
       })
     );
-    DrawerOverlayManager.openDrawer('cartDrawer');
+    DrawerOverlayManager.openDrawer('cart');
   }
 
   disconnectedCallback() {

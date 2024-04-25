@@ -148,7 +148,7 @@ export class AppDrawer extends HTMLElement {
 
     this._drawerTitle = drawerTitle;
     this._drawerTitleLabel.textContent = this._drawerTitle;
-    this._name = `${this._drawerTitle.toLowerCase()}Drawer`;
+    this._name = `${this._drawerTitle.toLowerCase()}`;
 
     this._isOpen = false;
     DrawerOverlayManager.addDrawer(this._name, this);
