@@ -100,6 +100,8 @@ export function initTesting(overlay: AppOverlay) {
 
   // DrawerOverlayManager.getDrawer('cartDrawer').open();
 
+  // TODO: Move all this stuff to the CatalogDisplay component so it
+  // stops filling up so much space here
   const catalogItems = document.createElement('div');
   const allCatalogProducts = Catalog.getAllGroups();
 
