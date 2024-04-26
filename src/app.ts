@@ -83,20 +83,20 @@ appHTML.innerHTML = /* HTML */ `
 `;
 
 export function initTesting(overlay: AppOverlay) {
-  const buttonToggleCart = createButton(
-    'Toggle Cart',
-    () => overlay.drawers.cart.toggle(),
-    'primary'
-  );
+  // const buttonToggleCart = createButton(
+  //   'Toggle Cart',
+  //   () => overlay.drawers.cart.toggle(),
+  //   'primary'
+  // );
 
-  const buttonToggleNav = createButton(
-    'Toggle Nav',
-    () => overlay.drawers.navigation.toggle(),
-    'secondary'
-  );
+  // const buttonToggleNav = createButton(
+  //   'Toggle Nav',
+  //   () => overlay.drawers.navigation.toggle(),
+  //   'secondary'
+  // );
 
-  app.append(buttonToggleCart);
-  app.append(buttonToggleNav);
+  // app.append(buttonToggleCart);
+  // app.append(buttonToggleNav);
 
   // DrawerOverlayManager.getDrawer('cartDrawer').open();
 

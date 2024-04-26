@@ -67,9 +67,13 @@ const TPL_AppDrawer_css = /* CSS */ `
       justify-content: center;
 
       width: 100%;
-      height: 4.2rem;
+      height: 4rem;
 
       background: var(--color-surface-500);
+    }
+
+    #drawer-title:hover {
+      cursor: default;
     }
 
     .drawer-content {
