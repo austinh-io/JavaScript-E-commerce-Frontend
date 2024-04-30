@@ -148,12 +148,12 @@ export class SiteNav extends HTMLElement {
     this.updateIconColor();
 
     this._cartMenuButton.addEventListener('click', () => {
-      this._drawers.cartDrawer.open();
+      this._drawers.cart.open();
       this.openOverlay();
     });
 
     this._navMenuButton.addEventListener('click', () => {
-      this._drawers.navigationDrawer.open();
+      this._drawers.navigation.open();
       this.openOverlay();
     });
   }

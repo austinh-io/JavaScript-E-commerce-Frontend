@@ -67,9 +67,13 @@ const TPL_AppDrawer_css = /* CSS */ `
       justify-content: center;
 
       width: 100%;
-      height: 4.2rem;
+      height: 4rem;
 
       background: var(--color-surface-500);
+    }
+
+    #drawer-title:hover {
+      cursor: default;
     }
 
     .drawer-content {
@@ -148,7 +152,7 @@ export class AppDrawer extends HTMLElement {
 
     this._drawerTitle = drawerTitle;
     this._drawerTitleLabel.textContent = this._drawerTitle;
-    this._name = `${this._drawerTitle.toLowerCase()}Drawer`;
+    this._name = `${this._drawerTitle.toLowerCase()}`;
 
     this._isOpen = false;
     DrawerOverlayManager.addDrawer(this._name, this);

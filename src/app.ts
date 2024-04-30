@@ -1,7 +1,7 @@
 import { initApp } from './utils/core/appInit.ts';
 import { Catalog } from './utils/core/catalogManager.ts';
 import { createButton } from './utils/ui/elementCreator.ts';
-import { DrawerOverlayManager } from './utils/ui/drawerOverlayManager.ts';
+// import { DrawerOverlayManager } from './utils/ui/drawerOverlayManager.ts';
 import AppOverlay from './components/overscreen_menus/AppOverlay.ts';
 import SiteNav from './components/navigation/SiteNav.ts';
 import AppBar from './components/navigation/AppBar.ts';
@@ -83,22 +83,22 @@ appHTML.innerHTML = /* HTML */ `
 `;
 
 export function initTesting(overlay: AppOverlay) {
-  const buttonToggleCart = createButton(
-    'Toggle Cart',
-    () => overlay.drawers.cart.toggle(),
-    'primary'
-  );
+  // const buttonToggleCart = createButton(
+  //   'Toggle Cart',
+  //   () => overlay.drawers.cart.toggle(),
+  //   'primary'
+  // );
 
-  const buttonToggleNav = createButton(
-    'Toggle Nav',
-    () => overlay.drawers.navigation.toggle(),
-    'secondary'
-  );
+  // const buttonToggleNav = createButton(
+  //   'Toggle Nav',
+  //   () => overlay.drawers.navigation.toggle(),
+  //   'secondary'
+  // );
 
-  app.append(buttonToggleCart);
-  app.append(buttonToggleNav);
+  // app.append(buttonToggleCart);
+  // app.append(buttonToggleNav);
 
-  DrawerOverlayManager.getDrawer('cartDrawer').open();
+  // DrawerOverlayManager.getDrawer('cartDrawer').open();
 
   // TODO: Move all this stuff to the CatalogDisplay component so it
   // stops filling up so much space here
