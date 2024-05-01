@@ -3,6 +3,7 @@ import { ProductVariant } from '../../models/productVariant.ts';
 import { Cart } from '../../utils/core/cartManager.ts';
 import { Catalog } from '../../utils/core/catalogManager.ts';
 import { DrawerOverlayManager } from '../../utils/ui/drawerOverlayManager.ts';
+import CardOptions from './CardOptions.ts';
 
 const TPL_CatalogCard = document.createElement('template');
 
@@ -81,6 +82,7 @@ TPL_CatalogCard.innerHTML = /* HTML */ `
     <div class="container-item">
       <h4 id="title">Cart Item</h4>
       <p id="description">Lorem Ipsum</p>
+      <div class="options-container"></div>
       <p id="price">$0.00</p>
     </div>
     <div class="container-item">
@@ -103,6 +105,8 @@ export default class CatalogCard extends HTMLElement {
   private _itemDescriptionLabel: HTMLElement;
   private _itemPriceLabel: HTMLElement;
   private _addButton: HTMLElement;
+  private _optionsContainer: HTMLElement;
+  private _cardOptions: CardOptions;
 
   constructor(productGroup: ProductGroup) {
     super();
@@ -114,6 +118,7 @@ export default class CatalogCard extends HTMLElement {
     this._itemDescriptionLabel = shadow.querySelector('#description')!;
     this._itemPriceLabel = shadow.querySelector('#price')!;
     this._addButton = shadow.querySelector('#btn-add')!;
+    this._optionsContainer = shadow.querySelector('.options-container')!;
 
     this._productGroup = productGroup;
     this._activeVariant = this.getFirstVariant();
@@ -133,6 +138,10 @@ export default class CatalogCard extends HTMLElement {
     this._itemTitleLabel.innerText = this.itemName;
     this._itemDescriptionLabel.innerText = this.itemDescription;
     this._itemPriceLabel.innerText = this.itemPrice;
+
+    this._cardOptions = new CardOptions();
+
+    this._optionsContainer.append(this._cardOptions);
   }
 
   get item(): ProductGroup | null {
