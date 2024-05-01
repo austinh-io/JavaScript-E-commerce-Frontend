@@ -18,8 +18,8 @@ export class CartItem {
     this._productVariant = productVariant;
     this.setCartId(productGroup, productVariant);
 
-    if (this.productVariant.priceOverride) {
-      this._price = this.productVariant.priceOverride;
+    if (this.productVariant.price) {
+      this._price = this.productVariant.price;
     } else {
       this._price = this.productGroup.price;
     }
@@ -114,7 +114,7 @@ export class CartItem {
   }
 
   get variantDescription(): string | null {
-    return this.productVariant.descriptionOverride;
+    return this.productVariant.description;
   }
 
   groupHasVariant(key: string): boolean {

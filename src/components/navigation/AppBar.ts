@@ -72,7 +72,6 @@ class AppBar extends HTMLElement {
   }
 
   attributeChangedCallback(attName: string, oldVal: any, newVal: any) {
-    console.log('Attribute change');
     if (oldVal === newVal) return;
 
     switch (attName) {

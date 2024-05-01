@@ -1,14 +1,14 @@
 export class ProductVariant {
   private _variantId: string = '0';
-  private _variantNameOverride: string | null = null;
-  private _variantDescriptionOverride: string | null = null;
-  private _variantPriceOverride: number | null = null;
+  private _variantName: string | null = null;
+  private _variantDescription: string | null = null;
+  private _variantPrice: number | null = null;
 
   constructor(id: string, name?: string, description?: string, price?: number) {
     this.id = id;
-    if (name) this.nameOverride = name;
-    if (description) this.descriptionOverride = description;
-    if (price) this.priceOverride = price;
+    if (name) this.name = name;
+    if (description) this.description = description;
+    if (price) this.price = price;
   }
 
   get id(): string {
@@ -19,27 +19,27 @@ export class ProductVariant {
     this._variantId = value;
   }
 
-  get nameOverride(): string | null {
-    return this._variantNameOverride;
+  get name(): string | null {
+    return this._variantName;
   }
 
-  set nameOverride(value: string) {
-    this._variantNameOverride = value;
+  set name(value: string) {
+    this._variantName = value;
   }
 
-  get descriptionOverride(): string | null {
-    return this._variantDescriptionOverride;
+  get description(): string | null {
+    return this._variantDescription;
   }
 
-  set descriptionOverride(value: string) {
-    this._variantDescriptionOverride = value;
+  set description(value: string) {
+    this._variantDescription = value;
   }
 
-  get priceOverride(): number | null {
-    return this._variantPriceOverride;
+  get price(): number | null {
+    return this._variantPrice;
   }
 
-  set priceOverride(value: number) {
-    this._variantPriceOverride = value;
+  set price(value: number) {
+    this._variantPrice = value;
   }
 }

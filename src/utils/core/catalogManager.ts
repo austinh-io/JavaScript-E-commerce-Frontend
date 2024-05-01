@@ -66,10 +66,6 @@ export async function initCatalog() {
           productGroupData.variants
         );
 
-        //Test log to see what comes up
-        // console.log(productGroupData.variants);
-        console.log(Object.values(productGroupData.variants)[0]);
-
         Catalog.addGroup(productGroup);
       });
     }

@@ -117,10 +117,18 @@ export default class CatalogCard extends HTMLElement {
 
     this._productGroup = productGroup;
     this._activeVariant = this.getFirstVariant();
+
     this.itemGroupId = String(productGroup.id);
-    this.itemName = productGroup.name;
-    this.itemDescription = productGroup.description;
-    this.itemPrice = productGroup.price;
+
+    if (this._activeVariant.name) this.itemName = this._activeVariant.name;
+    else this.itemName = productGroup.name;
+
+    if (this._activeVariant.description)
+      this.itemDescription = this._activeVariant.description;
+    else this.itemDescription = productGroup.description;
+
+    if (this._activeVariant.price) this.itemPrice = this._activeVariant.price;
+    else this.itemPrice = productGroup.price;
 
     this._itemTitleLabel.innerText = this.itemName;
     this._itemDescriptionLabel.innerText = this.itemDescription;
@@ -197,8 +205,7 @@ export default class CatalogCard extends HTMLElement {
   }
 
   getFirstVariant(): ProductVariant {
-    const [firstValueVariant] = Object.values(this._productGroup.variants);
-    return firstValueVariant;
+    return Object.values(this._productGroup.variants)[0];
   }
 
   initVariant() {
