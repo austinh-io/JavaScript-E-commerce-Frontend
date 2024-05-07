@@ -25,7 +25,8 @@ export class Catalog {
   }
 }
 
-const productsJSONUrl = './server/data/products.json';
+// const productsJSONUrl = './server/data/products.json';
+const productsJSONUrl = './server/data/test_products2.json';
 
 async function loadJSONProducts(url: string) {
   try {
