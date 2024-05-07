@@ -139,9 +139,11 @@ export default class CatalogCard extends HTMLElement {
     this._itemDescriptionLabel.innerText = this.itemDescription;
     this._itemPriceLabel.innerText = this.itemPrice;
 
-    this._cardOptions = new CardOptions();
+    this._cardOptions = new CardOptions(productGroup);
 
     this._optionsContainer.append(this._cardOptions);
+
+    console.log(this._productGroup.variants);
   }
 
   get item(): ProductGroup | null {
