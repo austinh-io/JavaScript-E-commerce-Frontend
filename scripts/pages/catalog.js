@@ -1,12 +1,12 @@
 import {
   catchProductList,
   catalogProducts,
-} from '/js-simple-ecom/scripts/utilities/commerceUtilities.js';
+} from '/js-simple-e-com/scripts/utilities/commerceUtilities.js';
 import {
   fillCartList,
   getCartLocalStorage,
   cartItems,
-} from '/js-simple-ecom/scripts/utilities/cartUtilities.js';
+} from '/js-simple-e-com/scripts/utilities/cartUtilities.js';
 ('use strict');
 
 let productsList = undefined;

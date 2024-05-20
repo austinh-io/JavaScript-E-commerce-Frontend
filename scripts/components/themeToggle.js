@@ -1,4 +1,4 @@
-import { baseUrl } from '/js-simple-ecom/scripts/utilities/commerceUtilities.js';
+import { baseUrl } from '/js-simple-e-com/scripts/utilities/commerceUtilities.js';
 ('use strict');
 
 const tpl_themeToggle = document.createElement('template');

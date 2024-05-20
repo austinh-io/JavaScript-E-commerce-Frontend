@@ -1,11 +1,11 @@
-import { baseUrl } from '/js-simple-ecom/scripts/utilities/commerceUtilities.js';
+import { baseUrl } from '/js-simple-e-com/scripts/utilities/commerceUtilities.js';
 
-import { handleNavMenu } from '/js-simple-ecom/scripts/utilities/menus.js';
+import { handleNavMenu } from '/js-simple-e-com/scripts/utilities/menus.js';
 
 import {
   fillCartList,
   getCartLocalStorage,
-} from '/js-simple-ecom/scripts/utilities/cartUtilities.js';
+} from '/js-simple-e-com/scripts/utilities/cartUtilities.js';
 ('use strict');
 
 const tpl_navMenu = document.createElement('template');
