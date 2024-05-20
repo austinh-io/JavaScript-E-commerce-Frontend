@@ -1,7 +1,7 @@
 import {
   baseUrl,
   catalogProducts,
-} from '/scripts/utilities/commerceUtilities.js';
+} from '/js-simple-ecom/scripts/utilities/commerceUtilities.js';
 
 ('use strict');
 

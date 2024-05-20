@@ -2,14 +2,14 @@ import {
   formatCurrency,
   findItem,
   baseUrl,
-} from '/scripts/utilities/commerceUtilities.js';
+} from '/js-simple-ecom/scripts/utilities/commerceUtilities.js';
 
 import {
   addToCart,
   cartItems,
   removeFromCart,
   subtractFromCart,
-} from '/scripts/utilities/cartUtilities.js';
+} from '/js-simple-ecom/scripts/utilities/cartUtilities.js';
 
 ('use strict');
 

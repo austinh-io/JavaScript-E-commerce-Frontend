@@ -1,7 +1,7 @@
 import {
   formatCurrency,
   baseUrl,
-} from '/scripts/utilities/commerceUtilities.js';
+} from '/js-simple-ecom/scripts/utilities/commerceUtilities.js';
 
 import { handleCloseCartMenu } from '../utilities/menus.js';
 

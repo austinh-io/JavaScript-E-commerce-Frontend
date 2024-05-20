@@ -3,11 +3,14 @@ import {
   findItem,
   baseUrl,
   catalogProducts,
-} from '/scripts/utilities/commerceUtilities.js';
+} from '/js-simple-ecom/scripts/utilities/commerceUtilities.js';
 
-import { addToCart, cartItems } from '/scripts/utilities/cartUtilities.js';
+import {
+  addToCart,
+  cartItems,
+} from '/js-simple-ecom/scripts/utilities/cartUtilities.js';
 
-import { handleOpenCartMenu } from '/scripts/utilities/menus.js';
+import { handleOpenCartMenu } from '/js-simple-ecom/scripts/utilities/menus.js';
 
 ('use strict');
 

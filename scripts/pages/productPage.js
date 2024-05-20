@@ -4,17 +4,17 @@ import {
   catchProductList,
   catalogProducts,
   baseUrl,
-} from '/scripts/utilities/commerceUtilities.js';
+} from '/js-simple-ecom/scripts/utilities/commerceUtilities.js';
 
 import {
   addToCart,
   updateProductPageButton,
-} from '/scripts/utilities/cartUtilities.js';
+} from '/js-simple-ecom/scripts/utilities/cartUtilities.js';
 
-import { initializeProducts } from '/scripts/pages/catalog.js';
+import { initializeProducts } from '/js-simple-ecom/scripts/pages/catalog.js';
 ('use strict');
 
-import { handleOpenCartMenu } from '/scripts/utilities/menus.js';
+import { handleOpenCartMenu } from '/js-simple-ecom/scripts/utilities/menus.js';
 
 const productTitleElement = document.querySelector('.product-title');
 const productBrandElement = document.querySelector('.product-brand');

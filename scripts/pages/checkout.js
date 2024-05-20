@@ -1,9 +1,9 @@
 import {
   formatCurrency,
   catalogProducts,
-} from '/scripts/utilities/commerceUtilities.js';
-import { initializeProducts } from '/scripts/pages/catalog.js';
-import { cartItems } from '/scripts/utilities/cartUtilities.js';
+} from '/js-simple-ecom/scripts/utilities/commerceUtilities.js';
+import { initializeProducts } from '/js-simple-ecom/scripts/pages/catalog.js';
+import { cartItems } from '/js-simple-ecom/scripts/utilities/cartUtilities.js';
 
 ('use strict');
 
