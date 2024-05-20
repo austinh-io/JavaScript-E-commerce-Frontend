@@ -1,8 +1,8 @@
 'use strict';
 
-const baseUrlLive = '/simple-ecom';
+const baseUrlLive = '/js-simple-e-com';
 const baseUrlLocal = '';
-export const baseUrl = baseUrlLocal;
+export const baseUrl = baseUrlLive;
 export let catalogProducts = new Array();
 
 export function formatCurrency(value) {
