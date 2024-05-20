@@ -4,105 +4,88 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+      content="width=device-width, initial-scale=1.0" />
 
     <meta
       name="color-scheme"
-      contents="light dark"
-    />
+      contents="light dark" />
 
     <link
       rel="shortcut icon"
-      href="/assets/favicon/favicon.ico"
-      type="image/x-icon"
-    />
+      href="/js-simple-e-com/assets/favicon/favicon.ico"
+      type="image/x-icon" />
 
     <title>Ecommerce Site</title>
 
     <link
       rel="stylesheet"
-      href="/css/index.css"
-    />
+      href="/js-simple-e-com/css/index.css" />
 
-    <link rel="stylesheet" href="/css/responsive.css" media="screen and
-    (max-width: 768px)"" />
-
-    <link
-      rel="stylesheet"
-      href="/css/main.css"
-    />
+    <link rel="stylesheet" href="/js-simple-e-com/css/responsive.css"
+    media="screen and (max-width: 768px)"" />
 
     <link
       rel="stylesheet"
-      href="/css/filterMenu.css"
-    />
+      href="/js-simple-e-com/css/main.css" />
+
+    <link
+      rel="stylesheet"
+      href="/js-simple-e-com/css/filterMenu.css" />
 
     <script
       defer
       type="module"
-      src="/scripts/components/productCard.js"
-    ></script>
+      src="/js-simple-e-com/scripts/components/productCard.js"></script>
 
     <script
       defer
       type="module"
-      src="/scripts/components/cartItemCard.js"
-    ></script>
+      src="/js-simple-e-com/scripts/components/cartItemCard.js"></script>
 
     <script
       defer
       type="module"
-      src="/scripts/components/cartMenu.js"
-    ></script>
+      src="/js-simple-e-com/scripts/components/cartMenu.js"></script>
 
     <script
       defer
       type="module"
-      src="/scripts/components/jsymbol.js"
-    ></script>
+      src="/js-simple-e-com/scripts/components/jsymbol.js"></script>
 
     <script
       defer
       type="module"
-      src="/scripts/components/themeToggle.js"
-    ></script>
+      src="/js-simple-e-com/scripts/components/themeToggle.js"></script>
 
     <script
       defer
       type="module"
-      src="/scripts/components/fieldsets/selectionList.js"
-    ></script>
+      src="/js-simple-e-com/scripts/components/fieldsets/selectionList.js"></script>
 
     <script
       defer
       type="module"
-      src="/scripts/components/fieldsets/radioFieldset.js"
-    ></script>
+      src="/js-simple-e-com/scripts/components/fieldsets/radioFieldset.js"></script>
 
     <script
       defer
       type="module"
-      src="/scripts/components/fieldsets/productOptionSet.js"
-    ></script>
+      src="/js-simple-e-com/scripts/components/fieldsets/productOptionSet.js"></script>
 
     <script
       defer
       type="module"
-      src="/scripts/components/navMenu.js"
-    ></script>
+      src="/js-simple-e-com/scripts/components/navMenu.js"></script>
 
     <script
       defer
       type="module"
-      src="/scripts/utilities/menus.js"
-    ></script>
+      src="/js-simple-e-com/scripts/utilities/menus.js"></script>
 
     <script
       defer
       type="module"
-      src="/scripts/pages/catalog.js"
-    ></script>
+      src="/js-simple-e-com/scripts/pages/catalog.js"></script>
   </head>
   <body>
     <header></header>
@@ -134,17 +117,15 @@
             <video
               class="hero-bg-video"
               loop="true"
-              autoplay
-            >
+              autoplay>
               <source
-                src="/assets/videos/home_bg.webm"
-                type="video/webm"
-              />
+                src="/js-simple-e-com/assets/videos/home_bg.webm"
+                type="video/webm" />
             </video>
             <!--
             <img
               class="hero-bg-image"
-              src="/assets/images/home_bg.jpg"
+              src="/js-simple-e-com/assets/images/home_bg.jpg"
               alt=""
             />
             -->
@@ -155,8 +136,7 @@
           <div style="display: flex; flex-direction: column; gap: 4rem"></div>
           <h2
             class="catalog-title"
-            id="catalog"
-          >
+            id="catalog">
             Catalog
           </h2>
           <div class="filters-container">
@@ -164,12 +144,10 @@
               <button
                 class="filter-menu-toggle"
                 aria-controls="filter-menu"
-                aria-expanded="false"
-              >
+                aria-expanded="false">
                 <j-symbol
                   class="btn-filters-icon"
-                  name="filter"
-                ></j-symbol>
+                  name="filter"></j-symbol>
                 Filters
               </button>
               <div class="searchbar-container">
@@ -183,50 +161,43 @@
                     type="text"
                     id="search-input"
                     name="search-input"
-                    placeholder="search"
-                  />
+                    placeholder="search" />
                 </div>
                 <div class="searchbar-icon-container">
                   <j-symbol
                     class="searchbar-icon"
-                    name="search"
-                  ></j-symbol>
+                    name="search"></j-symbol>
                 </div>
               </div>
             </div>
             <div
               class="filter-options-container"
-              data-visible="false"
-            >
+              data-visible="false">
               <div>
                 <div
                   class="filter-options-menu"
-                  id="filter-options-menu"
-                >
+                  id="filter-options-menu">
                   <fieldset class="fieldset-filter">
                     <legend>Brands</legend>
                     <div>
                       <input
                         type="checkbox"
                         id="brand1"
-                        name="brand1"
-                      />
+                        name="brand1" />
                       <label for="brand1">Brand 1</label>
                     </div>
                     <div>
                       <input
                         type="checkbox"
                         id="brand2"
-                        name="brand2"
-                      />
+                        name="brand2" />
                       <label for="brand2">Brand 2</label>
                     </div>
                     <div>
                       <input
                         type="checkbox"
                         id="brand3"
-                        name="brand3"
-                      />
+                        name="brand3" />
                       <label for="brand3">Brand 3</label>
                     </div>
                   </fieldset>
@@ -236,24 +207,21 @@
                       <input
                         type="checkbox"
                         id="color1"
-                        name="color1"
-                      />
+                        name="color1" />
                       <label for="color1">Color 1</label>
                     </div>
                     <div>
                       <input
                         type="checkbox"
                         id="color2"
-                        name="color2"
-                      />
+                        name="color2" />
                       <label for="color2">Color 2</label>
                     </div>
                     <div>
                       <input
                         type="checkbox"
                         id="color3"
-                        name="color3"
-                      />
+                        name="color3" />
                       <label for="color3">Color 3</label>
                     </div>
                   </fieldset>

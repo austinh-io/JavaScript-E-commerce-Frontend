@@ -2,7 +2,7 @@
 
 const baseUrlLive = '/js-simple-e-com';
 const baseUrlLocal = '';
-export const baseUrl = baseUrlLive;
+export const baseUrl = baseUrlLocal;
 export let catalogProducts = new Array();
 
 export function formatCurrency(value) {
