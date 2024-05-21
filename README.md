@@ -3,6 +3,7 @@
 
 >[!NOTE]
 >Demo last updated on 2024-05-20
+>
 ><a href="https://astn.sh/js-simple-e-com" target="_blank">See the Demo</a>
 
 # Simple Ecommerce Frontend
