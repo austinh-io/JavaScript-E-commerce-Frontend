@@ -2,13 +2,13 @@
 > At this point (2024-02-10) I have retired this project and moved onto making a new version using TypeScript. To check out my progress, you can check out the repository <a href="https://github.com/austinh-io/TypeScript-E-commerce-Frontend" target="_blank">Here</a>.
 
 >[!NOTE]
->Demo last updated on 2023-11-07, now including better mobile support!
+>Demo last updated on 2024-05-20
+>
+><a href="https://astn.sh/js-simple-e-com" target="_blank">See the Demo</a>
 
 # Simple Ecommerce Frontend
 
 > An ecommerce site frontend done only in JS, CSS, and HTML.
-
-<a href="https://projects.austinh.io/simple-ecom/" target="_blank">Demo</a>
 
 Since this is only a front end project, I have a mockup set of data in a JSON file, and a lot of behavior that would typically be handled by a server is coded just as plain JavaScript that runs on the client.
 
