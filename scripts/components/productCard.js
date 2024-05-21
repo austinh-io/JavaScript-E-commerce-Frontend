@@ -277,7 +277,7 @@ class catalogProduct extends HTMLElement {
 
     const product = catalogProducts.find((i) => i.productId == this.productId);
 
-    const productPageUrl = `/productPage?productid=${product.productId}&optionid=${product.options[0].optionId}`;
+    const productPageUrl = `${baseUrl}/productPage?productid=${product.productId}&optionid=${product.options[0].optionId}`;
 
     this.productImageContainer = shadow.querySelector(
       '.product-image-container'
@@ -287,7 +287,7 @@ class catalogProduct extends HTMLElement {
 
     this.productImage = shadow.querySelector('.product-image');
     this.productImageSource = shadow.querySelector('#product-image-source');
-    this.productImageSource.srcset = `${baseUrl}assets/images/productImages/small/${product.options[0].imageSet[0]}_small.webp`;
+    this.productImageSource.srcset = `${baseUrl}/assets/images/productImages/small/${product.options[0].imageSet[0]}_small.webp`;
     this.productImageSource.type = 'image/webp';
 
     this.productBrand = shadow.querySelector('.product-brand');
