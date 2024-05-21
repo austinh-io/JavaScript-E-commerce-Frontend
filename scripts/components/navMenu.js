@@ -365,7 +365,7 @@ tpl_navMenu.innerHTML = `
     <nav class="nav-container wrapper">
       <ul class="nav-menu">
         <li>
-            <a class="nav-site-logo" href="/">
+            <a class="nav-site-logo" href="${baseUrl}">
               <div class="nav-logo-container">
                 <j-symbol name="store-logo"></j-symbol>
               </div>

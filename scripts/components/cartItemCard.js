@@ -282,7 +282,7 @@ class cartItem extends HTMLElement {
     const cartItem = findItem(cartItems, this.productId, this.optionId);
 
     this.image = shadow.querySelector('.cart-item-image');
-    this.image.src = `/assets/images/productImages/small/${cartItem.option.imageSet[0]}_small.webp`;
+    this.image.src = `${baseUrl}/assets/images/productImages/small/${cartItem.option.imageSet[0]}_small.webp`;
 
     this.titleLabel = shadow.querySelector('.cart-item-title');
     this.titleLabel.textContent = cartItem.title;

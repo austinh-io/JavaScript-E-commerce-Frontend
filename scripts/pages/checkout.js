@@ -19,7 +19,7 @@ const cartItemTemplate = function (item) {
           >
             <div class="cart-item-col1">
               <img
-                src="/assets/images/productImages/small/${
+                src="/js-simple-e-com/assets/images/productImages/small/${
                   item.option.imageSet[0]
                 }_small.webp"
                 class="cart-item-image"
