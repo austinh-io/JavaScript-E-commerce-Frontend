@@ -3,12 +3,11 @@
 
 >[!NOTE]
 >Demo last updated on 2024-05-20
+><a href="https://astn.sh/js-simple-e-com" target="_blank">See the Demo</a>
 
 # Simple Ecommerce Frontend
 
 > An ecommerce site frontend done only in JS, CSS, and HTML.
-
-<a href="https://astn.sh/js-simple-e-com" target="_blank">Demo</a>
 
 Since this is only a front end project, I have a mockup set of data in a JSON file, and a lot of behavior that would typically be handled by a server is coded just as plain JavaScript that runs on the client.
 
