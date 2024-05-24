@@ -1,0 +1,108 @@
+[
+  {
+    "id": "101",
+    "name": "Coffee Mug",
+    "description": "A durable ceramic coffee mug, perfect for your morning brew.",
+    "price": 12.99,
+    "variants": {
+      "101-white": {
+        "id": "101-white",
+        "name": "White Coffee Mug",
+        "description": "A classic white ceramic coffee mug.",
+        "price": 12.99
+      },
+      "101-black": {
+        "id": "101-black",
+        "name": "Black Coffee Mug",
+        "description": "A sleek black ceramic coffee mug.",
+        "price": 13.99
+      }
+    }
+  },
+  {
+    "id": "102",
+    "name": "T-Shirt",
+    "description": "A soft cotton t-shirt available in various colors.",
+    "price": 19.99,
+    "variants": {
+      "102-white": {
+        "id": "102-white",
+        "name": "White T-Shirt",
+        "description": "A classic white cotton t-shirt.",
+        "price": 19.99
+      },
+      "102-black": {
+        "id": "102-black",
+        "name": "Black T-Shirt",
+        "description": "A soft black cotton t-shirt.",
+        "price": 20.99
+      }
+    }
+  },
+  {
+    "id": "103",
+    "name": "Notebook",
+    "description": "A spiral-bound notebook for all your note-taking needs.",
+    "price": 7.99,
+    "variants": {
+      "103-lined": {
+        "id": "103-lined",
+        "name": "Lined Notebook",
+        "description": "A lined notebook perfect for writing.",
+        "price": 7.99
+      },
+      "103-dotted": {
+        "id": "103-dotted",
+        "name": "Dotted Notebook",
+        "description": "A dotted notebook ideal for sketching and notes.",
+        "price": 8.49
+      }
+    }
+  },
+  {
+    "id": "104",
+    "name": "Water Bottle",
+    "description": "A reusable water bottle to keep you hydrated.",
+    "price": 15.99,
+    "variants": {
+      "104-blue": {
+        "id": "104-blue",
+        "name": "Blue Water Bottle",
+        "description": "A blue reusable water bottle.",
+        "price": 15.99
+      },
+      "104-green": {
+        "id": "104-green",
+        "name": "Green Water Bottle",
+        "description": "A green reusable water bottle.",
+        "price": 16.99
+      }
+    }
+  },
+  {
+    "id": "105",
+    "name": "Backpack",
+    "description": "A durable backpack for all your carry needs.",
+    "price": 49.99,
+    "variants": {
+      "105-red": {
+        "id": "105-red",
+        "name": "Red Backpack",
+        "description": "A red durable backpack.",
+        "price": 49.99
+      },
+      "105-black": {
+        "id": "105-black",
+        "name": "Black Backpack",
+        "description": "A black durable backpack.",
+        "price": 51.99
+      },
+      "105-grey": {
+        "id": "105-grey",
+        "name": "Grey Backpack",
+        "description": "A grey durable backpack.",
+        "price": 50.99
+      }
+    }
+  }
+]
